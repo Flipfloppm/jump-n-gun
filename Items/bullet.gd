@@ -12,9 +12,9 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = SPEED * direction # Gravity so that the bullet falls.
-	#if not is_on_floor():
-		#velocity.y += gravity * 0.0 * delta
-		
+	# Make bullet disappear if it's in terrain.
+	if is_on_floor() or is_on_wall() or is_on_ceiling():
+		hide()
 
 
 	move_and_slide()
