@@ -3,7 +3,7 @@ signal pickedUp
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const PISTOL_KNOCKBACK_VELOCITY = 400
+const PISTOL_KNOCKBACK_VELOCITY = 1000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -42,9 +42,12 @@ func _physics_process(delta):
 		# Knockback player.
 		var knockback_vector = Vector2.ZERO
 		var knockback_rads = $GunRotation.rotation + PI
-		knockback_vector.x = cos(knockback_rads)
 		knockback_vector.y = sin(knockback_rads)
+		knockback_vector.x = cos(knockback_rads)
+		print(knockback_vector)
 		velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
+		print(velocity)
+		print()
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	move_and_slide()
 
