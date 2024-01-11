@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=6 format=3 uid="uid://pxa5tmuyeak5"]
 
 [ext_resource type="Texture2D" uid="uid://8iddp28j88s4" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_o3qgc"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
+[ext_resource type="PackedScene" uid="uid://c1rppcpleo7ke" path="res://Items/bullet.tscn" id="2_s0s0i"]
+[ext_resource type="Texture2D" uid="uid://bcrqgig4ywyk5" path="res://Art/Weapons/pistol.png" id="3_o418j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
 radius = 8.0
@@ -9,6 +11,7 @@ height = 44.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qtoxy")
+bullet = ExtResource("2_s0s0i")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_o3qgc")
@@ -17,3 +20,14 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_sj6uy")
+
+[node name="GunRotation" type="Node2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="GunRotation"]
+position = Vector2(37, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("3_o418j")
+flip_h = true
+
+[node name="BulletSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(50, -5)
