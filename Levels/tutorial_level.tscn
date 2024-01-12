@@ -1,9 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c253cc2bek6xf"]
+[gd_scene load_steps=15 format=3 uid="uid://c253cc2bek6xf"]
 
+[ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
+[ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
 [ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/player.tscn" id="2_ednqv"]
 [ext_resource type="PackedScene" uid="uid://bivf6f0vhnphu" path="res://Items/pistol.tscn" id="3_3edgi"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="3_sldjp"]
+[ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
 [ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="4_bsj7e"]
+[ext_resource type="Texture2D" uid="uid://dldq0513v6icp" path="res://Art/Parallax/cloud2.png" id="4_tjhv5"]
 [ext_resource type="Texture2D" uid="uid://bda8ydhiobq26" path="res://Art/LevelTiles/stone-block-8.png" id="5_u1frd"]
 [ext_resource type="Texture2D" uid="uid://dmia8c0pf5fht" path="res://Art/LevelTiles/wood-block-8.png" id="6_ftkog"]
 
@@ -35,8 +39,52 @@ sources/2 = SubResource("TileSetAtlasSource_pfljr")
 
 [node name="TutorialLevel" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.486275, 0.486275, 0.486275, 1)
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
+position = Vector2(269, 109)
+texture = ExtResource("1_4o4e4")
+
+[node name="CloudLeft" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudLeft"]
+position = Vector2(228, 148)
+scale = Vector2(0.959375, 0.933333)
+texture = ExtResource("2_e1jst")
+
+[node name="CloudRight" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.556863, 0.556863, 0.556863, 1)
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudRight"]
+position = Vector2(255, 192)
+texture = ExtResource("3_wnv32")
+
+[node name="CloudMiddle" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudMiddle"]
+position = Vector2(274.5, 210)
+scale = Vector2(0.967188, 0.927778)
+texture = ExtResource("4_tjhv5")
+
+[node name="Camera2D" parent="." instance=ExtResource("3_sldjp")]
+position = Vector2(-1, 0.999992)
+scale = Vector2(0.75, 0.75)
+
 [node name="Player" parent="." instance=ExtResource("2_ednqv")]
-position = Vector2(40, 252)
+position = Vector2(38, 236)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 
@@ -45,11 +93,6 @@ position = Vector2(196, 163)
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
 collision_mask = 2
-
-[node name="Camera2D" parent="." instance=ExtResource("3_sldjp")]
-visible = false
-position = Vector2(256, 144)
-scale = Vector2(0.75, 0.75)
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_mhm7g")
