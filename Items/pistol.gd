@@ -18,6 +18,6 @@ func _process(delta):
 
 
 func _on_player_picked_up():
-	hide()
+	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
 	pass # Replace with function body.
