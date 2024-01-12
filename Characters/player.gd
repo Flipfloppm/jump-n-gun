@@ -34,20 +34,12 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	# This rotates the gun following the mouse
-	#print(get_viewport().get_mouse_position())
 	mousePosVector = Vector2(get_global_mouse_position() - position)
 	gunRotation = acos(mousePosVector.dot(Vector2(1,0)) / mousePosVector.length())
-	#print(gunRotation)
-	#print(position, get_viewport().get_mouse_position())
-	
 	if (get_global_mouse_position().y < position.y):
 		gunRotation *= -1
 	$GunRotation.rotation = gunRotation
 	
-	
-	
-	#$GunRotation.look_at(get_viewport().get_mouse_position())
-	#$GunRotation.look_at($Sprite.get_local_mouse_position())
 	if Input.is_action_just_pressed("shoot") and hasPistol:
 		# Shoot bullet.
 		var b = bullet.instantiate()
