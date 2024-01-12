@@ -44,10 +44,10 @@ func _physics_process(delta):
 		var knockback_rads = $GunRotation.rotation + PI
 		knockback_vector.y = sin(knockback_rads)
 		knockback_vector.x = cos(knockback_rads)
-		print(knockback_vector)
+		#print(knockback_vector)
 		velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-		print(velocity)
-		print()
+		#print(velocity)
+		#print()
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	move_and_slide()
 
