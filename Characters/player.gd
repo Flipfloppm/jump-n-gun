@@ -1,9 +1,9 @@
 extends CharacterBody2D
 signal pickedUp
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const PISTOL_KNOCKBACK_VELOCITY = 1000
+const SPEED = 200.0
+const JUMP_VELOCITY = -300.0
+const PISTOL_KNOCKBACK_VELOCITY = 600
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -31,7 +31,9 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	# This rotates the gun following the mouse
+
 	$GunRotation.look_at(get_viewport().get_mouse_position())
+	#$GunRotation.look_at($Sprite.get_local_mouse_position())
 	if Input.is_action_just_pressed("shoot") and hasPistol:
 		# Shoot bullet.
 		var b = bullet.instantiate()
@@ -53,8 +55,7 @@ func _physics_process(delta):
 
 
 func _on_pistol_body_entered(body):
-	print("entered")
-	#hide()
+	#print("entered")
 	pickedUp.emit()
 	hasPistol = true
 	$GunRotation/Pistol.visible = true

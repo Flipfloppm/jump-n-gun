@@ -10,6 +10,7 @@ radius = 8.0
 height = 44.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -24)
 script = ExtResource("1_qtoxy")
 bullet = ExtResource("2_s0s0i")
 
