@@ -8,6 +8,9 @@ const PISTOL_KNOCKBACK_VELOCITY = 600
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasPistol = false
+var mousePosVector: Vector2
+var gunRotation
+var above
 @export var bullet :PackedScene
 
 func _ready():
@@ -31,8 +34,19 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	# This rotates the gun following the mouse
-
-	$GunRotation.look_at(get_viewport().get_mouse_position())
+	#print(get_viewport().get_mouse_position())
+	mousePosVector = Vector2(get_global_mouse_position() - position)
+	gunRotation = acos(mousePosVector.dot(Vector2(1,0)) / mousePosVector.length())
+	#print(gunRotation)
+	#print(position, get_viewport().get_mouse_position())
+	
+	if (get_global_mouse_position().y < position.y):
+		gunRotation *= -1
+	$GunRotation.rotation = gunRotation
+	
+	
+	
+	#$GunRotation.look_at(get_viewport().get_mouse_position())
 	#$GunRotation.look_at($Sprite.get_local_mouse_position())
 	if Input.is_action_just_pressed("shoot") and hasPistol:
 		# Shoot bullet.
@@ -44,7 +58,7 @@ func _physics_process(delta):
 		# Knockback player.
 		var knockback_vector = Vector2.ZERO
 		var knockback_rads = $GunRotation.rotation + PI
-		knockback_vector.y = sin(knockback_rads)
+		knockback_vector.y = sin(knockback_rads) * 0.5
 		knockback_vector.x = cos(knockback_rads)
 		print(knockback_vector)
 		velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
