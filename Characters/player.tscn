@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=8 format=3 uid="uid://pxa5tmuyeak5"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://c1rppcpleo7ke" path="res://Items/bullet.tscn" id="2_s0s0i"]
+[ext_resource type="PackedScene" uid="uid://b74h8dnv5fvwl" path="res://Items/rocket.tscn" id="3_aiia3"]
 [ext_resource type="Texture2D" uid="uid://bcrqgig4ywyk5" path="res://Art/Weapons/pistol.png" id="3_o418j"]
 [ext_resource type="Texture2D" uid="uid://bp6cpvqsq4bey" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
 [ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
@@ -14,6 +15,7 @@ height = 44.0
 position = Vector2(0, -24)
 script = ExtResource("1_qtoxy")
 bullet = ExtResource("2_s0s0i")
+rocket = ExtResource("3_aiia3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

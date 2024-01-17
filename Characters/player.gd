@@ -13,6 +13,8 @@ var mousePosVector: Vector2
 var gunRotation
 var above
 @export var bullet :PackedScene
+@export var rocket :PackedScene
+
 
 func _ready():
 	$GunRotation/Pistol.visible = false
@@ -61,11 +63,11 @@ func _physics_process(delta):
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 		
 	if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
-		# Shoot bullet.
-		var b = bullet.instantiate()
-		b.global_position = $GunRotation/BulletSpawn.global_position
-		b.rotation_degrees = $GunRotation.rotation_degrees
-		get_tree().root.add_child(b)
+		# Shoot rocket.
+		var r = rocket.instantiate()
+		r.global_position = $GunRotation/RocketSpawn.global_position
+		r.rotation_degrees = $GunRotation.rotation_degrees
+		get_tree().root.add_child(r)
 		
 		# Knockback player.
 		var knockback_vector = Vector2.ZERO
