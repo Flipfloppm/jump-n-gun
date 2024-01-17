@@ -10,13 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-#func _on_body_entered(body):
-	#print("pistol entered")
-	#hide()
-	#pickedUp.emit()
-	#$CollisionShape2D.set_deferred("disabled", true)
-
-
 func _on_player_picked_up():
 	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)

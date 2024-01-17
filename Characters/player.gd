@@ -8,6 +8,7 @@ const PISTOL_KNOCKBACK_VELOCITY = 600
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasPistol = false
+var hasRocketLauncher = false
 var mousePosVector: Vector2
 var gunRotation
 var above
@@ -15,6 +16,7 @@ var above
 
 func _ready():
 	$GunRotation/Pistol.visible = false
+	$GunRotation/RocketLauncher.visible = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -57,12 +59,31 @@ func _physics_process(delta):
 		print(velocity)
 		print()
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
+		
+	if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
+		# Shoot bullet.
+		var b = bullet.instantiate()
+		b.global_position = $GunRotation/BulletSpawn.global_position
+		b.rotation_degrees = $GunRotation.rotation_degrees
+		get_tree().root.add_child(b)
+		
+		# Knockback player.
+		var knockback_vector = Vector2.ZERO
+		var knockback_rads = $GunRotation.rotation + PI
+		knockback_vector.y = sin(knockback_rads) * 0.5
+		knockback_vector.x = cos(knockback_rads)
+		velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
+		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	move_and_slide()
 
 
 func _on_pistol_body_entered(body):
-	#print("entered")
 	pickedUp.emit()
 	hasPistol = true
 	$GunRotation/Pistol.visible = true
-	#$CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_static_rocket_launcher_body_entered(body):
+	pickedUp.emit()
+	hasRocketLauncher = true
+	$GunRotation/RocketLauncher.visible = true
