@@ -67,6 +67,7 @@ text = "IP Address:"
 
 [node name="IPEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+text = "127.0.0.1"
 placeholder_text = "Enter IP Address"
 alignment = 1
 
@@ -76,6 +77,7 @@ text = "Port: "
 
 [node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+text = "3296"
 placeholder_text = "Enter Port Number"
 alignment = 1
 

@@ -1,11 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=16 format=3 uid="uid://dx2dup1o6g6ch"]
 
 [ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
-[ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_phqsw"]
 [ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
-[ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/player.tscn" id="2_ednqv"]
 [ext_resource type="PackedScene" uid="uid://bivf6f0vhnphu" path="res://Items/pistol.tscn" id="3_3edgi"]
-[ext_resource type="PackedScene" path="res://Levels/camera_2d.tscn" id="3_sldjp"]
 [ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
 [ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="4_bsj7e"]
 [ext_resource type="Texture2D" uid="uid://dldq0513v6icp" path="res://Art/Parallax/cloud2.png" id="4_tjhv5"]
@@ -93,10 +90,9 @@ sources/2 = SubResource("TileSetAtlasSource_pfljr")
 sources/3 = SubResource("TileSetAtlasSource_5f4w6")
 
 [node name="TutorialLevel" type="Node2D"]
-script = ExtResource("1_phqsw")
-PLAYERSCENE = ExtResource("2_ednqv")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(-176.788, -88.1085)
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color(0.486275, 0.486275, 0.486275, 1)
@@ -136,15 +132,6 @@ position = Vector2(274.5, 210)
 scale = Vector2(0.967188, 0.927778)
 texture = ExtResource("4_tjhv5")
 
-[node name="Camera2D" parent="." instance=ExtResource("3_sldjp")]
-position = Vector2(-1, 0.999992)
-scale = Vector2(0.75, 0.75)
-
-[node name="Player" parent="." instance=ExtResource("2_ednqv")]
-position = Vector2(38, 236)
-scale = Vector2(0.7, 0.7)
-collision_layer = 2
-
 [node name="StaticPistol" parent="." instance=ExtResource("3_3edgi")]
 position = Vector2(96, 194)
 scale = Vector2(0.75, 0.75)
@@ -163,12 +150,12 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="SpawnLocations" type="Node2D" parent="."]
+visible = false
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
+visible = false
 position = Vector2(188, 96)
 
 [node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
+visible = false
 position = Vector2(398, 165)
-
-[connection signal="pickedUp" from="Player" to="StaticPistol" method="_on_player_picked_up"]
-[connection signal="body_entered" from="StaticPistol" to="Player" method="_on_pistol_body_entered"]

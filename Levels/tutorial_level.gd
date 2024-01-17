@@ -6,7 +6,7 @@ extends Node2D
 func _ready():
 	print("level ready")
 	var index = 0
-	print(str(GameManager.PLAYERS))
+	print("players:" + str(GameManager.PLAYERS))
 	for i in GameManager.PLAYERS:
 		var cur_player = PLAYERSCENE.instantiate()
 		cur_player.name = str(GameManager.PLAYERS[i].id)

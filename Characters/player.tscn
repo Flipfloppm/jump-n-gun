@@ -1,16 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=8 format=3 uid="uid://pxa5tmuyeak5"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://c1rppcpleo7ke" path="res://Items/bullet.tscn" id="2_s0s0i"]
 [ext_resource type="Texture2D" uid="uid://bcrqgig4ywyk5" path="res://Art/Weapons/pistol.png" id="3_o418j"]
 [ext_resource type="Texture2D" uid="uid://bp6cpvqsq4bey" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
+[ext_resource type="PackedScene" path="res://Levels/camera_2d.tscn" id="5_odu63"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
 radius = 8.0
 height = 44.0
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qq1f1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GunRotation:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -24)
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_qtoxy")
 bullet = ExtResource("2_s0s0i")
 
@@ -33,3 +44,8 @@ flip_h = true
 
 [node name="BulletSpawn" type="Node2D" parent="GunRotation"]
 position = Vector2(50, -5)
+
+[node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qq1f1")
