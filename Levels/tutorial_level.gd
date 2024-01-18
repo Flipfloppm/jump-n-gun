@@ -16,4 +16,5 @@ func _ready():
 				cur_player.global_position = spawn_position.global_position
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
+	
 

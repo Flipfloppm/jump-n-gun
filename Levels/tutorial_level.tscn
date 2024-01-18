@@ -1,6 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=18 format=3 uid="uid://dx2dup1o6g6ch"]
 
 [ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
+[ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
+[ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/player.tscn" id="2_c8dtp"]
 [ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
 [ext_resource type="PackedScene" uid="uid://bivf6f0vhnphu" path="res://Items/pistol.tscn" id="3_3edgi"]
 [ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
@@ -90,6 +92,8 @@ sources/2 = SubResource("TileSetAtlasSource_pfljr")
 sources/3 = SubResource("TileSetAtlasSource_5f4w6")
 
 [node name="TutorialLevel" type="Node2D"]
+script = ExtResource("1_s0nef")
+PLAYERSCENE = ExtResource("2_c8dtp")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(-176.788, -88.1085)

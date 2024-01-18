@@ -21,7 +21,7 @@ func start_server():
 	server_peer = ENetMultiplayerPeer.new()
 	var err = server_peer.create_server(SELECTED_PORT, MAX_PLAYERS)
 	if err != OK:
-		print("cannot host:" + err)
+		print("cannot host:" + str(err))
 		return
 	multiplayer.set_multiplayer_peer(server_peer)
 	print("started server at: " + str(IP.get_local_addresses()))

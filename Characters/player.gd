@@ -16,7 +16,11 @@ var above
 func _ready():
 	$GunRotation/Pistol.visible = false
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
-
+	var pistol = get_node("/root/TutorialLevel/StaticPistol")
+	print(pistol)
+	pistol.body_entered.connect(_on_pistol_body_entered)
+	print("layer" + str(collision_layer) + "mask" + str(collision_mask))
+	
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		# Add the gravity.
@@ -63,7 +67,9 @@ func _physics_process(delta):
 
 
 func _on_pistol_body_entered(body):
-	print("entered")
+	print(body)
+	print("entered" + str(multiplayer.get_unique_id()))
+	
 	pickedUp.emit()
 	hasPistol = true
 	$GunRotation/Pistol.visible = true

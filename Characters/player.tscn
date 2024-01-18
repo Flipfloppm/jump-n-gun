@@ -21,7 +21,7 @@ properties/1/replication_mode = 1
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -24)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_qtoxy")
 bullet = ExtResource("2_s0s0i")
 
