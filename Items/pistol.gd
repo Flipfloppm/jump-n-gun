@@ -15,9 +15,15 @@ func _process(delta):
 	#hide()
 	#pickedUp.emit()
 	#$CollisionShape2D.set_deferred("disabled", true)
+#
+#
+#func _on_player_picked_up():
+	#queue_free()
+	#$CollisionShape2D.set_deferred("disabled", true)
 
 
-func _on_player_picked_up():
+func _on_body_entered(body):
+	# This handler replaced the _on_player_picked_up method by using the SignalBus
 	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
-	pass # Replace with function body.
+	SignalBus.weapon_entered.emit(body)
