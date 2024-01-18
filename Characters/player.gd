@@ -44,11 +44,7 @@ func _physics_process(delta):
 		$GunRotation.rotation = gunRotation
 		
 		if Input.is_action_just_pressed("shoot") and hasPistol:
-			# Shoot bullet.
-			var b = bullet.instantiate()
-			b.global_position = $GunRotation/BulletSpawn.global_position
-			b.rotation_degrees = $GunRotation.rotation_degrees
-			get_tree().root.add_child(b)
+			fire.rpc()
 			
 			# Knockback player.
 			var knockback_vector = Vector2.ZERO
@@ -72,3 +68,11 @@ func _on_pistol_body_entered(body):
 	hasPistol = true
 	$GunRotation/Pistol.visible = true
 	#$CollisionShape2D.set_deferred("disabled", true)
+
+@rpc("any_peer","call_local")
+func fire():
+	# Shoot bullet.
+	var b = bullet.instantiate()
+	b.global_position = $GunRotation/BulletSpawn.global_position
+	b.rotation_degrees = $GunRotation.rotation_degrees
+	get_tree().root.add_child(b)
