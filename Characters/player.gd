@@ -37,61 +37,25 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	elif is_on_floor(): # and Input.is_action_just_released("left") or Input.is_action_just_released("right"):
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.x = lerp(velocity.x, 0.0, 0.7)
+		var direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED
+		elif is_on_floor(): # and Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+			#velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = lerp(velocity.x, 0.0, 0.7)
+			
+		# This rotates the gun following the mouse
+		mousePosVector = Vector2(get_global_mouse_position() - position)
+		gunRotation = acos(mousePosVector.dot(Vector2(1,0)) / mousePosVector.length())
+
 		
-	# This rotates the gun following the mouse
-	#print(get_viewport().get_mouse_position())
-	mousePosVector = Vector2(get_global_mouse_position() - position)
-	gunRotation = acos(mousePosVector.dot(Vector2(1,0)) / mousePosVector.length())
-	#print(gunRotation)
-	#print(position, get_viewport().get_mouse_position())
+		if (get_global_mouse_position().y < position.y):
+			gunRotation *= -1
+		$GunRotation.rotation = gunRotation
 	
-	if (get_global_mouse_position().y < position.y):
-		gunRotation *= -1
-	$GunRotation.rotation = gunRotation
-	
-	
-	
-	#$GunRotation.look_at(get_viewport().get_mouse_position())
-	#$GunRotation.look_at($Sprite.get_local_mouse_position())
-	# if Input.is_action_just_pressed("shoot") and hasPistol:
-	# 	# Shoot bullet.
-	# 	var b = bullet.instantiate()
-	# 	b.global_position = $GunRotation/BulletSpawn.global_position
-	# 	b.rotation_degrees = $GunRotation.rotation_degrees
-	# 	get_tree().root.add_child(b)
-		
-	# 	# Knockback player.
-	# 	var knockback_vector = Vector2.ZERO
-	# 	var knockback_rads = $GunRotation.rotation + PI
-	# 	knockback_vector.y = sin(knockback_rads) * 0.5
-	# 	knockback_vector.x = cos(knockback_rads)
-	# 	print(knockback_vector)
-	# 	velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-	# 	print(velocity)
-	# 	print()
-	# 	knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
-	if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
-		fire.rpc()
-		# Shoot rocket.
-		#var r = rocket.instantiate()
-		#r.global_position = $GunRotation/RocketSpawn.global_position
-		#r.rotation_degrees = $GunRotation.rotation_degrees
-		#get_tree().root.add_child(r)
-		
-		# Knockback player.
-		var knockback_vector = Vector2.ZERO
-		var knockback_rads = $GunRotation.rotation + PI
-		knockback_vector.y = sin(knockback_rads) * 0.5
-		knockback_vector.x = cos(knockback_rads)
-		velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
-	move_and_slide()
+		if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
+			fire.rpc()
+		move_and_slide()
 
 
 func _on_rocket_body_entered(body):
