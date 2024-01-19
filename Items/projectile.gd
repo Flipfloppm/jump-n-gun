@@ -8,7 +8,8 @@ const SPEED = 150.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction : Vector2
 var collision: KinematicCollision2D
-@export var explosion :PackedScene
+#@export var explosion :PackedScene
+var explosion = preload("res://Items/explosion.tscn")
 
 @onready var _animated_sprite = $Rocket
 
