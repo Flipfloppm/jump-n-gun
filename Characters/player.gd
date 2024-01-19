@@ -8,19 +8,23 @@ const PISTOL_KNOCKBACK_VELOCITY = 600
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasPistol = false
+var hasRocketLauncher = false
 var mousePosVector: Vector2
 var gunRotation
 var above
 @export var bullet :PackedScene
+@export var rocket :PackedScene
+
 
 func _ready():
 	$GunRotation/Pistol.visible = false
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
-	SignalBus.weapon_entered.connect(_on_pistol_body_entered)
-	
+	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
+	$GunRotation/RocketLauncher.visible = false
+
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		# Add the gravity.
+		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta
 
@@ -56,23 +60,38 @@ func _physics_process(delta):
 			print(velocity)
 			print()
 			knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
+		if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
+			fire.rpc()
+			# Shoot rocket.
+			#var r = rocket.instantiate()
+			#r.global_position = $GunRotation/RocketSpawn.global_position
+			#r.rotation_degrees = $GunRotation.rotation_degrees
+			#get_tree().root.add_child(r)
+			
+			# Knockback player.
+			var knockback_vector = Vector2.ZERO
+			var knockback_rads = $GunRotation.rotation + PI
+			knockback_vector.y = sin(knockback_rads) * 0.5
+			knockback_vector.x = cos(knockback_rads)
+			velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
+			knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 		move_and_slide()
 
 
-func _on_pistol_body_entered(body):
+func _on_rocket_body_entered(body):
 	print("body" + str(body) + "self" + str(self))
 	print("entered" + str(multiplayer.get_unique_id()))
 	if body != self:
 		return 
 	pickedUp.emit()
-	hasPistol = true
-	$GunRotation/Pistol.visible = true
+	hasRocketLauncher = true
+	$GunRotation/RocketLauncher.visible = true
 	#$CollisionShape2D.set_deferred("disabled", true)
 
 @rpc("any_peer","call_local")
 func fire():
 	# Shoot bullet.
-	var b = bullet.instantiate()
-	b.global_position = $GunRotation/BulletSpawn.global_position
-	b.rotation_degrees = $GunRotation.rotation_degrees
-	get_tree().root.add_child(b)
+	var r = rocket.instantiate()
+	r.global_position = $GunRotation/RocketSpawn.global_position
+	r.rotation_degrees = $GunRotation.rotation_degrees
+	get_tree().root.add_child(r)

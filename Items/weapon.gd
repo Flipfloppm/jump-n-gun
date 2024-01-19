@@ -23,7 +23,11 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	# This handler replaced the _on_player_picked_up method by using the SignalBus
+	print("entered")
 	queue_free()
 	$CollisionShape2D.set_deferred("disabled", true)
 	SignalBus.weapon_entered.emit(body)
+	
+	# This handler replaced the _on_player_picked_up method by using the SignalBus
+#func _on_player_picked_up():
+	
