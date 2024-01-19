@@ -5,6 +5,7 @@ extends Control
 @onready var selected_IP = $CenterContainer/VBoxContainer/GridContainer/IPEdit
 @onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
 @onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
+@onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,7 @@ func _on_host_game_pressed():
 	selected_port.text = str(host_info[0])
 	selected_IP.text = str(host_info[1])
 	joinBtn.disabled = true
+	hostBtn.disabled = true
 	register_player_info(player_name.text, multiplayer.get_unique_id())
 	
 func _on_join_btn_pressed():
@@ -33,6 +35,7 @@ func _on_join_btn_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(selected_IP.text, int(selected_port.text))
 	multiplayer.set_multiplayer_peer(peer)
+	joinBtn.disabled = true
 
 func _on_start_game_btn_pressed():
 	start_game.rpc() # everybody will be notified to call their own start_game method
