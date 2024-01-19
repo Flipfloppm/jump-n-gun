@@ -18,12 +18,7 @@ var above
 func _ready():
 	$GunRotation/Pistol.visible = false
 	add_to_group("players")
-	# Connect packed scene explosion with Player
-	#var explosion = load("res://Items/explosion.tscn")
-	#var explosion_instance = explosion.instantiate()
-	#explosion_instance.explode.connect(_on_explosion)
-	#print(explosion_instance.explode.get_connections())
-	#print(explosion_instance.explode.is_connected(_on_explosion))
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -35,12 +30,17 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	elif is_on_floor(): # and Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = lerp(velocity.x, 0.0, 0.7)
+	
+	#if Input.is_action_pressed("right"):
+		#velocity.x += 24
+	#if Input.is_action_pressed("left"):
+		#velocity.x += -24
 		
 	# This rotates the gun following the mouse
 	mousePosVector = Vector2(get_global_mouse_position() - position)
@@ -56,16 +56,6 @@ func _physics_process(delta):
 		b.rotation_degrees = $GunRotation.rotation_degrees
 		get_tree().root.add_child(b)
 		
-		## Knockback player.
-		#var knockback_vector = Vector2.ZERO
-		#var knockback_rads = $GunRotation.rotation + PI
-		#knockback_vector.y = sin(knockback_rads) * 0.5
-		#knockback_vector.x = cos(knockback_rads)
-		#print(knockback_vector)
-		#velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-		#print(velocity)
-		#print()
-		#knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	move_and_slide()
 
 
@@ -88,12 +78,15 @@ func on_explosion(pos, b, a, r):
 	var diff = position - pos # Player position - explosion center position
 	var radius = diff.length()
 	print("radius: " + str(radius))
+	
 	# Knockback if within blast radius
 	if (radius < r):
-		var deg = acos(diff.dot(Vector2(1,0)) / diff.length()) # Degree from center of explosion
+		# Degree of player current position from center of explosion
+		var deg = acos(diff.dot(Vector2(1,0)) / diff.length())
 		if (pos.y > position.y):
 			deg *= -1
 		print("degree: " + str(deg*180/PI))
+		
 		# Calculate force of explosion based on radius
 		var knockback_force = -1 * radius * (a - b) / r + a
 		
