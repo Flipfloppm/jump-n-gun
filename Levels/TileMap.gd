@@ -3,7 +3,6 @@ extends TileMap
 var cell
 var treeCells = PackedVector2Array([Vector2(13,4), Vector2(13,5), Vector2(13,6), Vector2(13,7), 
 Vector2(13,8)]) 
-#Vector2(14,4), Vector2(14,5), Vector2(14,6), Vector2(14,7), Vector2(14,8)])
 var cellSourceId
 var cellAtlasCoords
 var newCellAtlasCoords

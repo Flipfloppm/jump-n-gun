@@ -3,22 +3,17 @@ signal pickedUp
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-const PISTOL_KNOCKBACK_VELOCITY = 600
-#const PISTOL_KNOCKBACK_RADIUS = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hasPistol = false
 var hasRocketLauncher = false
 var mousePosVector: Vector2
 var gunRotation
 var above
-@export var bullet :PackedScene
 @export var rocket :PackedScene
 
 
 func _ready():
-	$GunRotation/Pistol.visible = false
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	$GunRotation/RocketLauncher.visible = false
