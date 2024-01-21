@@ -24,7 +24,6 @@ func start_server():
 		print("cannot host:" + str(err))
 		return
 	multiplayer.set_multiplayer_peer(server_peer)
-	#print("started server at: " + str(IP.get_local_interfaces()))
 	var interfaces = IP.get_local_interfaces()
 	print("Started server: ")
 	print(interfaces)
