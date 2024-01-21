@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddn8snpvj86p"]
+
+[ext_resource type="Script" path="res://Items/weapon.gd" id="1_7v6cm"]
+[ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="2_10hks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2yvwq"]
+radius = 30.0167
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_7v6cm")
+
+[node name="BazookaSprite" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 1)
+scale = Vector2(1.25, 0.983)
+texture = ExtResource("2_10hks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_2yvwq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
