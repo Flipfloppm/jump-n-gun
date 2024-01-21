@@ -45,6 +45,9 @@ texture = ExtResource("5_yl57y")
 position = Vector2(52, -4)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
+position = Vector2(-1, 1)
+anchor_mode = 1
+script = null
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qq1f1")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=18 format=3 uid="uid://dx2dup1o6g6ch"]
 
 [ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
 [ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
 [ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
 [ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/player.tscn" id="2_ednqv"]
-[ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="3_sldjp"]
 [ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
 [ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="4_bsj7e"]
 [ext_resource type="Texture2D" uid="uid://dldq0513v6icp" path="res://Art/Parallax/cloud2.png" id="4_tjhv5"]
@@ -136,10 +135,6 @@ motion_mirroring = Vector2(640, 2.08165e-12)
 position = Vector2(274.5, 210)
 scale = Vector2(0.967188, 0.927778)
 texture = ExtResource("4_tjhv5")
-
-[node name="Camera2D" parent="." instance=ExtResource("3_sldjp")]
-position = Vector2(-1, 0.999992)
-scale = Vector2(0.75, 0.75)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_mhm7g")
