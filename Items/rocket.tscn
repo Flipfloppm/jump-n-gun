@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b74h8dnv5fvwl"]
+[gd_scene load_steps=10 format=3 uid="uid://dyv0b1uvboutx"]
 
 [ext_resource type="Script" path="res://Items/projectile.gd" id="1_4v6lq"]
 [ext_resource type="Texture2D" uid="uid://bipnl0ilqosf1" path="res://Art/Weapons/rocketSpriteSheet.png" id="2_posov"]
@@ -57,6 +57,7 @@ position = Vector2(8, 1)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_masrc")
 frame_progress = 0.201844
+speed_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(11.75, 0.625)
