@@ -24,7 +24,14 @@ func start_server():
 		print("cannot host:" + str(err))
 		return
 	multiplayer.set_multiplayer_peer(server_peer)
-	print("started server at: " + str(IP.get_local_addresses()))
+	var interfaces = IP.get_local_interfaces()
+	print("Started server: ")
+	print(interfaces)
+	for interface in interfaces:
+		if interface.has("name"):
+			if interface["name"] == "en0":
+				SELECTED_IP = interface["addresses"][-1]
+				break
 	return [SELECTED_PORT, SELECTED_IP]
 
 # this gets called on both the server and client when someone connects
