@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddn8snpvj86p"]
 
 [ext_resource type="Script" path="res://Items/weapon.gd" id="1_7v6cm"]
-[ext_resource type="Texture2D" path="res://Art/Weapons/bazooka.png" id="2_10hks"]
+[ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="2_10hks"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2yvwq"]
 radius = 30.0167

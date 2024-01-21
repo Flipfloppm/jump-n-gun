@@ -3,24 +3,22 @@ signal pickedUp
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-const PISTOL_KNOCKBACK_VELOCITY = 600
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hasPistol = false
 var hasRocketLauncher = false
 var mousePosVector: Vector2
 var gunRotation
 var above
-@export var bullet :PackedScene
 @export var rocket :PackedScene
 
 
 func _ready():
-	$GunRotation/Pistol.visible = false
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	$GunRotation/RocketLauncher.visible = false
+	add_to_group("players")
+
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
@@ -32,49 +30,26 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("left", "right")
 		if direction:
 			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+		elif is_on_floor(): # and Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+			#velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = lerp(velocity.x, 0.0, 0.7)
 			
 		# This rotates the gun following the mouse
 		mousePosVector = Vector2(get_global_mouse_position() - position)
 		gunRotation = acos(mousePosVector.dot(Vector2(1,0)) / mousePosVector.length())
+
+		
 		if (get_global_mouse_position().y < position.y):
 			gunRotation *= -1
 		$GunRotation.rotation = gunRotation
-		
-		if Input.is_action_just_pressed("shoot") and hasPistol:
-			fire.rpc()
-			
-			# Knockback player.
-			var knockback_vector = Vector2.ZERO
-			var knockback_rads = $GunRotation.rotation + PI
-			knockback_vector.y = sin(knockback_rads) * 0.5
-			knockback_vector.x = cos(knockback_rads)
-			print(knockback_vector)
-			velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-			print(velocity)
-			print()
-			knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
+	
 		if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
 			fire.rpc()
-			# Shoot rocket.
-			#var r = rocket.instantiate()
-			#r.global_position = $GunRotation/RocketSpawn.global_position
-			#r.rotation_degrees = $GunRotation.rotation_degrees
-			#get_tree().root.add_child(r)
-			
-			# Knockback player.
-			var knockback_vector = Vector2.ZERO
-			var knockback_rads = $GunRotation.rotation + PI
-			knockback_vector.y = sin(knockback_rads) * 0.5
-			knockback_vector.x = cos(knockback_rads)
-			velocity += knockback_vector * PISTOL_KNOCKBACK_VELOCITY
-			knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 		move_and_slide()
 
 
@@ -87,6 +62,41 @@ func _on_rocket_body_entered(body):
 	hasRocketLauncher = true
 	$GunRotation/RocketLauncher.visible = true
 	#$CollisionShape2D.set_deferred("disabled", true)
+	
+
+# pos:	position of explosion
+# b:	min explosion force
+# a:	max explosion force
+# r:	exposion radius
+func on_explosion(pos, b, a, r):
+	
+	print("explode in player")
+	# Find explosion degree and radius.
+	var diff = position - pos # Player position - explosion center position
+	var radius = diff.length()
+	print("radius: " + str(radius))
+	
+	# Knockback if within blast radius
+	if (radius < r):
+		# Degree of player current position from center of explosion
+		var deg = acos(diff.dot(Vector2(1,0)) / diff.length())
+		if (pos.y > position.y):
+			deg *= -1
+		print("degree: " + str(deg*180/PI))
+		
+		# Calculate force of explosion based on radius
+		var knockback_force = -1 * radius * (a - b) / r + a
+		
+		# Knockback player from exposion
+		var knockback_vector = Vector2.ZERO
+		knockback_vector.y = sin(deg) 
+		knockback_vector.x = cos(deg)
+		print("knockback vector: " + str(knockback_vector))
+		print("knockback force: " + str(knockback_force))
+		velocity += knockback_vector * knockback_force
+		print("velocity:" + str(velocity))
+		print()
+		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 
 @rpc("any_peer","call_local")
 func fire():

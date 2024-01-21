@@ -5,7 +5,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("level ready")
-	print($StaticRocketLauncher)
 	var index = 0
 	print("players:" + str(GameManager.PLAYERS))
 	for i in GameManager.PLAYERS:
