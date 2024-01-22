@@ -45,7 +45,8 @@ texture = ExtResource("5_yl57y")
 position = Vector2(52, -4)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
-position = Vector2(-1, 1)
+position = Vector2(0.999969, 2.99998)
+scale = Vector2(0.8, 0.8)
 anchor_mode = 1
 script = null
 

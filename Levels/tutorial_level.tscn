@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=20 format=3 uid="uid://dx2dup1o6g6ch"]
 
-[ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
 [ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
-[ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
 [ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/player.tscn" id="2_ednqv"]
-[ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
+[ext_resource type="Script" path="res://Levels/Background.gd" id="3_g4emm"]
 [ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="4_bsj7e"]
-[ext_resource type="Texture2D" uid="uid://dldq0513v6icp" path="res://Art/Parallax/cloud2.png" id="4_tjhv5"]
+[ext_resource type="Texture2D" uid="uid://b5i0kinmu420v" path="res://Art/Parallax/1-sky.png" id="4_xkwkb"]
+[ext_resource type="Texture2D" uid="uid://b3ut7s4pnbc0c" path="res://Art/Parallax/3-clouds.png" id="5_7lhgn"]
 [ext_resource type="Texture2D" uid="uid://bda8ydhiobq26" path="res://Art/LevelTiles/stone-block-8.png" id="5_u1frd"]
 [ext_resource type="Texture2D" uid="uid://dmia8c0pf5fht" path="res://Art/LevelTiles/wood-block-8.png" id="6_ftkog"]
+[ext_resource type="Texture2D" uid="uid://v2d3yv64b3nu" path="res://Art/Parallax/4-clouds.png" id="6_qhkln"]
+[ext_resource type="Texture2D" uid="uid://djgr1al5ym3io" path="res://Art/Parallax/5-clouds.png" id="7_88l7t"]
+[ext_resource type="Texture2D" uid="uid://cqvayfxhrmc6m" path="res://Art/Parallax/2-backclouds.png" id="8_ux81r"]
 [ext_resource type="Texture2D" uid="uid://bj2uffgb7kcnq" path="res://Art/LevelTiles/wood.png" id="11_u1oee"]
 [ext_resource type="Script" path="res://Levels/TileMap.gd" id="12_pxiqa"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
@@ -96,45 +98,69 @@ script = ExtResource("1_s0nef")
 PLAYERSCENE = ExtResource("2_ednqv")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
 scroll_offset = Vector2(-176.788, -88.1085)
+script = ExtResource("3_g4emm")
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.486275, 0.486275, 0.486275, 1)
+[node name="Sky2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(104, 32)
+scale = Vector2(0.66, 0.66)
 motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky2"]
+self_modulate = Color(0.760784, 0.760784, 0.760784, 1)
+position = Vector2(1146.97, -1966.67)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_xkwkb")
+centered = false
+
+[node name="Cloud3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(0.01, 0.01)
 motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-position = Vector2(269, 109)
-texture = ExtResource("1_4o4e4")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud3"]
+position = Vector2(65.6717, -23.8806)
+scale = Vector2(0.478445, 0.478445)
+texture = ExtResource("5_7lhgn")
+centered = false
 
-[node name="CloudLeft" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.572549, 0.572549, 0.572549, 1)
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(640, 2.08165e-12)
+[node name="Cloud4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(277, 97)
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudLeft"]
-position = Vector2(228, 148)
-scale = Vector2(0.959375, 0.933333)
-texture = ExtResource("2_e1jst")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud4"]
+position = Vector2(-388.06, -101.493)
+scale = Vector2(0.45, 0.416)
+texture = ExtResource("6_qhkln")
+centered = false
 
-[node name="CloudRight" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.556863, 0.556863, 0.556863, 1)
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(640, 2.08165e-12)
+[node name="Cloud5" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudRight"]
-position = Vector2(255, 192)
-texture = ExtResource("3_wnv32")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud5"]
+position = Vector2(68.6567, -31.3433)
+scale = Vector2(0.487566, 0.487566)
+texture = ExtResource("7_88l7t")
+centered = false
 
-[node name="CloudMiddle" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.498039, 0.498039, 0.498039, 1)
+[node name="Backclouds" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-120, -486)
+scale = Vector2(0.5, 0.5)
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(640, 2.08165e-12)
+motion_mirroring = Vector2(2.08165e-12, 640)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudMiddle"]
-position = Vector2(274.5, 210)
-scale = Vector2(0.967188, 0.927778)
-texture = ExtResource("4_tjhv5")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backclouds"]
+position = Vector2(342, -330)
+scale = Vector2(0.530292, 0.765952)
+texture = ExtResource("8_ux81r")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_mhm7g")
