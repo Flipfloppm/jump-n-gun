@@ -1,15 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=21 format=3 uid="uid://dx2dup1o6g6ch"]
 
-[ext_resource type="Texture2D" uid="uid://bsigt7n3mxr1i" path="res://Art/Parallax/justsky.png" id="1_4o4e4"]
 [ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
-[ext_resource type="Texture2D" uid="uid://c8lkberygf4ow" path="res://Art/Parallax/cloud3.png" id="2_e1jst"]
-[ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/guy.tscn" id="2_ednqv"]
-[ext_resource type="PackedScene" uid="uid://1arv1q1jiprp" path="res://Characters/dude.tscn" id="3_h1dkj"]
-[ext_resource type="Texture2D" uid="uid://cdkvg1oapnr25" path="res://Art/Parallax/cloud1.png" id="3_wnv32"]
+[ext_resource type="PackedScene" uid="uid://duf0ghh8oyjkf" path="res://Characters/guy.tscn" id="2_u68ap"]
+[ext_resource type="Script" path="res://Levels/Background.gd" id="3_g4emm"]
+[ext_resource type="PackedScene" uid="uid://b4vshfjlspd7v" path="res://Characters/dude.tscn" id="3_sqbd7"]
 [ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="4_bsj7e"]
-[ext_resource type="Texture2D" uid="uid://dldq0513v6icp" path="res://Art/Parallax/cloud2.png" id="4_tjhv5"]
+[ext_resource type="Texture2D" uid="uid://b5i0kinmu420v" path="res://Art/Parallax/1-sky.png" id="4_xkwkb"]
+[ext_resource type="Texture2D" uid="uid://b3ut7s4pnbc0c" path="res://Art/Parallax/3-clouds.png" id="5_7lhgn"]
 [ext_resource type="Texture2D" uid="uid://bda8ydhiobq26" path="res://Art/LevelTiles/stone-block-8.png" id="5_u1frd"]
 [ext_resource type="Texture2D" uid="uid://dmia8c0pf5fht" path="res://Art/LevelTiles/wood-block-8.png" id="6_ftkog"]
+[ext_resource type="Texture2D" uid="uid://v2d3yv64b3nu" path="res://Art/Parallax/4-clouds.png" id="6_qhkln"]
+[ext_resource type="Texture2D" uid="uid://djgr1al5ym3io" path="res://Art/Parallax/5-clouds.png" id="7_88l7t"]
+[ext_resource type="Texture2D" uid="uid://cqvayfxhrmc6m" path="res://Art/Parallax/2-backclouds.png" id="8_ux81r"]
 [ext_resource type="Texture2D" uid="uid://bj2uffgb7kcnq" path="res://Art/LevelTiles/wood.png" id="11_u1oee"]
 [ext_resource type="Script" path="res://Levels/TileMap.gd" id="12_pxiqa"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
@@ -94,60 +96,79 @@ sources/3 = SubResource("TileSetAtlasSource_5f4w6")
 
 [node name="TutorialLevel" type="Node2D"]
 script = ExtResource("1_s0nef")
-GUYSCENE = ExtResource("2_ednqv")
-DUDESCENE = ExtResource("3_h1dkj")
+GUYSCENE = ExtResource("2_u68ap")
+DUDESCENE = ExtResource("3_sqbd7")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
 scroll_offset = Vector2(-176.788, -88.1085)
+script = ExtResource("3_g4emm")
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.486275, 0.486275, 0.486275, 1)
+[node name="Sky2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(104, 32)
+scale = Vector2(0.66, 0.66)
 motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky2"]
+self_modulate = Color(0.760784, 0.760784, 0.760784, 1)
+position = Vector2(1146.97, -1966.67)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("4_xkwkb")
+centered = false
+
+[node name="Cloud3" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(0.01, 0.01)
 motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-position = Vector2(-240, -388)
-scale = Vector2(1.76406, 2.68333)
-texture = ExtResource("1_4o4e4")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud3"]
+position = Vector2(65.6717, -23.8806)
+scale = Vector2(0.478445, 0.478445)
+texture = ExtResource("5_7lhgn")
 centered = false
 
-[node name="CloudLeft" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.572549, 0.572549, 0.572549, 1)
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(640, 2.08165e-12)
+[node name="Cloud4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(277, 97)
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudLeft"]
-position = Vector2(66, -52)
-scale = Vector2(0.959375, 0.933333)
-texture = ExtResource("2_e1jst")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud4"]
+position = Vector2(-388.06, -101.493)
+scale = Vector2(0.45, 0.416)
+texture = ExtResource("6_qhkln")
 centered = false
 
-[node name="CloudRight" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.556863, 0.556863, 0.556863, 1)
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(640, 2.08165e-12)
+[node name="Cloud5" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+scale = Vector2(0.67, 0.67)
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudRight"]
-position = Vector2(-419, 9)
-texture = ExtResource("3_wnv32")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Cloud5"]
+position = Vector2(68.6567, -31.3433)
+scale = Vector2(0.487566, 0.487566)
+texture = ExtResource("7_88l7t")
 centered = false
 
-[node name="CloudMiddle" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.498039, 0.498039, 0.498039, 1)
+[node name="Backclouds" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-120, -486)
+scale = Vector2(0.5, 0.5)
 motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(640, 2.08165e-12)
+motion_mirroring = Vector2(2.08165e-12, 640)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudMiddle"]
-position = Vector2(-325, -64)
-scale = Vector2(0.967188, 0.927778)
-texture = ExtResource("4_tjhv5")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Backclouds"]
+position = Vector2(342, -330)
+scale = Vector2(0.530292, 0.765952)
+texture = ExtResource("8_ux81r")
 centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_mhm7g")
 format = 2
 layer_0/name = "Ground"
-layer_0/tile_data = PackedInt32Array(1114112, 0, 0, 1048576, 0, 0, 983040, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 589824, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1048607, 0, 0, 983071, 0, 0, 917535, 0, 0, 851999, 0, 0, 786463, 0, 0, 720927, 0, 0, 655391, 0, 0, 589855, 0, 0, 524319, 0, 0, 458783, 0, 0, 393247, 0, 0, 327711, 0, 0, 262175, 0, 0, 196639, 0, 0, 131103, 0, 0, 65567, 0, 0, 31, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 655373, 0, 0, 589837, 0, 0, 262157, 131075, 5, 327693, 131075, 6, 393229, 131075, 6, 458765, 131075, 5, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196621, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 720909, 0, 0, 524301, 131075, 6, 589838, 0, 0, 851972, 0, 0, -1179648, 0, 0, -1114112, 0, 0, -1048576, 0, 0, -983040, 0, 0, -917504, 0, 0, -851968, 0, 0, -786432, 0, 0, -720896, 0, 0, -655360, 0, 0, -589824, 0, 0, -524288, 0, 0, -458752, 0, 0, -393216, 0, 0, -327680, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, -1179617, 0, 0, -1114081, 0, 0, -1048545, 0, 0, -983009, 0, 0, -917473, 0, 0, -851937, 0, 0, -786401, 0, 0, -720865, 0, 0, -655329, 0, 0, -589793, 0, 0, -524257, 0, 0, -458721, 0, 0, -393185, 0, 0, -327649, 0, 0, -262113, 0, 0, -196577, 0, 0, -131041, 0, 0, -65505, 0, 0, -524275, 0, 0, -458739, 0, 0, -393203, 0, 0, -327667, 0, 0, -262131, 0, 0, -196595, 0, 0, -131059, 0, 0, -65523, 0, 0, -1048563, 0, 0, -1048562, 0, 0, -1048561, 0, 0, -1048560, 0, 0, -1048559, 0, 0, -1048555, 0, 0, -1048554, 0, 0, -1048550, 0, 0, -1048547, 0, 0, -1048552, 0, 0, -1048551, 0, 0, -1048546, 0, 0, -1048557, 0, 0, -1048558, 0, 0, -1048556, 0, 0, -1048553, 0, 0, -1048549, 0, 0, -1048548, 0, 0, -1048568, 0, 0, -983032, 0, 0, -917496, 0, 0, -851960, 0, 0, -786424, 0, 0, -720888, 0, 0, -655352, 0, 0, -589816, 0, 0, -524280, 0, 0, -1048567, 0, 0, -1048566, 0, 0, -1048565, 0, 0, -1048564, 0, 0, -65525, 0, 0, -65524, 0, 0, -65534, 0, 0, -65535, 0, 0, -655354, 0, 0, -655353, 0, 0, -65526, 0, 0, 786445, 0, 0, 851981, 0, 0, 917517, 0, 0, 983053, 0, 0, 1048589, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, -65529, 0, 0, -65530, 0, 0, 720922, 0, 0, 720923, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 327701, 0, 0, 327700, 0, 0, 327699, 0, 0, 327698, 0, 0, 327697, 0, 0, 327696, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, -327659, 0, 0, -327660, 0, 0, -327661, 0, 0, -327662, 0, 0, -327663, 0, 0, -327664, 0, 0)
+layer_0/tile_data = PackedInt32Array(1114112, 0, 0, 1048576, 0, 0, 983040, 0, 0, 917504, 0, 0, 851968, 0, 0, 786432, 0, 0, 720896, 0, 0, 655360, 0, 0, 589824, 0, 0, 524288, 0, 0, 458752, 0, 0, 393216, 0, 0, 327680, 0, 0, 262144, 0, 0, 196608, 0, 0, 0, 0, 0, 65536, 0, 0, 131072, 0, 0, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 0, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 0, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1048607, 0, 0, 983071, 0, 0, 917535, 0, 0, 851999, 0, 0, 786463, 0, 0, 720927, 0, 0, 655391, 0, 0, 589855, 0, 0, 524319, 0, 0, 458783, 0, 0, 393247, 0, 0, 327711, 0, 0, 262175, 0, 0, 196639, 0, 0, 131103, 0, 0, 65567, 0, 0, 31, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 655373, 0, 0, 589837, 0, 0, 262157, 131075, 5, 327693, 131075, 6, 393229, 131075, 6, 458765, 131075, 5, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196621, 0, 0, 983050, 0, 0, 983051, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 524301, 131075, 6, 589838, 0, 0, 589839, 0, 0, 851972, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, -1179648, 0, 0, -1114112, 0, 0, -1048576, 0, 0, -983040, 0, 0, -917504, 0, 0, -851968, 0, 0, -786432, 0, 0, -720896, 0, 0, -655360, 0, 0, -589824, 0, 0, -524288, 0, 0, -458752, 0, 0, -393216, 0, 0, -327680, 0, 0, -262144, 0, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, -1179617, 0, 0, -1114081, 0, 0, -1048545, 0, 0, -983009, 0, 0, -917473, 0, 0, -851937, 0, 0, -786401, 0, 0, -720865, 0, 0, -655329, 0, 0, -589793, 0, 0, -524257, 0, 0, -458721, 0, 0, -393185, 0, 0, -327649, 0, 0, -262113, 0, 0, -196577, 0, 0, -131041, 0, 0, -65505, 0, 0, -786419, 0, 0, -720883, 0, 0, -655347, 0, 0, -589811, 0, 0, -524275, 0, 0, -458739, 0, 0, -393203, 0, 0, -327667, 0, 0, -262131, 0, 0, -196595, 0, 0, -131059, 0, 0, -65523, 0, 0, -196586, 0, 0, -196585, 0, 0, -196584, 0, 0, -1048563, 0, 0, -1048562, 0, 0, -1048561, 0, 0, -1048560, 0, 0, -1048559, 0, 0, -1048555, 0, 0, -1048554, 0, 0, -1048550, 0, 0, -1048547, 0, 0, -1048552, 0, 0, -1048551, 0, 0, -1048546, 0, 0, -1048557, 0, 0, -1048558, 0, 0, -1048556, 0, 0, -1048553, 0, 0, -1048549, 0, 0, -1048548, 0, 0, -1048568, 0, 0, -983032, 0, 0, -917496, 0, 0, -851960, 0, 0, -786424, 0, 0, -720888, 0, 0, -655352, 0, 0, -589816, 0, 0, -524280, 0, 0, -1048567, 0, 0, -1048566, 0, 0, -1048565, 0, 0, -1048564, 0, 0, -65525, 0, 0, -65524, 0, 0, -65534, 0, 0, -65535, 0, 0, -655354, 0, 0, -655353, 0, 0, -589805, 0, 0, -589806, 0, 0, -65526, 0, 0, 786445, 0, 0, 851981, 0, 0, 917517, 0, 0, 983053, 0, 0, 1048589, 0, 0, 983052, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0)
 script = ExtResource("12_pxiqa")
 
 [node name="SpawnLocations" type="Node2D" parent="."]
@@ -161,9 +182,6 @@ position = Vector2(41, 212)
 visible = false
 position = Vector2(449, 207)
 
-[node name="Rocket Launcher Pick Up 1" parent="." instance=ExtResource("13_ckyvd")]
-position = Vector2(96, 198)
+[node name="StaticRocketLauncher" parent="." instance=ExtResource("13_ckyvd")]
+position = Vector2(96, 177)
 collision_mask = 2
-
-[node name="Rocket Launcher Pick Up 2" parent="." instance=ExtResource("13_ckyvd")]
-position = Vector2(393, 167)

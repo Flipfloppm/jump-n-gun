@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://duf0ghh8oyjkf"]
+[gd_scene load_steps=8 format=3 uid="uid://dwv80hwiqnfpr"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
-[ext_resource type="Texture2D" uid="uid://c3vjwcfnqlmuq" path="res://Art/Characters/guy.png" id="3_d3clr"]
+[ext_resource type="Texture2D" uid="uid://bp6cpvqsq4bey" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
 [ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
+radius = 8.0
+height = 44.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qq1f1"]
 properties/0/path = NodePath(".:position")
@@ -24,21 +26,23 @@ script = ExtResource("1_qtoxy")
 rocket = ExtResource("3_aiia3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_d3clr")
+scale = Vector2(2, 2)
+texture = ExtResource("3_oosko")
+hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_sj6uy")
 
 [node name="GunRotation" type="Node2D" parent="."]
 
 [node name="RocketLauncher" type="Sprite2D" parent="GunRotation"]
-position = Vector2(30, 0)
-scale = Vector2(0.75, 0.778)
+position = Vector2(36, -2)
+scale = Vector2(0.84375, 0.875)
 texture = ExtResource("5_yl57y")
 
 [node name="RocketSpawn" type="Node2D" parent="GunRotation"]
-position = Vector2(39, -2)
+position = Vector2(52, -4)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
 position = Vector2(0.999969, 2.99998)
