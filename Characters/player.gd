@@ -19,16 +19,12 @@ func _ready():
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	$GunRotation/RocketLauncher.visible = false
 	add_to_group("players")
-	#print(multiplayer.get_unique_id(), get_viewport().get_camera_2d())
-	#camera.make_current()
-	#print(multiplayer.get_unique_id(), get_viewport().get_camera_2d())
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
 
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		#camera.make_current()
 		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta
