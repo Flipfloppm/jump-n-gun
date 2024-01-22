@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://duf0ghh8oyjkf"]
+[gd_scene load_steps=8 format=3 uid="uid://pxa5tmuyeak5"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
@@ -41,8 +41,7 @@ texture = ExtResource("5_yl57y")
 position = Vector2(39, -2)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
-position = Vector2(0.999969, 2.99998)
-scale = Vector2(0.8, 0.8)
+position = Vector2(-1, 1)
 anchor_mode = 1
 script = null
 

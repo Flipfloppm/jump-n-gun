@@ -11,6 +11,7 @@ var knockingBack = false
 var mousePosVector: Vector2
 var gunRotation
 var above
+var reloadTime = 0.8
 @onready var camera = $Camera2D
 @export var rocket :PackedScene
 
@@ -26,6 +27,7 @@ func _ready():
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		reloadTime -= delta
 		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -58,8 +60,8 @@ func _physics_process(delta):
 		if (get_global_mouse_position().y < position.y):
 			gunRotation *= -1
 		$GunRotation.rotation = gunRotation
-	
-		if Input.is_action_just_pressed("shoot") and hasRocketLauncher:
+		
+		if Input.is_action_just_pressed("shoot") and hasRocketLauncher and reloadTime <= 0:
 			fire.rpc()
 		move_and_slide()
 
@@ -115,6 +117,7 @@ func on_explosion(pos, b, a, r):
 @rpc("any_peer","call_local")
 func fire():
 	# Shoot bullet.
+	reloadTime = 0.8
 	var r = rocket.instantiate()
 	r.global_position = $GunRotation/RocketSpawn.global_position
 	r.rotation_degrees = $GunRotation.rotation_degrees
