@@ -28,6 +28,6 @@ func _physics_process(delta):
 		queue_free()
 	move_and_slide()
 	
-func _process(delta): 
+func _process(_delta): 
 	# play the animation for a rocket, unsure what happens if you spawn a bullet
 	_animated_sprite.play("default")
