@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://5rihpg24lhqq"]
+
+[ext_resource type="Script" path="res://Items/spike.gd" id="1_p3oxg"]
+[ext_resource type="Texture2D" uid="uid://cx444uol7gap8" path="res://Art/LevelTiles/spike.png" id="1_uufqb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chs7a"]
+texture = ExtResource("1_uufqb")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -0.75, 8, 0.625, 8, 8, -8)
+
+[sub_resource type="TileSet" id="TileSet_da6sk"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_chs7a")
+
+[node name="Spike" type="Node2D"]
+script = ExtResource("1_p3oxg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uufqb")
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_da6sk")
+format = 2
+layer_0/tile_data = PackedInt32Array(-983031, 0, 0, -983030, 0, 0, -983029, 0, 0, -983028, 0, 0, -983027, 0, 0, -983026, 0, 0, -983025, 0, 0, -983024, 0, 0, -983010, 0, 0, -983011, 0, 0, -983012, 0, 0, -983013, 0, 0, -983014, 0, 0, -983015, 0, 0, -983016, 0, 0, -983017, 0, 0, -983018, 0, 0, -983019, 0, 0, -983020, 0, 0, -983022, 0, 0, -983023, 0, 0, -983021, 0, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-8, -8, -1, 8, 1, 8, 8, -8)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
