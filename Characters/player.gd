@@ -100,7 +100,7 @@ func on_explosion(pos, b, a, r):
 @rpc("any_peer","call_local")
 func fire():
 	# Shoot bullet.
-	reloadTime = 0.0
+	reloadTime = 0.8
 	var r = rocket.instantiate()
 	r.global_position = $GunRotation/RocketSpawn.global_position
 	r.rotation_degrees = $GunRotation.rotation_degrees
