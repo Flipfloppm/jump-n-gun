@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="jump-n-gun"
-run/main_scene="res://Levels/level_selection/title_screen.tscn"
+run/main_scene="res://Levels/level_selection/Title_Screen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -30,6 +30,7 @@ window/size/initial_position_x=0.0
 window/size/initial_position_y=-288.0
 window/size/initial_position/x=0.0
 window/size/initial_position/y=-288.0
+window/main_scene="res://Levels/tutorial_level.tscn"
 
 [dotnet]
 
