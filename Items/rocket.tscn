@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyv0b1uvboutx"]
 
-[ext_resource type="Script" path="res://Items/projectile.gd" id="1_4v6lq"]
+[ext_resource type="Script" path="res://Items/rocket.gd" id="1_i3qcu"]
 [ext_resource type="Texture2D" uid="uid://bipnl0ilqosf1" path="res://Art/Weapons/rocketSpriteSheet.png" id="2_posov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm8un"]
@@ -51,7 +51,7 @@ size = Vector2(19.5, 10.75)
 
 [node name="Node2D" type="CharacterBody2D"]
 collision_mask = 7
-script = ExtResource("1_4v6lq")
+script = ExtResource("1_i3qcu")
 
 [node name="Rocket" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 1)
