@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1arv1q1jiprp"]
+[gd_scene load_steps=9 format=3 uid="uid://1arv1q1jiprp"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_exthg"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="2_jkajc"]
 [ext_resource type="Texture2D" uid="uid://dx22yxralukds" path="res://Art/Characters/dude.png" id="3_e0j2s"]
 [ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="4_deytf"]
+[ext_resource type="Texture2D" uid="uid://uf45n64d8uj1" path="res://Art/Weapons/grenade launcher beige.png" id="5_h1b6m"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_p2t26"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
@@ -18,7 +19,7 @@ properties/1/path = NodePath("GunRotation:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player2" type="CharacterBody2D"]
 position = Vector2(0, -24)
 collision_layer = 2
 collision_mask = 7
@@ -37,15 +38,23 @@ shape = SubResource("CapsuleShape2D_sj6uy")
 [node name="GunRotation" type="Node2D" parent="."]
 
 [node name="RocketLauncher" type="Sprite2D" parent="GunRotation"]
-position = Vector2(28, -2)
+position = Vector2(25, -1)
 scale = Vector2(0.75, 0.778)
 texture = ExtResource("4_deytf")
 
 [node name="RocketSpawn" type="Node2D" parent="GunRotation"]
-position = Vector2(36, -4)
+position = Vector2(30, -3)
+
+[node name="GrenadeLauncher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(25, -3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_h1b6m")
+
+[node name="GrenadeSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(37, -4)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_p2t26")]
-position = Vector2(-1, 1)
+position = Vector2(3, 0)
 anchor_mode = 1
 script = null
 

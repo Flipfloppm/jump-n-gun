@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=10 format=3 uid="uid://pxa5tmuyeak5"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
 [ext_resource type="Texture2D" uid="uid://c3vjwcfnqlmuq" path="res://Art/Characters/guy.png" id="3_d3clr"]
+[ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Items/grenade.tscn" id="3_v430n"]
+[ext_resource type="Texture2D" uid="uid://uf45n64d8uj1" path="res://Art/Weapons/grenade launcher beige.png" id="5_b8oag"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
 [ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
 
@@ -22,6 +24,7 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_qtoxy")
 rocket = ExtResource("3_aiia3")
+grenade = ExtResource("3_v430n")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
@@ -33,15 +36,23 @@ shape = SubResource("CapsuleShape2D_sj6uy")
 [node name="GunRotation" type="Node2D" parent="."]
 
 [node name="RocketLauncher" type="Sprite2D" parent="GunRotation"]
-position = Vector2(30, 0)
+position = Vector2(25, 2)
 scale = Vector2(0.75, 0.778)
 texture = ExtResource("5_yl57y")
 
 [node name="RocketSpawn" type="Node2D" parent="GunRotation"]
-position = Vector2(39, -2)
+position = Vector2(24, 0)
+
+[node name="GrenadeLauncher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(25, -1)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_b8oag")
+
+[node name="GrenadeSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(37, -1)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
-position = Vector2(-1, 1)
+position = Vector2(106, -16)
 anchor_mode = 1
 script = null
 
