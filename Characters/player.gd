@@ -117,9 +117,15 @@ func on_explosion(pos, b, a, r):
 @rpc("any_peer","call_local")
 func fire():
 	# Shoot bullet.
-	reloadTime = 0.8
+	reloadTime = 0.0
 	var r = rocket.instantiate()
 	r.global_position = $GunRotation/RocketSpawn.global_position
 	r.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(r)
 	
+
+# Defines behavior for player die
+func die():
+	print("player die")
+	# TODO: checkpoints
+	position = Vector2(41, 212)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=9 format=3 uid="uid://duf0ghh8oyjkf"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
@@ -15,6 +15,8 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("GunRotation:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cta60"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -24)
@@ -41,9 +43,14 @@ texture = ExtResource("5_yl57y")
 position = Vector2(39, -2)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
-position = Vector2(-1, 1)
 anchor_mode = 1
 script = null
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qq1f1")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_cta60")
