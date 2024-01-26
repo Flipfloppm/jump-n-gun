@@ -106,3 +106,9 @@ func fire():
 	r.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(r)
 	
+
+# Defines behavior for player die
+func die():
+	print("player die")
+	# TODO: checkpoints
+	position = Vector2(41, 212)

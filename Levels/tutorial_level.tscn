@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=22 format=3 uid="uid://dx2dup1o6g6ch"]
 
 [ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
 [ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/guy.tscn" id="2_u68ap"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bj2uffgb7kcnq" path="res://Art/LevelTiles/wood.png" id="11_u1oee"]
 [ext_resource type="Script" path="res://Levels/TileMap.gd" id="12_pxiqa"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
+[ext_resource type="PackedScene" path="res://Items/spikes.tscn" id="16_uud67"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccubg"]
 texture = ExtResource("4_bsj7e")
@@ -187,3 +188,9 @@ position = Vector2(95, 194)
 
 [node name="Rocket Launcher Pick Up 2" parent="." instance=ExtResource("13_ckyvd")]
 position = Vector2(377, 164)
+
+[node name="Spike3" parent="." instance=ExtResource("16_uud67")]
+position = Vector2(321, -233)
+
+[node name="Spike5" parent="." instance=ExtResource("16_uud67")]
+position = Vector2(448, -233)
