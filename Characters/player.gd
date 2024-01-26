@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -300.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasRocketLauncher
+var hasGrenadeLauncher
 var knockingBack = false
 var mousePosVector: Vector2
 var gunRotation
@@ -13,12 +14,14 @@ var above
 var reloadTime = 0.8
 @onready var camera = $Camera2D
 @export var rocket :PackedScene
+@export var grenade :PackedScene
 
 
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	$GunRotation/RocketLauncher.visible = false
+	$GunRotation/GrenadeLauncher.visible = false
 	hasRocketLauncher = false
 	add_to_group("players")
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
@@ -55,17 +58,32 @@ func _physics_process(delta):
 		$GunRotation.rotation = gunRotation
 		
 		if Input.is_action_just_pressed("shoot") and hasRocketLauncher and reloadTime <= 0:
-			fire.rpc()
+			rocketFire.rpc()
+		if Input.is_action_just_pressed("shoot") and hasGrenadeLauncher:
+			grenadeFire.rpc()
 		move_and_slide()
 
 
-func _on_rocket_body_entered(rocketBody, body):
+func _on_rocket_body_entered(weaponBody, body):
+	var weaponName = weaponBody.to_string().get_slice(" ", 0)
 	if body != self:
 		return 
-	if !hasRocketLauncher: 
-		SignalBus.picked_up.emit(rocketBody)
-		hasRocketLauncher = true
-		$GunRotation/RocketLauncher.visible = true
+	match weaponName:
+		"Rocket":
+			if hasGrenadeLauncher:
+				return
+			if !hasRocketLauncher: 
+				SignalBus.picked_up.emit(weaponBody)
+				hasRocketLauncher = true
+				$GunRotation/RocketLauncher.visible = true
+		"Grenade":
+			if hasRocketLauncher:
+				return
+			if !hasGrenadeLauncher: 
+				SignalBus.picked_up.emit(weaponBody)
+				hasGrenadeLauncher = true
+				$GunRotation/GrenadeLauncher.visible = true
+	
 	
 
 # pos:	position of explosion
@@ -98,7 +116,7 @@ func on_explosion(pos, b, a, r):
 	knockingBack = false
 
 @rpc("any_peer","call_local")
-func fire():
+func rocketFire():
 	# Shoot bullet.
 	reloadTime = 0.8
 	var r = rocket.instantiate()
@@ -106,3 +124,11 @@ func fire():
 	r.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(r)
 	
+@rpc("any_peer","call_local")
+func grenadeFire():
+	# Shoot bullet.
+	#reloadTime = 0.8
+	var g = grenade.instantiate()
+	g.global_position = $GunRotation/GrenadeSpawn.global_position
+	g.rotation_degrees = $GunRotation.rotation_degrees
+	get_tree().root.add_child(g)
