@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	#var pos = get_node("../Player").global_position # Subtract here if we want to put a info bar at the top.
 	var pos = get_parent().global_position
 	var x = floor(pos.x / 512) * 512

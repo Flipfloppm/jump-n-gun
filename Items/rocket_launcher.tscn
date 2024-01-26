@@ -8,7 +8,7 @@ size = Vector2(35, 12)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_7v6cm")
 
 [node name="BazookaSprite" type="Sprite2D" parent="."]
