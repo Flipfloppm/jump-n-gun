@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtgk1mrrewkxt"]
+
+[ext_resource type="Script" path="res://TitleScreen.gd" id="1_dbnnh"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_53p62"]
+[ext_resource type="Texture2D" uid="uid://uxl7yjoscp12" path="res://Art/WorldSelect/clear-jumpngunlogo.png" id="2_fo7hp"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dbnnh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 3485.0
+offset_bottom = 1947.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_fo7hp")
+
+[node name="StartButton2" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 115.0
+offset_top = 323.0
+offset_right = 679.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("2_53p62")
+theme_override_font_sizes/font_size = 20
+text = "Press Any Key To Continue"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 316.0
+offset_right = 761.0
+offset_bottom = 385.0
+theme_override_fonts/normal_font = ExtResource("2_53p62")
+theme_override_font_sizes/normal_font_size = 20
+text = "Press any button"
+
+[connection signal="pressed" from="StartButton2" to="." method="_on_button_pressed"]
