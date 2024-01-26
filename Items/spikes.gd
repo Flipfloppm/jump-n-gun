@@ -12,8 +12,6 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	print(area.get_parent().to_string())
-	print(area.get_parent().get_groups())
 	if area.get_parent().is_in_group("players"):
 		area.get_parent().die()
 
