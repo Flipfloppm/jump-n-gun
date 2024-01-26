@@ -19,3 +19,6 @@ func _input(event):
 	if event.is_action_pressed("ui_right") and current_world < worlds.size() - 1:
 		current_world += 1
 		$playerIcon.global_position = worlds[current_world].global_position
+
+	if event.is_action_pressed("ChooseLevel"):
+		get_tree().change_scene_to_file("res://ClientLobby/lobby.tscn")

@@ -26,3 +26,10 @@ func _ready():
 		index += 1
 	
 
+func _input(event):
+	
+	if event.is_action_pressed("Quit"):
+		get_tree().quit()
+
+	if Input.is_action_just_pressed("Restart"):
+		get_tree().reload_current_scene()
