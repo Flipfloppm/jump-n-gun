@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj4krs833tw31"
-path="res://.godot/imported/Run-Sheet-Black.png-de70d9bf0c8b3dec7eafb200594461bc.ctex"
+uid="uid://bbwv5g7067bul"
+path="res://.godot/imported/Attack-Sheet.png-43c9834ffca674b44dcbd7f3d7a1699c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Run/Run-Sheet-Black.png"
-dest_files=["res://.godot/imported/Run-Sheet-Black.png-de70d9bf0c8b3dec7eafb200594461bc.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Small Bee/Attack/Attack-Sheet.png"
+dest_files=["res://.godot/imported/Attack-Sheet.png-43c9834ffca674b44dcbd7f3d7a1699c.ctex"]
 
 [params]
 

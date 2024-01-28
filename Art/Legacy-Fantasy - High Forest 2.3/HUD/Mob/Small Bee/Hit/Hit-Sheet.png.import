@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyv5k57bxrybi"
-path="res://.godot/imported/Fly-Sheet.png-6366a092468eb9918a0ce6a5897d85b6.ctex"
+uid="uid://xacr3gvckryb"
+path="res://.godot/imported/Hit-Sheet.png-70f4ac7ad805d347034e7a7648870dba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png"
-dest_files=["res://.godot/imported/Fly-Sheet.png-6366a092468eb9918a0ce6a5897d85b6.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Small Bee/Hit/Hit-Sheet.png"
+dest_files=["res://.godot/imported/Hit-Sheet.png-70f4ac7ad805d347034e7a7648870dba.ctex"]
 
 [params]
 

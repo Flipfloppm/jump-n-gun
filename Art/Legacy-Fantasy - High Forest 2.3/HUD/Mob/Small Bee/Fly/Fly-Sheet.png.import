@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl561qt2ln360"
-path="res://.godot/imported/Idle-Sheet-White.png-c195c7572d73d116addff5a55af16cb0.ctex"
+uid="uid://cyv5k57bxrybi"
+path="res://.godot/imported/Fly-Sheet.png-e0187146dcea63186144ed98e7ae148c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Idle/Idle-Sheet-White.png"
-dest_files=["res://.godot/imported/Idle-Sheet-White.png-c195c7572d73d116addff5a55af16cb0.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Small Bee/Fly/Fly-Sheet.png"
+dest_files=["res://.godot/imported/Fly-Sheet.png-e0187146dcea63186144ed98e7ae148c.ctex"]
 
 [params]
 

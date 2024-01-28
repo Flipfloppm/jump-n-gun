@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgvg64a1tuwhh"
-path="res://.godot/imported/Walk-Base-Sheet.png-241bd67993fd0d11e5590da881051765.ctex"
+uid="uid://bngbw13dh46yd"
+path="res://.godot/imported/walk-Sheet.png-19350233eccc193fa70668dc82162d62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Walk/Walk-Base-Sheet.png"
-dest_files=["res://.godot/imported/Walk-Base-Sheet.png-241bd67993fd0d11e5590da881051765.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Snail/walk-Sheet.png"
+dest_files=["res://.godot/imported/walk-Sheet.png-19350233eccc193fa70668dc82162d62.ctex"]
 
 [params]
 

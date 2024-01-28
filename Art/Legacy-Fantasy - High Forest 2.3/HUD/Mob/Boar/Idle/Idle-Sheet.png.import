@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xacr3gvckryb"
-path="res://.godot/imported/Hit-Sheet.png-cb4613c584e056e265fb341ada4346a3.ctex"
+uid="uid://drcq6yblolf64"
+path="res://.godot/imported/Idle-Sheet.png-8cb06027d1b284164a27b7b8a87c5a94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Hit/Hit-Sheet.png"
-dest_files=["res://.godot/imported/Hit-Sheet.png-cb4613c584e056e265fb341ada4346a3.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Boar/Idle/Idle-Sheet.png"
+dest_files=["res://.godot/imported/Idle-Sheet.png-8cb06027d1b284164a27b7b8a87c5a94.ctex"]
 
 [params]
 

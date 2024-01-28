@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcw5xtvjed3oa"
-path="res://.godot/imported/Dead-Sheet.png-a9846fe84bae04b0a388271ff67e8170.ctex"
+uid="uid://cw6236nfnxc8w"
+path="res://.godot/imported/Hit-Sheet-Black.png-b64c1ea892abe85eb6063ee41aec707a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Snail/Dead-Sheet.png"
-dest_files=["res://.godot/imported/Dead-Sheet.png-a9846fe84bae04b0a388271ff67e8170.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Boar/Hit-Vanish/Hit-Sheet-Black.png"
+dest_files=["res://.godot/imported/Hit-Sheet-Black.png-b64c1ea892abe85eb6063ee41aec707a.ctex"]
 
 [params]
 

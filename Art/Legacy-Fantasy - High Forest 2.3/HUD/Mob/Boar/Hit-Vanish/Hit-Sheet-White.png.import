@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbwv5g7067bul"
-path="res://.godot/imported/Attack-Sheet.png-7d16775bea2b6d5d603f5ba49ded3bad.ctex"
+uid="uid://be6x476e2vtv6"
+path="res://.godot/imported/Hit-Sheet-White.png-a7351cfdcbd4cb36c1ad0bdee65bb232.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Attack/Attack-Sheet.png"
-dest_files=["res://.godot/imported/Attack-Sheet.png-7d16775bea2b6d5d603f5ba49ded3bad.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Boar/Hit-Vanish/Hit-Sheet-White.png"
+dest_files=["res://.godot/imported/Hit-Sheet-White.png-a7351cfdcbd4cb36c1ad0bdee65bb232.ctex"]
 
 [params]
 

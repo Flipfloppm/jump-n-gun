@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbkrrs4spis8k"
-path="res://.godot/imported/Hit-Sheet.png-3247682ae3bd42ae3edfaea4617b64cb.ctex"
+uid="uid://cgvg64a1tuwhh"
+path="res://.godot/imported/Walk-Base-Sheet.png-2571faf142f2e84673fb7b67141cd489.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Hit-Vanish/Hit-Sheet.png"
-dest_files=["res://.godot/imported/Hit-Sheet.png-3247682ae3bd42ae3edfaea4617b64cb.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Boar/Walk/Walk-Base-Sheet.png"
+dest_files=["res://.godot/imported/Walk-Base-Sheet.png-2571faf142f2e84673fb7b67141cd489.ctex"]
 
 [params]
 

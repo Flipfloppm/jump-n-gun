@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drcq6yblolf64"
-path="res://.godot/imported/Idle-Sheet.png-74d4e68fd6bcdbd985ef171342fb3c6a.ctex"
+uid="uid://uoigyegsiud1"
+path="res://.godot/imported/Run-Sheet-White.png-752192d44318c3b76fc5538ec573d3a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Legacy-Fantasy - High Forest 2.3/Mob/Boar/Idle/Idle-Sheet.png"
-dest_files=["res://.godot/imported/Idle-Sheet.png-74d4e68fd6bcdbd985ef171342fb3c6a.ctex"]
+source_file="res://Art/Legacy-Fantasy - High Forest 2.3/HUD/Mob/Boar/Run/Run-Sheet-White.png"
+dest_files=["res://.godot/imported/Run-Sheet-White.png-752192d44318c3b76fc5538ec573d3a1.ctex"]
 
 [params]
 
