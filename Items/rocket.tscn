@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyv0b1uvboutx"]
 
 [ext_resource type="Script" path="res://Items/rocket.gd" id="1_i3qcu"]
-[ext_resource type="Texture2D" uid="uid://bipnl0ilqosf1" path="res://Art/Weapons/rocketSpriteSheet.png" id="2_posov"]
+[ext_resource type="Texture2D" uid="uid://bm06hngs1u1tc" path="res://Art/Weapons/rocketSpriteSheet.png" id="2_posov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm8un"]
 atlas = ExtResource("2_posov")
