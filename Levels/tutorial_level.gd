@@ -26,3 +26,7 @@ func _ready():
 		index += 1
 	
 
+
+
+func _on_spikes_area_entered(area):
+	print(area)
