@@ -1,12 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://pxa5tmuyeak5"]
+[gd_scene load_steps=10 format=3 uid="uid://duf0ghh8oyjkf"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
 [ext_resource type="Texture2D" uid="uid://wuokpef21txo" path="res://Art/Characters/guy.png" id="3_d3clr"]
-[ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Items/grenade.tscn" id="3_v430n"]
-[ext_resource type="Texture2D" uid="uid://d3vgs86em2c7d" path="res://Art/Weapons/rocket-launcher.png" id="5_imm3u"]
+[ext_resource type="PackedScene" path="res://Items/grenade.tscn" id="3_v430n"]
+[ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_imm3u"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
-[ext_resource type="Texture2D" uid="uid://n7cat2lat6bt" path="res://Art/Weapons/grenade-launcher.png" id="6_5rv86"]
+[ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_5rv86"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
 
@@ -18,7 +18,7 @@ properties/1/path = NodePath("GunRotation:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player2" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -24)
 collision_layer = 2
 collision_mask = 7

@@ -172,3 +172,9 @@ func grenadeFire():
 	g.global_position = $GunRotation/GrenadeSpawn.global_position
 	g.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(g)
+
+# Defines behavior for player die
+func die():
+	print("player die")
+	# TODO: checkpoints
+	position = Vector2(41, 212)
