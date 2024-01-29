@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
-[ext_resource type="Texture2D" uid="uid://d1hniwtlvf354" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
+[ext_resource type="Texture2D" uid="uid://ddb14yhy3y3ci" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
-[ext_resource type="Texture2D" uid="uid://cs2n3komkye5" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
+[ext_resource type="Texture2D" uid="uid://d1bgqt0ynvbrq" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
 radius = 8.0
@@ -41,7 +41,7 @@ position = Vector2(36, -2)
 scale = Vector2(0.84375, 0.875)
 texture = ExtResource("5_yl57y")
 
-[node name="RocketSpawn" type="Node2D" parent="GunRotation"]
+[node name="ProjectileSpawn" type="Node2D" parent="GunRotation"]
 position = Vector2(52, -4)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]

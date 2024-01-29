@@ -43,16 +43,13 @@ position = Vector2(23, -1)
 scale = Vector2(0.11, 0.114)
 texture = ExtResource("4_oij6s")
 
-[node name="RocketSpawn" type="Node2D" parent="GunRotation"]
+[node name="ProjectileSpawn" type="Node2D" parent="GunRotation"]
 position = Vector2(29, -1)
 
 [node name="GrenadeLauncher" type="Sprite2D" parent="GunRotation"]
 position = Vector2(22, -2)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_rnuiq")
-
-[node name="GrenadeSpawn" type="Node2D" parent="GunRotation"]
-position = Vector2(29, -2)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_p2t26")]
 visible = false
