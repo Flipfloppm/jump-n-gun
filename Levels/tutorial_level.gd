@@ -25,6 +25,11 @@ func _ready():
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
 	
+	
+func _on_pause_button_pressed():
+	get_tree().paused = true
+	show()
+
 
 func _input(event):
 	

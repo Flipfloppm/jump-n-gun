@@ -1,6 +1,6 @@
 extends Control
 
-@onready var worlds: Array = [$WorldIcon, $WorldIcon2, $WorldIcon3]
+@onready var worlds: Array = [$WorldIcon, $WorldIcon2, $WorldIcon3, $WorldIcon4, $WorldIcon5]
 var current_world: int = 0
 
 # Called when the node enters the scene tree for the first time.
