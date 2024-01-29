@@ -21,4 +21,4 @@ func _input(event):
 		$playerIcon.global_position = worlds[current_world].global_position
 
 	if event.is_action_pressed("ChooseLevel"):
-		get_tree().change_scene_to_file("res://ClientLobby/lobby.tscn")
+		start_game.rpc()

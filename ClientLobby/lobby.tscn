@@ -1,28 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=14 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
+[ext_resource type="Texture2D" uid="uid://ck6x2xb3huw4d" path="res://Art/UI/example-button.png" id="2_mukv1"]
+[ext_resource type="Texture2D" uid="uid://k56g53h8sfxs" path="res://Art/UI/title-bkg.png" id="4_7swyg"]
+[ext_resource type="StyleBox" uid="uid://qhm3ejxbdlqi" path="res://Levels/level_selection/ugly-button-style.tres" id="5_2cfmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1jfh"]
+atlas = ExtResource("2_mukv1")
+region = Rect2(2.35797, 38.4629, 152.408, 95.2149)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbl0o"]
+content_margin_left = 4.0
+texture = SubResource("AtlasTexture_b1jfh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6iqx8"]
+texture = ExtResource("2_mukv1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsbx5"]
+
+[sub_resource type="Theme" id="Theme_05jy7"]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_fsqd7")
+Button/styles/normal = SubResource("StyleBoxTexture_sbl0o")
+LineEdit/fonts/font = ExtResource("1_fsqd7")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_6iqx8")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_xsbx5")
+
+[sub_resource type="Theme" id="Theme_le3wr"]
+Button/styles/normal = ExtResource("5_2cfmt")
+
+[sub_resource type="Theme" id="Theme_0xw6o"]
+Button/styles/normal = null
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
+offset_left = 4.0
+offset_top = -28.0
+offset_right = 4.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.99872)
+theme = SubResource("Theme_05jy7")
 script = ExtResource("1_ksb3b")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Title-bkg" type="Sprite2D" parent="."]
 visible = false
+modulate = Color(0.364706, 0.364706, 0.364706, 1)
+position = Vector2(932, 559.716)
+scale = Vector2(0.215758, 0.215758)
+texture = ExtResource("4_7swyg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.372549, 0.309804, 0.0313726, 1)
+color = Color(0.172549, 0.345098, 0.368627, 1)
+
+[node name="JoinBtn" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 2
+offset_left = 726.0
+offset_top = 518.664
+offset_right = 1138.0
+offset_bottom = 554.664
+theme = SubResource("Theme_le3wr")
+text = "Join Game"
+
+[node name="StartGameBtn" type="Button" parent="."]
+layout_mode = 2
+offset_left = 727.0
+offset_top = 567.727
+offset_right = 1139.0
+offset_bottom = 603.727
+size_flags_horizontal = 5
+theme = SubResource("Theme_le3wr")
+text = "Start Game"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -31,19 +93,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = -29.0
-offset_right = 89.5
-offset_bottom = 29.0
+offset_left = -300.0
+offset_top = -139.523
+offset_right = 120.0
+offset_bottom = 30.4767
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_0xw6o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="LobbyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Lobby"
 horizontal_alignment = 1
 
@@ -53,6 +118,7 @@ columns = 2
 
 [node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Player Name: "
 
 [node name="NameEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
@@ -63,6 +129,7 @@ alignment = 1
 
 [node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "IP Address:"
 
 [node name="IPEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
@@ -73,6 +140,7 @@ alignment = 1
 
 [node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Port: "
 
 [node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
@@ -80,14 +148,6 @@ layout_mode = 2
 text = "3296"
 placeholder_text = "Enter Port Number"
 alignment = 1
-
-[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Join Game"
-
-[node name="StartGameBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Start Game"
 
 [node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_73qnq")]
 layout_mode = 2
@@ -98,15 +158,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = 5.0
-offset_right = 77.0
-offset_bottom = 47.0
+offset_left = -114.0
+offset_top = 129.338
+offset_right = 110.0
+offset_bottom = 232.338
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.919274, 0.919274)
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="JoinBtn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="StartGameBtn" to="." method="_on_start_game_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
 
 [editable path="CenterContainer/VBoxContainer/Server"]

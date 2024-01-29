@@ -4,7 +4,7 @@ extends Control
 @onready var player_name = $CenterContainer/VBoxContainer/GridContainer/NameEdit
 @onready var selected_IP = $CenterContainer/VBoxContainer/GridContainer/IPEdit
 @onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
-@onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
+@onready var joinBtn = $JoinBtn
 @onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
 
 # Called when the node enters the scene tree for the first time.
@@ -32,13 +32,14 @@ func _on_host_game_pressed():
 	
 func _on_join_btn_pressed():
 	print("join pressed")
-	var peer = ENetMultiplayerPeer.new()
+	var fpeer = ENetMultiplayerPeer.new()
 	peer.create_client(selected_IP.text, int(selected_port.text))
 	multiplayer.set_multiplayer_peer(peer)
 	joinBtn.disabled = true
 
 func _on_start_game_btn_pressed():
-	start_game.rpc() # everybody will be notified to call their own start_game method
+	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+	 # everybody will be notified to call their own start_game method
 
 @rpc("any_peer", "call_local")
 func start_game():

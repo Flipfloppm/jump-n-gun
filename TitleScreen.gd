@@ -13,7 +13,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
-			get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+			get_tree().change_scene_to_file("res://Levels/level_selection/selection-screen.tscn")
 
 #func _on_button_pressed():
 	#get_tree().change_scene("res://ClientLobby/lobby.tscn")
