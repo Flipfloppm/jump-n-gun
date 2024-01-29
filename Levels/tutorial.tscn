@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8dgp4u2slf27"]
+[gd_scene load_steps=21 format=3 uid="uid://c8dgp4u2slf27"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-8.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/tutorial.gd" id="1_tr133"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="9_go0eh"]
 [ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="10_ctfsw"]
+[ext_resource type="PackedScene" uid="uid://ueinvwicg3oq" path="res://Items/briefcase.tscn" id="12_jx4vh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -93,6 +94,7 @@ sources/3 = SubResource("TileSetAtlasSource_kmt55")
 
 [sub_resource type="LabelSettings" id="LabelSettings_v7f2i"]
 font = ExtResource("8_y180i")
+font_size = 8
 
 [sub_resource type="Theme" id="Theme_cqlqb"]
 default_font = ExtResource("8_y180i")
@@ -194,6 +196,25 @@ text = "don't fall!"
 label_settings = SubResource("LabelSettings_0vovr")
 autowrap_mode = 2
 
+[node name="Fall2" type="Label" parent="."]
+offset_left = 1333.0
+offset_top = -339.0
+offset_right = 1424.0
+offset_bottom = -287.0
+theme = SubResource("Theme_cqlqb")
+text = "Jump before you shoot for maximum boost"
+label_settings = SubResource("LabelSettings_0vovr")
+autowrap_mode = 2
+
+[node name="Victory" type="Label" parent="."]
+offset_left = 1704.0
+offset_top = -552.0
+offset_right = 1994.0
+offset_bottom = -520.0
+text = "stand next to the briefcase to return to the office for your next assignment"
+label_settings = SubResource("LabelSettings_v7f2i")
+autowrap_mode = 2
+
 [node name="Rocket Launcher" parent="." instance=ExtResource("9_go0eh")]
 position = Vector2(731, -30)
 
@@ -217,3 +238,6 @@ position = Vector2(782, -52)
 
 [node name="Grenade Launcher 4" parent="." instance=ExtResource("10_ctfsw")]
 position = Vector2(839, -52)
+
+[node name="Briefcase" parent="." instance=ExtResource("12_jx4vh")]
+position = Vector2(2027, -525)
