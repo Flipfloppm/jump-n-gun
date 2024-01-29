@@ -167,6 +167,8 @@ func fire():
 			projectile = rocket.instantiate()
 		"GrenadeLauncher":
 			projectile = grenade.instantiate()
+		_:
+			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(projectile)
