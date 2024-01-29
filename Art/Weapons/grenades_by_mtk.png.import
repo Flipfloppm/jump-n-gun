@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkyedm8hlku0q"
-path="res://.godot/imported/pistol.png-857739c329af12d51ac815ad1604c367.ctex"
+uid="uid://c64dt7xyneli"
+path="res://.godot/imported/grenades_by_mtk.png-13686b24326bd13f28aa0a7f548160e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Weapons/pistol.png"
-dest_files=["res://.godot/imported/pistol.png-857739c329af12d51ac815ad1604c367.ctex"]
+source_file="res://Art/Weapons/grenades_by_mtk.png"
+dest_files=["res://.godot/imported/grenades_by_mtk.png-13686b24326bd13f28aa0a7f548160e7.ctex"]
 
 [params]
 
