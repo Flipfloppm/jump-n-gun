@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdqrs"]
 size = Vector2(30, 13)
 
-[node name="Area2D" type="Area2D"]
+[node name="RocketLauncher" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_vk7o5")
