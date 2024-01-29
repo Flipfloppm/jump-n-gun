@@ -6,11 +6,13 @@ extends Control
 @onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
 @onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
 @onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
+@onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
+	$ServerBrowser.childServerJoin.connect(join_server_by_ip)
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -29,13 +31,18 @@ func _on_host_game_pressed():
 	joinBtn.disabled = true
 	hostBtn.disabled = true
 	register_player_info(player_name.text, multiplayer.get_unique_id())
+	$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
 	
-func _on_join_btn_pressed():
+	
+func _on_join_btn_pressed(): 
 	print("join pressed")
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(selected_IP.text, int(selected_port.text))
-	multiplayer.set_multiplayer_peer(peer)
+	join_server_by_ip(selected_IP.text)
 	joinBtn.disabled = true
+
+func join_server_by_ip(ip):
+	var peer = ENetMultiplayerPeer.new()
+	peer.create_client(ip, int(selected_port.text))
+	multiplayer.set_multiplayer_peer(peer)
 
 func _on_start_game_btn_pressed():
 	start_game.rpc() # everybody will be notified to call their own start_game method

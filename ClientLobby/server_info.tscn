@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1kmysrxcbgop"]
+
+[ext_resource type="Script" path="res://ClientLobby/ServerInfo.gd" id="1_w7efd"]
+
+[node name="ServerInfo" type="HBoxContainer"]
+script = ExtResource("1_w7efd")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D's S"
+horizontal_alignment = 1
+
+[node name="IP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+horizontal_alignment = 1
+
+[node name="PlayerCount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="JoinBtn" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[connection signal="pressed" from="JoinBtn" to="." method="_on_join_btn_pressed"]

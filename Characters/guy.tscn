@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
 [ext_resource type="Texture2D" uid="uid://wuokpef21txo" path="res://Art/Characters/guy.png" id="3_d3clr"]
-[ext_resource type="PackedScene" path="res://Items/grenade.tscn" id="3_v430n"]
+[ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Items/grenade.tscn" id="3_v430n"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_imm3u"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_5rv86"]
