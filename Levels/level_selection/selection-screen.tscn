@@ -17,16 +17,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 32.0
-offset_bottom = 32.0
+offset_top = 24.0
+offset_right = 377.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.995858, 0.99031)
+scale = Vector2(0.906126, 0.901078)
 script = ExtResource("1_qx3ul")
 
 [node name="Title-bkg" type="Sprite2D" parent="."]
 modulate = Color(0.25098, 0.25098, 0.25098, 1)
-position = Vector2(345.431, 161.566)
+position = Vector2(344.323, 168.687)
 scale = Vector2(0.215758, 0.215758)
 texture = ExtResource("4_ih2ob")
 
@@ -67,7 +68,7 @@ layout_mode = 0
 offset_left = 32.1331
 offset_top = 8.07828
 offset_right = 297.133
-offset_bottom = 275.078
+offset_bottom = 291.078
 theme_override_fonts/normal_font = ExtResource("2_5mr67")
 theme_override_font_sizes/normal_font_size = 54
 text = "JUMP

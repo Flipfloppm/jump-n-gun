@@ -22,3 +22,10 @@ func _input(event):
 
 	if event.is_action_pressed("ChooseLevel"):
 		start_game.rpc()
+
+@rpc("any_peer", "call_local")
+func start_game():
+	var start_scene = load("res://Levels/tutorial.tscn").instantiate()
+	get_tree().root.add_child(start_scene)
+	print("started game" + str(multiplayer.get_unique_id()))
+	self.hide()

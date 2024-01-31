@@ -24,9 +24,7 @@ func _ready():
 				cur_player.global_position = spawn_position.global_position
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
-<<<<<<< HEAD
-	
-	
+
 func _on_pause_button_pressed():
 	get_tree().paused = true
 	show()
@@ -39,5 +37,3 @@ func _input(event):
 
 	if Input.is_action_just_pressed("Restart"):
 		get_tree().reload_current_scene()
-=======
->>>>>>> ef936b3b965615e9e97718a51390cbe26bc4333b

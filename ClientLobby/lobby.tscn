@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=13 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
 [ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
@@ -32,18 +32,13 @@ LineEdit/styles/normal = SubResource("StyleBoxTexture_xsbx5")
 [sub_resource type="Theme" id="Theme_le3wr"]
 Button/styles/normal = ExtResource("5_2cfmt")
 
-[sub_resource type="Theme" id="Theme_0xw6o"]
-Button/styles/normal = null
-
 [node name="Lobby" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -28.0
-offset_right = 4.0
-offset_bottom = -28.0
+anchor_right = 1.375
+anchor_bottom = 1.6
+offset_top = -24.0
+offset_right = -112.0
+offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.99872)
@@ -59,115 +54,108 @@ texture = ExtResource("4_7swyg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_top = 0.178
+anchor_right = 1.375
+anchor_bottom = 1.825
+offset_top = -8.00924
+offset_right = 80.0
+offset_bottom = 31.5308
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.172549, 0.345098, 0.368627, 1)
+color = Color(0.192157, 0.27451, 0.627451, 1)
 
 [node name="JoinBtn" type="Button" parent="."]
 layout_direction = 1
 layout_mode = 2
-offset_left = 726.0
-offset_top = 518.664
-offset_right = 1138.0
-offset_bottom = 554.664
+offset_left = 12.0001
+offset_top = 141.223
+offset_right = 424.0
+offset_bottom = 177.223
 theme = SubResource("Theme_le3wr")
 text = "Join Game"
 
 [node name="StartGameBtn" type="Button" parent="."]
 layout_mode = 2
-offset_left = 727.0
-offset_top = 567.727
-offset_right = 1139.0
-offset_bottom = 603.727
+offset_left = 13.0001
+offset_top = 190.286
+offset_right = 425.0
+offset_bottom = 226.286
 size_flags_horizontal = 5
 theme = SubResource("Theme_le3wr")
 text = "Start Game"
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -139.523
-offset_right = 120.0
-offset_bottom = 30.4767
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_0xw6o")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+offset_left = 14.0
+offset_top = 28.0359
+offset_right = 426.0
+offset_bottom = 130.036
 theme_override_constants/separation = 15
 
-[node name="LobbyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="LobbyLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Lobby"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Player Name: "
 
-[node name="NameEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="NameEdit" type="LineEdit" parent="VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 placeholder_text = "Enter Name"
 alignment = 1
 
-[node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="IPLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "IP Address:"
 
-[node name="IPEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="IPEdit" type="LineEdit" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "127.0.0.1"
 placeholder_text = "Enter IP Address"
 alignment = 1
 
-[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="PortLabel" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fsqd7")
 text = "Port: "
 
-[node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+[node name="PortEdit" type="LineEdit" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "3296"
 placeholder_text = "Enter Port Number"
 alignment = 1
 
-[node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_73qnq")]
+[node name="Server" parent="VBoxContainer" instance=ExtResource("1_73qnq")]
 layout_mode = 2
 
-[node name="HostGame" parent="CenterContainer/VBoxContainer/Server" index="0"]
+[node name="HostGame" parent="VBoxContainer/Server" index="0"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = 129.338
-offset_right = 110.0
-offset_bottom = 232.338
+offset_left = -80.0
+offset_top = 114.277
+offset_right = 144.0
+offset_bottom = 217.277
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.919274, 0.919274)
+scale = Vector2(0.719736, 0.719736)
 
 [connection signal="pressed" from="JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="StartGameBtn" to="." method="_on_start_game_btn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
 
-[editable path="CenterContainer/VBoxContainer/Server"]
+[editable path="VBoxContainer/Server"]
