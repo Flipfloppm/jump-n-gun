@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://e4axqfx3i4jl"]
+[gd_scene load_steps=15 format=3 uid="uid://e4axqfx3i4jl"]
 
 [ext_resource type="Script" path="res://Items/explosion.gd" id="1_sjlbm"]
 [ext_resource type="Texture2D" uid="uid://bhw51uxrbpl7r" path="res://Art/Weapons/explosion.png" id="2_qlga2"]
+[ext_resource type="AudioStream" path="res://SFX/explosion.wav" id="3_e2qfo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4t7q"]
 atlas = ExtResource("2_qlga2")
@@ -88,3 +89,10 @@ script = ExtResource("1_sjlbm")
 scale = Vector2(1.25, 1.264)
 sprite_frames = SubResource("SpriteFrames_fo7rv")
 speed_scale = 2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e2qfo")
+volume_db = 8.0
+autoplay = true
+max_distance = 600.0
+area_mask = 7

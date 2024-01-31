@@ -1,23 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddn8snpvj86p"]
 
-[ext_resource type="Script" path="res://Items/weapon.gd" id="1_7v6cm"]
-[ext_resource type="Texture2D" uid="uid://b4oykwkqs60l3" path="res://Art/Weapons/bazooka.png" id="2_10hks"]
+[ext_resource type="Script" path="res://Items/grenade_launcher.gd" id="1_vk7o5"]
+[ext_resource type="Texture2D" path="res://Art/Weapons/rocket-launcher.png" id="2_kafm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdqrs"]
-size = Vector2(35, 12)
+size = Vector2(30, 13)
 
-[node name="Area2D" type="Area2D"]
+[node name="RocketLauncher" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_7v6cm")
+script = ExtResource("1_vk7o5")
 
 [node name="BazookaSprite" type="Sprite2D" parent="."]
-position = Vector2(-9.53674e-07, 1)
-scale = Vector2(0.75, 0.59)
-texture = ExtResource("2_10hks")
+position = Vector2(-9.53674e-07, -1)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_kafm2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_gdqrs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

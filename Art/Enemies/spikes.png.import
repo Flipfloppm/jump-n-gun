@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkyedm8hlku0q"
-path="res://.godot/imported/pistol.png-857739c329af12d51ac815ad1604c367.ctex"
+uid="uid://bombqmjsc82d2"
+path="res://.godot/imported/spikes.png-351a02c708896ab89456b76fab039a79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Weapons/pistol.png"
-dest_files=["res://.godot/imported/pistol.png-857739c329af12d51ac815ad1604c367.ctex"]
+source_file="res://Art/Enemies/spikes.png"
+dest_files=["res://.godot/imported/spikes.png-351a02c708896ab89456b76fab039a79.ctex"]
 
 [params]
 
