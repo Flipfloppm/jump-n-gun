@@ -25,6 +25,7 @@ scale = Vector2(0.995858, 0.99031)
 script = ExtResource("1_qx3ul")
 
 [node name="Title-bkg" type="Sprite2D" parent="."]
+modulate = Color(0.25098, 0.25098, 0.25098, 1)
 position = Vector2(345.431, 161.566)
 scale = Vector2(0.215758, 0.215758)
 texture = ExtResource("4_ih2ob")
@@ -37,10 +38,10 @@ texture = ExtResource("1_yhp6t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 8.03327
-offset_top = -8.07828
-offset_right = 278.033
-offset_bottom = 200.922
+offset_left = 361.497
+offset_top = 8.07828
+offset_right = 631.497
+offset_bottom = 217.079
 scale = Vector2(0.983345, 1.4384)
 theme = SubResource("Theme_vnof0")
 theme_override_constants/separation = 15
@@ -60,6 +61,20 @@ text = "Settings"
 [node name="ExitBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 32.1331
+offset_top = 8.07828
+offset_right = 297.133
+offset_bottom = 275.078
+theme_override_fonts/normal_font = ExtResource("2_5mr67")
+theme_override_font_sizes/normal_font_size = 54
+text = "JUMP
+
+N'
+
+GUN"
 
 [connection signal="pressed" from="VBoxContainer/SingleplayerBtn" to="." method="_on_singleplayer_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
