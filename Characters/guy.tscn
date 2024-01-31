@@ -49,7 +49,7 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("6_5rv86")
 
 [node name="Camera2D" parent="." instance=ExtResource("5_odu63")]
-position = Vector2(106, -16)
+position = Vector2(2, 7)
 anchor_mode = 1
 script = null
 

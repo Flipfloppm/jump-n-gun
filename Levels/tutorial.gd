@@ -11,10 +11,10 @@ func _ready():
 	var index = 0
 	print("players:" + str(GameManager.PLAYERS))
 	for i in GameManager.PLAYERS:
-		if index == 0:
+		if index % 2 == 0:
 			print("guy")
 			cur_player = GUYSCENE.instantiate()
-		elif index == 1:
+		else:
 			print("dude")
 			cur_player = DUDESCENE.instantiate()
 		cur_player.name = str(GameManager.PLAYERS[i].id)

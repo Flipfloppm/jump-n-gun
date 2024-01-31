@@ -86,10 +86,10 @@ func _physics_process(delta):
 		# Handle differnt guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:
 			print("selected rocket")
-			select_weapon("Rocket")
+			select_weapon.rpc("Rocket")
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			print("selected grenade")
-			select_weapon("Grenade")
+			select_weapon.rpc("Grenade")
 		
 		# Player move
 		move_and_slide()
@@ -105,12 +105,13 @@ func _on_rocket_body_entered(weaponBody, body):
 		return
 	# Pick up weapon
 	SignalBus.picked_up.emit(weaponBody)
-	select_weapon(weaponName)
+	select_weapon.rpc(weaponName)
 	hasWeaponsDict[weaponName] = true
 
 
 # Set current weapon and weapon variables
 # This function allow for easier transition to having weapon inventory if needed
+@rpc("any_peer", "call_local")
 func select_weapon(weaponName: String):
 	match weaponName:
 		"Rocket":
@@ -167,6 +168,8 @@ func fire():
 			projectile = rocket.instantiate()
 		"GrenadeLauncher":
 			projectile = grenade.instantiate()
+		_:
+			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(projectile)
