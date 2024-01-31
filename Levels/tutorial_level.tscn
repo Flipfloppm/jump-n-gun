@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Levels/tutorial_level_tilemap.gd" id="12_pxiqa"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
 [ext_resource type="PackedScene" uid="uid://cumtd3d8ausl2" path="res://Items/spikes.tscn" id="16_uud67"]
-[ext_resource type="PackedScene" uid="uid://ueinvwicg3oq" path="res://Items/briefcase.tscn" id="17_dp2wn"]
+[ext_resource type="PackedScene" path="res://Items/briefcase.tscn" id="17_dp2wn"]
 [ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="17_f7u2m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccubg"]
