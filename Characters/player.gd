@@ -18,6 +18,8 @@ var gunRotation
 var above
 var reloadTime = 0.8
 @onready var camera = $Camera2D
+@onready var jumpAudio = $JumpAudio
+@onready var shootAudio = $ShootAudio
 @export var rocket :PackedScene
 @export var grenade :PackedScene
 
@@ -59,6 +61,7 @@ func _physics_process(delta):
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			jumpAudio.play()
 
 		# Get the input direction and handle the movement/deceleration.	
 		var direction = Input.get_axis("left", "right")
@@ -81,6 +84,7 @@ func _physics_process(delta):
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
 			if reloadTime <= 0:
+				shootAudio.play()
 				fire.rpc()
 		
 		# Handle differnt guns
