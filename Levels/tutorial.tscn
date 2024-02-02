@@ -1,17 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8dgp4u2slf27"]
+[gd_scene load_steps=22 format=3 uid="uid://buhysm0ajnrpo"]
 
-[ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-8.png" id="1_e3vjs"]
+[ext_resource type="Texture2D" uid="uid://dyrghk3mw2sk3" path="res://Art/LevelTiles/metal-block-8.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/tutorial.gd" id="1_tr133"]
-[ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-8.png" id="2_423r4"]
-[ext_resource type="PackedScene" uid="uid://duf0ghh8oyjkf" path="res://Characters/guy.tscn" id="2_tjxnj"]
-[ext_resource type="PackedScene" uid="uid://b4vshfjlspd7v" path="res://Characters/dude.tscn" id="3_jeor8"]
-[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-8.png" id="3_q118t"]
-[ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="4_kwiu1"]
+[ext_resource type="Texture2D" uid="uid://bda8ydhiobq26" path="res://Art/LevelTiles/stone-block-8.png" id="2_423r4"]
+[ext_resource type="PackedScene" uid="uid://pxa5tmuyeak5" path="res://Characters/guy.tscn" id="2_tjxnj"]
+[ext_resource type="PackedScene" uid="uid://1arv1q1jiprp" path="res://Characters/dude.tscn" id="3_jeor8"]
+[ext_resource type="Texture2D" uid="uid://dmia8c0pf5fht" path="res://Art/LevelTiles/wood-block-8.png" id="3_q118t"]
+[ext_resource type="Texture2D" uid="uid://bj2uffgb7kcnq" path="res://Art/LevelTiles/wood.png" id="4_kwiu1"]
 [ext_resource type="Script" path="res://Levels/tutorial_tilemap.gd" id="8_ruo01"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="9_go0eh"]
-[ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="10_ctfsw"]
-[ext_resource type="PackedScene" uid="uid://ueinvwicg3oq" path="res://Items/briefcase.tscn" id="12_jx4vh"]
+[ext_resource type="PackedScene" path="res://Items/grenade_launcher.tscn" id="10_ctfsw"]
+[ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Items/briefcase.tscn" id="12_jx4vh"]
+[ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://Levels/level_selection/pause-menu.tscn" id="13_174ns"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -241,3 +242,8 @@ position = Vector2(839, -52)
 
 [node name="Briefcase" parent="." instance=ExtResource("12_jx4vh")]
 position = Vector2(2027, -525)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_174ns")]
+visible = false

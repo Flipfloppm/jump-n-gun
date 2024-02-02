@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw3kroc3btwcx"]
+[gd_scene load_steps=12 format=3 uid="uid://bw3kroc3btwcx"]
 
 [ext_resource type="Script" path="res://Levels/level_selection/selection-screen.gd" id="1_qx3ul"]
 [ext_resource type="Texture2D" uid="uid://dypb6jnklgekq" path="res://Art/UI/logo-clear-bkg.png" id="1_yhp6t"]
 [ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_5mr67"]
 [ext_resource type="Texture2D" uid="uid://k56g53h8sfxs" path="res://Art/UI/title-bkg.png" id="4_ih2ob"]
 [ext_resource type="StyleBox" uid="uid://qhm3ejxbdlqi" path="res://Levels/level_selection/ugly-button-style.tres" id="5_afe0n"]
+[ext_resource type="Texture2D" uid="uid://berk2thwk3fj8" path="res://Art/UI/1000x-goofy2.png" id="6_jb6v0"]
+[ext_resource type="Texture2D" uid="uid://ldladsg7hjs1" path="res://Art/UI/1000x-png-guy.png" id="7_cwsu6"]
+[ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://Levels/level_selection/pause-menu.tscn" id="8_yb8kj"]
+
+[sub_resource type="Gradient" id="Gradient_tpebn"]
+offsets = PackedFloat32Array(0.0162338, 0.175325, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_snpaj"]
+gradient = SubResource("Gradient_tpebn")
 
 [sub_resource type="Theme" id="Theme_vnof0"]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -22,10 +32,20 @@ offset_right = 377.0
 offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.906126, 0.901078)
+scale = Vector2(0.962529, 0.957166)
 script = ExtResource("1_qx3ul")
 
+[node name="Black Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -41.5572
+offset_top = -33.432
+offset_right = 630.443
+offset_bottom = 333.568
+scale = Vector2(1.09576, 1.09576)
+texture = SubResource("GradientTexture1D_snpaj")
+
 [node name="Title-bkg" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.25098, 0.25098, 0.25098, 1)
 position = Vector2(344.323, 168.687)
 scale = Vector2(0.215758, 0.215758)
@@ -39,10 +59,10 @@ texture = ExtResource("1_yhp6t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 361.497
-offset_top = 8.07828
-offset_right = 631.497
-offset_bottom = 217.079
+offset_left = 174.54
+offset_top = 8.358
+offset_right = 444.54
+offset_bottom = 217.359
 scale = Vector2(0.983345, 1.4384)
 theme = SubResource("Theme_vnof0")
 theme_override_constants/separation = 15
@@ -64,18 +84,32 @@ layout_mode = 2
 text = "Exit"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 32.1331
-offset_top = 8.07828
-offset_right = 297.133
-offset_bottom = 291.078
+offset_left = 35.3152
+offset_top = 17.7565
+offset_right = 300.315
+offset_bottom = 300.756
 theme_override_fonts/normal_font = ExtResource("2_5mr67")
-theme_override_font_sizes/normal_font_size = 54
+theme_override_font_sizes/normal_font_size = 55
 text = "JUMP
 
 N'
 
 GUN"
+
+[node name="1000x-goofy2" type="Sprite2D" parent="."]
+position = Vector2(99.7373, 208.95)
+texture = ExtResource("6_jb6v0")
+
+[node name="1000x-png-guy" type="Sprite2D" parent="."]
+position = Vector2(506.998, 217.308)
+texture = ExtResource("7_cwsu6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_yb8kj")]
+visible = false
 
 [connection signal="pressed" from="VBoxContainer/SingleplayerBtn" to="." method="_on_singleplayer_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]

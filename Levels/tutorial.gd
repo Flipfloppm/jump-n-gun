@@ -2,6 +2,8 @@ extends Node2D
 
 @export var GUYSCENE: PackedScene
 @export var DUDESCENE: PackedScene
+#@onready var pause_menu = "res://Levels/level_selection/pause-menu.tscn"
+var paused = false
 var cur_player
 
 
@@ -24,3 +26,16 @@ func _ready():
 				cur_player.global_position = spawn_position.global_position
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
+#
+#func _process(delta):
+	#if Input.is_action_just_pressed("PauseMenu"):
+		#pauseMenu()
+		#
+#func pauseMenu():
+	#if paused:
+		#pause_menu.hide()
+		#Engine.time_scale = 1
+	#else:
+		#pause_menu.show()
+		#Engine.time_scale = 0
+	#paused = !paused

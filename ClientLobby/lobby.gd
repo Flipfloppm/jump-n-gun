@@ -1,11 +1,11 @@
 extends Control
 
-@onready var server = $VBoxContainer/Server
-@onready var player_name = $VBoxContainer/GridContainer/NameEdit
-@onready var selected_IP = $VBoxContainer/GridContainer/IPEdit
-@onready var selected_port = $VBoxContainer/GridContainer/PortEdit
-@onready var joinBtn = $JoinBtn
-@onready var hostBtn = $VBoxContainer/Server/HostGame
+@onready var server = $CanvasLayer/Server
+@onready var player_name = $CanvasLayer/VBoxContainer/GridContainer/NameEdit
+@onready var selected_IP = $CanvasLayer/VBoxContainer/GridContainer/IPEdit
+@onready var selected_port = $CanvasLayer/VBoxContainer/GridContainer/PortEdit
+@onready var joinBtn = $CanvasLayer/JoinBtn
+@onready var hostBtn = $CanvasLayer/Server/HostGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

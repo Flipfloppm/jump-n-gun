@@ -17,41 +17,41 @@ script = ExtResource("1_0yno5")
 [node name="Blank-sky" type="Sprite2D" parent="."]
 modulate = Color(0.65098, 0.65098, 0.65098, 1)
 position = Vector2(300, 150)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.23453, 0.23453)
 texture = ExtResource("2_75kf8")
 
 [node name="WorldIcon" parent="." instance=ExtResource("1_5ac1w")]
 offset_left = 24.0
-offset_top = 128.0
+offset_top = 168.0
 offset_right = 88.0
-offset_bottom = 168.0
+offset_bottom = 208.0
 
 [node name="WorldIcon2" parent="." instance=ExtResource("1_5ac1w")]
 offset_left = 144.0
-offset_top = 48.0
+offset_top = 88.0
 offset_right = 208.0
-offset_bottom = 88.0
+offset_bottom = 128.0
 world_index = 2
 
 [node name="WorldIcon3" parent="." instance=ExtResource("1_5ac1w")]
 offset_left = 232.0
-offset_top = 160.0
+offset_top = 200.0
 offset_right = 296.0
-offset_bottom = 200.0
+offset_bottom = 240.0
 world_index = 3
 
 [node name="WorldIcon4" parent="." instance=ExtResource("1_5ac1w")]
 offset_left = 352.0
-offset_top = 48.0
+offset_top = 88.0
 offset_right = 416.0
-offset_bottom = 88.0
+offset_bottom = 128.0
 world_index = 4
 
 [node name="WorldIcon5" parent="." instance=ExtResource("1_5ac1w")]
 offset_left = 456.0
-offset_top = 168.0
+offset_top = 208.0
 offset_right = 520.0
-offset_bottom = 208.0
+offset_bottom = 248.0
 world_index = 5
 
 [node name="playerIcon" parent="." instance=ExtResource("3_diho5")]
