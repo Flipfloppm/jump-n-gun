@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8dgp4u2slf27"]
+[gd_scene load_steps=22 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-8.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/tutorial.gd" id="1_tr133"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://Levels/tutorial_tilemap.gd" id="8_ruo01"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="9_go0eh"]
-[ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="10_ctfsw"]
-[ext_resource type="PackedScene" uid="uid://ueinvwicg3oq" path="res://Items/briefcase.tscn" id="12_jx4vh"]
+[ext_resource type="PackedScene" path="res://Items/grenade_launcher.tscn" id="10_ctfsw"]
+[ext_resource type="PackedScene" path="res://Items/briefcase.tscn" id="12_jx4vh"]
+[ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/hud.tscn" id="13_qss5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -241,3 +242,5 @@ position = Vector2(839, -52)
 
 [node name="Briefcase" parent="." instance=ExtResource("12_jx4vh")]
 position = Vector2(2027, -525)
+
+[node name="HUD" parent="." instance=ExtResource("13_qss5e")]
