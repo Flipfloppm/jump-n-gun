@@ -27,7 +27,6 @@ func _on_fired():
 		"Rocket":
 			_rocketLauncherAnimation.play("default")
 		"Grenade":
-			print("firing grenade")
 			grenadeLauncherAmmo -= 1
 			_grenadeLauncherAmmoText.text = str(grenadeLauncherAmmo)
 			if grenadeLauncherAmmo == 0:
