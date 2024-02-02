@@ -10,7 +10,7 @@ var knockback_radius = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hasWeaponsDict = {"Rocket": false, "Grenade": false}
+var hasWeaponsDict = {"Rocket": false, "Grenade": false, "C4": false}
 var currWeapon = ""
 var knockingBack = false
 var mousePosVector: Vector2
@@ -20,6 +20,7 @@ var reloadTime = 0.8
 @onready var camera = $Camera2D
 @export var rocket :PackedScene
 @export var grenade :PackedScene
+@export var c4 : PackedScene
 
 
 func _ready():
@@ -29,6 +30,7 @@ func _ready():
 	$GunRotation/GrenadeLauncher.visible = false
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
+	hasWeaponsDict["C4"] = false
 	add_to_group("players")
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
@@ -90,6 +92,9 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			print("selected grenade")
 			select_weapon("Grenade")
+		elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
+			print("selected c4")
+			select_weapon("C4")
 		
 		# Player move
 		move_and_slide()
@@ -97,10 +102,9 @@ func _physics_process(delta):
 
 func _on_rocket_body_entered(weaponBody, body):
 	var weaponName = weaponBody.to_string().get_slice(" ", 0)
+	print("weapon picked up: " + weaponName)
 	if body != self:
 		return 
-	# For now, player can only have one weapon.
-	# TODO: later, make it so that player can have multiple weapons?
 	if hasWeaponsDict[weaponName]:
 		return
 	# Pick up weapon
@@ -114,20 +118,31 @@ func _on_rocket_body_entered(weaponBody, body):
 func select_weapon(weaponName: String):
 	match weaponName:
 		"Rocket":
-			currWeapon = "RocketLauncher"
+			currWeapon = "Rocket"
 			knockback_min_force = 200
 			knockback_max_force = 600
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
+			$GunRotation/C4Launcher.visible = false
 		"Grenade":
-			currWeapon = "GrenadeLauncher"
+			currWeapon = "Grenade"
 			knockback_min_force = 200
 			knockback_max_force = 600
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = true
-	pass
+			$GunRotation/C4Launcher.visible = false
+		"C4":
+			currWeapon = "C4"
+			knockback_min_force = 200
+			knockback_max_force = 600
+			knockback_radius = 100
+			$GunRotation/RocketLauncher.visible = false
+			$GunRotation/GrenadeLauncher.visible = false
+			$GunRotation/C4Launcher.visible = true
+
+
 
 # pos: position of explosion
 func on_explosion(pos):
@@ -162,11 +177,13 @@ func fire():
 	# Shoot bullet.
 	var projectile
 	match currWeapon:
-		"RocketLauncher":
+		"Rocket":
 			reloadTime = 0.8
 			projectile = rocket.instantiate()
-		"GrenadeLauncher":
+		"Grenade":
 			projectile = grenade.instantiate()
+		"C4":
+			projectile = c4.instantiate()
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(projectile)

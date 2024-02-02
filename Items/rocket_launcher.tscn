@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddn8snpvj86p"]
 
-[ext_resource type="Script" path="res://Items/grenade_launcher.gd" id="1_vk7o5"]
+[ext_resource type="Script" path="res://Items/launcher.gd" id="1_vk7o5"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="2_kafm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdqrs"]
