@@ -9,6 +9,8 @@ var collision: KinematicCollision2D
 var explosion = preload("res://Items/explosion.tscn")
 var collided = false
 
+var timer: Timer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	direction = Vector2(1,0).rotated(rotation)
@@ -23,7 +25,7 @@ func _process(delta):
 		if collision:
 			collided = true
 			velocity = Vector2.ZERO
-			var timer := Timer.new()
+			timer = Timer.new()
 			add_child(timer)
 			timer.wait_time = 3.0
 			timer.one_shot = true
@@ -31,6 +33,11 @@ func _process(delta):
 			timer.start()
 	else:
 		velocity = Vector2.ZERO
+		if Input.is_action_just_pressed("c4detonate"):
+			# Stop timer and explode
+			timer.stop()
+			_on_timer_timeout()
+			
 
 
 func _on_timer_timeout():
