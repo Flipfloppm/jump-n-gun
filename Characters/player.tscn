@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwv80hwiqnfpr"]
+[gd_scene load_steps=7 format=3 uid="uid://dwv80hwiqnfpr"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_qtoxy"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="3_aiia3"]
-[ext_resource type="Texture2D" uid="uid://ddb14yhy3y3ci" path="res://Art/Legacy-Fantasy - High Forest 2.3/Character/Idle/charA-idle-anim.png" id="3_oosko"]
 [ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_odu63"]
 [ext_resource type="Texture2D" uid="uid://d1bgqt0ynvbrq" path="res://Art/Weapons/bazooka.png" id="5_yl57y"]
 
@@ -27,7 +26,6 @@ rocket = ExtResource("3_aiia3")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("3_oosko")
 hframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

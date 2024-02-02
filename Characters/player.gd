@@ -12,7 +12,8 @@ var knockback_radius = 100
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasWeaponsDict = {"Rocket": false, "Grenade": false, "C4": false}
 var currWeapon = ""
-var knockingBack = false
+var knockingBack = false # If the player is being knocked back
+var c4_avail = true # If the weapon can be shot right now
 var mousePosVector: Vector2
 var gunRotation
 var above
@@ -26,6 +27,7 @@ var reloadTime = 0.8
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
+	SignalBus.detonated.connect(_on_c4_detonation)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
 	hasWeaponsDict["Rocket"] = false
@@ -82,8 +84,12 @@ func _physics_process(delta):
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
-			if reloadTime <= 0:
-				fire.rpc()
+			if currWeapon == "C4":
+				if c4_avail:
+					fire.rpc()
+			else: 
+				if reloadTime <= 0:
+					fire.rpc()
 		
 		# Handle differnt guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:
@@ -167,6 +173,7 @@ func on_explosion(pos):
 		knockback_vector.x = cos(deg)
 		velocity += knockback_vector * knockback_force
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
+	
 	# After knockback, reset physics
 	await get_tree().create_timer(0.5).timeout
 	knockingBack = false
@@ -184,6 +191,7 @@ func fire():
 			projectile = grenade.instantiate()
 		"C4":
 			projectile = c4.instantiate()
+			c4_avail = false
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(projectile)
@@ -194,3 +202,6 @@ func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
 	position = Vector2(41, 212)
+
+func _on_c4_detonation():
+	c4_avail = true
