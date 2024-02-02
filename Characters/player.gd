@@ -16,7 +16,9 @@ var knockingBack = false
 var mousePosVector: Vector2
 var gunRotation
 var above
-var reloadTime = 0.8
+var rocketReloadTime = 0.8
+var grenadeLauncherAmmo = 6
+var grenadeReloadTime = 0
 @onready var camera = $Camera2D
 @export var rocket :PackedScene
 @export var grenade :PackedScene
@@ -51,7 +53,8 @@ func set_var(var_name: String, var_val: float):
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		reloadTime -= delta
+		rocketReloadTime -= delta
+		grenadeReloadTime -= delta
 		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -80,7 +83,7 @@ func _physics_process(delta):
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
-			if reloadTime <= 0:
+			if currWeapon != "":
 				fire.rpc()
 		
 		# Handle differnt guns
@@ -106,6 +109,7 @@ func _on_rocket_body_entered(weaponBody, body):
 	# Pick up weapon
 	SignalBus.picked_up.emit(weaponBody)
 	select_weapon.rpc(weaponName)
+	SignalBus.weapon_swap.emit(weaponName)
 	hasWeaponsDict[weaponName] = true
 
 
@@ -121,6 +125,7 @@ func select_weapon(weaponName: String):
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
+			SignalBus.weapon_swap.emit("Rocket")
 		"Grenade":
 			currWeapon = "GrenadeLauncher"
 			knockback_min_force = 200
@@ -128,6 +133,7 @@ func select_weapon(weaponName: String):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = true
+			SignalBus.weapon_swap.emit("Grenade")
 	pass
 
 # pos: position of explosion
@@ -164,10 +170,20 @@ func fire():
 	var projectile
 	match currWeapon:
 		"RocketLauncher":
-			reloadTime = 0.8
+			if rocketReloadTime > 0:
+				return
 			projectile = rocket.instantiate()
+			SignalBus.fired.emit()
+			rocketReloadTime = 0.8
 		"GrenadeLauncher":
+			if grenadeReloadTime > 0:
+				return
+			grenadeLauncherAmmo -= 1
+			if grenadeLauncherAmmo == 0:
+				grenadeReloadTime = 2
+				grenadeLauncherAmmo = 6
 			projectile = grenade.instantiate()
+			SignalBus.fired.emit()
 		_:
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
