@@ -229,13 +229,13 @@ offset_bottom = 26.7561
 texture = ExtResource("2_ce6hl")
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]
-position = Vector2(255, 58)
+visible = false
+position = Vector2(197, 34)
 scale = Vector2(2.125, 1.70833)
 sprite_frames = SubResource("SpriteFrames_fylmb")
 
 [node name="GrenadeLauncherReload" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(253, 58)
+position = Vector2(192, 35)
 scale = Vector2(2.375, 1.875)
 sprite_frames = SubResource("SpriteFrames_6wfp5")
 
