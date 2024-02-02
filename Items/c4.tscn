@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckvthwxyermpo"]
+[gd_scene load_steps=4 format=3 uid="uid://by086qifio4si"]
 
 [ext_resource type="Script" path="res://Items/c4.gd" id="1_txtvq"]
-[ext_resource type="Texture2D" uid="uid://dt6qfy82iu27e" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
+[ext_resource type="Texture2D" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nsva"]
 size = Vector2(7, 3)
@@ -11,7 +11,6 @@ script = ExtResource("1_txtvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_85xji")
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
