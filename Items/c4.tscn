@@ -6,7 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nsva"]
 size = Vector2(7, 3)
 
-[node name="C4" type="CharacterBody2D"]
+[node name="C4" type="RigidBody2D"]
+collision_mask = 7
 script = ExtResource("1_txtvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
