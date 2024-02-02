@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
 [ext_resource type="PackedScene" uid="uid://cumtd3d8ausl2" path="res://Items/spikes.tscn" id="16_uud67"]
 [ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="17_f7u2m"]
-[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Items/c4_launcher.tscn" id="18_pgtej"]
+[ext_resource type="PackedScene" path="res://Items/c4_launcher.tscn" id="18_pgtej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccubg"]
 texture = ExtResource("4_bsj7e")
