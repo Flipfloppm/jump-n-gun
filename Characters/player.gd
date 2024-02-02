@@ -19,6 +19,7 @@ var above
 var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
+var health = 3
 @onready var camera = $Camera2D
 @onready var jumpAudio = $JumpAudio
 @onready var shootAudio = $ShootAudio
@@ -201,3 +202,10 @@ func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
 	position = Vector2(41, 212)
+	
+func hurt():
+	health -= 1
+	SignalBus.hurt.emit()
+	if health == 0:
+		die()
+	

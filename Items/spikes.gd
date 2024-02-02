@@ -11,5 +11,5 @@ func _process(delta):
 	pass
 
 func _on_body_entered(body):
-	if body.has_method("die"):
-		body.die()
+	if body.has_method("hurt"):
+		body.hurt()

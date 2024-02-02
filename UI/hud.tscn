@@ -1,8 +1,8 @@
 [gd_scene load_steps=36 format=3 uid="uid://d0dkocaq2x4ii"]
 
-[ext_resource type="Texture2D" path="res://Art/UI/HUD/Health Bar/healthbar3.png" id="1_cd546"]
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_uqtc4"]
 [ext_resource type="Texture2D" uid="uid://c17wgknmqwq3j" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
+[ext_resource type="Texture2D" uid="uid://bf544kp6c4dih" path="res://Art/UI/HUD/Health Bar/healthbarUI.png" id="2_ce33t"]
 [ext_resource type="Texture2D" uid="uid://dd86wl7u6d726" path="res://Art/UI/HUD/Weapons/Demo Co-op Puzzle.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
 
@@ -215,19 +215,17 @@ default_font_size = 19
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_uqtc4")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 23.0
-offset_top = 12.0
-offset_right = 216.0
-offset_bottom = 125.0
-texture = ExtResource("1_cd546")
+[node name="HealthBar" type="Sprite2D" parent="."]
+position = Vector2(79.5, 41)
+scale = Vector2(1.24219, 1.28125)
+texture = ExtResource("2_ce33t")
+hframes = 4
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 6.0
-offset_right = 78.0
-offset_bottom = 87.0
+[node name="CharacterHead" type="TextureRect" parent="HealthBar"]
+offset_left = -72.8553
+offset_top = -38.2439
+offset_right = -8.85535
+offset_bottom = 26.7561
 texture = ExtResource("2_ce6hl")
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]

@@ -3,14 +3,18 @@ extends CanvasLayer
 @onready var _rocketLauncherAnimation = $RocketLauncherReload
 @onready var _grenadeLauncherAnimation = $GrenadeLauncherReload
 @onready var _grenadeLauncherAmmoText = $GrenadeLauncherReload/Ammo
+@onready var _healthBar = $HealthBar
 var grenadeLauncherAmmo = 6
 var grenadeReloading = false
 var grenadeReloadTimer
 var currWeapon
+var health = 3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.fired.connect(_on_fired)
 	SignalBus.weapon_swap.connect(_on_weapon_swap)
+	SignalBus.hurt.connect(_on_hurt)
 	_rocketLauncherAnimation.visible = false
 	_grenadeLauncherAnimation.visible = false
 
@@ -44,3 +48,9 @@ func _on_weapon_swap(weaponName):
 			_rocketLauncherAnimation.visible = false
 			_grenadeLauncherAnimation.visible = true
 			_grenadeLauncherAmmoText.text = str(grenadeLauncherAmmo)
+			
+func _on_hurt():
+	health -= 1
+	_healthBar.frame += 1
+	
+	
