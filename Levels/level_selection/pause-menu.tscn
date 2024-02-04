@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dihcn3dpslxks"]
 
 [ext_resource type="Script" path="res://Levels/level_selection/pause-menu.gd" id="1_cmbrj"]
-[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_jn60g"]
+[ext_resource type="FontFile" path="res://castlevania-dracula-x-small-snes.ttf" id="2_jn60g"]
 
 [sub_resource type="Theme" id="Theme_64ajt"]
 Button/fonts/font = ExtResource("2_jn60g")
@@ -54,14 +54,24 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Resume"
 
+[node name="RestartBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Restart"
+
 [node name="SettingsBtn" type="Button" parent="GridContainer"]
 layout_mode = 2
 text = "Settings"
+
+[node name="MenuBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Menu"
 
 [node name="QuitBtn" type="Button" parent="GridContainer"]
 layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="GridContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="GridContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="GridContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
 [connection signal="pressed" from="GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
