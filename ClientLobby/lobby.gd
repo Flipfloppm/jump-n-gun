@@ -62,6 +62,5 @@ func register_player_info(player_name, id):
 		for playerID in GameManager.PLAYERS:
 			register_player_info.rpc(GameManager.PLAYERS[playerID].name, playerID)
 
-
-
-
+func _on_back_btn_pressed():
+	get_tree().change_scene_to_file("res://Levels/level_selection/selection-screen.tscn")

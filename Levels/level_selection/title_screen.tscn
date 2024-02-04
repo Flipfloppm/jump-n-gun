@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtgk1mrrewkxt"]
 
 [ext_resource type="Script" path="res://TitleScreen.gd" id="1_dbnnh"]
-[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_53p62"]
+[ext_resource type="FontFile" path="res://castlevania-dracula-x-small-snes.ttf" id="2_53p62"]
 [ext_resource type="Texture2D" uid="uid://uxl7yjoscp12" path="res://Art/WorldSelect/clear-jumpngunlogo.png" id="2_fo7hp"]
 
 [sub_resource type="Gradient" id="Gradient_40iuc"]
