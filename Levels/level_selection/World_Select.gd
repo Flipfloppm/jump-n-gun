@@ -12,6 +12,7 @@ func _process(delts):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
+	print(event)
 	if event.is_action_pressed("ui_left") and current_world > 0:
 		current_world -= 1
 		$playerIcon.global_position = worlds[current_world].global_position
@@ -22,10 +23,14 @@ func _input(event):
 
 	if event.is_action_pressed("ChooseLevel"):
 		start_game.rpc()
+	
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://ClientLobby/lobby.tscn")
 
 @rpc("any_peer", "call_local")
 func start_game():
-	var start_scene = load("res://Levels/tutorial.tscn").instantiate()
-	get_tree().root.add_child(start_scene)
-	print("started game" + str(multiplayer.get_unique_id()))
-	self.hide()
+	get_tree().change_scene_to_file("res://Levels/tutorial.tscn")
+	#var start_scene = load("res://Levels/tutorial.tscn").instantiate()
+	#get_tree().root.add_child(start_scene)
+	#print("started game" + str(multiplayer.get_unique_id()))
+	#self.hide()

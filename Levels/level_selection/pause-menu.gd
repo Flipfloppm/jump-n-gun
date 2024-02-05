@@ -20,5 +20,13 @@ func set_paused(value:bool) -> void:
 	_is_paused = value
 	get_tree().paused = _is_paused
 	visible = _is_paused
-		
 
+
+func _on_menu_btn_pressed():
+	set_paused(false)
+	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+
+
+func _on_restart_btn_pressed():
+	set_paused(false)
+	get_tree().reload_current_scene()
