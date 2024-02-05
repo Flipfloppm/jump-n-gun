@@ -50,7 +50,7 @@ func _on_start_game_btn_pressed():
 
 @rpc("any_peer", "call_local")
 func start_game():
-	var start_scene = load("res://Levels/tutorial_level.tscn").instantiate()
+	var start_scene = load("res://Levels/tutorial.tscn").instantiate()
 	get_tree().root.add_child(start_scene)
 	print("started game" + str(multiplayer.get_unique_id()))
 	server_browser.cleanup_browser()
