@@ -7,6 +7,7 @@ extends Control
 @onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
 @onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
 @onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
+@onready var server_browser = $ServerBrowser
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,6 +53,7 @@ func start_game():
 	var start_scene = load("res://Levels/tutorial_level.tscn").instantiate()
 	get_tree().root.add_child(start_scene)
 	print("started game" + str(multiplayer.get_unique_id()))
+	server_browser.cleanup_browser()
 	self.hide()
 	
 @rpc("any_peer")

@@ -10,7 +10,7 @@ var broadcaster : PacketPeerUDP # Define our own UDP packet
 var listener : PacketPeerUDP
 @export var listenPort : int = 8911
 @export var broadcastPort : int = 8912
-@export var broadcastIP : String = "192.168.1.255"
+@export var broadcastIP : String # This IP will be retrieved dynamically from the setup_server_broadcast function. 
 @export var serverInfo : PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -35,11 +35,18 @@ func setup_server_broadcast(serverName):
 	RoomInfo["playerCount"] = GameManager.PLAYERS.size()
 	broadcaster = PacketPeerUDP.new()
 	broadcaster.set_broadcast_enabled(true)
+	# Retrieve broadcast IP info on the specific machine.
+	# NOTE: This section below is currently only tested on UNIX machines.
+	# The behavior on windows machines is not yet tested. 
+	var output = []
+	var code = OS.execute("./get_ip", [], output, true)
+	broadcastIP = output[0]
 	broadcaster.set_dest_address(broadcastIP, listenPort)
 	
+	# Start broadcasting on a specified port. 
 	var ok = broadcaster.bind(broadcastPort)
 	if ok == OK:
-		print("Bound to broadcast port: " + str(broadcastPort) + " Successful!")
+		print("Bound to broadcast port: " + str(broadcastPort) + " at " + str(broadcastIP) + " Successful!")
 	else:
 		print("Failed to broadcast port, error: " + str(ok))
 	
@@ -96,6 +103,7 @@ func cleanup_browser():
 	$BroadcastTimer.stop()
 	if broadcaster != null:
 		broadcaster.close()
+	print("broadcast closed\n")
 		
 		
 	
