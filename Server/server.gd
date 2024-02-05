@@ -3,7 +3,7 @@ extends Node
 var server_peer
 var SELECTED_IP = "127.0.0.1"
 var SELECTED_PORT = 3296
-var MAX_PLAYERS = 2
+var MAX_PLAYERS = 4
 
 
 # Called when the node enters the scene tree for the first time.

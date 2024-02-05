@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dx2dup1o6g6ch"]
+[gd_scene load_steps=24 format=3 uid="uid://dx2dup1o6g6ch"]
 
 [ext_resource type="Script" path="res://Levels/tutorial_level.gd" id="1_s0nef"]
 [ext_resource type="PackedScene" uid="uid://duf0ghh8oyjkf" path="res://Characters/guy.tscn" id="2_u68ap"]
@@ -13,9 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bedk647vx8ixa" path="res://Art/Parallax/5-clouds.png" id="7_88l7t"]
 [ext_resource type="Texture2D" uid="uid://baray202kr3j2" path="res://Art/Parallax/2-backclouds.png" id="8_ux81r"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="11_u1oee"]
-[ext_resource type="Script" path="res://Levels/TileMap.gd" id="12_pxiqa"]
+[ext_resource type="Script" path="res://Levels/tutorial_level_tilemap.gd" id="12_pxiqa"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="13_ckyvd"]
 [ext_resource type="PackedScene" uid="uid://cumtd3d8ausl2" path="res://Items/spikes.tscn" id="16_uud67"]
+[ext_resource type="PackedScene" path="res://Items/briefcase.tscn" id="17_dp2wn"]
 [ext_resource type="PackedScene" uid="uid://cxul6k284mvbo" path="res://Items/grenade_launcher.tscn" id="17_f7u2m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ccubg"]
@@ -199,3 +200,6 @@ position = Vector2(448, -233)
 
 [node name="Grenade Launcher" parent="." instance=ExtResource("17_f7u2m")]
 position = Vector2(194, 231)
+
+[node name="Briefcase" parent="." instance=ExtResource("17_dp2wn")]
+position = Vector2(400, -283)
