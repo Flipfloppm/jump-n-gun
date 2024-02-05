@@ -30,6 +30,7 @@ func _ready():
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
 	add_to_group("players")
+	#set_wall_min_slide_angle(0.785398)
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
 
@@ -51,8 +52,10 @@ func set_var(var_name: String, var_val: float):
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		# TODO: Set floor normals depending on where standing for diagonal sliding
+
 		reloadTime -= delta
-		# Add the gravity.	
+		# Add the gravity for when jumping.
 		if not is_on_floor():
 			velocity.y += gravity * delta
 
