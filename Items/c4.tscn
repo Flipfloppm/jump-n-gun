@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds756or76aeeb"]
+[gd_scene load_steps=4 format=3 uid="uid://b8812in8pfmoq"]
 
 [ext_resource type="Script" path="res://Items/c4.gd" id="1_txtvq"]
 [ext_resource type="Texture2D" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
@@ -7,7 +7,6 @@
 size = Vector2(7, 3)
 
 [node name="C4" type="RigidBody2D"]
-collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_txtvq")
 
