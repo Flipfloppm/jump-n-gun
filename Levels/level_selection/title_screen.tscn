@@ -13,14 +13,12 @@ gradient = SubResource("Gradient_40iuc")
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
-anchor_left = 0.175
-anchor_top = 0.089
-anchor_right = 1.875
-anchor_bottom = 1.644
-offset_left = -136.0
-offset_top = -32.02
-offset_right = -72.0
-offset_bottom = 16.08
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -16.0
+offset_right = 208.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dbnnh")
@@ -33,19 +31,20 @@ texture = SubResource("GradientTexture1D_81dgw")
 
 [node name="TitleBox" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 40.0
-offset_right = 3551.0
-offset_bottom = 2015.0
-scale = Vector2(0.163732, 0.163732)
+offset_left = 52.0
+offset_top = 23.0
+offset_right = 3252.0
+offset_bottom = 1823.0
+scale = Vector2(0.122002, 0.112722)
 texture = ExtResource("2_fo7hp")
 
 [node name="PressAnyButtn" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 32.0
-offset_right = 733.0
-offset_bottom = 101.0
+offset_left = 113.0
+offset_top = 21.0
+offset_right = 440.0
+offset_bottom = 90.0
+scale = Vector2(0.9366, 0.833313)
 theme_override_fonts/normal_font = ExtResource("2_53p62")
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 16
 text = "Press any button"

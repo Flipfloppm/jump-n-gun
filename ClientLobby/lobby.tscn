@@ -43,11 +43,18 @@ Button/styles/normal = ExtResource("5_2cfmt")
 
 [sub_resource type="Theme" id="Theme_lhs4f"]
 default_font = ExtResource("6_umrrv")
+default_font_size = 32
 
 [node name="Lobby" type="Control"]
 clip_contents = true
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.11283, 1.11141)
 theme = SubResource("Theme_05jy7")
 script = ExtResource("1_ksb3b")
@@ -59,13 +66,12 @@ follow_viewport_scale = 19.232
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_top = 0.111
-anchor_right = 0.825
-anchor_bottom = 1.044
-offset_left = -336.0
-offset_top = -247.98
-offset_right = -288.0
-offset_bottom = -231.92
+anchor_left = -0.999
+anchor_top = -1.001
+offset_left = -16.32
+offset_top = -47.82
+offset_right = -24.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.45886, 1.52125)
@@ -73,11 +79,11 @@ color = Color(0.192157, 0.27451, 0.627451, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(300, 0)
-offset_left = -224.0
-offset_top = -164.0
-offset_right = 188.0
-offset_bottom = -17.0
-scale = Vector2(0.941626, 0.955076)
+offset_left = -311.0
+offset_top = -173.0
+offset_right = 101.0
+offset_bottom = -26.0
+scale = Vector2(0.741559, 0.676362)
 theme_override_constants/separation = 15
 
 [node name="LobbyLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
@@ -140,45 +146,41 @@ anchors_preset = -1
 anchor_left = 0.388
 anchor_right = 0.614
 anchor_bottom = 1.0
-offset_left = -328.0
-offset_top = -128.0
-offset_right = -176.0
-offset_bottom = -95.0
+offset_left = -373.0
+offset_top = -234.0
+offset_right = -221.0
+offset_bottom = -201.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2.07053, 2.07772)
+scale = Vector2(0.918449, 0.758839)
 theme = SubResource("Theme_o32tr")
 
 [node name="JoinBtn" type="Button" parent="CanvasLayer"]
 layout_direction = 1
-offset_left = -224.0
-offset_top = 20.0
-offset_right = 188.0
-offset_bottom = 63.0
-scale = Vector2(0.916119, 0.916119)
+offset_left = -310.0
+offset_top = -62.0
+offset_right = 102.0
+offset_bottom = -19.0
+scale = Vector2(0.730641, 0.617991)
 theme = SubResource("Theme_le3wr")
 text = "Join Game"
 
 [node name="StartGameBtn" type="Button" parent="CanvasLayer"]
-offset_left = -224.0
-offset_top = -28.0
-offset_right = 188.0
-offset_bottom = 15.0
-scale = Vector2(0.908843, 0.908843)
+offset_left = -312.0
+offset_top = -94.0
+offset_right = 100.0
+offset_bottom = -51.0
+scale = Vector2(0.735215, 0.619962)
 size_flags_horizontal = 5
 theme = SubResource("Theme_le3wr")
 text = "Start Game"
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = -0.183
-anchor_top = -0.059
-anchor_right = -0.183
-anchor_bottom = -0.059
-offset_left = -221.44
-offset_top = -192.38
-offset_right = -149.44
-offset_bottom = -120.38
+offset_left = -319.0
+offset_top = -180.0
+offset_right = -177.0
+offset_bottom = -59.0
+scale = Vector2(0.303511, 0.243339)
 theme = SubResource("Theme_lhs4f")
 text = "Back"
 
