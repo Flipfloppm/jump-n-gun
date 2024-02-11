@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://kpck68so7bf1"]
+
+[ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="1_d4xn4"]
+
+[node name="waitingroom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4xn4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 682.0
+offset_right = 1241.0
+offset_bottom = 764.0
+
+[node name="StartGameBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="ExitRoomBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit Room"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 431.0
+offset_right = 1236.0
+offset_bottom = 639.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaitingRoomLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "=====Waiting Room====="
+horizontal_alignment = 1
+
+[node name="player_list" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2

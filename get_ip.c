@@ -19,7 +19,15 @@ void get_network_info(char* ip_address, char* network_address) {
     }
 
     // Get IP address
-    strcpy(ip_address, inet_ntoa(*((struct in_addr*) host->h_addr_list[0])));
+    for (int i=0; host->h_addr_list[i] != NULL; i++) {
+        // printf("%s\n", inet_ntoa(*((struct in_addr*) host->h_addr_list[i])));
+        if (strcmp(inet_ntoa(*((struct in_addr*) host->h_addr_list[i])), "127.0.0.1") != 0 &&
+            host->h_addrtype == AF_INET) {
+            strcpy(ip_address, inet_ntoa(*((struct in_addr*) host->h_addr_list[i])));
+            break;
+        } 
+    }
+    // printf("%s\n", ip_address);
 
     // Get subnet mask
     struct ifaddrs *ifap, *ifa;

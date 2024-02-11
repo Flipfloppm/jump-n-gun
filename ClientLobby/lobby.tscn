@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=6 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
 [ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
 [ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
+[ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -183,17 +184,81 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="ServerBrowser/Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+anchor_bottom = 0.094
+offset_left = 0.0880127
+offset_top = 36.687
+offset_right = 0.0880127
+offset_bottom = 14.127
+grow_horizontal = 2
+
+[node name="WaitingRoom" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("5_rllne")
+
+[node name="UserIDLabel" type="Label" parent="WaitingRoom"]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 403.0
+offset_right = 959.0
+offset_bottom = 426.0
+text = "User ID: "
+
+[node name="Panel" type="Panel" parent="WaitingRoom"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 431.0
+offset_right = 1236.0
+offset_bottom = 639.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaitingRoom/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaitingRoomLabel" type="Label" parent="WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+text = "=====Waiting Room====="
+horizontal_alignment = 1
+
+[node name="player_list" type="VBoxContainer" parent="WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WaitingRoom"]
+layout_mode = 0
+offset_left = 882.0
+offset_top = 682.0
+offset_right = 1241.0
+offset_bottom = 764.0
+
+[node name="StartGameBtn" type="Button" parent="WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="ExitRoomBtn" type="Button" parent="WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Exit Room"
+
+[node name="CancelHostBtn" type="Button" parent="WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Cancel Hosting Session"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="timeout" from="ServerBrowser/BroadcastTimer" to="ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="WaitingRoom/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="WaitingRoom/VBoxContainer/ExitRoomBtn" to="WaitingRoom" method="_on_exit_room_btn_pressed"]
 
 [editable path="CenterContainer/VBoxContainer/Server"]

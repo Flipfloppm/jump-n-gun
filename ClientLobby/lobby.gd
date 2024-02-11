@@ -8,12 +8,15 @@ extends Control
 @onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
 @onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
 @onready var server_browser = $ServerBrowser
+@onready var waiting_room = $WaitingRoom
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
 	$ServerBrowser.childServerJoin.connect(join_server_by_ip)
+	waiting_room.client_disconnect_request.connect(remove_client)
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -32,7 +35,14 @@ func _on_host_game_pressed():
 	joinBtn.disabled = true
 	hostBtn.disabled = true
 	register_player_info(player_name.text, multiplayer.get_unique_id())
+	print(GameManager.PLAYERS)
 	$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
+	# move to waiting room
+	$ServerBrowser.visible = false
+	$CenterContainer.visible = false
+	waiting_room.visible = true
+	
+	
 	
 	
 func _on_join_btn_pressed(): 
@@ -44,6 +54,10 @@ func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip, int(selected_port.text))
 	multiplayer.set_multiplayer_peer(peer)
+	# move to waiting room
+	$ServerBrowser.visible = false
+	$CenterContainer.visible = false
+	waiting_room.visible = true
 
 func _on_start_game_btn_pressed():
 	start_game.rpc() # everybody will be notified to call their own start_game method
@@ -70,6 +84,26 @@ func register_player_info(player_name, id):
 		for playerID in GameManager.PLAYERS:
 			register_player_info.rpc(GameManager.PLAYERS[playerID].name, playerID)
 
-
+# handle the case where a client clicks on "exit room" to leave the current session
+# this is only done by the host. 
+@rpc("any_peer")
+func remove_client(client_id):
+	print("trying to remove client:", client_id, "this id:", multiplayer.get_unique_id())
+	if !multiplayer.is_server():
+		remove_client.rpc_id(1, client_id)
+		# go back to lobby
+		waiting_room.visible = false
+		$ServerBrowser.visible = true
+		$CenterContainer.visible = true
+		
+	if multiplayer.get_unique_id() == 1:
+		# remove the client peer
+		if server.server_peer != null:
+			server.server_peer.disconnect_peer(client_id)
+		# remove the client peer from the game manager/player data
+		GameManager.PLAYERS.erase(client_id)
+		print("client removed, current players:", GameManager.PLAYERS)
+		
+		
 
 
