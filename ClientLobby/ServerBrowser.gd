@@ -24,11 +24,11 @@ func setup_listener():
 	var ok = listener.bind(listenPort)
 	if ok == OK:
 		print("Listen to port: " + str(listenPort) + " Successful!")
-		$ListenPortLabel.text = "Listening to port: True " + str(listenPort)
+		#$ListenPortLabel.text = "Listening to port: True " + str(listenPort)
 	else:
 		# NOTE: when running 2 instances, only one will be able to bind. This is expected. 
 		print("Failed to listen to port, error: " + str(ok))
-		$ListenPortLabel.text = "Listening to port: False"
+		#$ListenPortLabel.text = "Listening to port: False"
 
 func setup_server_broadcast(serverName):
 	RoomInfo["name"] = serverName
@@ -42,7 +42,7 @@ func setup_server_broadcast(serverName):
 	var code = OS.execute("./get_ip", [], output, true)
 	broadcastIP = output[0]
 	print("retrived IP: " + broadcastIP)
-	#broadcastIP = "168.5.191.255"
+	#broadcastIP = "2601:2c6:4500:f60:0:0:0:ae78"
 	broadcaster.set_dest_address(broadcastIP, listenPort)
 	
 	# Start broadcasting on a specified port. 

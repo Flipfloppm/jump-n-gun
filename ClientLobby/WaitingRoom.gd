@@ -45,5 +45,3 @@ func refresh_players(players):
 func _on_exit_room_btn_pressed():
 	client_disconnect_request.emit(multiplayer.get_unique_id())
 	
-	
-	

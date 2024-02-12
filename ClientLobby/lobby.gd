@@ -1,58 +1,67 @@
 extends Control
 
-@onready var server = $CenterContainer/VBoxContainer/Server
-@onready var player_name = $CenterContainer/VBoxContainer/GridContainer/NameEdit
-@onready var selected_IP = $CenterContainer/VBoxContainer/GridContainer/IPEdit
-@onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
-@onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
-@onready var hostBtn = $CenterContainer/VBoxContainer/Server/HostGame
-@onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
-@onready var server_browser = $ServerBrowser
-@onready var waiting_room = $WaitingRoom
+@onready var server = $CanvasLayer/Server
+#@onready var player_name = $CenterContainer/VBoxContainer/GridContainer/NameEdit
+#@onready var selected_IP = $CenterContainer/VBoxContainer/GridContainer/IPEdit
+#@onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
+#@onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
+@onready var hostBtn = $CanvasLayer/Server/HostGame
+#@onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
+@onready var server_browser = $CanvasLayer/ServerBrowser
+@onready var waiting_room = $CanvasLayer/WaitingRoom
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
-	$ServerBrowser.childServerJoin.connect(join_server_by_ip)
+	server_browser.childServerJoin.connect(join_server_by_ip)
 	waiting_room.client_disconnect_request.connect(remove_client)
 	
 # this gets called only by clients 
 func connected_to_server():
 	print("connected to server")
 	# call register info on the server first
-	register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
+	#register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
+	register_player_info.rpc_id(1, "david", multiplayer.get_unique_id())
 
 # this gets called only by clients 
 func connection_failed():
 	print("connection failed")
 
 func _on_host_game_pressed():
+	print("host game pressed")
 	var host_info = server.start_server()
-	selected_port.text = str(host_info[0])
-	selected_IP.text = str(host_info[1])
-	joinBtn.disabled = true
+	#selected_port.text = str(host_info[0])
+	#selected_IP.text = str(host_info[1])
+	print("ip:" + str(host_info[1]))
+	#joinBtn.disabled = true
 	hostBtn.disabled = true
-	register_player_info(player_name.text, multiplayer.get_unique_id())
+	hostBtn.visible = false
+	#register_player_info(player_name.text, multiplayer.get_unique_id())
+	register_player_info("david", multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
-	$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
+	#$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
+	server_browser.setup_server_broadcast("david" + "'s server")
 	# move to waiting room
-	$ServerBrowser.visible = false
-	$CenterContainer.visible = false
+	server_browser.visible = false
+	#$CenterContainer.visible = false
 	waiting_room.visible = true
+	$CanvasLayer/BackBtn.visible = false
+	$CanvasLayer/Servers.visible = false
 	
 	
 	
 	
-func _on_join_btn_pressed(): 
-	print("join pressed")
-	join_server_by_ip(selected_IP.text)
-	joinBtn.disabled = true
+#func _on_join_btn_pressed(): 
+	#print("join pressed")
+	#join_server_by_ip(selected_IP.text)
+	#joinBtn.disabled = true
 
 func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(ip, int(selected_port.text))
+	#peer.create_client(ip, int(selected_port.text))
+	peer.create_client(ip, 3296)
 	multiplayer.set_multiplayer_peer(peer)
 	# move to waiting room
 	$ServerBrowser.visible = false
