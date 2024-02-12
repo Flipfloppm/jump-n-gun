@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ueinvwicg3oq"]
+[gd_scene load_steps=15 format=3 uid="uid://csdku4ede7qnu"]
 
 [ext_resource type="Script" path="res://Items/briefcase.gd" id="1_fmjb2"]
 [ext_resource type="Texture2D" uid="uid://b8wkhusxv6455" path="res://Art/Objects/briefcase.png" id="1_mv1te"]

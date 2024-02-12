@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm7ht8l2fnyl2"]
+
+[ext_resource type="Script" path="res://Levels/level_selection/world_icon.gd" id="1_qo8om"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_53p62"]
+[ext_resource type="Texture2D" uid="uid://bgjl8qy0g1y26" path="res://Art/WorldSelect/skyscraper-icon.png" id="3_ospya"]
+
+[node name="WorldIcon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 40.0
+pivot_offset = Vector2(32, 20)
+script = ExtResource("1_qo8om")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -18.0
+offset_right = 69.0
+offset_bottom = -6.0
+theme_override_fonts/font = ExtResource("2_53p62")
+theme_override_font_sizes/font_size = 10
+text = "Job 1"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 53.0
+offset_bottom = 50.0
+texture = ExtResource("3_ospya")
+expand_mode = 1

@@ -1,22 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://dsduhwe8hqs8a"]
 
-[ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
-[ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
-[ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
-[ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
-[ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
+[ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_yefr8"]
+[ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="2_1eupl"]
+[ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_pun1n"]
+[ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_bgcuu"]
+[ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_i4xtc"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
-anchor_right = 0.997
-anchor_bottom = 0.992
-offset_left = 10.0
-offset_top = -3.0
-offset_right = 6.14392
-offset_bottom = -1.80804
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.52588e-05
+offset_top = -24.0
+offset_right = 1.52588e-05
+offset_bottom = -22.808
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ksb3b")
+scale = Vector2(0.914334, 0.999576)
+script = ExtResource("1_yefr8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -93,7 +97,7 @@ text = "Join Game"
 layout_mode = 2
 text = "Start Game"
 
-[node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_73qnq")]
+[node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_1eupl")]
 layout_mode = 2
 
 [node name="HostGame" parent="CenterContainer/VBoxContainer/Server" index="0"]
@@ -119,8 +123,8 @@ offset_left = -27.304
 offset_top = -83.5
 offset_right = 43.696
 offset_bottom = -15.5
-script = ExtResource("3_i5x0a")
-serverInfo = ExtResource("4_j5rt1")
+script = ExtResource("3_pun1n")
+serverInfo = ExtResource("4_bgcuu")
 
 [node name="BroadcastTimer" type="Timer" parent="ServerBrowser"]
 
@@ -202,7 +206,7 @@ offset_right = -2.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_rllne")
+script = ExtResource("5_i4xtc")
 
 [node name="UserIDLabel" type="Label" parent="WaitingRoom"]
 layout_mode = 0

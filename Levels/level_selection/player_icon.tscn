@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlagwqio44fol"]
+
+[ext_resource type="Texture2D" uid="uid://c0q2qhynqagft" path="res://Art/WorldSelect/select-icon.png" id="1_07o5c"]
+
+[node name="playerIcon" type="TextureRect"]
+offset_right = 427.0
+offset_bottom = 427.0
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_07o5c")
+expand_mode = 3

@@ -60,7 +60,8 @@ func join_server_by_ip(ip):
 	waiting_room.visible = true
 
 func _on_start_game_btn_pressed():
-	start_game.rpc() # everybody will be notified to call their own start_game method
+	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+	 # everybody will be notified to call their own start_game method
 
 @rpc("any_peer", "call_local")
 func start_game():
@@ -107,3 +108,5 @@ func remove_client(client_id):
 		
 
 
+func _on_back_btn_pressed():
+	get_tree().change_scene_to_file("res://Levels/level_selection/selection-screen.tscn")
