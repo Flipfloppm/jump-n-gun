@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cenr2w0dnjfvy"]
+[gd_scene load_steps=19 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
-[ext_resource type="FontFile" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
-[ext_resource type="Texture2D" path="res://Art/UI/example-button.png" id="2_mukv1"]
+[ext_resource type="Texture2D" uid="uid://ck6x2xb3huw4d" path="res://Art/UI/example-button.png" id="2_mukv1"]
 [ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
 [ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
@@ -193,6 +193,14 @@ offset_top = 24.4397
 offset_bottom = 12.8777
 grow_horizontal = 2
 
+[node name="ListenPortLabel" type="Label" parent="CanvasLayer/ServerBrowser"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -45.2942
+offset_right = 159.0
+offset_bottom = -22.2942
+text = "Listen to port:"
+
 [node name="WaitingRoom" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
@@ -268,6 +276,8 @@ text = "Cancel Hosting Session"
 
 [connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
 
 [editable path="CanvasLayer/Server"]

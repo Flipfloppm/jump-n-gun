@@ -64,12 +64,15 @@ func join_server_by_ip(ip):
 	peer.create_client(ip, 3296)
 	multiplayer.set_multiplayer_peer(peer)
 	# move to waiting room
-	$ServerBrowser.visible = false
-	$CenterContainer.visible = false
+	server_browser.visible = false
+	server.visible = false
+	$CanvasLayer/BackBtn.visible = false
+	$CanvasLayer/Servers.visible = false
 	waiting_room.visible = true
 
 func _on_start_game_btn_pressed():
-	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+	start_game.rpc()
+	#get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
 	 # everybody will be notified to call their own start_game method
 
 @rpc("any_peer", "call_local")
@@ -78,6 +81,7 @@ func start_game():
 	get_tree().root.add_child(start_scene)
 	print("started game" + str(multiplayer.get_unique_id()))
 	server_browser.cleanup_browser()
+	$CanvasLayer.visible = false
 	self.hide()
 	
 @rpc("any_peer")
@@ -101,10 +105,13 @@ func remove_client(client_id):
 	print("trying to remove client:", client_id, "this id:", multiplayer.get_unique_id())
 	if !multiplayer.is_server():
 		remove_client.rpc_id(1, client_id)
+		GameManager.PLAYERS.erase(client_id)
 		# go back to lobby
+		server_browser.visible = true
+		server.visible = true
+		$CanvasLayer/BackBtn.visible = true
+		$CanvasLayer/Servers.visible = true
 		waiting_room.visible = false
-		$ServerBrowser.visible = true
-		$CenterContainer.visible = true
 		
 	if multiplayer.get_unique_id() == 1:
 		# remove the client peer
