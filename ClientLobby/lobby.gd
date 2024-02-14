@@ -1,12 +1,7 @@
 extends Control
 
 @onready var server = $CanvasLayer/Server
-#@onready var player_name = $CenterContainer/VBoxContainer/GridContainer/NameEdit
-#@onready var selected_IP = $CenterContainer/VBoxContainer/GridContainer/IPEdit
-#@onready var selected_port = $CenterContainer/VBoxContainer/GridContainer/PortEdit
-#@onready var joinBtn = $CenterContainer/VBoxContainer/JoinBtn
 @onready var hostBtn = $CanvasLayer/Server/HostGame
-#@onready var playerName = $CenterContainer/VBoxContainer/GridContainer/NameEdit
 @onready var server_browser = $CanvasLayer/ServerBrowser
 @onready var waiting_room = $CanvasLayer/WaitingRoom
 
@@ -32,31 +27,17 @@ func connection_failed():
 func _on_host_game_pressed():
 	print("host game pressed")
 	var host_info = server.start_server()
-	#selected_port.text = str(host_info[0])
-	#selected_IP.text = str(host_info[1])
-	print("ip:" + str(host_info[1]))
-	#joinBtn.disabled = true
 	hostBtn.disabled = true
 	hostBtn.visible = false
-	#register_player_info(player_name.text, multiplayer.get_unique_id())
 	register_player_info("david", multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
 	#$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
 	server_browser.setup_server_broadcast("david" + "'s server")
 	# move to waiting room
 	server_browser.visible = false
-	#$CenterContainer.visible = false
 	waiting_room.visible = true
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/Servers.visible = false
-	
-	
-	
-	
-#func _on_join_btn_pressed(): 
-	#print("join pressed")
-	#join_server_by_ip(selected_IP.text)
-	#joinBtn.disabled = true
 
 func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
@@ -72,7 +53,6 @@ func join_server_by_ip(ip):
 
 func _on_start_game_btn_pressed():
 	start_game.rpc()
-	#get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
 	 # everybody will be notified to call their own start_game method
 
 @rpc("any_peer", "call_local")

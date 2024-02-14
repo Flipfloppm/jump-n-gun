@@ -42,7 +42,6 @@ func setup_server_broadcast(serverName):
 	var code = OS.execute("./get_ip", [], output, true)
 	broadcastIP = output[0]
 	print("retrived IP: " + broadcastIP)
-	#broadcastIP = "2601:2c6:4500:f60:0:0:0:ae78"
 	broadcaster.set_dest_address(broadcastIP, listenPort)
 	
 	# Start broadcasting on a specified port. 

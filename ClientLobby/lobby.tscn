@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=20 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
 [ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
 [ext_resource type="Texture2D" uid="uid://ck6x2xb3huw4d" path="res://Art/UI/example-button.png" id="2_mukv1"]
 [ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
-[ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
+[ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="6_umrrv"]
 
@@ -46,6 +46,10 @@ default_font_size = 16
 [sub_resource type="Theme" id="Theme_br80e"]
 default_font = ExtResource("6_umrrv")
 default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_x2mic"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 16
 
 [sub_resource type="Theme" id="Theme_8nl1y"]
 default_font = ExtResource("6_umrrv")
@@ -189,16 +193,19 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.094
-offset_top = 24.4397
-offset_bottom = 12.8777
+offset_top = 24.0
+offset_bottom = 104.438
 grow_horizontal = 2
+scale = Vector2(1.01413, 1.00375)
 
 [node name="ListenPortLabel" type="Label" parent="CanvasLayer/ServerBrowser"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = -45.2942
-offset_right = 159.0
-offset_bottom = -22.2942
+offset_left = -22.0
+offset_top = 108.088
+offset_right = 98.0
+offset_bottom = 119.088
+scale = Vector2(0.509617, 0.713443)
+theme = SubResource("Theme_x2mic")
 text = "Listen to port:"
 
 [node name="WaitingRoom" type="Control" parent="CanvasLayer"]
@@ -256,11 +263,11 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]
 layout_mode = 0
-offset_left = -3.0
+offset_left = -4.0
 offset_top = 113.0
-offset_right = 358.0
-offset_bottom = 193.0
-scale = Vector2(0.869655, 0.79598)
+offset_right = 164.0
+offset_bottom = 153.0
+scale = Vector2(0.876473, 0.728186)
 
 [node name="StartGameBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2

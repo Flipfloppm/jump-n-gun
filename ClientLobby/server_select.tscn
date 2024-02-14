@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=6 format=3 uid="uid://cl0nhfdvo5d4d"]
 
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_yefr8"]
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="2_1eupl"]
 [ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_pun1n"]
-[ext_resource type="PackedScene" uid="uid://d1kmysrxcbgop" path="res://ClientLobby/server_info.tscn" id="4_bgcuu"]
+[ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://ClientLobby/server_info.tscn" id="4_bgcuu"]
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_i4xtc"]
 
 [node name="Lobby" type="Control"]

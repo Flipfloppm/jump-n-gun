@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://kpck68so7bf1"]
+[gd_scene load_steps=2 format=3 uid="uid://bu3wuda2v2xa3"]
 
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="1_d4xn4"]
 
