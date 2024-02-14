@@ -65,7 +65,8 @@ func _physics_process(delta):
 		# Handle jump.
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
-			jumpAudio.play()
+			playJumpAudio.rpc()
+			#jumpAudio.play()
 
 		# Get the input direction and handle the movement/deceleration.	
 		var direction = Input.get_axis("left", "right")
@@ -195,6 +196,10 @@ func fire():
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
 	get_tree().root.add_child(projectile)
+
+@rpc("any_peer", "call_local")
+func playJumpAudio():
+	jumpAudio.play()
 
 
 # Defines behavior for player die

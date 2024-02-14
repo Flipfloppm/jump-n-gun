@@ -58,10 +58,10 @@ script = null
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qq1f1")
 
-[node name="JumpAudio" type="AudioStreamPlayer" parent="."]
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_hxrx1")
 volume_db = 5.0
 
-[node name="ShootAudio" type="AudioStreamPlayer" parent="."]
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_yalkq")
 volume_db = 5.0
