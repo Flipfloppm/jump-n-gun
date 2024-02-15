@@ -189,12 +189,14 @@ text = "Join"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ServerBrowser/Panel"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.094
 offset_top = 24.0
-offset_bottom = 104.438
+offset_right = -6.0
+offset_bottom = 107.438
 grow_horizontal = 2
 scale = Vector2(1.01413, 1.00375)
 
@@ -269,9 +271,9 @@ offset_right = 164.0
 offset_bottom = 153.0
 scale = Vector2(0.876473, 0.728186)
 
-[node name="StartGameBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
+[node name="SelectWorldBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2
-text = "Start Game"
+text = "Select World"
 
 [node name="ExitRoomBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2
@@ -284,7 +286,7 @@ text = "Cancel Hosting Session"
 [connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/SelectWorldBtn" to="." method="_on_select_world_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
 
 [editable path="CanvasLayer/Server"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dihcn3dpslxks"]
 
 [ext_resource type="Script" path="res://Levels/level_selection/pause-menu.gd" id="1_cmbrj"]
-[ext_resource type="FontFile" path="res://castlevania-dracula-x-small-snes.ttf" id="2_jn60g"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_jn60g"]
 
 [sub_resource type="Theme" id="Theme_64ajt"]
 Button/fonts/font = ExtResource("2_jn60g")

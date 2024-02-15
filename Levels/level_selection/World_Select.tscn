@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Levels/level_selection/World_Select.gd" id="1_0yno5"]
 [ext_resource type="PackedScene" uid="uid://dm7ht8l2fnyl2" path="res://Levels/level_selection/world_icon.tscn" id="1_5ac1w"]
-[ext_resource type="Texture2D" path="res://Art/UI/blank-sky.png" id="2_75kf8"]
+[ext_resource type="Texture2D" uid="uid://2rpvrynh3cwd" path="res://Art/UI/blank-sky.png" id="2_75kf8"]
 [ext_resource type="PackedScene" uid="uid://dlagwqio44fol" path="res://Levels/level_selection/player_icon.tscn" id="3_diho5"]
 
 [node name="WorldSelect" type="Control"]

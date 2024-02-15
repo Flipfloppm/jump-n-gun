@@ -24,7 +24,7 @@ func set_paused(value:bool) -> void:
 
 func _on_menu_btn_pressed():
 	set_paused(false)
-	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+	get_tree().change_scene_to_file("res://Levels/level_selection/selection-screen.tscn")
 
 
 func _on_restart_btn_pressed():

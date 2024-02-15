@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://bw3kroc3btwcx"]
 
 [ext_resource type="Script" path="res://Levels/level_selection/selection-screen.gd" id="1_qx3ul"]
-[ext_resource type="Texture2D" path="res://Art/UI/logo-clear-bkg.png" id="1_yhp6t"]
-[ext_resource type="FontFile" path="res://castlevania-dracula-x-small-snes.ttf" id="2_5mr67"]
-[ext_resource type="Texture2D" path="res://Art/UI/title-bkg.png" id="4_ih2ob"]
+[ext_resource type="Texture2D" uid="uid://dypb6jnklgekq" path="res://Art/UI/logo-clear-bkg.png" id="1_yhp6t"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_5mr67"]
+[ext_resource type="Texture2D" uid="uid://k56g53h8sfxs" path="res://Art/UI/title-bkg.png" id="4_ih2ob"]
 [ext_resource type="StyleBox" uid="uid://qhm3ejxbdlqi" path="res://Levels/level_selection/ugly-button-style.tres" id="5_afe0n"]
-[ext_resource type="Texture2D" path="res://Art/UI/1000x-goofy2.png" id="6_jb6v0"]
-[ext_resource type="Texture2D" path="res://Art/UI/1000x-png-guy.png" id="7_cwsu6"]
+[ext_resource type="Texture2D" uid="uid://berk2thwk3fj8" path="res://Art/UI/1000x-goofy2.png" id="6_jb6v0"]
+[ext_resource type="Texture2D" uid="uid://ldladsg7hjs1" path="res://Art/UI/1000x-png-guy.png" id="7_cwsu6"]
 [ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://Levels/level_selection/pause-menu.tscn" id="8_yb8kj"]
 
 [sub_resource type="Gradient" id="Gradient_tpebn"]

@@ -3,7 +3,7 @@ extends Control
 signal client_disconnect_request(player_id)
 
 @onready var player_list_container = $Panel/VBoxContainer/player_list
-@onready var start_game_btn = $VBoxContainer/StartGameBtn
+@onready var select_world_btn = $VBoxContainer/SelectWorldBtn
 @onready var exit_room_btn = $VBoxContainer/ExitRoomBtn
 @onready var cancel_host_btn = $VBoxContainer/CancelHostBtn
 
@@ -18,7 +18,7 @@ func _process(delta):
 	if multiplayer.get_unique_id() != 1:
 		# if not the host, hide the start game button
 		exit_room_btn.visible = true
-		start_game_btn.visible = false
+		select_world_btn.visible = false
 		cancel_host_btn.visible = false
 	else: 
 		exit_room_btn.visible = false

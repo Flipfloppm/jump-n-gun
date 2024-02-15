@@ -32,7 +32,7 @@ func _on_host_game_pressed():
 	register_player_info("david", multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
 	#$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
-	server_browser.setup_server_broadcast("david" + "'s server")
+	server_browser.setup_server_broadcast("david")
 	# move to waiting room
 	server_browser.visible = false
 	waiting_room.visible = true
@@ -106,3 +106,14 @@ func remove_client(client_id):
 
 func _on_back_btn_pressed():
 	get_tree().change_scene_to_file("res://Levels/level_selection/selection-screen.tscn")
+
+
+func _on_select_world_btn_pressed():
+	# when the host click on select world, every player should load that scene. 
+	load_select_world_scene.rpc()
+	
+@rpc("any_peer","call_local")
+func load_select_world_scene():
+	print("going to select world tscn" + str(multiplayer.get_unique_id()))
+	server_browser.cleanup_browser()
+	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
