@@ -24,6 +24,8 @@ SignalBus="*res://SignalBus.gd"
 
 window/size/viewport_width=320
 window/size/viewport_height=180
+window/size/viewport_width=320
+window/size/viewport_height=180
 window/size/mode=3
 window/size/initial_position_type=0
 window/size/resizable=false
@@ -33,7 +35,6 @@ window/size/initial_position_x=0.0
 window/size/initial_position_y=-288.0
 window/size/initial_position/x=0.0
 window/size/initial_position/y=-288.0
-window/main_scene="res://Levels/tutorial_level.tscn"
 
 [dotnet]
 
