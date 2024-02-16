@@ -12,16 +12,11 @@ var disappearing_moss_set1_timer = 0.0
 const XMIN = 0
 const XMAX = 31
 const YMAX = -1
-const YMIN = -55
+const YMIN = -144
 const RADIUS = 2
-#var cell
-#var allTreeCells = [] # Array of treeCells
-##var treeCells = PackedVector2Array() 
 var cellSourceId
 var cellAtlasCoords
 var newCellAtlasCoords
-#var timer_id_map = {}
-#var time_left_id_map = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,12 +26,16 @@ func _ready():
 	add_to_breakable_wood(6, 11, -30, -30)
 	add_to_breakable_wood(17, 23, -30, -30)
 	add_to_breakable_wood(13, 15, -37, -37)
+	add_to_breakable_wood(19, 21, -90, -90)
+	add_to_breakable_wood(28, 30, -103, -103)
+	add_to_breakable_wood(1, 5, -111, -111)
 	# Add cells to disappearing moss set.
 	add_to_disappearing_moss(5, 11, -55, -55, 0)
 	add_to_disappearing_moss(19, 26, -60, -60, 1)
-	add_to_disappearing_moss(9, 16, -66, -66, 0)
 	add_to_disappearing_moss(1, 7, -74, -74, 1)
 	add_to_disappearing_moss(16, 21, -77, -77, 0)
+	add_to_disappearing_moss(3, 7, -132, -132, 0)
+	add_to_disappearing_moss(22, 27, -131, -131, 1)
 
 
 # Helper function to add cells to disappearing moss set.
@@ -69,7 +68,7 @@ func _process(_delta):
 		wood_time_left_set[cell] -= _delta
 		if wood_time_left_set[cell] < 0 && get_cell_atlas_coords(0, cell).x > 9.0:
 			cellSourceId = get_cell_source_id(0, cell)
-			set_cell(0, cell, cellSourceId, Vector2(3,5))
+			set_cell(0, cell, cellSourceId, Vector2(randi_range(2,3), randi_range(5,6)))
 	# Deal with disappearing moss.
 	disappearing_moss_set0_timer -= _delta
 	disappearing_moss_set1_timer -= _delta
@@ -86,6 +85,7 @@ func _process(_delta):
 		
 
 
+# Script for breaking wood.
 func hit(collision_position):
 	var cell = local_to_map(collision_position)
 	# Make sure collision cell is in breakable set.
@@ -105,6 +105,9 @@ func hit(collision_position):
 	# Break blocks
 	for block in breaking_set:
 		cellSourceId = get_cell_source_id(0, block)
+		# Can only break wooden blocks
+		if cellSourceId != 3:
+			continue
 		cellAtlasCoords = get_cell_atlas_coords(0, block)
 		newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
 		set_cell(0, block, cellSourceId, newCellAtlasCoords)
