@@ -5,7 +5,7 @@ signal update_server(ip, port, roomInfo)
 signal childServerJoin(ip)
 
 var broadcastTimer: Timer
-var RoomInfo = {"name":"name", "playerCount": 0}
+var RoomInfo = {"name":"name", "playerCount": 0, "open":true}
 var broadcaster : PacketPeerUDP # Define our own UDP packet
 var listener : PacketPeerUDP
 @export var listenPort : int = 8911
@@ -18,6 +18,7 @@ func _ready():
 	broadcastTimer = $BroadcastTimer
 	# start listening for servers, no matter if this player hosts a game
 	setup_listener()
+	SignalBus.server_closed.connect(_on_server_closed)
 
 func setup_listener():
 	listener = PacketPeerUDP.new()	
@@ -67,20 +68,29 @@ func _process(delta):
 		# update the info to the browser UI
 		for child in $Panel/VBoxContainer.get_children():
 			if child.name == roomInfo.name:
-				update_server.emit(serverIP, serverPort, roomInfo)
-				child.get_node("PlayerCount").text = str(roomInfo.playerCount)
-				child.get_node("IP").text = serverIP	
-				return
-		
-		var receivedServer = serverInfo.instantiate()
-		receivedServer.name = roomInfo.name
-		receivedServer.get_node("Name").text = roomInfo.name
-		receivedServer.get_node("IP").text = serverIP
-		receivedServer.get_node("PlayerCount").text = str(roomInfo.playerCount)
-		$Panel/VBoxContainer.add_child(receivedServer)
-		receivedServer.serverBrowserJoin.connect(join_by_ip)
-		found_server.emit(serverIP, serverPort, roomInfo)
-			
+				if roomInfo.open == false:
+					print("room removed", type_string(typeof(child)))
+					child.get_node("IP").text = "Not hosting"	
+					child.queue_free()
+					return
+				else:
+					update_server.emit(serverIP, serverPort, roomInfo)
+					child.get_node("PlayerCount").text = str(roomInfo.playerCount)
+					child.get_node("IP").text = serverIP	
+					return
+		# add new info to browser if it is not closed
+		if roomInfo.open == false:
+			return
+		else:
+			var receivedServer = serverInfo.instantiate()
+			receivedServer.name = roomInfo.name
+			receivedServer.get_node("Name").text = roomInfo.name
+			receivedServer.get_node("IP").text = serverIP
+			receivedServer.get_node("PlayerCount").text = str(roomInfo.playerCount)
+			$Panel/VBoxContainer.add_child(receivedServer)
+			receivedServer.serverBrowserJoin.connect(join_by_ip)
+			found_server.emit(serverIP, serverPort, roomInfo)
+				
 
 
 func _on_broadcast_timer_timeout():
@@ -100,11 +110,17 @@ func _exit_tree():
 	cleanup_browser()
 	
 func cleanup_browser():
+	# close the room
 	listener.close()
 	$BroadcastTimer.stop()
 	if broadcaster != null:
 		broadcaster.close()
-	print("broadcast closed\n")
-		
-		
-	
+	print("cleanup browser: broadcast closed\n")
+
+func _on_server_closed():
+	if broadcaster:
+		RoomInfo.open = false
+		var data = JSON.stringify(RoomInfo)
+		var packet = data.to_ascii_buffer() # doesn't work with japanese/chinese room info but this is small and efficient :)
+		broadcaster.put_packet(packet) # send the packet through a queue
+

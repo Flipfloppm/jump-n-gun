@@ -12,6 +12,7 @@ func _ready():
 	multiplayer.connection_failed.connect(connection_failed)
 	server_browser.childServerJoin.connect(join_server_by_ip)
 	waiting_room.client_disconnect_request.connect(remove_client)
+	SignalBus.server_closed.connect(_on_server_closed)
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -118,4 +119,14 @@ func load_select_world_scene():
 
 
 func _on_cancel_host_btn_pressed():
-	server.stop_server()
+	SignalBus.broadcast_server_closed.rpc()
+	
+	
+func _on_server_closed():
+	print("server closed, handling")
+	get_tree().reload_current_scene()
+	GameManager.PLAYERS.clear()
+	pass
+	
+	
+	
