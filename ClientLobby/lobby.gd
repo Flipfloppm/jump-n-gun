@@ -100,8 +100,6 @@ func remove_client(client_id):
 		# remove the client peer from the game manager/player data
 		GameManager.PLAYERS.erase(client_id)
 		print("client removed, current players:", GameManager.PLAYERS)
-		
-		
 
 
 func _on_back_btn_pressed():
@@ -117,3 +115,7 @@ func load_select_world_scene():
 	print("going to select world tscn" + str(multiplayer.get_unique_id()))
 	server_browser.cleanup_browser()
 	get_tree().change_scene_to_file("res://Levels/level_selection/World_Select.tscn")
+
+
+func _on_cancel_host_btn_pressed():
+	server.stop_server()

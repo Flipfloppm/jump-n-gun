@@ -15,7 +15,9 @@ var _is_paused:bool = false:
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("PauseMenu"):
 		_is_paused = !_is_paused
+		set_paused.rpc(_is_paused)
 	
+@rpc("any_peer","call_local")
 func set_paused(value:bool) -> void:
 	_is_paused = value
 	get_tree().paused = _is_paused
@@ -28,5 +30,9 @@ func _on_menu_btn_pressed():
 
 
 func _on_restart_btn_pressed():
+	restart_game.rpc()
+	
+@rpc("any_peer", "call_local")
+func restart_game():
 	set_paused(false)
 	get_tree().reload_current_scene()

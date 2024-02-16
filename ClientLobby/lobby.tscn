@@ -288,5 +288,6 @@ text = "Cancel Hosting Session"
 [connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/SelectWorldBtn" to="." method="_on_select_world_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/CancelHostBtn" to="." method="_on_cancel_host_btn_pressed"]
 
 [editable path="CanvasLayer/Server"]

@@ -82,6 +82,8 @@ text = "Menu"
 layout_mode = 2
 text = "Quit"
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
 [connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="GridContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
 [connection signal="pressed" from="GridContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]

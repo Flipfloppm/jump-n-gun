@@ -34,6 +34,25 @@ func start_server():
 				break
 	return [SELECTED_PORT, SELECTED_IP]
 
+func stop_server():
+	"""
+	This method removes the server and disconnect the 
+	"""
+	# clear all peers
+	for player_id in GameManager.PLAYERS:
+		if player_id != 1:
+			print(player_id)
+			# remove the client from multiplayer
+			get_tree().network_peer.disconnect_peer(player_id)
+	# terminate server
+	get_tree().set_network_peer(null)
+	# clear game data
+	GameManager.PLAYERS.clear()
+	print(GameManager.PLAYERS)
+	print("stopped server")
+
+	
+
 # this gets called on both the server and client when someone connects
 func peer_connected(id):
 	print("Player connected: " + str(id))
