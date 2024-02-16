@@ -24,6 +24,7 @@ properties/1/replication_mode = 1
 position = Vector2(0, -24)
 collision_layer = 2
 collision_mask = 7
+floor_max_angle = 0.767945
 script = ExtResource("1_exthg")
 rocket = ExtResource("2_jkajc")
 grenade = ExtResource("3_240b4")
