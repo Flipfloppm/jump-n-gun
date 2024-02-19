@@ -1,13 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=21 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
 [ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
 [ext_resource type="Texture2D" uid="uid://ck6x2xb3huw4d" path="res://Art/UI/example-button.png" id="2_mukv1"]
 [ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
-[ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
+[ext_resource type="PackedScene" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="6_umrrv"]
+[ext_resource type="PackedScene" uid="uid://dxhpp01ou7utb" path="res://ClientLobby/character_select.tscn" id="9_1quw6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1jfh"]
 atlas = ExtResource("2_mukv1")
@@ -256,11 +257,20 @@ grow_vertical = 2
 scale = Vector2(0.993627, 0.995313)
 
 [node name="WaitingRoomLabel" type="Label" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Waiting Room"
 horizontal_alignment = 1
 
 [node name="player_list" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
+layout_mode = 0
+offset_right = 524.0
+offset_bottom = 207.0
+
+[node name="CharacterSelect" parent="CanvasLayer/WaitingRoom/Panel/HBoxContainer" instance=ExtResource("9_1quw6")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]

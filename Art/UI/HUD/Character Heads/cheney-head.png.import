@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy7ci6e4lqv4q"
-path="res://.godot/imported/GuyHead.png-ade1360d41c20c5e7aecb6043dbfd095.ctex"
+uid="uid://ck8ayobrbul02"
+path="res://.godot/imported/cheney-head.png-8fdc2bef3801f96f5615ab50ffd8e650.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/HUD/Character Heads/GuyHead.png"
-dest_files=["res://.godot/imported/GuyHead.png-ade1360d41c20c5e7aecb6043dbfd095.ctex"]
+source_file="res://Art/UI/HUD/Character Heads/cheney-head.png"
+dest_files=["res://.godot/imported/cheney-head.png-8fdc2bef3801f96f5615ab50ffd8e650.ctex"]
 
 [params]
 

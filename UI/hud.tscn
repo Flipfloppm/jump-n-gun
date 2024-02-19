@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://d0dkocaq2x4ii"]
 
 [ext_resource type="Script" path="res://UI/hud.gd" id="1_uqtc4"]
-[ext_resource type="Texture2D" uid="uid://c17wgknmqwq3j" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
+[ext_resource type="Texture2D" uid="uid://cy7ci6e4lqv4q" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
 [ext_resource type="Texture2D" uid="uid://bf544kp6c4dih" path="res://Art/UI/HUD/Health Bar/healthbarUI.png" id="2_ce33t"]
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
@@ -224,10 +224,12 @@ texture = ExtResource("2_ce33t")
 hframes = 4
 
 [node name="CharacterHead" type="TextureRect" parent="HealthBar"]
-offset_left = -72.8553
-offset_top = -38.2439
-offset_right = -8.85535
-offset_bottom = 26.7561
+visible = false
+offset_left = -37.4339
+offset_top = 6.2439
+offset_right = 26.5661
+offset_bottom = 71.2439
+scale = Vector2(0.499261, 0.55029)
 texture = ExtResource("2_ce6hl")
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]

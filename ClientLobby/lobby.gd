@@ -71,7 +71,8 @@ func register_player_info(player_name, id):
 		GameManager.PLAYERS[id] = {
 			"name":player_name,
 			"id":id,
-			"score": 0
+			"score": 0,
+			"character": "guy"
 		}
 	# after the server received the connected player's info, the server broadcast
 	# the info to the other players.

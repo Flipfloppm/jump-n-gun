@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy7ci6e4lqv4q"
-path="res://.godot/imported/GuyHead.png-ade1360d41c20c5e7aecb6043dbfd095.ctex"
+uid="uid://dake7hj12w85o"
+path="res://.godot/imported/bush-head.png-661bd9791ffb2c2262266786f548731a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/HUD/Character Heads/GuyHead.png"
-dest_files=["res://.godot/imported/GuyHead.png-ade1360d41c20c5e7aecb6043dbfd095.ctex"]
+source_file="res://Art/UI/HUD/Character Heads/bush-head.png"
+dest_files=["res://.godot/imported/bush-head.png-661bd9791ffb2c2262266786f548731a.ctex"]
 
 [params]
 

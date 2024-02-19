@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu3wuda2v2xa3"]
+[gd_scene load_steps=3 format=3 uid="uid://ydmtqfpc28wv"]
 
 [ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="1_d4xn4"]
+[ext_resource type="PackedScene" uid="uid://dxhpp01ou7utb" path="res://ClientLobby/character_select.tscn" id="2_xp13m"]
 
 [node name="waitingroom" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d4xn4")
+charSelectScene = ExtResource("2_xp13m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

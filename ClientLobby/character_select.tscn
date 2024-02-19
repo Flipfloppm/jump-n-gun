@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxhpp01ou7utb"]
+
+[ext_resource type="Script" path="res://ClientLobby/character_select.gd" id="1_oepae"]
+[ext_resource type="Texture2D" uid="uid://cy7ci6e4lqv4q" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="1_oextp"]
+
+[sub_resource type="Theme" id="Theme_jqc1a"]
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_p4v6w"]
+default_font_size = 16
+
+[node name="CharacterSelect" type="VBoxContainer"]
+anchors_preset = -1
+anchor_left = 0.415625
+anchor_top = 0.5
+anchor_right = 0.415625
+anchor_bottom = 0.927778
+offset_left = -126.0
+offset_top = -55.0
+offset_right = 47.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.734711, 0.671535)
+script = ExtResource("1_oepae")
+metadata/_edit_use_anchors_ = true
+
+[node name="UserId" type="Label" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_jqc1a")
+text = "Player 1"
+
+[node name="charDisplay" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_oextp")
+expand_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="leftCharSelect" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "←"
+
+[node name="charName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_p4v6w")
+text = "Guy"
+horizontal_alignment = 1
+
+[node name="rightCharSelect" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "→"
+
+[connection signal="pressed" from="HBoxContainer/leftCharSelect" to="." method="_on_left_char_select_pressed"]
+[connection signal="pressed" from="HBoxContainer/rightCharSelect" to="." method="_on_right_char_select_pressed"]
