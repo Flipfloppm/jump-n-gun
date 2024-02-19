@@ -10,7 +10,7 @@ var knockback_radius = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hasWeaponsDict = {"Rocket": false, "Grenade": false}
+var hasWeaponsDict = {"Rocket": false, "Grenade": false, "Tile": false}
 var currWeapon = ""
 var knockingBack = false
 var mousePosVector: Vector2
@@ -20,6 +20,7 @@ var reloadTime = 0.8
 @onready var camera = $Camera2D
 @export var rocket :PackedScene
 @export var grenade :PackedScene
+@export var tile :PackedScene
 
 
 func _ready():
@@ -27,8 +28,10 @@ func _ready():
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
+	$GunRotation/TileGun.visible = false
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
+	hasWeaponsDict["Tile"] = false
 	add_to_group("players")
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
@@ -90,6 +93,9 @@ func _physics_process(delta):
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			print("selected grenade")
 			select_weapon.rpc("Grenade")
+		elif Input.is_action_just_pressed("selectTileGun") && hasWeaponsDict["Tile"]:
+			print("selected tileGun")
+			select_weapon.rpc("Tile")
 		
 		# Player move
 		move_and_slide()
@@ -97,6 +103,7 @@ func _physics_process(delta):
 
 func _on_rocket_body_entered(weaponBody, body):
 	var weaponName = weaponBody.to_string().get_slice(" ", 0)
+	print(weaponName)
 	if body != self:
 		return 
 	# For now, player can only have one weapon.
@@ -107,6 +114,8 @@ func _on_rocket_body_entered(weaponBody, body):
 	SignalBus.picked_up.emit(weaponBody)
 	select_weapon.rpc(weaponName)
 	hasWeaponsDict[weaponName] = true
+	print("tilegun pickup")
+	
 
 
 # Set current weapon and weapon variables
@@ -121,6 +130,7 @@ func select_weapon(weaponName: String):
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
+			$GunRotation/TileGun.visible = false
 		"Grenade":
 			currWeapon = "GrenadeLauncher"
 			knockback_min_force = 200
@@ -128,6 +138,16 @@ func select_weapon(weaponName: String):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = true
+			$GunRotation/TileGun.visible = false
+		"Tile":
+			currWeapon = "TileGun"
+			knockback_min_force = 200
+			knockback_max_force = 600
+			knockback_radius = 100
+			$GunRotation/RocketLauncher.visible = false
+			$GunRotation/GrenadeLauncher.visible = false
+			$GunRotation/TileGun.visible = true
+			print("select tilegun")
 	pass
 
 # pos: position of explosion
@@ -168,6 +188,8 @@ func fire():
 			projectile = rocket.instantiate()
 		"GrenadeLauncher":
 			projectile = grenade.instantiate()
+		"TileGun":
+			projectile = tile.instantiate()
 		_:
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
