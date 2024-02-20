@@ -218,12 +218,13 @@ Label/fonts/font = ExtResource("6_a3pfq")
 script = ExtResource("1_uqtc4")
 
 [node name="HealthBar" type="Sprite2D" parent="."]
-position = Vector2(79.5, 41)
-scale = Vector2(1.24219, 1.28125)
+position = Vector2(48.4999, 21)
+scale = Vector2(0.757814, 0.65625)
 texture = ExtResource("2_ce33t")
 hframes = 4
 
 [node name="CharacterHead" type="TextureRect" parent="HealthBar"]
+visible = false
 offset_left = -72.8553
 offset_top = -38.2439
 offset_right = -8.85535
@@ -232,13 +233,13 @@ texture = ExtResource("2_ce6hl")
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(197, 34)
-scale = Vector2(2.125, 1.70833)
+position = Vector2(122, 17)
+scale = Vector2(1.46314, 1.03685)
 sprite_frames = SubResource("SpriteFrames_fylmb")
 
 [node name="GrenadeLauncherReload" type="AnimatedSprite2D" parent="."]
-position = Vector2(192, 35)
-scale = Vector2(2.375, 1.875)
+position = Vector2(120, 18)
+scale = Vector2(1.42883, 1.06862)
 sprite_frames = SubResource("SpriteFrames_6wfp5")
 
 [node name="Panel" type="Panel" parent="GrenadeLauncherReload"]
