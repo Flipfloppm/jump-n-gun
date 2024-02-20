@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://1mvptt5tr4c4"]
+
+[ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="1_it0ol"]
+[ext_resource type="Script" path="res://ClientLobby/ServerInfo.gd" id="1_w7efd"]
+
+[sub_resource type="Theme" id="Theme_jkdwi"]
+default_font = ExtResource("1_it0ol")
+default_font_size = 8
+
+[node name="ServerInfo" type="HBoxContainer"]
+clip_contents = true
+anchors_preset = -1
+anchor_left = 0.403
+anchor_top = 0.052
+anchor_right = 0.403
+anchor_bottom = 0.052
+offset_left = -122.96
+offset_top = -8.36
+offset_right = 195.04
+offset_bottom = 15.64
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.77359, 0.702421)
+theme = SubResource("Theme_jkdwi")
+script = ExtResource("1_w7efd")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D's S"
+horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="IP" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.000.000.001"
+horizontal_alignment = 1
+
+[node name="PlayerCount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2
+"
+horizontal_alignment = 1
+
+[node name="JoinBtn" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[connection signal="pressed" from="JoinBtn" to="." method="_on_join_btn_pressed"]

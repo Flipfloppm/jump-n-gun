@@ -34,6 +34,7 @@ func start_server():
 				break
 	return [SELECTED_PORT, SELECTED_IP]
 
+
 # this gets called on both the server and client when someone connects
 func peer_connected(id):
 	print("Player connected: " + str(id))

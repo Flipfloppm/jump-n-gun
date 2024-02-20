@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://dihcn3dpslxks"]
+
+[ext_resource type="Script" path="res://Levels/level_selection/pause-menu.gd" id="1_cmbrj"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="2_jn60g"]
+
+[sub_resource type="Theme" id="Theme_64ajt"]
+Button/fonts/font = ExtResource("2_jn60g")
+Label/fonts/font = ExtResource("2_jn60g")
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.887356, 0.887356)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_cmbrj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.733
+offset_top = -189.327
+offset_right = -281.733
+offset_bottom = -149.327
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(11.1363, 11.1363)
+color = Color(0.239216, 0.266667, 0.266667, 0.94902)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -87.5
+offset_right = 68.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.865142, 0.995481)
+theme = SubResource("Theme_64ajt")
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Paused
+
+"
+horizontal_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="SettingsBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="MenuBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="QuitBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+
+[connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="GridContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="GridContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="GridContainer/MenuBtn" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

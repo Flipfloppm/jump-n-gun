@@ -1,112 +1,293 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=20 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
+[ext_resource type="FontFile" uid="uid://du4865w68n0ud" path="res://castlevania-dracula-x-small-snes.ttf" id="1_fsqd7"]
 [ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
+[ext_resource type="Texture2D" uid="uid://ck6x2xb3huw4d" path="res://Art/UI/example-button.png" id="2_mukv1"]
+[ext_resource type="Script" path="res://ClientLobby/ServerBrowser.gd" id="3_i5x0a"]
+[ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://ClientLobby/server_info.tscn" id="4_j5rt1"]
+[ext_resource type="Script" path="res://ClientLobby/WaitingRoom.gd" id="5_rllne"]
+[ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="6_umrrv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1jfh"]
+atlas = ExtResource("2_mukv1")
+region = Rect2(2.35797, 38.4629, 152.408, 95.2149)
+margin = Rect2(2.08165e-12, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbl0o"]
+content_margin_left = 4.0
+texture = SubResource("AtlasTexture_b1jfh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6iqx8"]
+texture = ExtResource("2_mukv1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xsbx5"]
+
+[sub_resource type="Theme" id="Theme_05jy7"]
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_fsqd7")
+Button/styles/normal = SubResource("StyleBoxTexture_sbl0o")
+LineEdit/fonts/font = ExtResource("1_fsqd7")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_6iqx8")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_xsbx5")
+
+[sub_resource type="Theme" id="Theme_uo451"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_lhs4f"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_l1eih"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_br80e"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 8
+
+[sub_resource type="Theme" id="Theme_x2mic"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_8nl1y"]
+default_font = ExtResource("6_umrrv")
+default_font_size = 16
 
 [node name="Lobby" type="Control"]
+clip_contents = true
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_ksb3b")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.372549, 0.309804, 0.0313726, 1)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.5
-offset_top = -29.0
-offset_right = 89.5
-offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.11283, 1.11141)
+theme = SubResource("Theme_05jy7")
+script = ExtResource("1_ksb3b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(320, 180)
+transform = Transform2D(1, 0, 0, 1, 320, 180)
+follow_viewport_scale = 19.232
 
-[node name="LobbyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Lobby"
-horizontal_alignment = 1
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = -0.999
+anchor_top = -1.001
+offset_left = -118.32
+offset_top = -38.82
+offset_right = -118.32
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.45886, 1.52125)
+color = Color(0.192157, 0.27451, 0.627451, 1)
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-columns = 2
+[node name="Server" parent="CanvasLayer" instance=ExtResource("1_73qnq")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 144.0
+offset_top = 204.0
+offset_right = 144.0
+offset_bottom = 204.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Player Name: "
-
-[node name="NameEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-placeholder_text = "Enter Name"
-alignment = 1
-
-[node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "IP Address:"
-
-[node name="IPEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "127.0.0.1"
-placeholder_text = "Enter IP Address"
-alignment = 1
-
-[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Port: "
-
-[node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "3296"
-placeholder_text = "Enter Port Number"
-alignment = 1
-
-[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Join Game"
-
-[node name="StartGameBtn" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Start Game"
-
-[node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_73qnq")]
-layout_mode = 2
-
-[node name="HostGame" parent="CenterContainer/VBoxContainer/Server" index="0"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="HostGame" parent="CanvasLayer/Server" index="0"]
+anchors_preset = -1
+anchor_left = 0.388
+anchor_right = 0.614
 anchor_bottom = 1.0
-offset_left = -77.0
-offset_top = 5.0
-offset_right = 77.0
-offset_bottom = 47.0
+offset_left = -250.0
+offset_top = -381.0
+offset_right = -98.0
+offset_bottom = -357.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.685469, 0.803715)
+theme = SubResource("Theme_uo451")
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
+[node name="BackBtn" type="Button" parent="CanvasLayer"]
+offset_left = -316.0
+offset_top = -177.0
+offset_right = -145.0
+offset_bottom = -95.0
+scale = Vector2(0.303511, 0.243339)
+theme = SubResource("Theme_lhs4f")
+text = "Back"
 
-[editable path="CenterContainer/VBoxContainer/Server"]
+[node name="Servers" type="Label" parent="CanvasLayer"]
+offset_left = -237.0
+offset_top = -175.0
+offset_right = -123.0
+offset_bottom = -157.0
+theme = SubResource("Theme_l1eih")
+text = "Servers"
+
+[node name="ServerBrowser" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -294.0
+offset_top = -117.0
+offset_right = -254.0
+offset_bottom = -77.0
+scale = Vector2(1, 0.971427)
+script = ExtResource("3_i5x0a")
+serverInfo = ExtResource("4_j5rt1")
+
+[node name="BroadcastTimer" type="Timer" parent="CanvasLayer/ServerBrowser"]
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ServerBrowser"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -4.206
+anchor_right = 0.5
+anchor_bottom = -4.206
+offset_left = -43.0
+offset_top = 139.24
+offset_right = 244.0
+offset_bottom = 262.24
+scale = Vector2(1.08868, 1.14568)
+
+[node name="ServerInfoTitle" type="HBoxContainer" parent="CanvasLayer/ServerBrowser/Panel"]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 362.0
+offset_bottom = 31.0
+scale = Vector2(0.827113, 1.0204)
+theme = SubResource("Theme_br80e")
+
+[node name="NameTitle" type="Label" parent="CanvasLayer/ServerBrowser/Panel/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Server
+"
+horizontal_alignment = 1
+
+[node name="IPTitle" type="Label" parent="CanvasLayer/ServerBrowser/Panel/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP"
+horizontal_alignment = 1
+
+[node name="PlayerCountTitle" type="Label" parent="CanvasLayer/ServerBrowser/Panel/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Players"
+horizontal_alignment = 1
+
+[node name="JoinTitle" type="Label" parent="CanvasLayer/ServerBrowser/Panel/ServerInfoTitle"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ServerBrowser/Panel"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.094
+offset_top = 24.0
+offset_right = -6.0
+offset_bottom = 107.438
+grow_horizontal = 2
+scale = Vector2(1.01413, 1.00375)
+
+[node name="ListenPortLabel" type="Label" parent="CanvasLayer/ServerBrowser"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 108.088
+offset_right = 98.0
+offset_bottom = 119.088
+scale = Vector2(0.509617, 0.713443)
+theme = SubResource("Theme_x2mic")
+text = "Listen to port:"
+
+[node name="WaitingRoom" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -314.0
+offset_top = -179.0
+offset_right = -314.0
+offset_bottom = -175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8nl1y")
+script = ExtResource("5_rllne")
+
+[node name="UserIDLabel" type="Label" parent="CanvasLayer/WaitingRoom"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 142.0
+offset_bottom = 24.0
+scale = Vector2(0.569726, 0.515493)
+text = "User ID: "
+
+[node name="Panel" type="Panel" parent="CanvasLayer/WaitingRoom"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 11.0
+offset_right = 351.0
+offset_bottom = 219.0
+scale = Vector2(0.887688, 0.483816)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.12784
+offset_top = 1.57426
+offset_right = 1.12784
+offset_bottom = 1.57426
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.993627, 0.995313)
+
+[node name="WaitingRoomLabel" type="Label" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Waiting Room"
+horizontal_alignment = 1
+
+[node name="player_list" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 113.0
+offset_right = 164.0
+offset_bottom = 153.0
+scale = Vector2(0.876473, 0.728186)
+
+[node name="SelectWorldBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Select World"
+
+[node name="ExitRoomBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Exit Room"
+
+[node name="CancelHostBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
+layout_mode = 2
+text = "Cancel Hosting Session"
+
+[connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/SelectWorldBtn" to="." method="_on_select_world_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/CancelHostBtn" to="." method="_on_cancel_host_btn_pressed"]
+
+[editable path="CanvasLayer/Server"]
