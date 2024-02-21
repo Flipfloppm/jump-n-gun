@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw3kroc3btwcx"]
+
+[ext_resource type="Script" path="res://UI/Menus/scripts/main_menu.gd" id="1_wqeys"]
+[ext_resource type="Texture2D" uid="uid://dbglnfq5c3tl2" path="res://Art/UI/title-screen/mainmenubkg.png" id="2_udto6"]
+[ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="3_cq0q2"]
+[ext_resource type="StyleBox" uid="uid://qhm3ejxbdlqi" path="res://Art/UI/ugly-button-style.tres" id="4_xjedl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaait"]
+atlas = ExtResource("2_udto6")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hrbh"]
+atlas = ExtResource("2_udto6")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh7p0"]
+atlas = ExtResource("2_udto6")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c377f"]
+atlas = ExtResource("2_udto6")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltcdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaait")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hrbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh7p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c377f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Theme" id="Theme_vnof0"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("3_cq0q2")
+Button/styles/normal = ExtResource("4_xjedl")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_right = 377.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.962529, 0.957166)
+script = ExtResource("1_wqeys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(174.54, 66.8641)
+scale = Vector2(1.13281, 1.13281)
+sprite_frames = SubResource("SpriteFrames_ltcdm")
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 141.294
+offset_top = -8.35801
+offset_right = 435.294
+offset_bottom = 167.642
+scale = Vector2(0.507116, 0.841698)
+theme = SubResource("Theme_vnof0")
+theme_override_constants/separation = 15
+
+[node name="MultiplayerBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="SettingsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]

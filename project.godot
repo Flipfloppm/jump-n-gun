@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="jump-n-gun"
-run/main_scene="res://Levels/level_selection/Title_Screen.tscn"
+run/main_scene="res://UI/Menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://game_manager.gd"
-SignalBus="*res://SignalBus.gd"
+GameManager="*res://Game Management/game_manager.gd"
+SignalBus="*res://Game Management/SignalBus.gd"
 
 [display]
 

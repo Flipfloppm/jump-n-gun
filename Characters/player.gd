@@ -88,7 +88,6 @@ func _physics_process(delta):
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
-			print(currWeapon)
 			match currWeapon:
 				"RocketLauncher":
 					if rocketReloadTime < 0:
