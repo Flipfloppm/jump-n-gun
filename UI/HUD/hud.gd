@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var _rocketLauncherAnimation = $RocketLauncherReload
 @onready var _grenadeLauncherAnimation = $GrenadeLauncherReload
-@onready var _grenadeLauncherAmmoText = $GrenadeLauncherReload/Ammo
+@onready var _grenadeLauncherAmmoText = $GrenadeLauncherReload/Panel/Ammo
 @onready var _healthBar = $HealthBar
 var grenadeLauncherAmmo = 6
 var grenadeReloading = false

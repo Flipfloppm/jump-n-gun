@@ -6,6 +6,7 @@ extends Control
 @onready var waiting_room = $CanvasLayer/WaitingRoom
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
@@ -39,6 +40,7 @@ func _on_host_game_pressed():
 	waiting_room.visible = true
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/Servers.visible = false
+	$CanvasLayer/IPBtn.visible = false
 
 func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
@@ -49,6 +51,7 @@ func join_server_by_ip(ip):
 	server_browser.visible = false
 	server.visible = false
 	$CanvasLayer/BackBtn.visible = false
+	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	waiting_room.visible = true
 

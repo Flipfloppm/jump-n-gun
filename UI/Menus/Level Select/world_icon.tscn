@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm7ht8l2fnyl2"]
+[gd_scene load_steps=5 format=3 uid="uid://dm7ht8l2fnyl2"]
 
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_a4pte"]
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/world_icon.gd" id="1_qo8om"]
-[ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="2_r4410"]
 [ext_resource type="Texture2D" uid="uid://bgjl8qy0g1y26" path="res://Art/UI/WorldSelect/skyscraper-icon.png" id="3_ospya"]
+
+[sub_resource type="Theme" id="Theme_at3r0"]
+default_font = ExtResource("1_a4pte")
+default_font_size = 48
 
 [node name="WorldIcon" type="Control"]
 layout_mode = 3
@@ -10,17 +14,17 @@ anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 40.0
 pivot_offset = Vector2(32, 20)
+theme = SubResource("Theme_at3r0")
 script = ExtResource("1_qo8om")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -1.0
-offset_top = -18.0
-offset_right = 69.0
-offset_bottom = -6.0
-theme_override_fonts/font = ExtResource("2_r4410")
-theme_override_font_sizes/font_size = 10
+offset_left = 1.0
+offset_top = -41.0
+offset_right = 71.0
+offset_bottom = -3.0
 text = "Job 1"
+horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

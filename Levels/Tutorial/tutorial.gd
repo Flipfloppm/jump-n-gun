@@ -2,6 +2,7 @@ extends Node2D
 
 @export var GUYSCENE: PackedScene
 @export var DUDESCENE: PackedScene
+@export var CheneyScene: PackedScene
 #@onready var pause_menu = "res://Levels/level_selection/pause-menu.tscn"
 var paused = false
 var cur_player
@@ -15,7 +16,7 @@ func _ready():
 	for i in GameManager.PLAYERS:
 		if index % 2 == 0:
 			print("guy")
-			cur_player = GUYSCENE.instantiate()
+			cur_player = CheneyScene.instantiate()
 		else:
 			print("dude")
 			cur_player = DUDESCENE.instantiate()

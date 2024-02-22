@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw3kroc3btwcx"]
+[gd_scene load_steps=9 format=3 uid="uid://bw3kroc3btwcx"]
 
 [ext_resource type="Script" path="res://UI/Menus/scripts/main_menu.gd" id="1_wqeys"]
 [ext_resource type="Texture2D" uid="uid://dbglnfq5c3tl2" path="res://Art/UI/title-screen/mainmenubkg.png" id="2_udto6"]
-[ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="3_cq0q2"]
-[ext_resource type="StyleBox" uid="uid://qhm3ejxbdlqi" path="res://Art/UI/ugly-button-style.tres" id="4_xjedl"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="3_rpio6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jaait"]
 atlas = ExtResource("2_udto6")
@@ -41,12 +40,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_vnof0"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("3_cq0q2")
-Button/styles/normal = ExtResource("4_xjedl")
-
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -61,19 +54,19 @@ scale = Vector2(0.962529, 0.957166)
 script = ExtResource("1_wqeys")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(174.54, 66.8641)
-scale = Vector2(1.13281, 1.13281)
+position = Vector2(331.933, 161.936)
+scale = Vector2(2.07464, 2.07789)
 sprite_frames = SubResource("SpriteFrames_ltcdm")
 autoplay = "default"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 141.294
+offset_left = 275.316
 offset_top = -8.35801
-offset_right = 435.294
-offset_bottom = 167.642
-scale = Vector2(0.507116, 0.841698)
-theme = SubResource("Theme_vnof0")
+offset_right = 569.316
+offset_bottom = 174.642
+scale = Vector2(1.13027, 1.31911)
+theme = ExtResource("3_rpio6")
 theme_override_constants/separation = 15
 
 [node name="MultiplayerBtn" type="Button" parent="VBoxContainer"]

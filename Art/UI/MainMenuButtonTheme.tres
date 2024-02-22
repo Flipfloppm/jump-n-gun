@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://xqntkjm8a05f"]
+
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_w4v5t"]
+
+[resource]
+default_font = ExtResource("1_w4v5t")
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_w4v5t")
