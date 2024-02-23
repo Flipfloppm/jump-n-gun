@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var direction : Vector2
-var explosion = preload("res://Items/explosion.tscn")
+var explosion = preload("res://Weaponry/explosion.tscn")
 var collision_info
 # Called when the node enters the scene tree for the first time.
 func _ready():

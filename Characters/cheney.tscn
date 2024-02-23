@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dt7l4ecn6iwft"]
+[gd_scene load_steps=28 format=3 uid="uid://dt7l4ecn6iwft"]
 
 [ext_resource type="Texture2D" uid="uid://bj1n33tggiknk" path="res://Art/Characters/Cheney/cheney-idle.png" id="1_7x8su"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_nyab2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="3_gb1js"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://SFX/jump.wav" id="4_prp2e"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://SFX/shoot.wav" id="5_a6rky"]
+[ext_resource type="Texture2D" path="res://Art/Weapons/tile-gun-temp.png" id="8_lu13s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e62gi"]
 atlas = ExtResource("1_7x8su")
@@ -165,6 +166,11 @@ position = Vector2(27, 1)
 position = Vector2(20, 0.999998)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_gb1js")
+
+[node name="TileGun" type="Sprite2D" parent="GunRotation"]
+position = Vector2(20, 2)
+scale = Vector2(0.70625, 0.675)
+texture = ExtResource("8_lu13s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
