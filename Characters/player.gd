@@ -20,11 +20,14 @@ var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
 var health = 3
+var lastDir = 0
 @onready var camera = $Camera2D
 @onready var jumpAudio = $JumpAudio
 @onready var shootAudio = $ShootAudio
+@onready var animatedSprite = $Sprite
 @export var rocket :PackedScene
 @export var grenade :PackedScene
+
 
 
 func _ready():
@@ -71,10 +74,16 @@ func _physics_process(delta):
 		# Get the input direction and handle the movement/deceleration.	
 		var direction = Input.get_axis("left", "right")
 		if direction:
+			if direction == -1:
+				animatedSprite.flip_h = 0
+			else:
+				animatedSprite.flip_h = 1
+			animatedSprite.play("walking")
 			velocity.x = direction * SPEED
 		elif knockingBack: # For knockback stopping
 			velocity.x = lerp(velocity.x, 0.0, knockback_lerp_const)
 		else: # Regular stopping
+			animatedSprite.play("idle")
 			velocity.x = lerp(velocity.x, 0.0, regular_lerp_const)
 			
 		# This rotates the gun following the mouse
@@ -88,7 +97,6 @@ func _physics_process(delta):
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
-			print(currWeapon)
 			match currWeapon:
 				"RocketLauncher":
 					if rocketReloadTime < 0:

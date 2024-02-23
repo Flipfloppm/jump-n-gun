@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4vshfjlspd7v"]
+[gd_scene load_steps=11 format=3 uid="uid://b4vshfjlspd7v"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_exthg"]
-[ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Items/rocket.tscn" id="2_jkajc"]
-[ext_resource type="PackedScene" path="res://Items/grenade.tscn" id="3_240b4"]
+[ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_jkajc"]
+[ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_240b4"]
 [ext_resource type="Texture2D" uid="uid://c1qhpcl2b8lui" path="res://Art/Characters/dude.png" id="3_e0j2s"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="4_oij6s"]
-[ext_resource type="PackedScene" uid="uid://brwfur3esdpq0" path="res://Levels/camera_2d.tscn" id="5_p2t26"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="5_rnuiq"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://SFX/jump.wav" id="8_cc5rl"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://SFX/shoot.wav" id="9_m2jot"]
@@ -55,11 +54,7 @@ position = Vector2(22, -2)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("5_rnuiq")
 
-[node name="Camera2D" parent="." instance=ExtResource("5_p2t26")]
-visible = false
-position = Vector2(4, -1)
-anchor_mode = 1
-script = null
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_qq1f1")
