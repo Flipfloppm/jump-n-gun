@@ -80,7 +80,7 @@ func _physics_process(delta):
 			else:
 				animatedSprite.flip_h = 1
 			animatedSprite.play("walking")
-			velocity.x = direction * SPEED
+			velocity.x = direction * speed
 		elif knockingBack: # For knockback stopping
 			velocity.x = lerp(velocity.x, 0.0, knockback_lerp_const)
 		else: # Regular stopping
