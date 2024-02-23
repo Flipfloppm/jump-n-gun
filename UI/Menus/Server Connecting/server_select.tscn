@@ -17,9 +17,9 @@ default_font_size = 64
 default_font = ExtResource("5_tu8p8")
 default_font_size = 32
 
-[sub_resource type="Theme" id="Theme_bty8p"]
+[sub_resource type="Theme" id="Theme_buofb"]
 default_font = ExtResource("5_tu8p8")
-default_font_size = 48
+default_font_size = 32
 
 [node name="Lobby" type="Control"]
 clip_contents = true
@@ -190,35 +190,29 @@ text = "Listen to port:"
 [node name="WaitingRoom" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -314.0
-offset_top = -179.0
-offset_right = -314.0
-offset_bottom = -175.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_4adf5")
+anchors_preset = 0
+offset_left = -319.0
+offset_top = -181.0
+offset_right = -279.0
+offset_bottom = -141.0
 script = ExtResource("7_6edpu")
 
 [node name="UserIDLabel" type="Label" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
 offset_top = -3.0
 offset_right = 144.0
 offset_bottom = 23.0
 scale = Vector2(0.569726, 0.515493)
+theme = SubResource("Theme_buofb")
 text = "User ID: "
 
 [node name="Panel" type="Panel" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
 offset_left = -3.0
 offset_top = 11.0
 offset_right = 711.0
 offset_bottom = 424.0
 scale = Vector2(0.887688, 0.483816)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,18 +225,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.993627, 0.995313)
 
-[node name="WaitingRoomLabel" type="Label" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 65
-text = "Waiting Room"
-horizontal_alignment = 1
-
-[node name="player_list" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_bty8p")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
 offset_left = -3.0
 offset_top = 216.0
 offset_right = 723.0
@@ -265,8 +248,5 @@ text = "Cancel Hosting Session"
 [connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/SelectWorldBtn" to="." method="_on_select_world_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/CancelHostBtn" to="." method="_on_cancel_host_btn_pressed"]
 
 [editable path="CanvasLayer/Server"]

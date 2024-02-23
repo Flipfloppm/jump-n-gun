@@ -12,8 +12,9 @@ func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
 	server_browser.childServerJoin.connect(join_server_by_ip)
-	waiting_room.client_disconnect_request.connect(remove_client)
+	#waiting_room.client_disconnect_request.connect(remove_client)
 	SignalBus.server_closed.connect(_on_server_closed)
+	#$CanvasLayer/WaitingRoom/UserIDLabel.text = multiplayer.get_unique_id()
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -33,14 +34,17 @@ func _on_host_game_pressed():
 	hostBtn.visible = false
 	register_player_info("david", multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
-	#$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
+	#serverBrowser.setup_server_broadcast(playerName.text + "'s server")
 	server_browser.setup_server_broadcast("david")
+	#get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/waiting_room.tscn")
+	
 	# move to waiting room
 	server_browser.visible = false
 	waiting_room.visible = true
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	$CanvasLayer/IPBtn.visible = false
+	$CanvasLayer/WaitingRoom/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
 
 func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
@@ -54,6 +58,8 @@ func join_server_by_ip(ip):
 	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	waiting_room.visible = true
+	$CanvasLayer/WaitingRoom/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
+	
 
 func _on_start_game_btn_pressed():
 	start_game.rpc()
@@ -75,6 +81,7 @@ func register_player_info(player_name, id):
 			"name":player_name,
 			"id":id,
 			"score": 0
+			
 		}
 	# after the server received the connected player's info, the server broadcast
 	# the info to the other players.
@@ -95,7 +102,7 @@ func remove_client(client_id):
 		server.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
-		waiting_room.visible = false
+		#waiting_room.visible = false
 		
 	if multiplayer.get_unique_id() == 1:
 		# remove the client peer

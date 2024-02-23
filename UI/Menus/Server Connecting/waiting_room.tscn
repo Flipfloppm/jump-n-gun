@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://c63wng7gvpv7e"]
+
+[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_6bua4"]
+[ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="1_s1ky8"]
+[ext_resource type="PackedScene" uid="uid://c8nmn0pkh7rpt" path="res://UI/Menus/character_select.tscn" id="2_lhuy3"]
+
+[node name="WaitingRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_s1ky8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(21.2634, 14.6967)
+mouse_filter = 1
+color = Color(0.192157, 0.27451, 0.627451, 1)
+
+[node name="UserIDLabel" type="Label" parent="CanvasLayer"]
+offset_top = -3.0
+offset_right = 144.0
+offset_bottom = 23.0
+scale = Vector2(0.569726, 0.515493)
+text = "User ID: "
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = -3.0
+offset_top = 11.0
+offset_right = 711.0
+offset_bottom = 424.0
+scale = Vector2(0.887688, 0.483816)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.12784
+offset_top = 1.57426
+offset_right = 1.12784
+offset_bottom = 1.57426
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.993627, 0.995313)
+
+[node name="CharacterSelect" parent="CanvasLayer/Panel/HBoxContainer" instance=ExtResource("2_lhuy3")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = -3.0
+offset_top = 216.0
+offset_right = 723.0
+offset_bottom = 410.0
+scale = Vector2(0.876473, 0.728186)
+theme = ExtResource("1_6bua4")
+
+[node name="SelectWorldBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Select World"
+
+[node name="ExitRoomBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Exit Room"
+
+[node name="CancelHostBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel Hosting Session"
