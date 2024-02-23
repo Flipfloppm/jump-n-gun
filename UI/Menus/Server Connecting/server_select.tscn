@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="5_tu8p8"]
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="7_6edpu"]
-[ext_resource type="PackedScene" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
+[ext_resource type="PackedScene" uid="uid://r4itwr37og2b" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
 
 [sub_resource type="Theme" id="Theme_36kwc"]
 default_font = ExtResource("5_tu8p8")
@@ -212,7 +212,7 @@ text = "User ID: "
 layout_mode = 0
 offset_left = -3.0
 offset_top = 11.0
-offset_right = 711.0
+offset_right = 718.0
 offset_bottom = 424.0
 scale = Vector2(0.887688, 0.483816)
 
@@ -221,10 +221,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.12784
-offset_top = 1.57426
-offset_right = 1.12784
-offset_bottom = 1.57426
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 6.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.993627, 0.995313)
@@ -233,7 +233,7 @@ scale = Vector2(0.993627, 0.995313)
 layout_mode = 0
 offset_left = -3.0
 offset_top = 216.0
-offset_right = 723.0
+offset_right = 728.0
 offset_bottom = 410.0
 scale = Vector2(0.876473, 0.728186)
 theme = ExtResource("4_vfclq")

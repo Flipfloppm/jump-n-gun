@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv3v1y3ftyx52"]
+[gd_scene load_steps=6 format=3 uid="uid://r4itwr37og2b"]
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/direct_ip_join.gd" id="1_sso8u"]
 [ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_xej3j"]
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="2_rosjn"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="4_wydmn"]
+
+[sub_resource type="Theme" id="Theme_hdkip"]
+default_font = ExtResource("4_wydmn")
+default_font_size = 32
 
 [node name="DirectIPJoin" type="Control"]
 visible = false
@@ -66,6 +71,7 @@ horizontal_alignment = 1
 
 [node name="ServerAddressEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_hdkip")
 
 [node name="JoinBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
