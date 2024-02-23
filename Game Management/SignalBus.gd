@@ -11,3 +11,5 @@ signal server_closed()
 @rpc("any_peer","call_local")
 func broadcast_server_closed():
 	SignalBus.server_closed.emit()
+
+signal serverBrowserJoin(ip) # indicates a user trying to join a server at IP

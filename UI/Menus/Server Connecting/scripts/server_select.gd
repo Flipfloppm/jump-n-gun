@@ -11,9 +11,11 @@ extends Control
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
-	server_browser.childServerJoin.connect(join_server_by_ip)
+	#server_browser.childServerJoin.connect(join_server_by_ip) # deprecated
+	SignalBus.serverBrowserJoin.connect(join_server_by_ip) # new method
 	waiting_room.client_disconnect_request.connect(remove_client)
 	SignalBus.server_closed.connect(_on_server_closed)
+
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -131,5 +133,7 @@ func _on_server_closed():
 	GameManager.PLAYERS.clear()
 	pass
 	
-	
-	
+
+func _on_ip_btn_pressed():
+	print("IP BTN pressed: opening direct server join scene")
+	$CanvasLayer/DirectIPJoin/CanvasLayer.visible=true

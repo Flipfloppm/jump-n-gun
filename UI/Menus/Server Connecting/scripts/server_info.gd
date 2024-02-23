@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-signal serverBrowserJoin(ip)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,4 @@ func _process(delta):
 
 
 func _on_join_btn_pressed():
-	serverBrowserJoin.emit($IP.text)
+	SignalBus.serverBrowserJoin.emit($IP.text)

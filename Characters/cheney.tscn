@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dt7l4ecn6iwft"]
+[gd_scene load_steps=27 format=3 uid="uid://cqqxyxfj8bgl5"]
 
 [ext_resource type="Texture2D" uid="uid://bj1n33tggiknk" path="res://Art/Characters/Cheney/cheney-idle.png" id="1_7x8su"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_nyab2"]
