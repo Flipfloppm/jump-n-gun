@@ -27,6 +27,7 @@ floor_max_angle = 0.767945
 script = ExtResource("1_qtoxy")
 rocket = ExtResource("3_aiia3")
 grenade = ExtResource("3_v430n")
+tile = ExtResource("4_77lhb")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
@@ -49,6 +50,11 @@ position = Vector2(25, 1)
 position = Vector2(23, 1)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("6_5rv86")
+
+[node name="TileGun" type="Sprite2D" parent="GunRotation"]
+position = Vector2(20, 0)
+scale = Vector2(0.8125, 0.75)
+texture = ExtResource("7_f4abe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
