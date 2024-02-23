@@ -34,7 +34,7 @@ func _process(delta):
 
 #localhostId is a stupid name for the player's instance we are running
 func setup(username, id, localhostId):
-	$UserId.text = "user id: " + str(id)
+	$UserId.text = username
 	user = username
 	controllerId = id
 	localId = localhostId

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_6bua4"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="1_s1ky8"]
-[ext_resource type="PackedScene" uid="uid://c8nmn0pkh7rpt" path="res://UI/Menus/character_select.tscn" id="2_lhuy3"]
+[ext_resource type="PackedScene" uid="uid://c8nmn0pkh7rpt" path="res://UI/Menus/Server Connecting/Components/character_select.tscn" id="2_lhuy3"]
 
 [node name="WaitingRoom" type="Control"]
 layout_mode = 3

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8nmn0pkh7rpt"]
 
-[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_a2x4l"]
-[ext_resource type="Script" path="res://UI/Menus/character_select.gd" id="1_o1mxm"]
-[ext_resource type="Texture2D" uid="uid://diisvkicbrdae" path="res://Art/UI/HUD/Character Heads/dwight-head.png" id="3_dwtj0"]
+[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_5puy1"]
+[ext_resource type="Script" path="res://UI/Menus/Server Connecting/Components/character_select.gd" id="2_n6ltl"]
+[ext_resource type="Texture2D" uid="uid://diisvkicbrdae" path="res://Art/UI/HUD/Character Heads/dwight-head.png" id="3_io4sf"]
 
 [node name="CharacterSelect" type="VBoxContainer"]
 anchors_preset = 15
@@ -15,8 +15,8 @@ offset_bottom = -202.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8042, 1.30796)
-theme = ExtResource("1_a2x4l")
-script = ExtResource("1_o1mxm")
+theme = ExtResource("1_5puy1")
+script = ExtResource("2_n6ltl")
 
 [node name="UserId" type="Label" parent="."]
 layout_mode = 2
@@ -24,7 +24,7 @@ text = "Player: x"
 
 [node name="charDisplay" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("3_dwtj0")
+texture = ExtResource("3_io4sf")
 stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

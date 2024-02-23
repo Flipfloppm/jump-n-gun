@@ -8,15 +8,11 @@ signal client_disconnect_request(player_id)
 @onready var exit_room_btn = $VBoxContainer/ExitRoomBtn
 @onready var cancel_host_btn = $VBoxContainer/CancelHostBtn
 #@export var charSelectScene: PackedScene
-var charSelectScene = preload("res://UI/Menus/character_select.tscn")
+var charSelectScene = preload("res://UI/Menus/Server Connecting/Components/character_select.tscn")
 var lobbySet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# first we add the host
-	var charScene = charSelectScene.instantiate()
-	#charScene.setup("host", multiplayer.get_unique_id())
-	#char_select_container.add_child(charScene)
 	# if not the host, hide the start game button
 	if multiplayer.get_unique_id() != 1:
 		exit_room_btn.visible = true
@@ -24,7 +20,6 @@ func _ready():
 		cancel_host_btn.visible = false
 	else: 
 		exit_room_btn.visible = false
-	#lobbySet[multiplayer.get_unique_id()] = 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,7 +30,7 @@ func refresh_players(players):
 		if lobbySet.has(player_id):
 			continue
 		var charSelect = charSelectScene.instantiate()
-		charSelect.setup("franklin", player_id, multiplayer.get_unique_id())
+		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id())
 		char_select_container.add_child(charSelect)
 		lobbySet[player_id] = 1
 

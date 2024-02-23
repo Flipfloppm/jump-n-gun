@@ -21,7 +21,7 @@ func connected_to_server():
 	print("connected to server")
 	# call register info on the server first
 	#register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
-	register_player_info.rpc_id(1, "david", multiplayer.get_unique_id())
+	register_player_info.rpc_id(1, GameManager.username, multiplayer.get_unique_id())
 
 # this gets called only by clients 
 func connection_failed():
@@ -32,10 +32,10 @@ func _on_host_game_pressed():
 	var host_info = server.start_server()
 	hostBtn.disabled = true
 	hostBtn.visible = false
-	register_player_info("david", multiplayer.get_unique_id())
+	register_player_info(GameManager.username, multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
 	#serverBrowser.setup_server_broadcast(playerName.text + "'s server")
-	server_browser.setup_server_broadcast("david")
+	server_browser.setup_server_broadcast(GameManager.username)
 	#get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/waiting_room.tscn")
 	
 	# move to waiting room
