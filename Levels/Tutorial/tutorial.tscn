@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=31 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://duf0ghh8oyjkf" path="res://Characters/guy.tscn" id="2_tjxnj"]
 [ext_resource type="PackedScene" uid="uid://b4vshfjlspd7v" path="res://Characters/dude.tscn" id="3_jeor8"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="3_q118t"]
-[ext_resource type="PackedScene" path="res://Characters/cheney.tscn" id="4_f3xem"]
+[ext_resource type="PackedScene" uid="uid://dt7l4ecn6iwft" path="res://Characters/cheney.tscn" id="4_f3xem"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="4_kwiu1"]
 [ext_resource type="Texture2D" uid="uid://c7sxb0fmbbopx" path="res://Art/LevelTiles/metal-block-8.png" id="8_1stur"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial_tilemap.gd" id="8_ruo01"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
 [ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
+[ext_resource type="PackedScene" uid="uid://c8biqfvq20y8d" path="res://Weaponry/tile_gun.tscn" id="17_ukqb2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -286,3 +287,6 @@ visible = false
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v3gu1")
 format = 2
+
+[node name="Tile Gun" parent="." instance=ExtResource("17_ukqb2")]
+position = Vector2(118, -33)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0h16kkiltpdc"]
 
-[ext_resource type="Script" path="res://Items/tile.gd" id="1_vpkjg"]
-[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-8.png" id="2_1pg6e"]
+[ext_resource type="Script" path="res://Weaponry/scripts/tile.gd" id="1_vpkjg"]
+[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="2_1pg6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xnbg"]
 size = Vector2(8, 8)
