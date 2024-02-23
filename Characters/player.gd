@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
+var speed = 200.0
 const JUMP_VELOCITY = -300.0
 var knockback_lerp_const = 0.1
 var regular_lerp_const = 0.9
@@ -223,3 +223,17 @@ func hurt():
 	if health == 0:
 		die()
 	
+
+
+# Change physics to ice physics
+func change_physics(type: String):
+	match type:
+		"regular":
+			speed = 200
+			knockback_lerp_const = 0.1
+			regular_lerp_const = 0.9
+		"ice":
+			speed = 200
+			knockback_lerp_const = 0.01
+			regular_lerp_const = 0.07
+			
