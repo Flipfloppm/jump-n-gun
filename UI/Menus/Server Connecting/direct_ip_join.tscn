@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv3v1y3ftyx52"]
+
+[ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/direct_ip_join.gd" id="1_sso8u"]
+[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_xej3j"]
+[ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="2_rosjn"]
+
+[node name="DirectIPJoin" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sso8u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 19.232
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -72.0
+offset_right = -350.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.45886, 1.52125)
+color = Color(0.192157, 0.27451, 0.627451, 1)
+
+[node name="DirectConnectLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.0
+offset_right = 165.0
+offset_bottom = 76.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("2_rosjn")
+theme_override_font_sizes/font_size = 96
+text = "Direct Connect"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -67.0
+offset_right = 150.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ServerAddressLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_rosjn")
+theme_override_font_sizes/font_size = 48
+text = "Server Address"
+horizontal_alignment = 1
+
+[node name="ServerAddressEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="JoinBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xej3j")
+theme_override_font_sizes/font_size = 48
+text = "Join Server"
+
+[node name="CancelBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xej3j")
+theme_override_font_sizes/font_size = 48
+text = "Cancel"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/CancelBtn" to="." method="_on_cancel_btn_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=13 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="5_tu8p8"]
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="7_6edpu"]
+[ext_resource type="PackedScene" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
 
 [sub_resource type="Theme" id="Theme_36kwc"]
 default_font = ExtResource("5_tu8p8")
@@ -36,80 +37,68 @@ theme = ExtResource("1_4adf5")
 script = ExtResource("3_8ntu5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-offset = Vector2(320, 180)
-transform = Transform2D(1, 0, 0, 1, 320, 180)
 follow_viewport_scale = 19.232
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = -0.999
-anchor_top = -1.001
-offset_left = -118.64
-offset_top = -38.64
-offset_right = -119.0
-offset_bottom = 34.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.45886, 1.52125)
 color = Color(0.192157, 0.27451, 0.627451, 1)
 
 [node name="Server" parent="CanvasLayer" instance=ExtResource("4_qg8mg")]
-anchors_preset = 0
-anchor_right = 0.0
+anchors_preset = 1
+anchor_left = 1.0
 anchor_bottom = 0.0
-offset_left = 144.0
-offset_top = 204.0
-offset_right = 144.0
-offset_bottom = 204.0
-grow_horizontal = 1
+grow_horizontal = 0
 grow_vertical = 1
 
 [node name="HostGame" parent="CanvasLayer/Server" index="0"]
-anchors_preset = -1
-anchor_left = 0.388
-anchor_right = 0.614
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -376.0
-offset_right = 236.0
-offset_bottom = -305.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -153.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 76.0
 scale = Vector2(0.685469, 0.803715)
 theme = ExtResource("4_vfclq")
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
-offset_left = -315.0
-offset_top = -174.0
-offset_right = -208.0
-offset_bottom = -115.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 61.0
 theme = ExtResource("4_vfclq")
 text = "Back"
 
 [node name="IPBtn" type="Button" parent="CanvasLayer"]
-offset_left = -13.0
-offset_top = -172.0
-offset_right = 143.0
-offset_bottom = -115.0
+offset_left = 328.0
+offset_top = 5.0
+offset_right = 484.0
+offset_bottom = 62.0
 theme = ExtResource("4_vfclq")
 theme_override_font_sizes/font_size = 48
 text = "Search IP"
 
 [node name="Servers" type="Label" parent="CanvasLayer"]
-offset_left = -200.0
-offset_top = -192.0
-offset_right = -32.0
-offset_bottom = -116.0
+offset_left = 133.0
+offset_top = -12.0
+offset_right = 301.0
+offset_bottom = 64.0
 theme = ExtResource("1_4adf5")
 theme_override_font_sizes/font_size = 96
 text = "Servers"
 
 [node name="ServerBrowser" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -294.0
-offset_top = -117.0
-offset_right = -254.0
-offset_bottom = -77.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -288.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
 scale = Vector2(1, 0.971427)
 theme = ExtResource("1_4adf5")
 script = ExtResource("5_sbtl2")
@@ -119,23 +108,22 @@ serverInfo = ExtResource("6_vl0g5")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/ServerBrowser"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = -4.206
-anchor_right = 0.5
-anchor_bottom = -4.206
-offset_left = -43.0
-offset_top = 177.505
-offset_right = 539.0
-offset_bottom = 432.505
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -54.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.08868, 1.14568)
 
 [node name="ServerInfoTitle" type="HBoxContainer" parent="CanvasLayer/ServerBrowser/Panel"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -9.0
-offset_right = 713.0
-offset_bottom = 46.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 123.0
+offset_bottom = 51.0
+grow_horizontal = 2
 scale = Vector2(0.827113, 1.0204)
 theme = SubResource("Theme_36kwc")
 
@@ -178,11 +166,15 @@ grow_horizontal = 2
 scale = Vector2(1.01413, 1.00375)
 
 [node name="ListenPortLabel" type="Label" parent="CanvasLayer/ServerBrowser"]
-layout_mode = 0
-offset_left = -24.0
-offset_top = 281.03
-offset_right = 208.0
-offset_bottom = 332.03
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -31.4996
+offset_right = 235.0
+offset_bottom = 19.5004
+grow_vertical = 0
 scale = Vector2(0.509617, 0.713443)
 theme = SubResource("Theme_5my6h")
 text = "Listen to port:"
@@ -190,12 +182,22 @@ text = "Listen to port:"
 [node name="WaitingRoom" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = -319.0
-offset_top = -181.0
-offset_right = -279.0
-offset_bottom = -141.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4adf5")
 script = ExtResource("7_6edpu")
+
+[node name="IPAddress" type="Label" parent="CanvasLayer/WaitingRoom"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = -3.0
+offset_right = 297.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "Ip Address"
 
 [node name="UserIDLabel" type="Label" parent="CanvasLayer/WaitingRoom"]
 layout_mode = 0
@@ -248,8 +250,18 @@ text = "Exit Room"
 layout_mode = 2
 text = "Cancel Hosting Session"
 
+[node name="DirectIPJoin" parent="CanvasLayer" instance=ExtResource("9_ssqht")]
+
+[node name="CanvasLayer" parent="CanvasLayer/DirectIPJoin" index="0"]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/IPBtn" to="." method="_on_ip_btn_pressed"]
 [connection signal="timeout" from="CanvasLayer/ServerBrowser/BroadcastTimer" to="CanvasLayer/ServerBrowser" method="_on_broadcast_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/SelectWorldBtn" to="." method="_on_select_world_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/CancelHostBtn" to="." method="_on_cancel_host_btn_pressed"]
 
 [editable path="CanvasLayer/Server"]
+[editable path="CanvasLayer/DirectIPJoin"]

@@ -11,10 +11,11 @@ extends Control
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
-	server_browser.childServerJoin.connect(join_server_by_ip)
-	#waiting_room.client_disconnect_request.connect(remove_client)
+	#server_browser.childServerJoin.connect(join_server_by_ip) # deprecated
+	SignalBus.serverBrowserJoin.connect(join_server_by_ip) # new method
+	waiting_room.client_disconnect_request.connect(remove_client)
 	SignalBus.server_closed.connect(_on_server_closed)
-	#$CanvasLayer/WaitingRoom/UserIDLabel.text = multiplayer.get_unique_id()
+
 	
 # this gets called only by clients 
 func connected_to_server():
@@ -30,6 +31,7 @@ func connection_failed():
 func _on_host_game_pressed():
 	print("host game pressed")
 	var host_info = server.start_server()
+	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(host_info[1])
 	hostBtn.disabled = true
 	hostBtn.visible = false
 	register_player_info(GameManager.username, multiplayer.get_unique_id())
@@ -51,6 +53,7 @@ func join_server_by_ip(ip):
 	#peer.create_client(ip, int(selected_port.text))
 	peer.create_client(ip, 3296)
 	multiplayer.set_multiplayer_peer(peer)
+	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(ip)
 	# move to waiting room
 	server_browser.visible = false
 	server.visible = false
@@ -138,5 +141,7 @@ func _on_server_closed():
 	GameManager.PLAYERS.clear()
 	pass
 	
-	
-	
+
+func _on_ip_btn_pressed():
+	print("IP BTN pressed: opening direct server join scene")
+	$CanvasLayer/DirectIPJoin/CanvasLayer.visible=true
