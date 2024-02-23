@@ -1,14 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dead08ecde4pb"]
+[gd_scene load_steps=4 format=3 uid="uid://dv3v1y3ftyx52"]
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/direct_ip_join.gd" id="1_sso8u"]
-[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="1_xej3j"]
+[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="1_xej3j"]
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="2_rosjn"]
-[ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="3_nwppu"]
-[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="4_wydmn"]
-
-[sub_resource type="Theme" id="Theme_frsr1"]
-default_font = ExtResource("4_wydmn")
-default_font_size = 48
 
 [node name="DirectIPJoin" type="Control"]
 visible = false
@@ -85,81 +79,5 @@ theme = ExtResource("1_xej3j")
 theme_override_font_sizes/font_size = 48
 text = "Cancel"
 
-[node name="WaitingRoom" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -314.0
-offset_top = -179.0
-offset_right = -314.0
-offset_bottom = -175.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_rosjn")
-script = ExtResource("3_nwppu")
-
-[node name="UserIDLabel" type="Label" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
-offset_top = -3.0
-offset_right = 144.0
-offset_bottom = 23.0
-scale = Vector2(0.569726, 0.515493)
-text = "User ID: "
-
-[node name="Panel" type="Panel" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 11.0
-offset_right = 711.0
-offset_bottom = 424.0
-scale = Vector2(0.887688, 0.483816)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.12784
-offset_top = 1.57426
-offset_right = 1.12784
-offset_bottom = 1.57426
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.993627, 0.995313)
-
-[node name="WaitingRoomLabel" type="Label" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 65
-text = "Waiting Room"
-horizontal_alignment = 1
-
-[node name="player_list" type="VBoxContainer" parent="CanvasLayer/WaitingRoom/Panel/VBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_frsr1")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 216.0
-offset_right = 723.0
-offset_bottom = 410.0
-scale = Vector2(0.876473, 0.728186)
-theme = ExtResource("1_xej3j")
-
-[node name="SelectWorldBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
-layout_mode = 2
-text = "Select World"
-
-[node name="ExitRoomBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
-layout_mode = 2
-text = "Exit Room"
-
-[node name="CancelHostBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
-layout_mode = 2
-text = "Cancel Hosting Session"
-
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CancelBtn" to="." method="_on_cancel_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/WaitingRoom/VBoxContainer/ExitRoomBtn" to="CanvasLayer/WaitingRoom" method="_on_exit_room_btn_pressed"]

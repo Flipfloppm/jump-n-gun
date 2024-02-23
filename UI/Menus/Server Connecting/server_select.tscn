@@ -3,12 +3,12 @@
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://UI/Menus/Server Connecting/server.tscn" id="4_qg8mg"]
-[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
+[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_browser.gd" id="5_sbtl2"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="5_tu8p8"]
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="7_6edpu"]
-[ext_resource type="PackedScene" uid="uid://dead08ecde4pb" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
+[ext_resource type="PackedScene" uid="uid://dv3v1y3ftyx52" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
 
 [sub_resource type="Theme" id="Theme_36kwc"]
 default_font = ExtResource("5_tu8p8")
@@ -189,6 +189,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4adf5")
 script = ExtResource("7_6edpu")
+
+[node name="IPAddress" type="Label" parent="CanvasLayer/WaitingRoom"]
+offset_left = 256.0
+offset_top = -3.0
+offset_right = 297.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "Ip Address"
 
 [node name="UserIDLabel" type="Label" parent="CanvasLayer/WaitingRoom"]
 layout_mode = 0

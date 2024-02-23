@@ -21,7 +21,6 @@ func _ready():
 func connected_to_server():
 	print("connected to server")
 	# call register info on the server first
-	#register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
 	register_player_info.rpc_id(1, "david", multiplayer.get_unique_id())
 
 # this gets called only by clients 
@@ -31,6 +30,7 @@ func connection_failed():
 func _on_host_game_pressed():
 	print("host game pressed")
 	var host_info = server.start_server()
+	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(host_info[1])
 	hostBtn.disabled = true
 	hostBtn.visible = false
 	register_player_info("david", multiplayer.get_unique_id())
