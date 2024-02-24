@@ -10,9 +10,10 @@ var knockback_radius = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var hasWeaponsDict = {"Rocket": false, "Grenade": false, "Tile": false}
+var hasWeaponsDict = {"Rocket": false, "Grenade": false, "C4": false, "Tile": false}
 var currWeapon = ""
-var knockingBack = false
+var knockingBack = false # If the player is being knocked back
+var c4_avail = true # If the weapon can be shot right now
 var mousePosVector: Vector2
 var gunRotation
 var above
@@ -28,17 +29,21 @@ var lastDir = 0
 @onready var animatedSprite = $Sprite
 @export var rocket :PackedScene
 @export var grenade :PackedScene
+@export var c4 : PackedScene
 @export var tile :PackedScene
 
 
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
+	SignalBus.c4detonated.connect(_on_c4_detonation)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
+	$GunRotation/C4Launcher.visible = false
 	$GunRotation/TileGun.visible = false
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
+	hasWeaponsDict["C4"] = false
 	hasWeaponsDict["Tile"] = false
 	add_to_group("players")
 	#set_wall_min_slide_angle(0.785398)
@@ -102,14 +107,13 @@ func _physics_process(delta):
 		
 		# Handle shooting
 		if Input.is_action_just_pressed("shoot"):
-			print(hasWeaponsDict)
 			match currWeapon:
-				"RocketLauncher":
+				"Rocket":
 					if rocketReloadTime < 0:
 						fire.rpc()
 						rocketReloadTime = 0.8
 						SignalBus.fired.emit()
-				"GrenadeLauncher":
+				"Grenade":
 					if grenadeReloadTime < 0:
 						fire.rpc()
 						SignalBus.fired.emit()
@@ -117,8 +121,12 @@ func _physics_process(delta):
 						if grenadeLauncherAmmo == 0:
 							grenadeReloadTime = 2
 							grenadeLauncherAmmo = 6
+				"C4":
+					if c4_avail:
+						fire.rpc()
+						SignalBus.fired.emit()
+						c4_avail = false
 				"TileGun":
-					print(currWeapon)
 					if tileReloadTime < 0:
 						fire.rpc()
 						tileReloadTime = 0
@@ -129,9 +137,11 @@ func _physics_process(delta):
 			select_weapon.rpc("Rocket", self)
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			select_weapon.rpc("Grenade", self)
+		elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
+			select_weapon("C4", self)
 		elif Input.is_action_just_pressed("selectTileGun") && hasWeaponsDict["Tile"]:
-			print("selected tileGun")
 			select_weapon.rpc("Tile", self)
+
 		
 		# Player move
 		move_and_slide()
@@ -158,17 +168,18 @@ func _on_rocket_body_entered(weaponBody, body):
 func select_weapon(weaponName: String, body):
 	match weaponName:
 		"Rocket":
-			currWeapon = "RocketLauncher"
+			currWeapon = "Rocket"
 			knockback_min_force = 200
 			knockback_max_force = 600
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
+			$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Rocket")
 		"Grenade":
-			currWeapon = "GrenadeLauncher"
+			currWeapon = "Grenade"
 			knockback_min_force = 200
 			knockback_max_force = 600
 			knockback_radius = 100
@@ -177,6 +188,17 @@ func select_weapon(weaponName: String, body):
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Grenade")
+		"C4":
+			currWeapon = "C4"
+			knockback_min_force = 200
+			knockback_max_force = 600
+			knockback_radius = 100
+			$GunRotation/RocketLauncher.visible = false
+			$GunRotation/GrenadeLauncher.visible = false
+			$GunRotation/C4Launcher.visible = true
+			$GunRotation/TileGun.visible = false
+			if body == self:
+				SignalBus.weapon_swap.emit("C4")
 		"Tile":
 			currWeapon = "TileGun"
 			knockback_min_force = 200
@@ -184,6 +206,7 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = false
+			$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = true
 			if body == self:
 				SignalBus.weapon_swap.emit("Tile")
@@ -211,6 +234,7 @@ func on_explosion(pos):
 		knockback_vector.x = cos(deg)
 		velocity += knockback_vector * knockback_force
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
+	
 	# After knockback, reset physics
 	await get_tree().create_timer(0.5).timeout
 	knockingBack = false
@@ -219,13 +243,15 @@ func on_explosion(pos):
 @rpc("any_peer","call_local")
 func fire():
 	var projectile
-	print("fire ", currWeapon)
 	match currWeapon:
-		"RocketLauncher":
+		"Rocket":
 			projectile = rocket.instantiate()
 			shootAudio.play()
-		"GrenadeLauncher":
+		"Grenade":
 			projectile = grenade.instantiate()
+			shootAudio.play()
+		"C4":
+			projectile = c4.instantiate()
 			shootAudio.play()
 		"TileGun":
 			projectile = tile.instantiate()
@@ -246,6 +272,9 @@ func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
 	position = Vector2(41, 212)
+
+func _on_c4_detonation():
+	c4_avail = true
 	
 func hurt():
 	health -= 1

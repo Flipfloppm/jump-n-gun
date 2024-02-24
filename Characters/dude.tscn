@@ -63,6 +63,11 @@ position = Vector2(24.5, -1.75)
 scale = Vector2(0.0882813, 0.084375)
 texture = ExtResource("7_e3xy2")
 
+[node name="C4Launcher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(24.5, -1.875)
+scale = Vector2(0.0125, 0.009375)
+texture = ExtResource("5_rnuiq")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
