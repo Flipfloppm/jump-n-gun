@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=30 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
@@ -16,8 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
 [ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
-[ext_resource type="PackedScene" uid="uid://c8biqfvq20y8d" path="res://Weaponry/tile_gun.tscn" id="17_ukqb2"]
-[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Weaponry/c4_launcher.tscn" id="18_spkft"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -288,9 +286,3 @@ visible = false
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v3gu1")
 format = 2
-
-[node name="Tile Gun" parent="." instance=ExtResource("17_ukqb2")]
-position = Vector2(118, -33)
-
-[node name="C4 Launcher" parent="." instance=ExtResource("18_spkft")]
-position = Vector2(169, -33)
