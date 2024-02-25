@@ -43,6 +43,7 @@ func _on_host_game_pressed():
 	# move to waiting room
 	server_browser.visible = false
 	waiting_room.visible = true
+	waiting_room.set_visibility(1)
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	$CanvasLayer/IPBtn.visible = false
@@ -61,6 +62,7 @@ func join_server_by_ip(ip):
 	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	waiting_room.visible = true
+	waiting_room.set_visibility(-1)
 	$CanvasLayer/WaitingRoom/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
 	
 
@@ -105,7 +107,7 @@ func remove_client(client_id):
 		server.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
-		#waiting_room.visible = false
+		waiting_room.visible = false
 		
 	if multiplayer.get_unique_id() == 1:
 		# remove the client peer
@@ -133,7 +135,6 @@ func load_select_world_scene():
 
 func _on_cancel_host_btn_pressed():
 	SignalBus.broadcast_server_closed.rpc()
-	
 	
 func _on_server_closed():
 	print("server closed, handling")
