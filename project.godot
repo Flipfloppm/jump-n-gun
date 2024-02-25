@@ -27,7 +27,6 @@ window/size/mode=3
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://Art/UI/crosshair3.png"
 window/size/initial_position_x=0.0
 window/size/initial_position_y=-288.0
 window/size/initial_position/x=0.0

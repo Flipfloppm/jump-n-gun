@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 
 func _on_multiplayer_btn_pressed():
-	get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/server_select.tscn")
+	get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/username.tscn")
 
 func _on_exit_btn_pressed():
 	get_tree().quit()

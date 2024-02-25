@@ -19,7 +19,7 @@ func _ready():
 			cur_player = CheneyScene.instantiate()
 		else:
 			print("dude")
-			cur_player = DUDESCENE.instantiate()
+			cur_player = CheneyScene.instantiate()
 		cur_player.name = str(GameManager.PLAYERS[i].id)
 		add_child(cur_player)
 		for spawn_position in get_tree().get_nodes_in_group("PlayerSpawnPosition"):

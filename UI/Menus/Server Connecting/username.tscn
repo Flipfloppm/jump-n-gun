@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhvsh173yw4f8"]
+
+[ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/username.gd" id="1_3m2ug"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="2_i4p4k"]
+[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="3_np3k5"]
+
+[sub_resource type="Theme" id="Theme_53apy"]
+default_font = ExtResource("2_i4p4k")
+default_font_size = 48
+
+[sub_resource type="Theme" id="Theme_r57bh"]
+default_font = ExtResource("2_i4p4k")
+default_font_size = 64
+
+[node name="Username" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3m2ug")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.7557, 10.4526)
+color = Color(0.192157, 0.27451, 0.627451, 1)
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -26.5
+offset_right = 132.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_53apy")
+placeholder_text = "Default"
+
+[node name="Submit" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.5
+offset_top = -113.0
+offset_right = 72.5
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_np3k5")
+text = "Continue"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 161.0
+offset_top = 94.0
+offset_right = 481.0
+offset_bottom = 145.0
+theme = SubResource("Theme_r57bh")
+text = "Enter Your Username"
+
+[connection signal="pressed" from="CanvasLayer/Submit" to="." method="_on_submit_pressed"]
