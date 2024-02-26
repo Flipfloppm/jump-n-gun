@@ -163,6 +163,7 @@ theme = SubResource("Theme_rtlok")
 text = "2"
 
 [node name="MarginContainer7" type="MarginContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 160
 theme_override_constants/margin_right = 160

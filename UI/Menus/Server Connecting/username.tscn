@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://foml8aed7c0k"]
+[gd_scene load_steps=6 format=3 uid="uid://bhvsh173yw4f8"]
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/username.gd" id="1_3m2ug"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="2_i4p4k"]
@@ -42,6 +42,7 @@ offset_bottom = 26.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_53apy")
+placeholder_text = "Default"
 
 [node name="Submit" type="Button" parent="CanvasLayer"]
 anchors_preset = 7

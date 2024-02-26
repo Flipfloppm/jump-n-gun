@@ -13,13 +13,7 @@ var lobbySet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# if not the host, hide the start game button
-	if multiplayer.get_unique_id() != 1:
-		exit_room_btn.visible = true
-		select_world_btn.visible = false
-		cancel_host_btn.visible = false
-	else: 
-		exit_room_btn.visible = false
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -37,4 +31,14 @@ func refresh_players(players):
 
 func _on_exit_room_btn_pressed():
 	client_disconnect_request.emit(multiplayer.get_unique_id())
+
+func set_visibility(role):
+	if role == 1: # when its the host
+		exit_room_btn.visible = false
+	else:
+		exit_room_btn.visible = true
+		select_world_btn.visible = false
+		cancel_host_btn.visible = false
+	
+		
 	
