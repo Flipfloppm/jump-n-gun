@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct4uy8junty6s"]
+[gd_scene load_steps=6 format=3 uid="uid://ct4uy8junty6s"]
 
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/job_select.gd" id="1_1clxu"]
 [ext_resource type="Texture2D" uid="uid://2rpvrynh3cwd" path="res://Art/UI/WorldSelect/blank-sky.png" id="2_1xhkl"]
 [ext_resource type="PackedScene" uid="uid://dm7ht8l2fnyl2" path="res://UI/Menus/Level Select/world_icon.tscn" id="3_et21s"]
 [ext_resource type="PackedScene" uid="uid://dlagwqio44fol" path="res://UI/Menus/Level Select/player_icon.tscn" id="4_tg6cx"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="5_vy5lc"]
 
 [node name="WorldSelect" type="Control"]
 layout_mode = 3
@@ -56,3 +57,7 @@ world_index = 5
 
 [node name="playerIcon" parent="." instance=ExtResource("4_tg6cx")]
 layout_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vy5lc")
+autoplay = true
