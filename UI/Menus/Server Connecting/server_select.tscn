@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=14 format=3 uid="uid://dsduhwe8hqs8a"]
 
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="7_6edpu"]
 [ext_resource type="PackedScene" uid="uid://r4itwr37og2b" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="10_2tkvh"]
 
 [sub_resource type="Theme" id="Theme_36kwc"]
 default_font = ExtResource("5_tu8p8")
@@ -252,6 +253,10 @@ text = "Cancel Hosting Session"
 
 [node name="CanvasLayer" parent="CanvasLayer/DirectIPJoin" index="0"]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_2tkvh")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Server/HostGame" to="." method="_on_host_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="_on_back_btn_pressed"]
