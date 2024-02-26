@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtgk1mrrewkxt"]
+[gd_scene load_steps=7 format=3 uid="uid://dtgk1mrrewkxt"]
 
 [ext_resource type="Script" path="res://UI/Menus/scripts/TitleScreen.gd" id="1_2hkhe"]
 [ext_resource type="Texture2D" uid="uid://uxl7yjoscp12" path="res://Art/UI/WorldSelect/clear-jumpngunlogo.png" id="2_a021n"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="3_md60t"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="4_m3su6"]
 
 [sub_resource type="Gradient" id="Gradient_40iuc"]
 offsets = PackedFloat32Array(0.0162338, 0.192698, 0.348884, 1)
@@ -51,3 +52,7 @@ scale = Vector2(0.9366, 0.833313)
 theme_override_fonts/normal_font = ExtResource("3_md60t")
 theme_override_font_sizes/normal_font_size = 64
 text = "Press any button"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m3su6")
+autoplay = true
