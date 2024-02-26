@@ -64,7 +64,10 @@ func _process(delta):
 		var data = receivedBytes.get_string_from_ascii()
 		var roomInfo = JSON.parse_string(data)
 		print("serverIP: " + str(serverIP) + " serverPort: " + str(serverPort) + " roominfo: " + str(roomInfo))
-		
+		# Verify the input, if roomInfo's name is "", change it to the default case: New Server
+		if roomInfo.name == "":
+			roomInfo.name = "New Server"
+			
 		# update the info to the browser UI
 		for child in $Panel/VBoxContainer.get_children():
 			if child.name == roomInfo.name:

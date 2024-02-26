@@ -20,6 +20,15 @@ func _process(delta):
 	refresh_players(GameManager.PLAYERS)
 
 func refresh_players(players):
+	# Remove any player that are no longer in the room
+	for character in char_select_container.get_children():
+		if players.has(character.controllerId):
+			continue
+		else:
+			# the player is no longer in the server, remove this player's element.
+			character.queue_free()
+			lobbySet.erase(character.controllerId)
+	# Add any potential player
 	for player_id in players:
 		if lobbySet.has(player_id):
 			continue

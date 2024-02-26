@@ -100,6 +100,7 @@ func register_player_info(player_name, id):
 func remove_client(client_id):
 	print("trying to remove client:", client_id, "this id:", multiplayer.get_unique_id())
 	if !multiplayer.is_server():
+		print("remove client: not server, exiting wait room. ")
 		remove_client.rpc_id(1, client_id)
 		GameManager.PLAYERS.erase(client_id)
 		# go back to lobby
@@ -107,6 +108,7 @@ func remove_client(client_id):
 		server.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
+		$CanvasLayer/IPBtn.visible = true
 		waiting_room.visible = false
 		
 	if multiplayer.get_unique_id() == 1:
