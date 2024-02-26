@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://UI/Menus/Server Connecting/server.tscn" id="4_qg8mg"]
-[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
+[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_browser.gd" id="5_sbtl2"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="5_tu8p8"]
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
@@ -25,14 +25,11 @@ default_font_size = 32
 [node name="Lobby" type="Control"]
 clip_contents = true
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.11283, 1.11141)
 theme = ExtResource("1_4adf5")
 script = ExtResource("3_8ntu5")
 
@@ -45,7 +42,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2.45886, 1.52125)
 color = Color(0.192157, 0.27451, 0.627451, 1)
 
 [node name="Server" parent="CanvasLayer" instance=ExtResource("4_qg8mg")]
@@ -95,7 +91,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
 offset_top = -288.0
+offset_right = -2.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0

@@ -1,5 +1,8 @@
 extends Node
 
+#ui stuff
+signal settingsExit
+
 signal weapon_entered(weaponBody, player_id)
 signal picked_up(weaponBody)
 signal fired

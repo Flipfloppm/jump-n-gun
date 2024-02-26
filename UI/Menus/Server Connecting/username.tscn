@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/username.gd" id="1_3m2ug"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="2_i4p4k"]
-[ext_resource type="Theme" uid="uid://5xaygmkmxj22" path="res://Art/UI/StandardButton.tres" id="3_np3k5"]
+[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="3_np3k5"]
 
 [sub_resource type="Theme" id="Theme_53apy"]
 default_font = ExtResource("2_i4p4k")
@@ -29,7 +29,7 @@ offset_bottom = 40.0
 scale = Vector2(16.7557, 10.4526)
 color = Color(0.192157, 0.27451, 0.627451, 1)
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+[node name="TextEdit" type="LineEdit" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
