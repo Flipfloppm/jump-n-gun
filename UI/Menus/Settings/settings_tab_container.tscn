@@ -24,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/side_margin = 180
+tab_alignment = 1
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 layout_mode = 2

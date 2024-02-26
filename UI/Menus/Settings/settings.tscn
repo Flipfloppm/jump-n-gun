@@ -35,7 +35,6 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
 theme = SubResource("Theme_8wg8f")
 text = "Options"
 horizontal_alignment = 1
