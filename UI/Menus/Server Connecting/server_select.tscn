@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsduhwe8hqs8a"]
+[gd_scene load_steps=15 format=3 uid="uid://dsduhwe8hqs8a"]
 
-[ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="1_4adf5"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://UI/Menus/Server Connecting/server.tscn" id="4_qg8mg"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="7_6edpu"]
 [ext_resource type="PackedScene" uid="uid://r4itwr37og2b" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="10_2tkvh"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="10_2tkvh"]
+
+[sub_resource type="Theme" id="Theme_vh3fo"]
+default_font = ExtResource("5_tu8p8")
 
 [sub_resource type="Theme" id="Theme_36kwc"]
 default_font = ExtResource("5_tu8p8")
@@ -53,26 +56,30 @@ grow_horizontal = 0
 grow_vertical = 1
 
 [node name="HostGame" parent="CanvasLayer/Server" index="0"]
-offset_left = -153.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -159.0
 offset_top = 5.0
-offset_right = 68.0
-offset_bottom = 76.0
-scale = Vector2(0.685469, 0.803715)
+offset_right = -5.0
+offset_bottom = 64.0
+grow_horizontal = 0
 theme = ExtResource("4_vfclq")
+theme_override_font_sizes/font_size = 48
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 110.0
-offset_bottom = 61.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 112.0
+offset_bottom = 64.0
 theme = ExtResource("4_vfclq")
 text = "Back"
 
 [node name="IPBtn" type="Button" parent="CanvasLayer"]
-offset_left = 328.0
+offset_left = 322.0
 offset_top = 5.0
-offset_right = 484.0
-offset_bottom = 62.0
+offset_right = 478.0
+offset_bottom = 64.0
 theme = ExtResource("4_vfclq")
 theme_override_font_sizes/font_size = 48
 text = "Search IP"
@@ -82,7 +89,7 @@ offset_left = 133.0
 offset_top = -12.0
 offset_right = 301.0
 offset_bottom = 64.0
-theme = ExtResource("1_4adf5")
+theme = SubResource("Theme_vh3fo")
 theme_override_font_sizes/font_size = 96
 text = "Servers"
 
@@ -94,7 +101,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = -288.0
-offset_right = -2.0
+offset_right = -5.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -110,7 +117,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -54.0
+offset_right = -52.0
 offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -209,11 +216,10 @@ text = "User ID: "
 
 [node name="Panel" type="Panel" parent="CanvasLayer/WaitingRoom"]
 layout_mode = 0
-offset_left = -3.0
+offset_left = 5.0
 offset_top = 11.0
-offset_right = 718.0
-offset_bottom = 424.0
-scale = Vector2(0.887688, 0.483816)
+offset_right = 635.0
+offset_bottom = 236.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WaitingRoom/Panel"]
 layout_mode = 1
@@ -230,23 +236,25 @@ scale = Vector2(0.993627, 0.995313)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingRoom"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = 216.0
-offset_right = 728.0
-offset_bottom = 410.0
-scale = Vector2(0.876473, 0.728186)
+offset_left = 5.0
+offset_top = 240.0
+offset_right = 635.0
+offset_bottom = 350.0
 theme = ExtResource("4_vfclq")
 
 [node name="SelectWorldBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Select World"
 
 [node name="ExitRoomBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Exit Room"
 
 [node name="CancelHostBtn" type="Button" parent="CanvasLayer/WaitingRoom/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Cancel Hosting Session"
 
 [node name="DirectIPJoin" parent="CanvasLayer" instance=ExtResource("9_ssqht")]

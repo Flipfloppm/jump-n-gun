@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jvcltwj75qx0"]
 
-[ext_resource type="Script" path="res://UI/Menus/Settings/settings_tab_container.gd" id="1_52lib"]
+[ext_resource type="Script" path="res://UI/Menus/Settings/scripts/settings_tab_container.gd" id="1_52lib"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_v7i25"]
 
 [sub_resource type="Theme" id="Theme_rtlok"]

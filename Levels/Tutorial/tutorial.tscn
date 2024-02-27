@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
 [ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
-[ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://SFX/tutorial_background_soundtrack.mp3" id="17_28g4f"]
+[ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="17_28g4f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
