@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_6jf66"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="3_gb1js"]
 [ext_resource type="Texture2D" uid="uid://cdm56opp86mhq" path="res://Art/Characters/Cheney/cheney-anim.png" id="4_gtqi5"]
-[ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://SFX/jump.wav" id="4_prp2e"]
-[ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://SFX/shoot.wav" id="5_a6rky"]
+[ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="4_prp2e"]
+[ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="5_a6rky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxnt"]
 atlas = ExtResource("4_gtqi5")

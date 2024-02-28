@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_v430n"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_imm3u"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_5rv86"]
-[ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://SFX/jump.wav" id="8_hxrx1"]
-[ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://SFX/shoot.wav" id="9_yalkq"]
+[ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="8_hxrx1"]
+[ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="9_yalkq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sj6uy"]
 

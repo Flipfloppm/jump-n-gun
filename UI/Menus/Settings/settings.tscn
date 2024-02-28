@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c1bhra2if2aap"]
 
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_rjyrt"]
-[ext_resource type="Script" path="res://UI/Menus/Settings/settings.gd" id="1_xe02r"]
+[ext_resource type="Script" path="res://UI/Menus/Settings/scripts/settings.gd" id="1_xe02r"]
 [ext_resource type="PackedScene" uid="uid://jvcltwj75qx0" path="res://UI/Menus/Settings/settings_tab_container.tscn" id="2_owbam"]
-[ext_resource type="Theme" uid="uid://dpqt0p1mhuspd" path="res://Art/UI/settings.tres" id="4_a5ids"]
+[ext_resource type="Theme" path="res://Art/UI/settings.tres" id="4_a5ids"]
 
 [sub_resource type="Theme" id="Theme_8wg8f"]
 default_font = ExtResource("1_rjyrt")

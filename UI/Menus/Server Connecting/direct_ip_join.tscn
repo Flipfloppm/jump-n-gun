@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://r4itwr37og2b"]
+[gd_scene load_steps=7 format=3 uid="uid://r4itwr37og2b"]
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/direct_ip_join.gd" id="1_sso8u"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="1_xej3j"]
-[ext_resource type="Theme" uid="uid://bkwah3hc50qjn" path="res://Art/UI/MenuTheme.tres" id="2_rosjn"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="4_wydmn"]
+
+[sub_resource type="Theme" id="Theme_mo7o7"]
+default_font = ExtResource("4_wydmn")
+
+[sub_resource type="Theme" id="Theme_y70rg"]
+default_font = ExtResource("4_wydmn")
+default_font_size = 48
 
 [sub_resource type="Theme" id="Theme_hdkip"]
 default_font = ExtResource("4_wydmn")
@@ -44,7 +50,7 @@ offset_right = 165.0
 offset_bottom = 76.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme = ExtResource("2_rosjn")
+theme = SubResource("Theme_mo7o7")
 theme_override_font_sizes/font_size = 96
 text = "Direct Connect"
 
@@ -64,7 +70,7 @@ grow_vertical = 2
 [node name="ServerAddressLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_rosjn")
+theme = SubResource("Theme_y70rg")
 theme_override_font_sizes/font_size = 48
 text = "Server Address"
 horizontal_alignment = 1

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw3kroc3btwcx"]
+[gd_scene load_steps=11 format=3 uid="uid://bw3kroc3btwcx"]
 
 [ext_resource type="Script" path="res://UI/Menus/scripts/main_menu.gd" id="1_wqeys"]
 [ext_resource type="Texture2D" uid="uid://dbglnfq5c3tl2" path="res://Art/UI/title-screen/mainmenubkg.png" id="2_udto6"]
-[ext_resource type="Theme" path="res://Art/UI/MainMenuButtonTheme.tres" id="3_rpio6"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="3_rpio6"]
 [ext_resource type="PackedScene" uid="uid://c1bhra2if2aap" path="res://UI/Menus/Settings/settings.tscn" id="4_de5ko"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="5_suyi8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jaait"]
 atlas = ExtResource("2_udto6")
@@ -88,6 +89,10 @@ text = "Exit"
 [node name="Settings" parent="." instance=ExtResource("4_de5ko")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_suyi8")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]

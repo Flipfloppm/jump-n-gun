@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Weaponry/scripts/explosion.gd" id="1_sjlbm"]
 [ext_resource type="Texture2D" uid="uid://dawx0lrv8g7k6" path="res://Art/Weapons/explosion.png" id="2_qlga2"]
-[ext_resource type="AudioStream" uid="uid://bpynlcfwb4ife" path="res://SFX/explosion.wav" id="3_i2qrb"]
+[ext_resource type="AudioStream" uid="uid://bpynlcfwb4ife" path="res://Sounds/SFX/explosion.wav" id="3_i2qrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4t7q"]
 atlas = ExtResource("2_qlga2")

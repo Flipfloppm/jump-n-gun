@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhvsh173yw4f8"]
+[gd_scene load_steps=7 format=3 uid="uid://bhvsh173yw4f8"]
 
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/username.gd" id="1_3m2ug"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="2_i4p4k"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="3_np3k5"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="4_rcism"]
 
 [sub_resource type="Theme" id="Theme_53apy"]
 default_font = ExtResource("2_i4p4k")
@@ -66,5 +67,9 @@ offset_right = 481.0
 offset_bottom = 145.0
 theme = SubResource("Theme_r57bh")
 text = "Enter Your Username"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rcism")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Submit" to="." method="_on_submit_pressed"]
