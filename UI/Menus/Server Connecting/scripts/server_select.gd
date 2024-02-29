@@ -140,6 +140,7 @@ func _on_cancel_host_btn_pressed():
 	
 func _on_server_closed():
 	print("server closed, handling")
+	get_tree().current_scene.request_ready()
 	get_tree().reload_current_scene()
 	GameManager.PLAYERS.clear()
 	pass

@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63wng7gvpv7e"]
+[gd_scene load_steps=5 format=3 uid="uid://c63wng7gvpv7e"]
 
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="1_6bua4"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/waiting_room.gd" id="1_s1ky8"]
 [ext_resource type="PackedScene" uid="uid://c8nmn0pkh7rpt" path="res://UI/Menus/Server Connecting/Components/character_select.tscn" id="2_lhuy3"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_sgwn8"]
+properties/0/path = NodePath("VBoxContainer/HBoxContainer/TutorialBtn:button_pressed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("VBoxContainer/HBoxContainer/PartyBtn:button_pressed")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("VBoxContainer/HBoxContainer/CoopBtn:button_pressed")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:hover_on_gotogame")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="WaitingRoom" type="Control"]
 layout_mode = 3
@@ -14,30 +28,31 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_s1ky8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="IPAddress" type="Label" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_right = 389.0
+offset_bottom = 26.0
+scale = Vector2(0.569726, 0.515493)
+text = "IP Address:"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(21.2634, 14.6967)
-mouse_filter = 1
-color = Color(0.192157, 0.27451, 0.627451, 1)
-
-[node name="UserIDLabel" type="Label" parent="CanvasLayer"]
+[node name="UserIDLabel" type="Label" parent="."]
+layout_mode = 0
 offset_top = -3.0
 offset_right = 144.0
 offset_bottom = 23.0
 scale = Vector2(0.569726, 0.515493)
 text = "User ID: "
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = -3.0
-offset_top = 11.0
-offset_right = 711.0
-offset_bottom = 424.0
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 716.0
+offset_bottom = 378.0
 scale = Vector2(0.887688, 0.483816)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,25 +65,68 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.993627, 0.995313)
 
-[node name="CharacterSelect" parent="CanvasLayer/Panel/HBoxContainer" instance=ExtResource("2_lhuy3")]
+[node name="CharacterSelect" parent="Panel/HBoxContainer" instance=ExtResource("2_lhuy3")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = -3.0
-offset_top = 216.0
-offset_right = 723.0
-offset_bottom = 410.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 186.0
+offset_right = 724.0
+offset_bottom = 425.0
 scale = Vector2(0.876473, 0.728186)
 theme = ExtResource("1_6bua4")
 
-[node name="SelectWorldBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="TooltipLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Select World"
+theme_override_font_sizes/font_size = 48
+text = "Select one of the three game modes"
+horizontal_alignment = 1
 
-[node name="ExitRoomBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="TutorialBtn" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+action_mode = 0
+text = "Tutorial"
+alignment = 1
+
+[node name="PartyBtn" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "Party"
+
+[node name="CoopBtn" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "Co-op
+"
+
+[node name="GoToGameBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.454902, 1, 1)
+text = "Go to game!"
+
+[node name="ExitRoomBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Exit Room"
 
-[node name="CancelHostBtn" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="CancelHostBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Cancel Hosting Session"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="VBoxContainer"]
+root_path = NodePath("../..")
+replication_config = SubResource("SceneReplicationConfig_sgwn8")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TutorialBtn" to="." method="_on_tutorial_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PartyBtn" to="." method="_on_party_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CoopBtn" to="." method="_on_coop_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitRoomBtn" to="." method="_on_exit_room_btn_pressed"]

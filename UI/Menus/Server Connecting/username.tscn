@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/username.gd" id="1_3m2ug"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="2_i4p4k"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="3_np3k5"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://SFX/menu-music-1.wav" id="4_rcism"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="4_rcism"]
 
 [sub_resource type="Theme" id="Theme_53apy"]
 default_font = ExtResource("2_i4p4k")
