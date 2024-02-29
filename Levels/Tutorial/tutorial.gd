@@ -10,6 +10,7 @@ var cur_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SignalBus.game_over.connect(_on_game_over)
 	print("level ready")
 	var index = 0
 	print("players:" + str(GameManager.PLAYERS))
@@ -27,3 +28,6 @@ func _ready():
 				cur_player.global_position = spawn_position.global_position
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
+
+func _on_game_over():
+	$"CanvasLayer/Game Over".visible = true

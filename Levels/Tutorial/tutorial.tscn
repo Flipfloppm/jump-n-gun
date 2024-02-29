@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=28 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="17_28g4f"]
+[ext_resource type="PackedScene" uid="uid://cmlyw1u3416cj" path="res://UI/game_over.tscn" id="17_c5b0f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")
@@ -111,28 +112,6 @@ default_font = ExtResource("8_y180i")
 [sub_resource type="LabelSettings" id="LabelSettings_0vovr"]
 font = ExtResource("8_y180i")
 font_size = 8
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jl58b"]
-texture = ExtResource("8_1stur")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_myrma"]
-texture = ExtResource("2_423r4")
-texture_region_size = Vector2i(8, 8)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73i2w"]
-texture = ExtResource("8_1stur")
-texture_region_size = Vector2i(8, 8)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_v3gu1"]
-tile_size = Vector2i(8, 8)
-sources/0 = SubResource("TileSetAtlasSource_jl58b")
-sources/1 = SubResource("TileSetAtlasSource_myrma")
-sources/2 = SubResource("TileSetAtlasSource_73i2w")
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_tr133")
@@ -284,9 +263,8 @@ position = Vector2(346, -37)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_174ns")]
 visible = false
 
-[node name="TileMap2" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_v3gu1")
-format = 2
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource("17_c5b0f")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_28g4f")

@@ -16,3 +16,5 @@ func broadcast_server_closed():
 	SignalBus.server_closed.emit()
 
 signal serverBrowserJoin(ip) # indicates a user trying to join a server at IP
+
+signal game_over
