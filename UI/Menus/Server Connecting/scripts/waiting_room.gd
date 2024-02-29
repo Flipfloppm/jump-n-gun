@@ -28,6 +28,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	refresh_players(GameManager.PLAYERS)
+	# syncing gotogame button hover. 
 	if multiplayer.get_unique_id() == 1:
 		hover_on_gotogame = gotogame_btn.is_hovered()
 	if hover_on_gotogame:
@@ -35,6 +36,8 @@ func _process(delta):
 	else:
 		gotogame_btn.remove_theme_color_override("font_color")
 	pass
+	
+	
 func refresh_players(players):
 	# Remove any player that are no longer in the room
 	for character in char_select_container.get_children():
@@ -68,6 +71,10 @@ func set_visibility(role):
 		party_btn.disabled = true
 		coop_btn.disabled = true
 
+func show_popup(error):
+	$PopupPanel/ErrorMsgLabel.text = error
+	$PopupPanel.visible = true
+	$PopupPanel/ErrorMsgLabel.visible = true
 
 
 func _on_tutorial_btn_pressed():
@@ -89,3 +96,5 @@ func _on_coop_btn_pressed():
 	tutorial_btn.button_pressed = false
 	party_btn.button_pressed = false
 	coop_btn.button_pressed = true
+
+

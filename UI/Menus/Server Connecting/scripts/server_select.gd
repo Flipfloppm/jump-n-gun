@@ -124,17 +124,6 @@ func _on_back_btn_pressed():
 	get_tree().change_scene_to_file("res://UI/Menus/main_menu.tscn")
 
 
-func _on_select_world_btn_pressed():
-	# when the host click on select world, every player should load that scene. 
-	load_select_world_scene.rpc()
-	
-@rpc("any_peer","call_local")
-func load_select_world_scene():
-	print("going to select world tscn" + str(multiplayer.get_unique_id()))
-	server_browser.cleanup_browser()
-	get_tree().change_scene_to_file("res://UI/Menus/Level Select/job_select.tscn")
-
-
 func _on_cancel_host_btn_pressed():
 	SignalBus.broadcast_server_closed.rpc()
 	
@@ -149,3 +138,27 @@ func _on_server_closed():
 func _on_ip_btn_pressed():
 	print("IP BTN pressed: opening direct server join scene")
 	$CanvasLayer/DirectIPJoin/CanvasLayer.visible=true
+
+
+func _on_go_to_game_btn_pressed():
+	print("pressed")
+	if waiting_room.gameMode != 1 and waiting_room.gameMode != 2 and waiting_room.gameMode != 3:
+		waiting_room.show_popup("no valid game mode selected!")
+	else:
+		print("in load")
+		load_select_scene.rpc(waiting_room.gameMode)
+
+	
+@rpc("any_peer","call_local")
+func load_select_scene(gameMode):
+	print("loading select scene")
+	server_browser.cleanup_browser()
+	if gameMode == 1:
+		get_tree().change_scene_to_file("res://Levels/Tutorial/tutorial.tscn")
+	elif gameMode == 2:
+		get_tree().change_scene_to_file("res://UI/Menus/Level Select/party_select.tscn")
+	elif gameMode == 3:
+		print("Going to coop mode")
+	else:
+		print("Error: no valid game mode selected.")
+		
