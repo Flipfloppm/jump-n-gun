@@ -39,6 +39,7 @@ func _process(_delta):
 		cellAtlasCoords = get_cell_atlas_coords(0, cell)
 		# If time < 4 secs, change skin the first time.
 		if tile_spawn_set[cell] < 0:
+			tile_spawn_set[cell] = 2
 			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
 			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
 			# Remove block from tile_spawn_set
