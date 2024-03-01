@@ -2,7 +2,7 @@ extends TileMap
 
 var breakable_wood_set = {}
 var tile_spawn_set = {}
-var tile_spawn_time = 6.0
+var tile_spawn_time = 2.0 # This is the amount of time between image changes
 
 # Boundary of playing space
 const XMIN = 0
@@ -38,19 +38,12 @@ func _process(_delta):
 		cellSourceId = get_cell_source_id(0, cell)
 		cellAtlasCoords = get_cell_atlas_coords(0, cell)
 		# If time < 4 secs, change skin the first time.
-		if tile_spawn_set[cell] < 4 && cellAtlasCoords[0] < 4:
-			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
-			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
-		# If time < 2 secs, change skin the second time.
-		elif tile_spawn_set[cell] < 2 && cellAtlasCoords[0] < 7:
-			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
-			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
-		# If time < 0 secs, break block and remove from tile_spawn_set and breakable_wood_set.
-		elif tile_spawn_set[cell] < 0:
+		if tile_spawn_set[cell] < 0:
 			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
 			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
 			# Remove block from tile_spawn_set
-			tile_spawn_set.erase(cell)
+			if newCellAtlasCoords[0] > 10:
+				tile_spawn_set.erase(cell)
 	pass
 
 # Script for breaking wood.
