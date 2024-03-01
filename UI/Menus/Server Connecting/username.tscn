@@ -44,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_53apy")
 placeholder_text = "Default"
+max_length = 15
 
 [node name="Submit" type="Button" parent="CanvasLayer"]
 anchors_preset = 7

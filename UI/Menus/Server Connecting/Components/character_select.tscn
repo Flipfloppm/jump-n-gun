@@ -8,10 +8,10 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 117.0
-offset_top = -7.0
-offset_right = -423.0
-offset_bottom = -202.0
+offset_left = 135.0
+offset_top = 22.0
+offset_right = -378.0
+offset_bottom = -138.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.8042, 1.30796)
@@ -21,11 +21,12 @@ script = ExtResource("2_n6ltl")
 [node name="UserId" type="Label" parent="."]
 layout_mode = 2
 text = "Player: x"
+horizontal_alignment = 1
 
 [node name="charDisplay" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("3_io4sf")
-stretch_mode = 2
+stretch_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
