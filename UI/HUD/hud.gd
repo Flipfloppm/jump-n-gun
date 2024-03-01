@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var _grenadeLauncherAnimation = $GrenadeLauncherReload
 @onready var _grenadeLauncherAmmoText = $GrenadeLauncherReload/Panel/Ammo
 @onready var _healthBar = $HealthBar
+@onready var _charHead = $HealthBar/CharacterHead
 var grenadeLauncherAmmo = 6
 var grenadeReloading = false
 var grenadeReloadTimer
@@ -26,6 +27,17 @@ func _process(delta):
 		grenadeLauncherAmmo = 6
 		_grenadeLauncherAmmoText.text = str(grenadeLauncherAmmo)
 
+func setup(charName):
+	match charName:
+		"Ron":
+			_charHead.texture = load("res://Art/UI/HUD/Character Heads/ronald-head.png")
+		"Dick":
+			_charHead.texture = load("res://Art/UI/HUD/Character Heads/cheney-head.png")
+		"Dwight":
+			_charHead.texture = load("res://Art/UI/HUD/Character Heads/dwight-head.png")
+		"Bush":
+			_charHead.texture = load("res://Art/UI/HUD/Character Heads/bush-head.png")
+	
 func _on_fired():
 	match currWeapon:
 		"Rocket":
