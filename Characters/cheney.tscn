@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dt7l4ecn6iwft"]
+[gd_scene load_steps=29 format=3 uid="uid://dt7l4ecn6iwft"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_nyab2"]
 [ext_resource type="Texture2D" uid="uid://b2ifmuhekgej2" path="res://Art/Characters/Cheney/cheney-walking.png" id="2_ntisv"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://0h16kkiltpdc" path="res://Weaponry/tile.tscn" id="4_un6en"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="5_a6rky"]
 [ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="10_3wicv"]
-[ext_resource type="Texture2D" uid="uid://dt6qfy82iu27e" path="res://Art/Weapons/temp_c4.png" id="11_pwyo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxnt"]
 atlas = ExtResource("4_gtqi5")
@@ -175,11 +174,6 @@ texture = ExtResource("3_gb1js")
 position = Vector2(20.85, 1.95)
 scale = Vector2(0.759375, 0.670833)
 texture = ExtResource("10_3wicv")
-
-[node name="C4Launcher" type="Sprite2D" parent="GunRotation"]
-position = Vector2(18, 2)
-scale = Vector2(1.3125, 0.9375)
-texture = ExtResource("11_pwyo8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -60)

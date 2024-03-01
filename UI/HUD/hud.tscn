@@ -273,18 +273,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
 
 [node name="Charges" type="Label" parent="TileGun/Panel"]
 layout_mode = 0
-offset_left = 5.77387
-offset_top = -5.88166
-offset_right = 27.7739
-offset_bottom = 29.1183
-theme_override_font_sizes/font_size = 40
+offset_left = 1.86227
+offset_top = -9.65797
+offset_right = 23.8623
+offset_bottom = 28.342
+theme_override_font_sizes/font_size = 48
 text = "3"
 
 [node name="Charges2" type="Label" parent="TileGun/Panel"]
 layout_mode = 0
-offset_left = 15.553
-offset_top = -5.88166
-offset_right = 35.553
-offset_bottom = 26.1183
-theme_override_font_sizes/font_size = 40
+offset_left = 12.9453
+offset_top = -9.65797
+offset_right = 36.9454
+offset_bottom = 28.342
+theme_override_font_sizes/font_size = 48
 text = "/3"
