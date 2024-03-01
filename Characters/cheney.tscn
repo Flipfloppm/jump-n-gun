@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b8812in8pfmoq" path="res://Weaponry/c4.tscn" id="4_tjc16"]
 [ext_resource type="PackedScene" uid="uid://0h16kkiltpdc" path="res://Weaponry/tile.tscn" id="4_un6en"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://SFX/shoot.wav" id="5_a6rky"]
-[ext_resource type="Texture2D" uid="uid://dt8lj2ys11ipm" path="res://Art/Weapons/tile-gun-temp.png" id="8_lu13s"]
+[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="10_3wicv"]
 [ext_resource type="Texture2D" uid="uid://dt6qfy82iu27e" path="res://Art/Weapons/temp_c4.png" id="11_pwyo8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e62gi"]
@@ -173,9 +173,9 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_gb1js")
 
 [node name="TileGun" type="Sprite2D" parent="GunRotation"]
-position = Vector2(20, 2)
-scale = Vector2(0.70625, 0.675)
-texture = ExtResource("8_lu13s")
+position = Vector2(20.85, 1.95)
+scale = Vector2(0.759375, 0.670833)
+texture = ExtResource("10_3wicv")
 
 [node name="C4Launcher" type="Sprite2D" parent="GunRotation"]
 position = Vector2(18, 2)

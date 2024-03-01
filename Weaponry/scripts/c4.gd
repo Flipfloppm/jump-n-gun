@@ -22,7 +22,7 @@ func _ready():
 	freeze = false
 	set_contact_monitor(true)
 	set_max_contacts_reported(5)
-	set_mass(1.0)
+	#set_mass(1.0)
 	
 	linear_velocity = Vector2(1,0).rotated(rotation) * SPEED
 	
@@ -31,6 +31,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print(collision)
 	if !collided:
 		collision = move_and_collide(linear_velocity * delta)
 	if collision:
@@ -41,6 +42,7 @@ func _process(delta):
 		#freeze = true
 		collided = true
 		collided_body = collision.get_collider()
+		return
 	if collided:
 		#make it not collidable anymore
 		set_collision_layer_value(1,0)
@@ -55,6 +57,7 @@ func _process(delta):
 			# Stop timer and explode
 			timer.stop()
 			_on_timer_timeout()
+		return
 
 
 func _integrate_forces(body_state):

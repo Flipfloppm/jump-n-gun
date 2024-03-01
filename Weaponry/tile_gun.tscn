@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8biqfvq20y8d"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/grenade_launcher.gd" id="1_7vn8w"]
-[ext_resource type="Texture2D" uid="uid://dt8lj2ys11ipm" path="res://Art/Weapons/tile-gun-temp.png" id="1_jxsyb"]
+[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="2_plut2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkbm6"]
-size = Vector2(32, 16)
+size = Vector2(32, 20)
 
 [node name="Tile_Gun" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_7vn8w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jxsyb")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vkbm6")
+
+[node name="Tilegun" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("2_plut2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
