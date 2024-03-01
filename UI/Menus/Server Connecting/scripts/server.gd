@@ -34,6 +34,11 @@ func start_server():
 				break
 	return [SELECTED_PORT, SELECTED_IP]
 
+func close_server():
+	for peerID in multiplayer.get_peers():
+		print("disconnecting peer:", peerID)
+		server_peer.disconnect_peer(peerID)
+	server_peer.close()
 
 # this gets called on both the server and client when someone connects
 func peer_connected(id):
