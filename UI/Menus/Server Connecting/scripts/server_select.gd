@@ -142,11 +142,7 @@ func _on_ip_btn_pressed():
 
 func _on_go_to_game_btn_pressed():
 	print("pressed")
-	if waiting_room.gameMode != 1 and waiting_room.gameMode != 2 and waiting_room.gameMode != 3:
-		waiting_room.show_popup("no valid game mode selected!")
-	else:
-		print("in load")
-		load_select_scene.rpc(waiting_room.gameMode)
+	load_select_scene.rpc(waiting_room.gameMode)
 
 	
 @rpc("any_peer","call_local")
@@ -159,6 +155,7 @@ func load_select_scene(gameMode):
 		get_tree().change_scene_to_file("res://UI/Menus/Level Select/party_select.tscn")
 	elif gameMode == 3:
 		print("Going to coop mode")
+		get_tree().change_scene_to_file("res://UI/Menus/Level Select/coop_select.tscn")
 	else:
-		print("Error: no valid game mode selected.")
+		waiting_room.show_popup("no valid game mode selected!")
 		
