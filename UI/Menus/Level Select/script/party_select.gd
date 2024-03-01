@@ -9,7 +9,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$CanvasLayer/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
-	pass
+	if multiplayer.get_unique_id() != 1:
+		$CanvasLayer/StartGameBtn.disabled = true
+		$CanvasLayer/TooltipLabel.visible = true
+		$CanvasLayer/TooltipLabel.text= "Waiting for host to continue"
 
 @rpc("any_peer", "call_local")
 func start_game():
@@ -17,9 +20,10 @@ func start_game():
 
 func _on_start_game_btn_pressed():
 	print("start party")
-	start_game.rpc()
-	pass # Replace with function body.
-
+	if multiplayer.get_unique_id() == 1:
+		start_game.rpc()
+	else:
+		show_popup("Wait for host to continue!")
 
 func _on_start_game_btn_mouse_entered():
 	$CanvasLayer/BtnSelectIndicator.visible = true
@@ -28,3 +32,9 @@ func _on_start_game_btn_mouse_entered():
 func _on_start_game_btn_mouse_exited():
 	$CanvasLayer/BtnSelectIndicator.visible = false
 	$CanvasLayer/TooltipLabel.visible = false
+
+func show_popup(error):
+	$CanvasLayer/PopupPanel/ErrorMsgLabel.text = error
+	$CanvasLayer/PopupPanel.visible = true
+	$CanvasLayer/PopupPanel/ErrorMsgLabel.visible = true
+	

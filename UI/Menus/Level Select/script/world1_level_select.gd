@@ -10,7 +10,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$CanvasLayer/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
-
+	if multiplayer.get_unique_id() != 1:
+		$CanvasLayer/StartGameBtn.visible = false
+		$CanvasLayer/TipLabel.text = "Wait for host to choose a level"
+	
 func _on_trash_btn_mouse_entered():
 	$CanvasLayer/Background.frame = 1
 	pass # Replace with function body.

@@ -28,9 +28,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	refresh_players(GameManager.PLAYERS)
+	
 	# syncing gotogame button hover. 
 	if multiplayer.get_unique_id() == 1:
 		hover_on_gotogame = gotogame_btn.is_hovered()
+	else:
+		$VBoxContainer/TooltipLabel.text = "Waiting for host to continue"
 	if hover_on_gotogame:
 		gotogame_btn.add_theme_color_override("font_color", Color(0,116,255,255))
 	else:
@@ -70,6 +73,7 @@ func set_visibility(role):
 		tutorial_btn.disabled = true
 		party_btn.disabled = true
 		coop_btn.disabled = true
+		gotogame_btn.disabled = true
 
 func show_popup(error):
 	$PopupPanel/ErrorMsgLabel.text = error

@@ -93,6 +93,29 @@ text = "Start your party!
 "
 horizontal_alignment = 1
 
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+initial_position = 2
+size = Vector2i(260, 60)
+transparent = true
+
+[node name="ErrorMsgLabel" type="Label" parent="CanvasLayer/PopupPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_5l3ej")
+theme_override_font_sizes/font_size = 24
+text = "No valid world selected!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ip62k")
 
