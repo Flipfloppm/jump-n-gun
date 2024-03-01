@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw3kroc3btwcx"]
+
+[ext_resource type="Script" path="res://UI/Menus/scripts/main_menu.gd" id="1_wqeys"]
+[ext_resource type="Texture2D" uid="uid://dbglnfq5c3tl2" path="res://Art/UI/title-screen/mainmenubkg.png" id="2_udto6"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="3_rpio6"]
+[ext_resource type="PackedScene" uid="uid://c1bhra2if2aap" path="res://UI/Menus/Settings/settings.tscn" id="4_de5ko"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="5_suyi8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaait"]
+atlas = ExtResource("2_udto6")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hrbh"]
+atlas = ExtResource("2_udto6")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh7p0"]
+atlas = ExtResource("2_udto6")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c377f"]
+atlas = ExtResource("2_udto6")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltcdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaait")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hrbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh7p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c377f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wqeys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ltcdm")
+autoplay = "default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -151.0
+offset_right = 248.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.13027, 1.31911)
+theme = ExtResource("3_rpio6")
+theme_override_constants/separation = 15
+
+[node name="MultiplayerBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="SettingsBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Settings" parent="." instance=ExtResource("4_de5ko")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_suyi8")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]

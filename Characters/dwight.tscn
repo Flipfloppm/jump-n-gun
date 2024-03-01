@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://by4w82rkbmk43"]
+
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_4ffa4"]
+[ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_0nub0"]
+[ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_cpw4w"]
+[ext_resource type="Texture2D" uid="uid://b7xb5dh4rs3wo" path="res://Art/Characters/Dwight/dwightd-walk.png" id="4_4cte1"]
+[ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_47ryv"]
+[ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_7ux7f"]
+[ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="7_8ugxi"]
+[ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="8_7mrpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dhm6"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(0, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cnf8"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(0, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_subal"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(40, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oncqt"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(80, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho2cn"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(120, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5m06"]
+atlas = ExtResource("4_4cte1")
+region = Rect2(160, 0, 40, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61fes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dhm6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cnf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_subal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oncqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho2cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5m06")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8l1t"]
+radius = 8.0
+height = 36.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2n3a"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GunRotation:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite:animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Node2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_4ffa4")
+rocket = ExtResource("2_0nub0")
+grenade = ExtResource("3_cpw4w")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_61fes")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_v8l1t")
+
+[node name="GunRotation" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="RocketLauncher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(20, 1)
+scale = Vector2(0.095, 0.1)
+texture = ExtResource("5_47ryv")
+
+[node name="ProjectileSpawn" type="Node2D" parent="GunRotation"]
+position = Vector2(27, 1)
+
+[node name="GrenadeLauncher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(20, 0.999998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_7ux7f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -60)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_h2n3a")
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8ugxi")
+volume_db = 5.0
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_7mrpj")
+volume_db = 5.0
