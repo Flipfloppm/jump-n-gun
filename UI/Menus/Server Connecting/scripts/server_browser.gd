@@ -18,7 +18,7 @@ func _ready():
 	broadcastTimer = $BroadcastTimer
 	# start listening for servers, no matter if this player hosts a game
 	setup_listener()
-	SignalBus.server_closed.connect(_on_server_closed)
+
 
 func setup_listener():
 	listener = PacketPeerUDP.new()	
@@ -121,7 +121,8 @@ func cleanup_browser():
 		broadcaster.close()
 	print("cleanup browser: broadcast closed\n")
 
-func _on_server_closed():
+func broadcast_server_closed():
+	# tell other potential clients the host has ended hosting.
 	if broadcaster:
 		RoomInfo.open = false
 		var data = JSON.stringify(RoomInfo)

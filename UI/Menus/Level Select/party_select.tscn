@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0k3dwb0nooo"]
+
+[ext_resource type="Texture2D" uid="uid://clcamgi7kwt7o" path="res://Art/UI/PartyModeSelect/party-select-bkg.png" id="1_0fktq"]
+[ext_resource type="Script" path="res://UI/Menus/Level Select/script/party_select.gd" id="1_frnyt"]
+[ext_resource type="Texture2D" uid="uid://cckbjf1faij4a" path="res://Art/UI/PartyModeSelect/party-select-dice.png" id="2_i2hml"]
+[ext_resource type="Texture2D" uid="uid://cogw3rf70bhdi" path="res://Art/UI/PartyModeSelect/party-select-dice-press-hover.png" id="4_p6nrs"]
+[ext_resource type="Texture2D" uid="uid://c3xpfsidbjvlo" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-selector.png" id="5_u3des"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_5l3ej"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="7_wa7dt"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ip62k"]
+properties/0/path = NodePath("CanvasLayer/BtnSelectIndicator:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("CanvasLayer/TooltipLabel:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="PartySelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_frnyt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0fktq")
+
+[node name="UserIDLabel" type="Label" parent="CanvasLayer"]
+offset_left = 8.0
+offset_right = 105.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("6_5l3ej")
+theme_override_font_sizes/font_size = 20
+text = "User ID:"
+
+[node name="StartGameBtn" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -58.5
+offset_right = 54.0
+offset_bottom = 58.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_i2hml")
+texture_pressed = ExtResource("4_p6nrs")
+texture_hover = ExtResource("4_p6nrs")
+
+[node name="BtnSelectIndicator" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -131.0
+offset_right = 21.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_u3des")
+
+[node name="TooltipLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -85.0
+offset_right = 99.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_5l3ej")
+theme_override_font_sizes/font_size = 48
+text = "Start your party!
+"
+horizontal_alignment = 1
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+initial_position = 2
+size = Vector2i(260, 60)
+transparent = true
+
+[node name="ErrorMsgLabel" type="Label" parent="CanvasLayer/PopupPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_5l3ej")
+theme_override_font_sizes/font_size = 24
+text = "No valid world selected!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ip62k")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wa7dt")
+autoplay = true
+
+[connection signal="mouse_entered" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
