@@ -20,7 +20,7 @@ var above
 var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
-var tileChargeCount = 3
+var tileChargeCount = 10
 var health = 3
 var lastDir = 0
 @onready var camera = $Camera2D

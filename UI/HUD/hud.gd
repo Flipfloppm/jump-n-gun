@@ -10,7 +10,7 @@ extends CanvasLayer
 var grenadeLauncherAmmo = 6
 var grenadeReloading = false
 var grenadeReloadTimer
-var tileChargeCount = 3
+var tileChargeCount = 10
 var tileGunAvail = true
 var currWeapon
 var health = 3

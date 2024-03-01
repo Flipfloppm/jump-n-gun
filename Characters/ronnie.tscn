@@ -1,14 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfuev8cwm4r50"]
+[gd_scene load_steps=20 format=3 uid="uid://codma13difx3e"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_6btp3"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_lpjf7"]
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_811ue"]
+[ext_resource type="PackedScene" path="res://Weaponry/tile.tscn" id="4_2lmwy"]
 [ext_resource type="Texture2D" uid="uid://ch8ainr7d8kfr" path="res://Art/Characters/Ronnie/ronnie-walk.png" id="4_45k1d"]
-[ext_resource type="PackedScene" uid="uid://0h16kkiltpdc" path="res://Weaponry/tile.tscn" id="4_amfh7"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_644hc"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_o3tgi"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="7_5w1fy"]
-[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="7_igheb"]
+[ext_resource type="Texture2D" path="res://Art/Weapons/tilegun.png" id="8_04qlf"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="8_ieeyw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1g12a"]
@@ -87,7 +87,7 @@ collision_mask = 7
 script = ExtResource("1_6btp3")
 rocket = ExtResource("2_lpjf7")
 grenade = ExtResource("3_811ue")
-tile = ExtResource("4_amfh7")
+tile = ExtResource("4_2lmwy")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_61fes")
@@ -114,9 +114,9 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_o3tgi")
 
 [node name="TileGun" type="Sprite2D" parent="GunRotation"]
-position = Vector2(20.85, 1.95)
-scale = Vector2(0.759375, 0.670833)
-texture = ExtResource("7_igheb")
+position = Vector2(21, 1)
+scale = Vector2(0.8125, 0.666667)
+texture = ExtResource("8_04qlf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -60)
