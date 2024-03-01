@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtgk1mrrewkxt"]
+
+[ext_resource type="Script" path="res://UI/Menus/scripts/TitleScreen.gd" id="1_2hkhe"]
+[ext_resource type="Texture2D" uid="uid://uxl7yjoscp12" path="res://Art/UI/WorldSelect/clear-jumpngunlogo.png" id="2_a021n"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="3_md60t"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="4_m3su6"]
+
+[sub_resource type="Gradient" id="Gradient_40iuc"]
+offsets = PackedFloat32Array(0.0162338, 0.192698, 0.348884, 1)
+colors = PackedColorArray(0.356863, 0.431373, 0.882353, 1, 0.356863, 0.431373, 0.882353, 1, 0.356863, 0.431373, 0.882353, 1, 0.356863, 0.431373, 0.882353, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_81dgw"]
+gradient = SubResource("Gradient_40iuc")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -582.0
+offset_top = 429.0
+offset_right = -294.0
+offset_bottom = 577.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2hkhe")
+
+[node name="Black Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 523.0
+offset_top = -443.0
+offset_right = 1294.0
+offset_bottom = -10.0
+texture = SubResource("GradientTexture1D_81dgw")
+
+[node name="TitleBox" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 580.0
+offset_top = -428.0
+offset_right = 5842.0
+offset_bottom = 2765.0
+scale = Vector2(0.122002, 0.112722)
+texture = ExtResource("2_a021n")
+
+[node name="PressAnyButtn" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 737.0
+offset_top = -434.0
+offset_right = 1159.0
+offset_bottom = -368.0
+scale = Vector2(0.9366, 0.833313)
+theme_override_fonts/normal_font = ExtResource("3_md60t")
+theme_override_font_sizes/normal_font_size = 64
+text = "Press any button"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m3su6")
+autoplay = true
