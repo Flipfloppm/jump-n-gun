@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byl1vqsdrmqw1"
-path="res://.godot/imported/cheney.png-67ac7cbd047d1a7f8a6b617f771680b9.ctex"
+uid="uid://cdm56opp86mhq"
+path="res://.godot/imported/cheney-anim.png-7c374b9fde3badb6090f61d1efc69950.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/cheney.png"
-dest_files=["res://.godot/imported/cheney.png-67ac7cbd047d1a7f8a6b617f771680b9.ctex"]
+source_file="res://Art/Characters/Cheney/cheney-anim.png"
+dest_files=["res://.godot/imported/cheney-anim.png-7c374b9fde3badb6090f61d1efc69950.ctex"]
 
 [params]
 

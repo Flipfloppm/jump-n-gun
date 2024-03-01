@@ -1,10 +1,15 @@
 extends Control
 
+func _ready():
+	SignalBus.settingsExit.connect(exitSettings)
+	
+
 func _on_quit_btn_pressed():
 	get_tree().quit()
 
 func _on_settings_btn_pressed():
-	pass
+	$VBoxContainer.visible = false
+	$Settings.visible = true
 
 func _on_resume_btn_pressed():
 	set_paused(false)
@@ -36,3 +41,7 @@ func _on_restart_btn_pressed():
 func restart_game():
 	set_paused(false)
 	get_tree().reload_current_scene()
+
+func exitSettings():
+	$Settings.visible = false
+	$VBoxContainer.visible = true

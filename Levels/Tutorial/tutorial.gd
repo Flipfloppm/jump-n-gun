@@ -1,10 +1,11 @@
 extends Node2D
 
-@export var GUYSCENE: PackedScene
-@export var DUDESCENE: PackedScene
-@export var CheneyScene: PackedScene
-#@onready var pause_menu = "res://Levels/level_selection/pause-menu.tscn"
+var CheneyScene = preload("res://Characters/cheney.tscn")
+var BushScene = preload("res://Characters/bush.tscn")
+var RonnieScene = preload("res://Characters/ronnie.tscn")
+var DwightScene = preload("res://Characters/dwight.tscn")
 var paused = false
+@onready var HUD = $HUD
 var cur_player
 
 
@@ -14,12 +15,15 @@ func _ready():
 	var index = 0
 	print("players:" + str(GameManager.PLAYERS))
 	for i in GameManager.PLAYERS:
-		if index % 2 == 0:
-			print("guy")
-			cur_player = CheneyScene.instantiate()
-		else:
-			print("dude")
-			cur_player = DUDESCENE.instantiate()
+		match GameManager.PLAYERS[i]["Character"]:
+			"Dwight":
+				cur_player = DwightScene.instantiate()
+			"Ron":
+				cur_player = RonnieScene.instantiate()
+			"Bush":
+				cur_player = BushScene.instantiate()
+			"Dick":
+				cur_player = CheneyScene.instantiate()
 		cur_player.name = str(GameManager.PLAYERS[i].id)
 		add_child(cur_player)
 		for spawn_position in get_tree().get_nodes_in_group("PlayerSpawnPosition"):
@@ -27,3 +31,5 @@ func _ready():
 				cur_player.global_position = spawn_position.global_position
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
+	HUD.setup(GameManager.PLAYERS[multiplayer.get_unique_id()]["Character"])
+	

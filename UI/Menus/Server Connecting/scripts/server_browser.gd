@@ -64,7 +64,10 @@ func _process(delta):
 		var data = receivedBytes.get_string_from_ascii()
 		var roomInfo = JSON.parse_string(data)
 		print("serverIP: " + str(serverIP) + " serverPort: " + str(serverPort) + " roominfo: " + str(roomInfo))
-		
+		# Verify the input, if roomInfo's name is "", change it to the default case: New Server
+		if roomInfo.name == "":
+			roomInfo.name = "New Server"
+			
 		# update the info to the browser UI
 		for child in $Panel/VBoxContainer.get_children():
 			if child.name == roomInfo.name:
@@ -88,7 +91,7 @@ func _process(delta):
 			receivedServer.get_node("IP").text = serverIP
 			receivedServer.get_node("PlayerCount").text = str(roomInfo.playerCount)
 			$Panel/VBoxContainer.add_child(receivedServer)
-			receivedServer.serverBrowserJoin.connect(join_by_ip)
+			#receivedServer.serverBrowserJoin.connect(join_by_ip)
 			found_server.emit(serverIP, serverPort, roomInfo)
 				
 
@@ -101,9 +104,10 @@ func _on_broadcast_timer_timeout():
 	broadcaster.put_packet(packet) # send the packet through a queue
 	
 	
-# Tell the main control lobby that the specified join button is pressed.
-func join_by_ip(ip):
-	childServerJoin.emit(ip)
+# Deprecated: the server_info's join button is directly handled by the server_select scene
+## Tell the main control lobby that the specified join button is pressed.
+#func join_by_ip(ip):
+	#childServerJoin.emit(ip)
 
 
 func _exit_tree():

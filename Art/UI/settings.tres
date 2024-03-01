@@ -1,0 +1,48 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dgdoa674vox0c"]
+
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_yjpgx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ln1"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6imln"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.745098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by55n"]
+bg_color = Color(0, 0, 0, 0.92549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_habpu"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tfqo"]
+bg_color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loui7"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt6k2"]
+bg_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3j8j"]
+bg_color = Color(0, 0, 0, 0.478431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsm2g"]
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_yjpgx")
+Button/styles/normal = SubResource("StyleBoxFlat_e4ln1")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_yjpgx")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_6imln")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_by55n")
+TabBar/font_sizes/font_size = 32
+TabBar/fonts/font = ExtResource("1_yjpgx")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_habpu")
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_2tfqo")
+TabContainer/font_sizes/font_size = 32
+TabContainer/fonts/font = ExtResource("1_yjpgx")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_loui7")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_xt6k2")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_w3j8j")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_rsm2g")

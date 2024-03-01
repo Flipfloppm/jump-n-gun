@@ -2,46 +2,52 @@ extends Control
 
 signal client_disconnect_request(player_id)
 
-@onready var player_list_container = $Panel/VBoxContainer/player_list
+#@onready var player_list_container = $Panel/VBoxContainer/player_list
+@onready var char_select_container = $Panel/HBoxContainer
 @onready var select_world_btn = $VBoxContainer/SelectWorldBtn
 @onready var exit_room_btn = $VBoxContainer/ExitRoomBtn
 @onready var cancel_host_btn = $VBoxContainer/CancelHostBtn
+#@export var charSelectScene: PackedScene
+var charSelectScene = preload("res://UI/Menus/Server Connecting/Components/character_select.tscn")
+var lobbySet = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for child in player_list_container.get_children():
-		child.queue_free()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$UserIDLabel.text = "User ID: " + str(multiplayer.get_unique_id())
-	if multiplayer.get_unique_id() != 1:
-		# if not the host, hide the start game button
-		exit_room_btn.visible = true
-		select_world_btn.visible = false
-		cancel_host_btn.visible = false
-	else: 
-		exit_room_btn.visible = false
 	refresh_players(GameManager.PLAYERS)
-	pass
 
 func refresh_players(players):
-	for child in player_list_container.get_children():
-		child.queue_free()
+	# Remove any player that are no longer in the room
+	for character in char_select_container.get_children():
+		if players.has(character.controllerId):
+			continue
+		else:
+			# the player is no longer in the server, remove this player's element.
+			character.queue_free()
+			lobbySet.erase(character.controllerId)
+	# Add any potential player
 	for player_id in players:
-		var player_name
-		#print(player_id, players[player_id])
-		if players[player_id]["name"] != "":
-			player_name = players[player_id]["name"]
-		else: 
-			player_name = "new player"
-		var player_row = Label.new()
-		player_row.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		player_row.text = player_name
-		player_list_container.add_child(player_row)
-	#print("count", player_list_container.item_count)
+		if lobbySet.has(player_id):
+			continue
+		var charSelect = charSelectScene.instantiate()
+		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id())
+		char_select_container.add_child(charSelect)
+		lobbySet[player_id] = 1
 
 
 func _on_exit_room_btn_pressed():
 	client_disconnect_request.emit(multiplayer.get_unique_id())
+
+func set_visibility(role):
+	if role == 1: # when its the host
+		exit_room_btn.visible = false
+	else:
+		exit_room_btn.visible = true
+		select_world_btn.visible = false
+		cancel_host_btn.visible = false
+	
+		
 	

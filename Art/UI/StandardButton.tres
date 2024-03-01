@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://5xaygmkmxj22"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://jrlselt3bfqh"]
 
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="1_7cc07"]
 
@@ -52,7 +52,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -95,3 +95,5 @@ Button/styles/focus = SubResource("StyleBoxFlat_xjwkq")
 Button/styles/hover = SubResource("StyleBoxFlat_7lpme")
 Button/styles/normal = SubResource("StyleBoxFlat_43ncg")
 Button/styles/pressed = SubResource("StyleBoxFlat_7skqx")
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_7cc07")

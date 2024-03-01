@@ -29,21 +29,21 @@ var lastDir = 0
 @onready var animatedSprite = $Sprite
 @export var rocket :PackedScene
 @export var grenade :PackedScene
-@export var c4 : PackedScene
+#@export var c4 : PackedScene
 @export var tile :PackedScene
 
 
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
-	SignalBus.c4detonated.connect(_on_c4_detonation)
+	#SignalBus.c4detonated.connect(_on_c4_detonation)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
-	$GunRotation/C4Launcher.visible = false
+	#$GunRotation/C4Launcher.visible = false
 	$GunRotation/TileGun.visible = false
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
-	hasWeaponsDict["C4"] = false
+	#hasWeaponsDict["C4"] = false
 	hasWeaponsDict["Tile"] = false
 	add_to_group("players")
 	#set_wall_min_slide_angle(0.785398)
@@ -120,11 +120,11 @@ func _physics_process(delta):
 						if grenadeLauncherAmmo == 0:
 							grenadeReloadTime = 2
 							grenadeLauncherAmmo = 6
-				"C4":
-					if c4_avail:
-						fire.rpc()
-						SignalBus.fired.emit()
-						c4_avail = false
+				#"C4":
+					#if c4_avail:
+						#fire.rpc()
+						#SignalBus.fired.emit()
+						#c4_avail = false
 				"TileGun":
 					if tileChargeCount > 0:
 						fire.rpc()
@@ -136,8 +136,8 @@ func _physics_process(delta):
 			select_weapon.rpc("Rocket", self)
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			select_weapon.rpc("Grenade", self)
-		elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
-			select_weapon("C4", self)
+		#elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
+			#select_weapon("C4", self)
 		elif Input.is_action_just_pressed("selectTileGun") && hasWeaponsDict["Tile"]:
 			select_weapon.rpc("Tile", self)
 
@@ -173,7 +173,7 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
-			$GunRotation/C4Launcher.visible = false
+			#$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Rocket")
@@ -187,17 +187,17 @@ func select_weapon(weaponName: String, body):
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Grenade")
-		"C4":
-			currWeapon = "C4"
-			knockback_min_force = 200
-			knockback_max_force = 600
-			knockback_radius = 100
-			$GunRotation/RocketLauncher.visible = false
-			$GunRotation/GrenadeLauncher.visible = false
-			$GunRotation/C4Launcher.visible = true
-			$GunRotation/TileGun.visible = false
-			if body == self:
-				SignalBus.weapon_swap.emit("C4")
+		#"C4":
+			#currWeapon = "C4"
+			#knockback_min_force = 200
+			#knockback_max_force = 600
+			#knockback_radius = 100
+			#$GunRotation/RocketLauncher.visible = false
+			#$GunRotation/GrenadeLauncher.visible = false
+			#$GunRotation/C4Launcher.visible = true
+			#$GunRotation/TileGun.visible = false
+			#if body == self:
+				#SignalBus.weapon_swap.emit("C4")
 		"Tile":
 			currWeapon = "TileGun"
 			knockback_min_force = 200
@@ -205,7 +205,7 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = false
-			$GunRotation/C4Launcher.visible = false
+			#$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = true
 			if body == self:
 				SignalBus.weapon_swap.emit("Tile")
@@ -249,9 +249,9 @@ func fire():
 		"Grenade":
 			projectile = grenade.instantiate()
 			shootAudio.play()
-		"C4":
-			projectile = c4.instantiate()
-			shootAudio.play()
+		#"C4":
+			#projectile = c4.instantiate()
+			#shootAudio.play()
 		"TileGun":
 			projectile = tile.instantiate()
 			shootAudio.play()
@@ -272,8 +272,8 @@ func die():
 	# TODO: Set player respawn point + make animation for player respawn?
 	position = Vector2(41, 212)
 
-func _on_c4_detonation():
-	c4_avail = true
+#func _on_c4_detonation():
+	#c4_avail = true
 	
 func hurt():
 	health -= 1

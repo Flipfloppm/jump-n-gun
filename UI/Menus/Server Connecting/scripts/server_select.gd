@@ -11,16 +11,18 @@ extends Control
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
-	server_browser.childServerJoin.connect(join_server_by_ip)
+	#server_browser.childServerJoin.connect(join_server_by_ip) # deprecated
+	SignalBus.serverBrowserJoin.connect(join_server_by_ip) # new method
 	waiting_room.client_disconnect_request.connect(remove_client)
 	SignalBus.server_closed.connect(_on_server_closed)
+
 	
 # this gets called only by clients 
 func connected_to_server():
 	print("connected to server")
 	# call register info on the server first
 	#register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
-	register_player_info.rpc_id(1, "david", multiplayer.get_unique_id())
+	register_player_info.rpc_id(1, GameManager.username, multiplayer.get_unique_id())
 
 # this gets called only by clients 
 func connection_failed():
@@ -29,24 +31,30 @@ func connection_failed():
 func _on_host_game_pressed():
 	print("host game pressed")
 	var host_info = server.start_server()
+	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(host_info[1])
 	hostBtn.disabled = true
 	hostBtn.visible = false
-	register_player_info("david", multiplayer.get_unique_id())
+	register_player_info(GameManager.username, multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
-	#$ServerBrowser.setup_server_broadcast(playerName.text + "'s server")
-	server_browser.setup_server_broadcast("david")
+	#serverBrowser.setup_server_broadcast(playerName.text + "'s server")
+	server_browser.setup_server_broadcast(GameManager.username)
+	#get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/waiting_room.tscn")
+	
 	# move to waiting room
 	server_browser.visible = false
 	waiting_room.visible = true
+	waiting_room.set_visibility(1)
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	$CanvasLayer/IPBtn.visible = false
+	$CanvasLayer/WaitingRoom/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
 
 func join_server_by_ip(ip):
 	var peer = ENetMultiplayerPeer.new()
 	#peer.create_client(ip, int(selected_port.text))
 	peer.create_client(ip, 3296)
 	multiplayer.set_multiplayer_peer(peer)
+	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(ip)
 	# move to waiting room
 	server_browser.visible = false
 	server.visible = false
@@ -54,6 +62,9 @@ func join_server_by_ip(ip):
 	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
 	waiting_room.visible = true
+	waiting_room.set_visibility(-1)
+	$CanvasLayer/WaitingRoom/UserIDLabel.text = "User Id: " + str(multiplayer.get_unique_id())
+	
 
 func _on_start_game_btn_pressed():
 	start_game.rpc()
@@ -75,6 +86,7 @@ func register_player_info(player_name, id):
 			"name":player_name,
 			"id":id,
 			"score": 0
+			
 		}
 	# after the server received the connected player's info, the server broadcast
 	# the info to the other players.
@@ -88,6 +100,7 @@ func register_player_info(player_name, id):
 func remove_client(client_id):
 	print("trying to remove client:", client_id, "this id:", multiplayer.get_unique_id())
 	if !multiplayer.is_server():
+		print("remove client: not server, exiting wait room. ")
 		remove_client.rpc_id(1, client_id)
 		GameManager.PLAYERS.erase(client_id)
 		# go back to lobby
@@ -95,6 +108,7 @@ func remove_client(client_id):
 		server.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
+		$CanvasLayer/IPBtn.visible = true
 		waiting_room.visible = false
 		
 	if multiplayer.get_unique_id() == 1:
@@ -124,12 +138,13 @@ func load_select_world_scene():
 func _on_cancel_host_btn_pressed():
 	SignalBus.broadcast_server_closed.rpc()
 	
-	
 func _on_server_closed():
 	print("server closed, handling")
 	get_tree().reload_current_scene()
 	GameManager.PLAYERS.clear()
 	pass
 	
-	
-	
+
+func _on_ip_btn_pressed():
+	print("IP BTN pressed: opening direct server join scene")
+	$CanvasLayer/DirectIPJoin/CanvasLayer.visible=true
