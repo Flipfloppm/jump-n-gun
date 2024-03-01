@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://csdku4ede7qnu"]
+[gd_scene load_steps=14 format=3 uid="uid://csdku4ede7qnu"]
 
-[ext_resource type="Script" path="res://Interactables/scripts/briefcase.gd" id="1_fmjb2"]
 [ext_resource type="Texture2D" uid="uid://b8wkhusxv6455" path="res://Art/Interactables/briefcase.png" id="1_mv1te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xiha"]
@@ -86,7 +85,6 @@ size = Vector2(138, 86)
 
 [node name="Briefcase" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_fmjb2")
 
 [node name="BriefcaseAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_55g4b")

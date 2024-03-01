@@ -1,16 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdlnjsn8afqjg"]
+[gd_scene load_steps=19 format=3 uid="uid://bdlnjsn8afqjg"]
 
-[ext_resource type="Script" path="res://Levels/tutorial.gd" id="1_byndm"]
-[ext_resource type="PackedScene" uid="uid://duf0ghh8oyjkf" path="res://Characters/guy.tscn" id="2_c77ng"]
-[ext_resource type="PackedScene" uid="uid://b4vshfjlspd7v" path="res://Characters/dude.tscn" id="3_si63i"]
-[ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-8.png" id="4_do5vp"]
-[ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-8.png" id="5_0v0gq"]
-[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-8.png" id="6_8q6li"]
+[ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_byndm"]
+[ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="4_do5vp"]
+[ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-16.png" id="5_0v0gq"]
+[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="6_8q6li"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="7_mabw8"]
-[ext_resource type="Script" path="res://Levels/multiplayer_level_tilemap.gd" id="8_mrohf"]
+[ext_resource type="Script" path="res://Levels/Party Levels/multiplayer_level_tilemap.gd" id="8_mrohf"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="9_2cal0"]
-[ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Items/rocket_launcher.tscn" id="10_uc10p"]
-[ext_resource type="PackedScene" path="res://Items/briefcase.tscn" id="12_pvsjs"]
+[ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="10_enair"]
+[ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="10_uc10p"]
+[ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
+[ext_resource type="PackedScene" uid="uid://dexxcgyqi6kbv" path="res://UI/game_over.tscn" id="12_1oeqp"]
+[ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("4_do5vp")
@@ -97,8 +98,6 @@ font_size = 8
 
 [node name="MultiplayerLevel" type="Node2D"]
 script = ExtResource("1_byndm")
-GUYSCENE = ExtResource("2_c77ng")
-DUDESCENE = ExtResource("3_si63i")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_frh85")
@@ -143,9 +142,17 @@ label_settings = SubResource("LabelSettings_v7f2i")
 
 [node name="Briefcase" parent="." instance=ExtResource("12_pvsjs")]
 position = Vector2(270, -2239)
+script = ExtResource("10_xmy72")
 
 [node name="Timer_moss0" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
 
 [node name="Timer_moss1" type="Timer" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("10_enair")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource("12_1oeqp")]
+visible = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dsduhwe8hqs8a"]
 
-[ext_resource type="Theme" path="res://Art/UI/MainMenuButtonTheme.tres" id="1_4adf5"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
 [ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://UI/Menus/Server Connecting/server.tscn" id="4_qg8mg"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
@@ -190,7 +190,6 @@ offset_right = -2.0
 offset_left = 210.0
 offset_top = -1.0
 offset_right = 354.0
-offset_bottom = 25.0
 
 [node name="UserIDLabel" parent="CanvasLayer/WaitingRoom" index="1"]
 offset_left = 12.0
@@ -209,7 +208,6 @@ offset_left = 7.0
 offset_top = 185.0
 offset_right = 727.0
 offset_bottom = 424.0
-
 
 [node name="DirectIPJoin" parent="CanvasLayer" instance=ExtResource("9_ssqht")]
 

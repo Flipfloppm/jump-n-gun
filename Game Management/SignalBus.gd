@@ -10,3 +10,5 @@ signal weapon_swap(weaponName)
 signal hurt
 
 signal serverBrowserJoin(ip) # indicates a user trying to join a server at IP
+
+signal game_over(name)
