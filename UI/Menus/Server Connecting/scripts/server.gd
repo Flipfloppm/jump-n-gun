@@ -50,7 +50,6 @@ func peer_disconnected(id):
 	print("Player disconnected: " + str(id))
 
 func _on_cancel_host():
-	GameManager.PLAYERS.clear()
 	if server_peer:
 		close_server()
 		print("Received Cancel host signal, Closed server")
