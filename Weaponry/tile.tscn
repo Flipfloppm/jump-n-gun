@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4cb0leednrwu"]
+[gd_scene load_steps=5 format=3 uid="uid://c4cb0leednrwu"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/tile.gd" id="1_vpkjg"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="2_1pg6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xnbg"]
 size = Vector2(8, 8)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_32ajy"]
+properties/0/path = NodePath(".:goalpos")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Tile" type="RigidBody2D"]
 collision_mask = 7
@@ -16,3 +27,6 @@ texture = ExtResource("2_1pg6e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3xnbg")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_32ajy")

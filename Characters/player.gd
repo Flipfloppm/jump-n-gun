@@ -20,7 +20,7 @@ var above
 var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
-var tileChargeCount = 100
+var tileChargeCount = 3
 var health = 3
 var lastDir = 0
 @onready var camera = $Camera2D
@@ -259,7 +259,7 @@ func fire():
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
-	print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projective position: ", $GunRotation/ProjectileSpawn.global_position)
+	print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projectile position: ", $GunRotation/ProjectileSpawn.global_position)
 	get_tree().root.add_child(projectile)
 
 @rpc("any_peer", "call_local")
