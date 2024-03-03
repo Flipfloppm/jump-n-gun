@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdlnjsn8afqjg"]
+[gd_scene load_steps=22 format=3 uid="uid://bdlnjsn8afqjg"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_byndm"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="4_do5vp"]
@@ -10,8 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="10_enair"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="10_uc10p"]
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
-[ext_resource type="PackedScene" uid="uid://dexxcgyqi6kbv" path="res://UI/game_over.tscn" id="12_1oeqp"]
+[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="12_1oeqp"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
+[ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
+[ext_resource type="Texture2D" uid="uid://btuymhn4kubli" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
+[ext_resource type="Texture2D" uid="uid://csn1ucrfj170q" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("4_do5vp")
@@ -156,3 +159,24 @@ autostart = true
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource("12_1oeqp")]
 visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_mvjpt")]
+visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BkgLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BkgLayer"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+position = Vector2(315, 294)
+scale = Vector2(0.881833, 1.65613)
+texture = ExtResource("14_puuq4")
+
+[node name="SunLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SunLayer"]
+position = Vector2(112.151, 51.7568)
+scale = Vector2(0.523166, 0.560847)
+texture = ExtResource("15_454my")

@@ -14,4 +14,5 @@ func winner(name):
 	$VBoxContainer/Status.text = name + " won!"
 
 func _on_menu_btn_pressed():
+	SignalBus.cancel_host.emit()
 	get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/server_select.tscn")
