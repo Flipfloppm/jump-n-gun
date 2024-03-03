@@ -24,6 +24,7 @@ Server="*res://UI/Menus/Server Connecting/scripts/server.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=3
 window/size/initial_position_type=0
 window/size/resizable=false
 window/stretch/mode="viewport"

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bf544kp6c4dih" path="res://Art/UI/HUD/Health Bar/healthbarUI.png" id="2_ce33t"]
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
-[ext_resource type="Theme" uid="uid://lm3kly33wcus" path="res://Art/UI/MenuTheme.tres" id="6_tmlo3"]
+[ext_resource type="Theme" uid="uid://cr0we11jasvyq" path="res://Art/UI/MenuTheme.tres" id="6_tmlo3"]
 [ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
