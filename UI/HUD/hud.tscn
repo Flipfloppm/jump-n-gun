@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
-[ext_resource type="Texture2D" uid="uid://dqbtvwdungkpv" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
+[ext_resource type="Texture2D" uid="uid://cx1ehtae55dcc" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
 atlas = ExtResource("3_4qsvx")
@@ -234,11 +234,13 @@ texture = ExtResource("2_ce6hl")
 expand_mode = 1
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(161.897, 26.8895)
 scale = Vector2(1.75641, 1.25921)
 sprite_frames = SubResource("SpriteFrames_fylmb")
 
 [node name="GrenadeLauncherReload" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(161.214, 27.8628)
 scale = Vector2(1.89887, 1.39215)
 sprite_frames = SubResource("SpriteFrames_6wfp5")
@@ -268,6 +270,7 @@ offset_bottom = 26.6759
 text = "/6"
 
 [node name="TileGun" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(164.784, 28)
 scale = Vector2(1.73649, 1.22615)
 texture = ExtResource("7_jh8uf")
