@@ -10,3 +10,7 @@ signal weapon_swap(weaponName)
 signal hurt
 
 signal serverBrowserJoin(ip) # indicates a user trying to join a server at IP
+
+# called anywhere in the game, received by the server node, to properly
+# end a host session.
+signal cancel_host()
