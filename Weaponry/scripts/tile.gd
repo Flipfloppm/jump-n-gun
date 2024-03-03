@@ -10,7 +10,6 @@ var collision_info
 func _ready():
 	linear_velocity = Vector2(1,0).rotated(rotation) * SPEED
 	goalpos = global_position
-	print("lin velocity: ", linear_velocity)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
