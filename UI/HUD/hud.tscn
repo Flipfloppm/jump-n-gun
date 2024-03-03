@@ -1,11 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://d0dkocaq2x4ii"]
+[gd_scene load_steps=37 format=3 uid="uid://d0dkocaq2x4ii"]
 
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_uqtc4"]
 [ext_resource type="Texture2D" uid="uid://c17wgknmqwq3j" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
 [ext_resource type="Texture2D" uid="uid://bf544kp6c4dih" path="res://Art/UI/HUD/Health Bar/healthbarUI.png" id="2_ce33t"]
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
-[ext_resource type="Theme" uid="uid://cr0we11jasvyq" path="res://Art/UI/MenuTheme.tres" id="6_tmlo3"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
 [ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
@@ -205,6 +205,10 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Theme" id="Theme_e8qlu"]
+default_font = ExtResource("6_wussn")
+default_font_size = 48
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jllrx"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.654902)
 
@@ -217,7 +221,6 @@ texture = ExtResource("2_ce33t")
 hframes = 4
 
 [node name="CharacterHead" type="TextureRect" parent="HealthBar"]
-visible = false
 offset_left = -72.8553
 offset_top = -38.2439
 offset_right = -8.85535
@@ -236,55 +239,53 @@ sprite_frames = SubResource("SpriteFrames_6wfp5")
 
 [node name="Panel" type="Panel" parent="GrenadeLauncherReload"]
 offset_left = 16.0
-offset_top = -11.0
-offset_right = 45.0
-offset_bottom = 8.0
-theme = ExtResource("6_tmlo3")
+offset_top = -13.0
+offset_right = 53.0
+offset_bottom = 12.0
+theme = SubResource("Theme_e8qlu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
 
 [node name="Ammo" type="Label" parent="GrenadeLauncherReload/Panel"]
 layout_mode = 0
-offset_left = 4.05918
-offset_top = -5.83101
-offset_right = 30.0592
-offset_bottom = 20.169
+offset_left = 2.31932
+offset_top = -10.6058
+offset_right = 28.3193
+offset_bottom = 27.3942
 text = "6"
 
 [node name="Ammo2" type="Label" parent="GrenadeLauncherReload/Panel"]
 layout_mode = 0
-offset_left = 13.0119
-offset_top = -5.83102
-offset_right = 39.0119
-offset_bottom = 20.169
+offset_left = 13.3785
+offset_top = -11.3241
+offset_right = 39.3785
+offset_bottom = 26.6759
 text = "/6"
 
 [node name="TileGun" type="Sprite2D" parent="."]
-position = Vector2(163, 26)
-scale = Vector2(1.53387, 1.05923)
+position = Vector2(164.784, 28)
+scale = Vector2(1.73649, 1.22615)
 texture = ExtResource("7_jh8uf")
 
 [node name="Panel" type="Panel" parent="TileGun"]
-offset_left = 19.0
+offset_left = 16.5759
 offset_top = -13.0
-offset_right = 55.0
+offset_right = 53.5759
 offset_bottom = 12.0
-theme = ExtResource("6_tmlo3")
+theme = SubResource("Theme_e8qlu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
 
 [node name="Charges" type="Label" parent="TileGun/Panel"]
 layout_mode = 0
-offset_left = 1.86227
-offset_top = -9.65797
-offset_right = 23.8623
-offset_bottom = 28.342
-theme_override_font_sizes/font_size = 48
+offset_left = 2.31932
+offset_top = -10.6058
+offset_right = 28.3193
+offset_bottom = 27.3942
 text = "3"
 
 [node name="Charges2" type="Label" parent="TileGun/Panel"]
 layout_mode = 0
-offset_left = 12.9453
-offset_top = -9.65797
-offset_right = 36.9454
-offset_bottom = 28.342
-theme_override_font_sizes/font_size = 48
+offset_left = 13.3785
+offset_top = -11.3241
+offset_right = 39.3785
+offset_bottom = 26.6759
 text = "/3"
