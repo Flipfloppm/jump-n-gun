@@ -1,10 +1,9 @@
 extends Control
 
-@onready var server = $CanvasLayer/Server
-@onready var hostBtn = $CanvasLayer/Server/HostGame
+@onready var hostBtn = $CanvasLayer/HostGame
 @onready var server_browser = $CanvasLayer/ServerBrowser
 @onready var waiting_room = $CanvasLayer/WaitingRoom
-
+var server = Server
 
 
 # Called when the node enters the scene tree for the first time.
@@ -57,7 +56,7 @@ func join_server_by_ip(ip):
 	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(ip)
 	# move to waiting room
 	server_browser.visible = false
-	server.visible = false
+	$CanvasLayer/HostGame.visible = false
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
@@ -105,7 +104,7 @@ func remove_client(client_id):
 		GameManager.PLAYERS.erase(client_id)
 		# go back to lobby
 		server_browser.visible = true
-		server.visible = true
+		$CanvasLayer/HostGame.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
 		$CanvasLayer/IPBtn.visible = true
@@ -126,7 +125,9 @@ func _on_back_btn_pressed():
 
 func _on_cancel_host_btn_pressed():
 	server.close_server()
-	server_browser.broadcast_server_closed()
+	# We need to tell the other players that are not in the server yet,
+	# that the server has closed. So they can update their server browser. 
+	server_browser.broadcast_server_closed() 
 
 
 func _on_ip_btn_pressed():
