@@ -55,7 +55,8 @@ func refresh_players(players):
 		if lobbySet.has(player_id):
 			continue
 		var charSelect = charSelectScene.instantiate()
-		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id())
+		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id(),
+		players[player_id]["character"])
 		char_select_container.add_child(charSelect)
 		lobbySet[player_id] = 1
 

@@ -15,6 +15,14 @@ var charDict = {
 	2: ["Ron", "res://Art/UI/HUD/Character Heads/ronald-head.png"],
 	3: ["Bush", "res://Art/UI/HUD/Character Heads/bush-head.png"]
 }
+
+var charToIdx = {
+	"Dwight": 0,
+	"Dick": 1,
+	"Ron": 2,
+	"Bush": 3
+}
+
 var idx
  
 # Called when the node enters the scene tree for the first time.
@@ -33,11 +41,16 @@ func _process(delta):
 		
 
 #localhostId is a stupid name for the player's instance we are running
-func setup(username, id, localhostId):
+func setup(username, id, localhostId, character):
 	$UserId.text = username
 	user = username
 	controllerId = id
 	localId = localhostId
+	print(character)
+	idx = charToIdx[character]
+	var charDetails = charDict.get(idx)
+	charDisplay.texture = load(charDetails[1])
+	charName.text = charDetails[0]
 	
 
 func _on_left_char_select_pressed():
