@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="6_rsye1"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="7_7idre"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="8_p0usm"]
-[ext_resource type="Texture2D" path="res://Art/Weapons/tilegun.png" id="8_rdecy"]
+[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="8_rdecy"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="9_c17oe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iketu"]

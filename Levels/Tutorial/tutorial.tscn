@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="9_go0eh"]
 [ext_resource type="PackedScene" uid="uid://c6m4mecvof1is" path="res://Weaponry/grenade_launcher.tscn" id="10_ctfsw"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
-[ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
+[ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
-[ext_resource type="PackedScene" path="res://Weaponry/tile_gun.tscn" id="17_2wjh4"]
+[ext_resource type="PackedScene" uid="uid://c8biqfvq20y8d" path="res://Weaponry/tile_gun.tscn" id="17_2wjh4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_e3vjs")

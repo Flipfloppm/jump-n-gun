@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 GameManager="*res://Game Management/game_manager.gd"
 SignalBus="*res://Game Management/SignalBus.gd"
+Server="*res://UI/Menus/Server Connecting/scripts/server.gd"
 
 [display]
 

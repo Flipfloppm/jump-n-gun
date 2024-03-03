@@ -1,20 +1,19 @@
 extends Control
 
-@onready var server = $CanvasLayer/Server
-@onready var hostBtn = $CanvasLayer/Server/HostGame
+@onready var hostBtn = $CanvasLayer/HostGame
 @onready var server_browser = $CanvasLayer/ServerBrowser
 @onready var waiting_room = $CanvasLayer/WaitingRoom
-
+var server = Server
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.connection_failed.connect(connection_failed)
+	multiplayer.server_disconnected.connect(_on_disconnect_from_server)
 	#server_browser.childServerJoin.connect(join_server_by_ip) # deprecated
 	SignalBus.serverBrowserJoin.connect(join_server_by_ip) # new method
 	waiting_room.client_disconnect_request.connect(remove_client)
-	SignalBus.server_closed.connect(_on_server_closed)
 
 	
 # this gets called only by clients 
@@ -57,7 +56,7 @@ func join_server_by_ip(ip):
 	$CanvasLayer/WaitingRoom/IPAddress.text = "IP Address: " + str(ip)
 	# move to waiting room
 	server_browser.visible = false
-	server.visible = false
+	$CanvasLayer/HostGame.visible = false
 	$CanvasLayer/BackBtn.visible = false
 	$CanvasLayer/IPBtn.visible = false
 	$CanvasLayer/Servers.visible = false
@@ -105,7 +104,7 @@ func remove_client(client_id):
 		GameManager.PLAYERS.erase(client_id)
 		# go back to lobby
 		server_browser.visible = true
-		server.visible = true
+		$CanvasLayer/HostGame.visible = true
 		$CanvasLayer/BackBtn.visible = true
 		$CanvasLayer/Servers.visible = true
 		$CanvasLayer/IPBtn.visible = true
@@ -124,27 +123,38 @@ func _on_back_btn_pressed():
 	get_tree().change_scene_to_file("res://UI/Menus/main_menu.tscn")
 
 
-func _on_select_world_btn_pressed():
-	# when the host click on select world, every player should load that scene. 
-	load_select_world_scene.rpc()
-	
-@rpc("any_peer","call_local")
-func load_select_world_scene():
-	print("going to select world tscn" + str(multiplayer.get_unique_id()))
-	server_browser.cleanup_browser()
-	get_tree().change_scene_to_file("res://UI/Menus/Level Select/job_select.tscn")
-
-
 func _on_cancel_host_btn_pressed():
-	SignalBus.broadcast_server_closed.rpc()
-	
-func _on_server_closed():
-	print("server closed, handling")
-	get_tree().reload_current_scene()
-	GameManager.PLAYERS.clear()
-	pass
-	
+	server.close_server()
+	# We need to tell the other players that are not in the server yet,
+	# that the server has closed. So they can update their server browser. 
+	server_browser.broadcast_server_closed() 
+
 
 func _on_ip_btn_pressed():
 	print("IP BTN pressed: opening direct server join scene")
 	$CanvasLayer/DirectIPJoin/CanvasLayer.visible=true
+
+func _on_disconnect_from_server():
+	print("Disconnected from server.")
+	GameManager.PLAYERS.clear()
+	get_tree().reload_current_scene()
+
+func _on_go_to_game_btn_pressed():
+	print("pressed")
+	load_select_scene.rpc(waiting_room.gameMode)
+
+	
+@rpc("any_peer","call_local")
+func load_select_scene(gameMode):
+	print("loading select scene")
+	server_browser.cleanup_browser()
+	if gameMode == 1:
+		get_tree().change_scene_to_file("res://Levels/Tutorial/tutorial.tscn")
+	elif gameMode == 2:
+		get_tree().change_scene_to_file("res://UI/Menus/Level Select/party_select.tscn")
+	elif gameMode == 3:
+		print("Going to coop mode")
+		get_tree().change_scene_to_file("res://UI/Menus/Level Select/coop_select.tscn")
+	else:
+		waiting_room.show_popup("no valid game mode selected!")
+		

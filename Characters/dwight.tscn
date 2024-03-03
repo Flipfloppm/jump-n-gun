@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_7ux7f"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="7_8ugxi"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="8_7mrpj"]
-[ext_resource type="Texture2D" path="res://Art/Weapons/tilegun.png" id="8_brcw2"]
+[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="8_brcw2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6dhm6"]
 atlas = ExtResource("4_4cte1")

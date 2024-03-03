@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdm56opp86mhq" path="res://Art/Characters/Cheney/cheney-anim.png" id="4_gtqi5"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="4_prp2e"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="5_a6rky"]
-[ext_resource type="Texture2D" path="res://Art/Weapons/tilegun.png" id="9_7e2ta"]
+[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="9_7e2ta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxnt"]
 atlas = ExtResource("4_gtqi5")

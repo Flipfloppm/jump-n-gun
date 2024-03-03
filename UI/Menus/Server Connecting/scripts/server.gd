@@ -3,13 +3,14 @@ extends Node
 var server_peer
 var SELECTED_IP = "127.0.0.1"
 var SELECTED_PORT = 3296
-var MAX_PLAYERS = 4
+var MAX_PLAYERS = 8
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	multiplayer.peer_connected.connect(peer_connected)
 	multiplayer.peer_disconnected.connect(peer_disconnected)
+	SignalBus.cancel_host.connect(_on_cancel_host)
 	if "--server" in OS.get_cmdline_args():
 		start_server()
 		
@@ -34,6 +35,11 @@ func start_server():
 				break
 	return [SELECTED_PORT, SELECTED_IP]
 
+func close_server():
+	for peerID in multiplayer.get_peers():
+		print("disconnecting peer:", peerID)
+		server_peer.disconnect_peer(peerID)
+	server_peer.close()
 
 # this gets called on both the server and client when someone connects
 func peer_connected(id):
@@ -43,5 +49,8 @@ func peer_connected(id):
 func peer_disconnected(id):
 	print("Player disconnected: " + str(id))
 
-
+func _on_cancel_host():
+	if server_peer:
+		close_server()
+		print("Received Cancel host signal, Closed server")
 
