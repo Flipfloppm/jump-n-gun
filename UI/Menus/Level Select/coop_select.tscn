@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://b4vyddnlotqb0"]
+
+[ext_resource type="Texture2D" uid="uid://bnx6x34j7v4lt" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-bkg.png" id="1_cgdo6"]
+[ext_resource type="Script" path="res://UI/Menus/Level Select/script/coop_select.gd" id="1_ts5lg"]
+[ext_resource type="Texture2D" uid="uid://b32pgxi0dc05s" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world1.png" id="2_hffsq"]
+[ext_resource type="Texture2D" uid="uid://dsywjcs4x1tjv" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world2.png" id="3_elp2d"]
+[ext_resource type="Texture2D" uid="uid://c3xpfsidbjvlo" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-selector.png" id="3_xn8cf"]
+[ext_resource type="Texture2D" uid="uid://bflg1lwjqa16m" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world3.png" id="4_i3tad"]
+[ext_resource type="Texture2D" uid="uid://c1ahhfcfbepim" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world1-hover.png" id="4_itxrt"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_yix8d"]
+[ext_resource type="Texture2D" uid="uid://cketqb2hrcywx" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world2-hover.png" id="7_14xmt"]
+[ext_resource type="Texture2D" uid="uid://k6kb2x7o1j2h" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world3-hover.png" id="9_woy82"]
+[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="11_rbj2h"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u4pxo"]
+properties/0/path = NodePath(".:selected_world")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="CoopSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ts5lg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cgdo6")
+
+[node name="UserIDLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("6_yix8d")
+theme_override_font_sizes/font_size = 24
+text = "User ID:"
+
+[node name="World1Btn" type="TextureButton" parent="CanvasLayer"]
+offset_left = 43.0
+offset_top = 118.0
+offset_right = 123.0
+offset_bottom = 204.0
+scale = Vector2(1.8, 1.794)
+texture_normal = ExtResource("2_hffsq")
+texture_hover = ExtResource("4_itxrt")
+
+[node name="World1Selector" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 87.0
+offset_top = 250.0
+offset_right = 140.0
+offset_bottom = 298.0
+texture = ExtResource("3_xn8cf")
+
+[node name="World2Btn" type="TextureButton" parent="CanvasLayer"]
+offset_left = 242.0
+offset_top = 116.0
+offset_right = 325.0
+offset_bottom = 200.0
+scale = Vector2(1.8, 1.8)
+texture_normal = ExtResource("3_elp2d")
+texture_hover = ExtResource("7_14xmt")
+
+[node name="World2Selector" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 292.0
+offset_top = 250.0
+offset_right = 345.0
+offset_bottom = 298.0
+texture = ExtResource("3_xn8cf")
+
+[node name="World3Btn" type="TextureButton" parent="CanvasLayer"]
+offset_left = 445.0
+offset_top = 108.0
+offset_right = 529.0
+offset_bottom = 193.0
+scale = Vector2(1.8, 1.8)
+texture_normal = ExtResource("4_i3tad")
+texture_hover = ExtResource("9_woy82")
+
+[node name="World3Selector" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 502.0
+offset_top = 250.0
+offset_right = 555.0
+offset_bottom = 298.0
+texture = ExtResource("3_xn8cf")
+
+[node name="ContinueBtn" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -50.0
+offset_right = 55.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_yix8d")
+theme_override_font_sizes/font_size = 36
+text = "Continue"
+
+[node name="TipLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.5
+offset_right = 82.5
+offset_bottom = 29.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_yix8d")
+theme_override_font_sizes/font_size = 36
+text = "Choose your world!"
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+initial_position = 2
+size = Vector2i(260, 60)
+transparent = true
+
+[node name="ErrorMsgLabel" type="Label" parent="CanvasLayer/PopupPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_yix8d")
+theme_override_font_sizes/font_size = 24
+text = "No valid world selected!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_u4pxo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_rbj2h")
+autoplay = true
+
+[connection signal="mouse_entered" from="CanvasLayer/World1Btn" to="." method="_on_world_1_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/World1Btn" to="." method="_on_world_1_btn_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/World1Btn" to="." method="_on_world_1_btn_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/World2Btn" to="." method="_on_world_2_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/World2Btn" to="." method="_on_world_2_btn_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/World2Btn" to="." method="_on_world_2_btn_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/World3Btn" to="." method="_on_world_3_btn_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/World3Btn" to="." method="_on_world_3_btn_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/World3Btn" to="." method="_on_world_3_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/ContinueBtn" to="." method="_on_continue_btn_pressed"]
