@@ -8,6 +8,7 @@ extends VBoxContainer
 var user: String
 var controllerId
 var localId
+var currChar: String
 
 var charDict = {
 	0: ["Dwight", "res://Art/UI/HUD/Character Heads/dwight-head.png"],
@@ -36,17 +37,21 @@ func _process(delta):
 		leftCharSelect.visible = false
 		rightCharSelect.visible = false
 	var charDetails = charDict.get(idx)
-	if GameManager.PLAYERS.has(controllerId):
-		GameManager.PLAYERS[controllerId]["Character"] = charDetails[0]
-		
+	charDisplay.texture = load(charDetails[1])
+	charName.text = charDetails[0]
+	currChar = charDetails[0]
+	updateChars.rpc()
+	
+	
 
 #localhostId is a stupid name for the player's instance we are running
-func setup(username, id, localhostId, character):
+func setup(username, id, localhostId):
 	$UserId.text = username
 	user = username
 	controllerId = id
 	localId = localhostId
-	print(character)
+
+func setChar(character):
 	idx = charToIdx[character]
 	var charDetails = charDict.get(idx)
 	charDisplay.texture = load(charDetails[1])
@@ -67,16 +72,18 @@ func left_idx():
 	idx -= 1
 	if idx == -1:
 		idx = 3
-	var charDetails = charDict.get(idx)
-	charDisplay.texture = load(charDetails[1])
-	charName.text = charDetails[0]
+	
 
 @rpc("any_peer", "call_local")
 func right_idx():
 	idx += 1
 	if idx == 4:
 		idx = 0
-	var charDetails = charDict.get(idx)
-	charDisplay.texture = load(charDetails[1])
-	charName.text = charDetails[0]
+	
+	
+
+@rpc("any_peer", "call_local")
+func updateChars():
+	if GameManager.PLAYERS.has(controllerId):
+		GameManager.PLAYERS[controllerId]["Character"] = currChar
 	

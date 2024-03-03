@@ -23,6 +23,7 @@ func connected_to_server():
 	#register_player_info.rpc_id(1, player_name.text, multiplayer.get_unique_id())
 	register_player_info.rpc_id(1, GameManager.username, multiplayer.get_unique_id())
 
+
 # this gets called only by clients 
 func connection_failed():
 	print("connection failed")
@@ -79,19 +80,18 @@ func start_game():
 	self.hide()
 	
 @rpc("any_peer")
-func register_player_info(player_name, id):
+func register_player_info(player_name, id, character:String = "Dwight"):
 	if not GameManager.PLAYERS.has(id):
 		GameManager.PLAYERS[id] = {
 			"name":player_name,
 			"id":id,
-			"score": 0,
-			"character": "Dwight" #default character
+			"Character": character #default character
 		}
 	# after the server received the connected player's info, the server broadcast
 	# the info to the other players.
 	if multiplayer.is_server():
 		for playerID in GameManager.PLAYERS:
-			register_player_info.rpc(GameManager.PLAYERS[playerID].name, playerID)
+			register_player_info.rpc(GameManager.PLAYERS[playerID].name, playerID, GameManager.PLAYERS[playerID]["Character"])
 
 # handle the case where a client clicks on "exit room" to leave the current session
 # this is only done by the host. 
