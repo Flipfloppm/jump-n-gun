@@ -76,7 +76,7 @@ properties/1/path = NodePath("GunRotation:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Node2D2" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_4ffa4")
