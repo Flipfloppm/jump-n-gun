@@ -21,6 +21,7 @@ var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
 var tileChargeCount = 3
+var tileGunReloadTime = 0
 var health = 3
 var lastDir = 0
 @onready var camera = $Camera2D
@@ -68,8 +69,15 @@ func set_var(var_name: String, var_val: float):
 
 func _physics_process(delta):
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
-		rocketReloadTime -= delta
-		grenadeReloadTime -= delta
+		if rocketReloadTime >= 0:
+			rocketReloadTime -= delta
+		if grenadeReloadTime >= 0:
+			grenadeReloadTime -= delta
+		if tileGunReloadTime >= 0:
+			tileGunReloadTime -= delta
+		elif tileChargeCount == 3:
+			SignalBus.tilegun_reset.emit()
+			
 		# Add the gravity.	
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -126,10 +134,13 @@ func _physics_process(delta):
 						#SignalBus.fired.emit()
 						#c4_avail = false
 				"TileGun":
-					if tileChargeCount > 0:
+					if tileChargeCount > 0 && tileGunReloadTime < 0:
 						fire.rpc()
 						tileChargeCount -= 1
 						SignalBus.fired.emit()
+						if tileChargeCount == 0:
+							tileGunReloadTime = 6
+							tileChargeCount = 3
 		
 		# Handle different guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:

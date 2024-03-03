@@ -7,6 +7,7 @@ signal weapon_entered(weaponBody, player_id)
 signal picked_up(weaponBody)
 signal c4detonated()
 signal tilespawn(pos_x, pos_y)
+signal tilegun_reset()
 signal fired
 signal weapon_swap(weaponName)
 signal hurt

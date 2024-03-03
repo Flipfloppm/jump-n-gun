@@ -20,6 +20,7 @@ func _ready():
 	SignalBus.fired.connect(_on_fired)
 	SignalBus.weapon_swap.connect(_on_weapon_swap)
 	SignalBus.hurt.connect(_on_hurt)
+	SignalBus.tilegun_reset.connect(reset_tilegun)
 	_rocketLauncherAnimation.visible = false
 	_grenadeLauncherAnimation.visible = false
 	_tileGunSprite.visible = false
@@ -57,7 +58,7 @@ func _on_fired():
 			if tileGunAvail:
 				tileChargeCount -= 1
 				_tileGunChargesText.text = str(tileChargeCount)
-				if grenadeLauncherAmmo == 0:
+				if tileChargeCount == 0:
 					_grenadeLauncherAnimation.play("default")
 					tileGunAvail = false
 
@@ -79,9 +80,16 @@ func _on_weapon_swap(weaponName):
 			_grenadeLauncherAnimation.visible = false
 			_tileGunSprite.visible = true
 			_tileGunChargesText.text = str(tileChargeCount)
-			
+
+
+func reset_tilegun():
+	tileGunAvail = true
+	tileChargeCount = 3
+	_tileGunChargesText.text = str(tileChargeCount)
+
+
 func _on_hurt():
 	health -= 1
 	_healthBar.frame += 1
 	
-	
+
