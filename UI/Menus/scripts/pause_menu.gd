@@ -30,6 +30,8 @@ func set_paused(value:bool) -> void:
 
 
 func _on_menu_btn_pressed():
+	print("menu pressed.")
+	SignalBus.cancel_host.emit()
 	set_paused(false)
 	get_tree().change_scene_to_file("res://UI/Menus/main_menu.tscn")
 
