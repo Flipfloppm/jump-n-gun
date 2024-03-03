@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_6btp3"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_lpjf7"]
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_811ue"]
-[ext_resource type="PackedScene" path="res://Weaponry/tile.tscn" id="4_2lmwy"]
+[ext_resource type="PackedScene" uid="uid://c4cb0leednrwu" path="res://Weaponry/tile.tscn" id="4_2lmwy"]
 [ext_resource type="Texture2D" uid="uid://ch8ainr7d8kfr" path="res://Art/Characters/Ronnie/ronnie-walk.png" id="4_45k1d"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_644hc"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_o3tgi"]

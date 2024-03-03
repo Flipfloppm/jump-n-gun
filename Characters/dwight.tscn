@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_0nub0"]
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_cpw4w"]
 [ext_resource type="Texture2D" uid="uid://b7xb5dh4rs3wo" path="res://Art/Characters/Dwight/dwightd-walk.png" id="4_4cte1"]
-[ext_resource type="PackedScene" path="res://Weaponry/tile.tscn" id="4_bwy8n"]
+[ext_resource type="PackedScene" uid="uid://c4cb0leednrwu" path="res://Weaponry/tile.tscn" id="4_bwy8n"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="5_47ryv"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="6_7ux7f"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="7_8ugxi"]

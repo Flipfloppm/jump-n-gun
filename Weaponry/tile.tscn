@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://0h16kkiltpdc"]
+[gd_scene load_steps=4 format=3 uid="uid://c4cb0leednrwu"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/tile.gd" id="1_vpkjg"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="2_1pg6e"]
@@ -8,7 +8,6 @@ size = Vector2(8, 8)
 
 [node name="Tile" type="RigidBody2D"]
 collision_mask = 7
-linear_velocity = Vector2(600, 600)
 script = ExtResource("1_vpkjg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
