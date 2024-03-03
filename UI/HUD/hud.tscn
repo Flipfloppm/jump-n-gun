@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
-[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
+[ext_resource type="Texture2D" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
 atlas = ExtResource("3_4qsvx")
@@ -221,11 +221,17 @@ texture = ExtResource("2_ce33t")
 hframes = 4
 
 [node name="CharacterHead" type="TextureRect" parent="HealthBar"]
-offset_left = -72.8553
-offset_top = -38.2439
-offset_right = -8.85535
-offset_bottom = 26.7561
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.209
+anchor_right = 0.278
+anchor_bottom = 0.591
+offset_left = -65.624
+offset_top = -32.376
+offset_right = -62.584
+offset_bottom = -31.824
 texture = ExtResource("2_ce6hl")
+expand_mode = 1
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]
 position = Vector2(161.897, 26.8895)
