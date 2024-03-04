@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Levels/world1job1_tilemap.gd" id="3_787o2"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="3_wrurq"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="5_a00bg"]
-[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="5_ln53l"]
+[ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="5_ln53l"]
 [ext_resource type="PackedScene" uid="uid://c6m4mecvof1is" path="res://Weaponry/grenade_launcher.tscn" id="6_dvx3q"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="7_0mvti"]
 [ext_resource type="Script" path="res://Interactables/scripts/coop_briefcase.gd" id="8_2n5e3"]
@@ -15,6 +15,13 @@
 
 [node name="World1Job1" type="Node2D"]
 script = ExtResource("1_24gdk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -366.0
+offset_top = -782.0
+offset_right = 2236.0
+offset_bottom = 1304.0
+color = Color(0.223529, 0.266667, 0.686275, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_2a7s1")
