@@ -20,7 +20,8 @@ var above
 var rocketReloadTime = 0.8
 var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
-var tileChargeCount = 5
+var tileGunLoad = 5
+var tileChargeCount = tileGunLoad
 var tileGunReloadTime = 0
 var health = 3
 var lastDir = 0
@@ -75,7 +76,7 @@ func _physics_process(delta):
 			grenadeReloadTime -= delta
 		if tileGunReloadTime >= 0:
 			tileGunReloadTime -= delta
-		elif tileChargeCount == 3:
+		elif tileChargeCount == tileGunLoad:
 			SignalBus.tilegun_reset.emit()
 			
 		# Add the gravity.	
@@ -140,7 +141,7 @@ func _physics_process(delta):
 						SignalBus.fired.emit()
 						if tileChargeCount == 0:
 							tileGunReloadTime = 6
-							tileChargeCount = 3
+							tileChargeCount = tileGunLoad
 		
 		# Handle different guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:
