@@ -12,11 +12,11 @@ func _ready():
 func _process(delta):
 	_animated_sprite.play("default")
 
-
+# in coop briefcase, all players need to be in the range at the same time
 func _on_body_entered(body):
 	playerCount += 1
 	if playerCount == GameManager.PLAYERS.size():
-		print("victory!")
+		SignalBus.game_over.emit("")
 
 
 func _on_body_exited(body):

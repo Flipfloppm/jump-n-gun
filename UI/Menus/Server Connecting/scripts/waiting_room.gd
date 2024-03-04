@@ -52,11 +52,15 @@ func refresh_players(players):
 			lobbySet.erase(character.controllerId)
 	# Add any potential player
 	for player_id in players:
+		#print(GameManager.PLAYERS[player_id])
 		if lobbySet.has(player_id):
 			continue
 		var charSelect = charSelectScene.instantiate()
 		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id())
 		char_select_container.add_child(charSelect)
+		if players[player_id].has("Character"):
+			print("has character")
+			charSelect.setChar(players[player_id]["Character"])
 		lobbySet[player_id] = 1
 
 
