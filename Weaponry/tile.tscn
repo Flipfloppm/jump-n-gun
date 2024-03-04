@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4cb0leednrwu"]
+[gd_scene load_steps=5 format=3 uid="uid://b5mpln2ksu0la"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/tile.gd" id="1_vpkjg"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="2_1pg6e"]

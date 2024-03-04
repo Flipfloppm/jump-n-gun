@@ -8,6 +8,7 @@ extends VBoxContainer
 var user: String
 var controllerId
 var localId
+var currChar: String
 
 var charDict = {
 	0: ["Dwight", "res://Art/UI/HUD/Character Heads/dwight-head.png"],
@@ -15,6 +16,14 @@ var charDict = {
 	2: ["Ron", "res://Art/UI/HUD/Character Heads/ronald-head.png"],
 	3: ["Bush", "res://Art/UI/HUD/Character Heads/bush-head.png"]
 }
+
+var charToIdx = {
+	"Dwight": 0,
+	"Dick": 1,
+	"Ron": 2,
+	"Bush": 3
+}
+
 var idx
  
 # Called when the node enters the scene tree for the first time.
@@ -28,9 +37,12 @@ func _process(delta):
 		leftCharSelect.visible = false
 		rightCharSelect.visible = false
 	var charDetails = charDict.get(idx)
-	if GameManager.PLAYERS.has(controllerId):
-		GameManager.PLAYERS[controllerId]["Character"] = charDetails[0]
-		
+	charDisplay.texture = load(charDetails[1])
+	charName.text = charDetails[0]
+	currChar = charDetails[0]
+	updateChars.rpc()
+	
+	
 
 #localhostId is a stupid name for the player's instance we are running
 func setup(username, id, localhostId):
@@ -38,6 +50,12 @@ func setup(username, id, localhostId):
 	user = username
 	controllerId = id
 	localId = localhostId
+
+func setChar(character):
+	idx = charToIdx[character]
+	var charDetails = charDict.get(idx)
+	charDisplay.texture = load(charDetails[1])
+	charName.text = charDetails[0]
 	
 
 func _on_left_char_select_pressed():
@@ -54,16 +72,18 @@ func left_idx():
 	idx -= 1
 	if idx == -1:
 		idx = 3
-	var charDetails = charDict.get(idx)
-	charDisplay.texture = load(charDetails[1])
-	charName.text = charDetails[0]
+	
 
 @rpc("any_peer", "call_local")
 func right_idx():
 	idx += 1
 	if idx == 4:
 		idx = 0
-	var charDetails = charDict.get(idx)
-	charDisplay.texture = load(charDetails[1])
-	charName.text = charDetails[0]
+	
+	
+
+@rpc("any_peer", "call_local")
+func updateChars():
+	if GameManager.PLAYERS.has(controllerId):
+		GameManager.PLAYERS[controllerId]["Character"] = currChar
 	

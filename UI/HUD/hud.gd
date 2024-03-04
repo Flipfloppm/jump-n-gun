@@ -84,7 +84,7 @@ func _on_weapon_swap(weaponName):
 
 func reset_tilegun():
 	tileGunAvail = true
-	tileChargeCount = 3
+	tileChargeCount = 5
 	_tileGunChargesText.text = str(tileChargeCount)
 
 
