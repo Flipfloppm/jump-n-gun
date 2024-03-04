@@ -12,9 +12,9 @@
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
 [ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="12_1oeqp"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
-[ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
-[ext_resource type="Texture2D" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
-[ext_resource type="Texture2D" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
+[ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
+[ext_resource type="Texture2D" uid="uid://sfs7w5wprx5u" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
+[ext_resource type="Texture2D" uid="uid://cih4bohlg6e8e" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="16_vu7b5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
