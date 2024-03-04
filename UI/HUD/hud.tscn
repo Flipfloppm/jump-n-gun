@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://d0dkocaq2x4ii"]
+[gd_scene load_steps=37 format=3 uid="uid://d0dkocaq2x4ii"]
 
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_uqtc4"]
+[ext_resource type="Texture2D" uid="uid://c17wgknmqwq3j" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
 [ext_resource type="Texture2D" uid="uid://bf544kp6c4dih" path="res://Art/UI/HUD/Health Bar/healthbarUI.png" id="2_ce33t"]
 [ext_resource type="Texture2D" uid="uid://cgdf5us2xsm74" path="res://Art/UI/HUD/Weapons/RocketLauncherReload.png" id="3_4qsvx"]
-[ext_resource type="Texture2D" uid="uid://eky06fmk0n7e" path="res://Art/UI/HUD/Character Heads/cheney-head.png" id="3_ecvyw"]
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
-[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_5la1w"]
+[ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
+[ext_resource type="Texture2D" uid="uid://bgdcinf3bug5n" path="res://Art/Weapons/tilegun.png" id="7_jh8uf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
 atlas = ExtResource("3_4qsvx")
@@ -204,9 +205,9 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="Theme" id="Theme_ya41l"]
-default_font = ExtResource("6_5la1w")
-default_font_size = 32
+[sub_resource type="Theme" id="Theme_e8qlu"]
+default_font = ExtResource("6_wussn")
+default_font_size = 48
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jllrx"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 0.654902)
@@ -229,39 +230,70 @@ offset_left = -65.624
 offset_top = -32.376
 offset_right = -62.584
 offset_bottom = -31.824
-texture = ExtResource("3_ecvyw")
+texture = ExtResource("2_ce6hl")
 expand_mode = 1
 
 [node name="RocketLauncherReload" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(161.897, 26.8895)
 scale = Vector2(1.75641, 1.25921)
 sprite_frames = SubResource("SpriteFrames_fylmb")
 
 [node name="GrenadeLauncherReload" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(161.214, 27.8628)
 scale = Vector2(1.89887, 1.39215)
 sprite_frames = SubResource("SpriteFrames_6wfp5")
 
 [node name="Panel" type="Panel" parent="GrenadeLauncherReload"]
 offset_left = 16.0
-offset_top = -11.0
-offset_right = 45.0
-offset_bottom = 8.0
-theme = SubResource("Theme_ya41l")
+offset_top = -13.0
+offset_right = 53.0
+offset_bottom = 12.0
+theme = SubResource("Theme_e8qlu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
 
 [node name="Ammo" type="Label" parent="GrenadeLauncherReload/Panel"]
 layout_mode = 0
-offset_left = 4.05918
-offset_top = -5.83101
-offset_right = 30.0592
-offset_bottom = 20.169
+offset_left = 2.31932
+offset_top = -10.6058
+offset_right = 28.3193
+offset_bottom = 27.3942
 text = "6"
 
 [node name="Ammo2" type="Label" parent="GrenadeLauncherReload/Panel"]
 layout_mode = 0
-offset_left = 13.0119
-offset_top = -5.83102
-offset_right = 39.0119
-offset_bottom = 20.169
+offset_left = 13.3785
+offset_top = -11.3241
+offset_right = 39.3785
+offset_bottom = 26.6759
 text = "/6"
+
+[node name="TileGun" type="Sprite2D" parent="."]
+position = Vector2(164.784, 28)
+scale = Vector2(1.73649, 1.22615)
+texture = ExtResource("7_jh8uf")
+
+[node name="Panel" type="Panel" parent="TileGun"]
+offset_left = 16.5759
+offset_top = -13.0
+offset_right = 53.5759
+offset_bottom = 12.0
+theme = SubResource("Theme_e8qlu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
+
+[node name="Charges" type="Label" parent="TileGun/Panel"]
+layout_mode = 0
+offset_left = 2.31932
+offset_top = -10.6058
+offset_right = 28.3193
+offset_bottom = 27.3942
+text = "5"
+
+[node name="Charges2" type="Label" parent="TileGun/Panel"]
+layout_mode = 0
+offset_left = 13.3785
+offset_top = -11.3241
+offset_right = 39.3785
+offset_bottom = 26.6759
+text = "/5"

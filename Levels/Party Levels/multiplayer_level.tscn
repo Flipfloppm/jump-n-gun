@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdlnjsn8afqjg"]
+[gd_scene load_steps=23 format=3 uid="uid://bdlnjsn8afqjg"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_byndm"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="4_do5vp"]
@@ -12,9 +12,10 @@
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
 [ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="12_1oeqp"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
-[ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
-[ext_resource type="Texture2D" uid="uid://btuymhn4kubli" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
-[ext_resource type="Texture2D" uid="uid://csn1ucrfj170q" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
+[ext_resource type="PackedScene" uid="uid://dihcn3dpslxks" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
+[ext_resource type="Texture2D" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
+[ext_resource type="Texture2D" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
+[ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="16_vu7b5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("4_do5vp")
@@ -180,3 +181,8 @@ motion_scale = Vector2(0.3, 0.3)
 position = Vector2(112.151, 51.7568)
 scale = Vector2(0.523166, 0.560847)
 texture = ExtResource("15_454my")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_vu7b5")
+volume_db = 3.0
+autoplay = true
