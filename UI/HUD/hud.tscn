@@ -221,7 +221,6 @@ texture = ExtResource("2_ce33t")
 hframes = 4
 
 [node name="CharacterHead" type="TextureRect" parent="HealthBar"]
-visible = false
 anchors_preset = -1
 anchor_left = 0.083
 anchor_top = 0.209

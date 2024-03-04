@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dweh2wr5k3dvh"]
+[gd_scene load_steps=6 format=3 uid="uid://bx6ii0nltmndb"]
 
 [ext_resource type="Texture2D" uid="uid://tg8xholnwjv3" path="res://Art/UI/CoopModeSelect/world1-level-select.png" id="1_crua5"]
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/world1_level_select.gd" id="1_e2hin"]
