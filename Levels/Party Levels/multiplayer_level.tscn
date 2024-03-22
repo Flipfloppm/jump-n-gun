@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bdlnjsn8afqjg"]
+[gd_scene load_steps=24 format=3 uid="uid://bdlnjsn8afqjg"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_byndm"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="4_do5vp"]
@@ -10,12 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="10_enair"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="10_uc10p"]
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
-[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="12_1oeqp"]
+[ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="12_1oeqp"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
 [ext_resource type="Texture2D" uid="uid://sfs7w5wprx5u" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]
 [ext_resource type="Texture2D" uid="uid://cih4bohlg6e8e" path="res://Art/Parallax/Sun-Sunsetbkg.png" id="15_454my"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="16_vu7b5"]
+[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Weaponry/c4_launcher.tscn" id="17_ou3s7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("4_do5vp")
@@ -113,7 +114,7 @@ script = ExtResource("8_mrohf")
 position = Vector2(-1, 0)
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
-position = Vector2(60, -54)
+position = Vector2(60, -1350)
 
 [node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
 position = Vector2(191, -60)
@@ -186,3 +187,6 @@ texture = ExtResource("15_454my")
 stream = ExtResource("16_vu7b5")
 volume_db = 3.0
 autoplay = true
+
+[node name="C4 Launcher" parent="." instance=ExtResource("17_ou3s7")]
+position = Vector2(76, -1341)

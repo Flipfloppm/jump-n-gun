@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tspb1"]
-radius = 3.0
-height = 12.0
+radius = 2.0
+height = 10.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0llc7"]
 properties/0/path = NodePath(".:goalpos")
@@ -34,3 +34,6 @@ shape = SubResource("CapsuleShape2D_tspb1")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_0llc7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
