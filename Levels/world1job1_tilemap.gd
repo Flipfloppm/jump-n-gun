@@ -2,7 +2,7 @@ extends TileMap
 
 var breakable_wood_set = {}
 var tile_spawn_set = {}
-var tile_spawn_time = 2.0 # This is the amount of time between image changes
+const TILE_SPAWN_TIME = 4.0 # This is the amount of time between image changes
 
 # Boundary of playing space
 const XMIN = 0
@@ -88,5 +88,5 @@ func spawn_tile_from_gun(pos_x, pos_y):
 	# Add cell to breakable set
 	add_to_breakable_wood(cell.x, cell.x, cell.y, cell.y)
 	# Add cell to tile_spawn_set
-	tile_spawn_set[cell] = tile_spawn_time
+	tile_spawn_set[cell] = TILE_SPAWN_TIME
 
