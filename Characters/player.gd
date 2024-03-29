@@ -238,13 +238,23 @@ func on_explosion(pos):
 			deg *= -1
 		
 		# Calculate force of explosion based on radius
-		var knockback_force = -1 * radius * (knockback_min_force - knockback_max_force) / knockback_radius + knockback_min_force
+		var knockback_force = -1 * (knockback_min_force - knockback_max_force) * (1 - radius / knockback_radius) + knockback_min_force
 		
 		# Knockback player from exposion
 		var knockback_vector = Vector2.ZERO
 		knockback_vector.y = sin(deg) 
 		knockback_vector.x = cos(deg)
+		
 		velocity += knockback_vector * knockback_force
+		## If velocity and knockback force are in opposite directions, apply minimum force
+		#if velocity.y * knockback_vector.y <= 0:
+			#print("opposite")
+			#velocity += knockback_vector * knockback_force
+		#else:
+			#print("same")
+			#velocity = knockback_vector * knockback_min_force
+			
+		print("knockback force: ", knockback_force, "   knockback_vector", knockback_vector)
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	
 	# After knockback, reset physics
@@ -274,7 +284,7 @@ func fire(fired_by):
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
-	print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projectile position: ", $GunRotation/ProjectileSpawn.global_position)
+	#print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projectile position: ", $GunRotation/ProjectileSpawn.global_position)
 	get_tree().root.add_child(projectile)
 
 @rpc("any_peer", "call_local")
