@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dmq6tqmmity7t"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://dmq6tqmmity7t"]
 
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="1_hwuag"]
 [ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-16.png" id="2_vusye"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="3_3r4bt"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="4_g23q7"]
 [ext_resource type="Texture2D" uid="uid://c7sxb0fmbbopx" path="res://Art/LevelTiles/metal-block-8.png" id="5_qgta0"]
+[ext_resource type="Texture2D" uid="uid://chu6d3j4gqyci" path="res://Art/LevelTiles/gerrysheet.png" id="6_34pjl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("1_hwuag")
@@ -81,6 +82,25 @@ texture = ExtResource("4_g23q7")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px62r"]
 texture = ExtResource("5_qgta0")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hotuu"]
+texture = ExtResource("6_34pjl")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hdupy")
@@ -88,3 +108,4 @@ sources/1 = SubResource("TileSetAtlasSource_4joy8")
 sources/2 = SubResource("TileSetAtlasSource_c8adn")
 sources/3 = SubResource("TileSetAtlasSource_kmt55")
 sources/4 = SubResource("TileSetAtlasSource_px62r")
+sources/5 = SubResource("TileSetAtlasSource_hotuu")

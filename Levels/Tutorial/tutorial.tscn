@@ -1,11 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=17 format=3 uid="uid://bdythvwjj51ua"]
 
-[ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="1_e3vjs"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
-[ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-16.png" id="2_423r4"]
-[ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="3_q118t"]
-[ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="4_kwiu1"]
-[ext_resource type="Texture2D" uid="uid://c7sxb0fmbbopx" path="res://Art/LevelTiles/metal-block-8.png" id="8_1stur"]
+[ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="2_y77ny"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial_tilemap.gd" id="8_ruo01"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="9_go0eh"]
@@ -16,90 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="17_2wjh4"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="17_28g4f"]
-[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="17_c5b0f"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
-texture = ExtResource("1_e3vjs")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4joy8"]
-texture = ExtResource("2_423r4")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c8adn"]
-texture = ExtResource("3_q118t")
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmt55"]
-texture = ExtResource("4_kwiu1")
-2:5/0 = 0
-2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:5/0/physics_layer_0/angular_velocity = 0.0
-2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:5/0 = 0
-3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:5/0/physics_layer_0/angular_velocity = 0.0
-3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:5/0 = 0
-5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:5/0/physics_layer_0/angular_velocity = 0.0
-5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-6:5/0 = 0
-6:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:5/0/physics_layer_0/angular_velocity = 0.0
-6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-8:5/0 = 0
-8:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:5/0/physics_layer_0/angular_velocity = 0.0
-8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-9:5/0 = 0
-9:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:5/0/physics_layer_0/angular_velocity = 0.0
-9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:6/0 = 0
-2:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:6/0/physics_layer_0/angular_velocity = 0.0
-2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:6/0 = 0
-3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:6/0/physics_layer_0/angular_velocity = 0.0
-3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:6/0 = 0
-5:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-5:6/0/physics_layer_0/angular_velocity = 0.0
-5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-6:6/0 = 0
-6:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-6:6/0/physics_layer_0/angular_velocity = 0.0
-6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-8:6/0 = 0
-8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-8:6/0/physics_layer_0/angular_velocity = 0.0
-8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-9:6/0 = 0
-9:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-9:6/0/physics_layer_0/angular_velocity = 0.0
-9:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px62r"]
-texture = ExtResource("8_1stur")
-
-[sub_resource type="TileSet" id="TileSet_frh85"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_hdupy")
-sources/1 = SubResource("TileSetAtlasSource_4joy8")
-sources/2 = SubResource("TileSetAtlasSource_c8adn")
-sources/3 = SubResource("TileSetAtlasSource_kmt55")
-sources/4 = SubResource("TileSetAtlasSource_px62r")
+[ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="17_c5b0f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v7f2i"]
 font = ExtResource("8_y180i")
@@ -116,7 +29,7 @@ font_size = 8
 script = ExtResource("1_tr133")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_frh85")
+tile_set = ExtResource("2_y77ny")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -131072, 0, 0, -196608, 0, 0, -262144, 0, 0, -327680, 0, 0, -393216, 0, 0, -458752, 0, 0, -524288, 0, 0, -589824, 0, 0, -655360, 0, 0, -720896, 0, 0, -786432, 0, 0, -851968, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, -65493, 0, 0, -65492, 0, 0, -65491, 0, 0, -65490, 0, 0, -65489, 0, 0, -65488, 0, 0, -65487, 0, 0, -65486, 0, 0, -65485, 0, 0, -65484, 0, 0, -65483, 0, 0, -65482, 0, 0, -65481, 0, 0, -65480, 0, 0, -65479, 0, 0, -65478, 0, 0, -65477, 0, 0, -65476, 0, 0, -65475, 0, 0, -65474, 0, 0, -65473, 0, 0, -65472, 0, 0, -65471, 0, 0, -65470, 0, 0, -65469, 0, 0, -65468, 0, 0, -65467, 0, 0, -65466, 0, 0, -65465, 0, 0, -65464, 0, 0, -65463, 0, 0, -65462, 0, 0, -65461, 0, 0, -65460, 0, 0, -917504, 0, 0, -65459, 0, 0, -65458, 0, 0, -65457, 0, 0, -65456, 0, 0, -65455, 0, 0, -131046, 1, 0, -196582, 1, 0, -131043, 1, 0, -196579, 1, 0, -262115, 1, 0, -917503, 0, 0, -917502, 0, 0, -917501, 0, 0, -917500, 0, 0, -917499, 0, 0, -917498, 0, 0, -917497, 0, 0, -917496, 0, 0, -917495, 0, 0, -917494, 0, 0, -917493, 0, 0, -917492, 0, 0, -917491, 0, 0, -917490, 0, 0, -917489, 0, 0, -917488, 0, 0, -917487, 0, 0, -917486, 0, 0, -917485, 0, 0, -917484, 0, 0, -917483, 0, 0, -917482, 0, 0, -917481, 0, 0, -917480, 0, 0, -917479, 0, 0, -917478, 0, 0, -917477, 0, 0, -917476, 0, 0, -917475, 0, 0, -917474, 0, 0, -917473, 0, 0, -917472, 0, 0, -917471, 0, 0, -917470, 0, 0, -917469, 0, 0, -917468, 0, 0, -917467, 0, 0, -917466, 0, 0, -917465, 0, 0, -917464, 0, 0, -917463, 0, 0, -917462, 0, 0, -917461, 0, 0, -917460, 0, 0, -917459, 0, 0, -917458, 0, 0, -917457, 0, 0, -917456, 0, 0, -917455, 0, 0, -917454, 0, 0, -917453, 0, 0, -917452, 0, 0, -917451, 0, 0, -917450, 0, 0, -917449, 0, 0, -917448, 0, 0, -917447, 0, 0, -917446, 0, 0, -917445, 0, 0, -917444, 0, 0, -917443, 0, 0, -917442, 0, 0, -917441, 0, 0, -917440, 0, 0, -917439, 0, 0, -917438, 0, 0, -917437, 0, 0, -917436, 0, 0, -917435, 0, 0, -917434, 0, 0, -917433, 0, 0, -917432, 0, 0, -917431, 0, 0, -917430, 0, 0, -917429, 0, 0, -917428, 0, 0, -917427, 0, 0, -917426, 0, 0, -196535, 131075, 5, -130999, 131075, 6, -196534, 196611, 5, -130998, 196611, 6, -327607, 131075, 5, -262071, 131075, 6, -327606, 196611, 5, -262070, 196611, 6, -458679, 131075, 5, -393143, 131075, 6, -458678, 196611, 5, -393142, 196611, 6, -589751, 131075, 5, -524215, 131075, 6, -589750, 196611, 5, -524214, 196611, 6, -720823, 131075, 5, -655287, 131075, 6, -720822, 196611, 5, -655286, 196611, 6, -851895, 131075, 5, -786359, 131075, 6, -851894, 196611, 5, -786358, 196611, 6, -917425, 0, 0, -917424, 0, 0, -65454, 0, 0, -65453, 0, 0, -65452, 0, 0, -65451, 0, 0, -65450, 0, 0, -65449, 0, 0, -65448, 0, 0, -65447, 0, 0, -65446, 0, 0, -393126, 0, 0, -458662, 0, 0, -524198, 0, 0, -589734, 0, 0, -655270, 0, 0, -720806, 0, 0, -786342, 0, 0, -851878, 0, 0, -917414, 0, 0, -1114022, 0, 0, -1179558, 0, 0, -1245094, 0, 0, -1310630, 0, 0, -982950, 0, 0, -1048486, 0, 0, -982960, 0, 0, -1048496, 0, 0, -1114032, 0, 0, -1179568, 0, 0, -1245104, 0, 0, -1310640, 0, 0, -1376176, 0, 0, -1441712, 0, 0, -1507248, 0, 0, -1572784, 0, 0, -1376166, 0, 0, -1441702, 0, 0, -1507238, 0, 0, -1572774, 0, 0, -393127, 0, 0, -393128, 0, 0, -393129, 0, 0, -720813, 0, 0, -720814, 0, 0, -720815, 0, 0, -720816, 0, 0, -1114025, 0, 0, -1114024, 0, 0, -1114023, 0, 0, -1114026, 0, 0, -1507245, 0, 0, -1507246, 0, 0, -1507247, 0, 0, -1638320, 0, 0, -1703856, 0, 0, -1769392, 0, 0, -1834928, 0, 0, -1900464, 0, 0, -1966000, 0, 0, -2031536, 0, 0, -1834918, 0, 0, -1900454, 0, 0, -2097072, 0, 0, -2162608, 0, 0, -2228144, 0, 0, -2293680, 0, 0, -2359216, 0, 0, -2424752, 0, 0, -2424751, 0, 0, -2424738, 0, 0, -2424737, 0, 0, -2424736, 0, 0, -2424735, 0, 0, -2424750, 0, 0, -2424749, 0, 0, -2424748, 0, 0, -2424747, 0, 0, -2424746, 0, 0, -2424745, 0, 0, -2424744, 0, 0, -2424743, 0, 0, -2424742, 0, 0, -2424741, 0, 0, -2424740, 0, 0, -2424739, 0, 0, -2424734, 0, 0, -2424733, 0, 0, -2424732, 0, 0, -2424731, 0, 0, -2424730, 0, 0, -2424729, 0, 0, -2424728, 0, 0, -2424727, 0, 0, -2424726, 0, 0, -2424725, 0, 0, -65445, 0, 0, -65444, 0, 0, -65443, 0, 0, -65442, 0, 0, -65441, 0, 0, -65440, 0, 0, -65439, 0, 0, -65438, 0, 0, -65437, 0, 0, -65436, 0, 0, -65435, 0, 0, -65434, 0, 0, -65433, 0, 0, -65432, 0, 0, -1965962, 0, 0, -2424724, 0, 0, -2424723, 0, 0, -2424722, 0, 0, -2424721, 0, 0, -2424720, 0, 0, -2424719, 0, 0, -2424718, 0, 0, -2424717, 0, 0, -2424716, 0, 0, -2424715, 0, 0, -2424714, 0, 0, -2424713, 0, 0, -2424712, 0, 0, -2424711, 0, 0, -2424710, 0, 0, -2424709, 0, 0, -2424708, 0, 0, -2424707, 0, 0, -2424706, 0, 0, -2424705, 0, 0, -2424704, 0, 0, -2424703, 0, 0, -2424702, 0, 0, -2424701, 0, 0, -2424700, 0, 0, -2424699, 0, 0, -2424698, 0, 0, -2424697, 0, 0, -1965994, 0, 0, -1965993, 0, 0, -1965990, 0, 0, -1965976, 0, 0, -1965975, 0, 0, -1965974, 0, 0, -1965969, 0, 0, -1965968, 0, 0, -1965967, 0, 0, -1965966, 0, 0, -1965965, 0, 0, -1965964, 0, 0, -1965963, 0, 0, -1965973, 0, 0, -1965970, 0, 0, -1638310, 0, 0, -1703846, 0, 0, -1769382, 0, 0, -1965991, 0, 0, -1965992, 0, 0, -1965972, 0, 0, -1965971, 0, 0, -1965961, 0, 0, -1965960, 0, 0, -1965959, 0, 0, -1965958, 0, 0, -1965957, 0, 0, -1965956, 0, 0, -1965955, 0, 0, -1965954, 0, 0, -1965953, 0, 0, -1965952, 0, 0, -1965951, 0, 0, -1965950, 0, 0, -1965949, 0, 0, -1965948, 0, 0, -1965947, 0, 0, -1965946, 0, 0, -1965945, 0, 0, -2359161, 0, 0, -2293625, 0, 0, -2162553, 0, 0, -2097017, 0, 0, -2031481, 0, 0, -2228089, 0, 0, -130968, 0, 0, -196504, 0, 0, -1900440, 0, 0, -1834904, 0, 0, -1769368, 0, 0, -1703832, 0, 0, -1638296, 0, 0, -1572760, 0, 0, -1507224, 0, 0, -1441688, 0, 0, -1376152, 0, 0, -1310616, 0, 0, -1245080, 0, 0, -1179544, 0, 0, -1114008, 0, 0, -1048472, 0, 0, -982936, 0, 0, -917400, 0, 0, -851864, 0, 0, -786328, 0, 0, -720792, 0, 0, -655256, 0, 0, -589720, 0, 0, -524184, 0, 0, -458648, 0, 0, -393112, 0, 0, -327576, 0, 0, -262040, 0, 0)
 script = ExtResource("8_ruo01")
