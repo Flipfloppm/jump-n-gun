@@ -243,7 +243,16 @@ func on_explosion(pos):
 		var knockback_vector = Vector2.ZERO
 		knockback_vector.y = sin(deg) 
 		knockback_vector.x = cos(deg)
+		
 		velocity += knockback_vector * knockback_force
+		## If velocity and knockback force are in opposite directions, apply minimum force
+		#if velocity.y * knockback_vector.y <= 0:
+			#print("opposite")
+			#velocity += knockback_vector * knockback_force
+		#else:
+			#print("same")
+			#velocity = knockback_vector * knockback_min_force
+			
 		print("knockback force: ", knockback_force, "   knockback_vector", knockback_vector)
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	
