@@ -2,7 +2,7 @@ extends TileMap
 
 var breakable_wood_set = {}
 var wood_time_left_set = {}
-const MOSS_TIME = 2.0
+const MOSS_TIME = 3.0
 var disappearing_moss_set0 = {}
 var disappearing_moss_set0_timer = MOSS_TIME
 var disappearing_moss_set1 = {}

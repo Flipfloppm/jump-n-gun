@@ -2,7 +2,7 @@ extends TileMap
 
 var breakable_wood_set = {}
 var tile_spawn_set = {}
-var tile_spawn_time = 2.0 # This is the amount of time between image changes
+const TILE_SPAWN_TIME = 4.0 # This is the amount of time between image changes
 
 # Boundary of playing space
 const XMIN = 0
@@ -40,7 +40,7 @@ func _process(_delta):
 		# If time < x secs, change skin the first time.
 		if tile_spawn_set[cell] < 0:
 			tile_spawn_set[cell] = 2
-			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 3, cellAtlasCoords[1])
+			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 1, cellAtlasCoords[1])
 			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
 			# Remove block from tile_spawn_set
 			if newCellAtlasCoords[0] > 10:
@@ -85,9 +85,9 @@ func spawn_tile_from_gun(pos_x, pos_y):
 			pass
 		else: 
 			return
-	set_cell(0, cell, 3, Vector2(randi_range(2,3), randi_range(5,6)))
+	set_cell(0, cell, 5, Vector2(0,0))
 	# Add cell to breakable set
 	add_to_breakable_wood(cell.x, cell.x, cell.y, cell.y)
 	# Add cell to tile_spawn_set
-	tile_spawn_set[cell] = tile_spawn_time
+	tile_spawn_set[cell] = TILE_SPAWN_TIME
 
