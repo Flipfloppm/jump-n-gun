@@ -114,7 +114,7 @@ script = ExtResource("8_mrohf")
 position = Vector2(-1, 0)
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
-position = Vector2(60, -1350)
+position = Vector2(60, -60)
 
 [node name="1" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
 position = Vector2(191, -60)
@@ -189,4 +189,4 @@ volume_db = 3.0
 autoplay = true
 
 [node name="C4 Launcher" parent="." instance=ExtResource("17_ou3s7")]
-position = Vector2(76, -1341)
+position = Vector2(88, -79)
