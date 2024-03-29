@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://qmclp65wfafu"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/grenade_launcher.gd" id="1_7vn8w"]
-[ext_resource type="Texture2D" uid="uid://bgdcinf3bug5n" path="res://Art/Weapons/tilegun.png" id="2_plut2"]
+[ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="2_plut2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkbm6"]
 size = Vector2(32, 20)
