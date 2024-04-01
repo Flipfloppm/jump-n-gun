@@ -25,6 +25,7 @@ func _process(delta):
 			spawn_tile.rpc(position.x, position.y)
 			# Deal with post-collision
 		if collision_info:
+			print("collided with a " , collision_info.get_collider().get_class())
 			# If collided with tilemap, treat it as recast
 			if collision_info.get_collider().get_class() == "TileMap":
 				spawn_tile.rpc(position.x, position.y)
