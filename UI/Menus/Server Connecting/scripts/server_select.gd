@@ -70,7 +70,7 @@ func _on_start_game_btn_pressed():
 	start_game.rpc()
 	 # everybody will be notified to call their own start_game method
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func start_game():
 	var start_scene = load("res://Levels/Tutorial/tutorial.tscn").instantiate()
 	get_tree().root.add_child(start_scene)
@@ -79,7 +79,7 @@ func start_game():
 	$CanvasLayer.visible = false
 	self.hide()
 	
-@rpc("any_peer")
+@rpc("any_peer","reliable")
 func register_player_info(player_name, id, character:String = "Dwight"):
 	if not GameManager.PLAYERS.has(id):
 		GameManager.PLAYERS[id] = {
@@ -95,7 +95,7 @@ func register_player_info(player_name, id, character:String = "Dwight"):
 
 # handle the case where a client clicks on "exit room" to leave the current session
 # this is only done by the host. 
-@rpc("any_peer")
+@rpc("any_peer","reliable")
 func remove_client(client_id):
 	print("trying to remove client:", client_id, "this id:", multiplayer.get_unique_id())
 	if !multiplayer.is_server():
@@ -144,7 +144,7 @@ func _on_go_to_game_btn_pressed():
 	load_select_scene.rpc(waiting_room.gameMode)
 
 	
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func load_select_scene(gameMode):
 	print("loading select scene")
 	server_browser.cleanup_browser()

@@ -67,14 +67,14 @@ func _on_right_char_select_pressed():
 	right_idx.rpc()
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func left_idx():
 	idx -= 1
 	if idx == -1:
 		idx = 3
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func right_idx():
 	idx += 1
 	if idx == 4:
@@ -82,7 +82,7 @@ func right_idx():
 	
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func updateChars():
 	if GameManager.PLAYERS.has(controllerId):
 		GameManager.PLAYERS[controllerId]["Character"] = currChar
