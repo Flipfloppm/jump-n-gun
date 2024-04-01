@@ -41,19 +41,19 @@ func _process(delta):
 			collision = move_and_collide(linear_velocity * delta)
 		else:
 			collided_body = collision.get_collider()
-			
-			# Move c4 deeper into collision object
-			collision_position = collision.get_position()
-			collider_position = collided_body.position
-			if collider_position.x < collision_position.x:
-				collision_position.x -= 1
-			else:
-				collision_position.x += 1
-			if collider_position.y < collision_position.y:
-				collision_position.y -= 1
-			else:
-				collision_position.y += 1
+			# Parse collision
 			if collided_body.get_class() == "TileMap":
+				# Move c4 deeper into collision object tilemap
+				collision_position = collision.get_position()
+				collider_position = collided_body.position
+				if collider_position.x < collision_position.x:
+					collision_position.x -= 1
+				else:
+					collision_position.x += 1
+				if collider_position.y < collision_position.y:
+					collision_position.y -= 1
+				else:
+					collision_position.y += 1
 				# Stop moving upon collision with tilemap.
 				set_sleeping(true)
 				#linear_velocity = Vector2.ZERO
@@ -73,6 +73,10 @@ func _process(delta):
 		goalpos = global_position
 	else:
 		global_position = lerp(global_position, goalpos, 1 - pow(0.001, 8*delta))
+		#if !is_sleeping:
+			#global_position = lerp(global_position, goalpos, 1 - pow(0.001, 8*delta))
+		#else:
+			#print("non host sleeping")
 		if Input.is_action_just_pressed("c4detonate") && multiplayer.get_unique_id() == shot_by:
 			c4_detonate.rpc()
 

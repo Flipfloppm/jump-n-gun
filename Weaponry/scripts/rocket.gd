@@ -25,11 +25,12 @@ func _physics_process(delta):
 		if collision:
 			if collision.get_collider().has_method("hit"):
 				collision.get_collider().hit(collision.get_position() - collision.get_normal())
-			var e = explosion.instantiate()
-			e.global_position = collision.get_position()
-			get_tree().root.add_child(e)
-			#delete the projectile if it hits something
-			remove_rocket.rpc()
+			#var e = explosion.instantiate()
+			rocket_explode.rpc(collision.get_position())
+			#e.global_position = collision.get_position()
+			#get_tree().root.add_child(e)
+			##delete the projectile if it hits something
+			#remove_rocket.rpc()
 		move_and_slide()
 		goalpos = global_position
 	else:
@@ -43,4 +44,13 @@ func _process(_delta):
 
 @rpc("any_peer","call_local","reliable")
 func remove_rocket():
+	queue_free()
+
+
+@rpc("any_peer","call_local","reliable")
+func rocket_explode(collision_position):
+	var e = explosion.instantiate()
+	e.global_position = collision_position
+	get_tree().root.add_child(e)
+	#delete the projectile if it hits something
 	queue_free()
