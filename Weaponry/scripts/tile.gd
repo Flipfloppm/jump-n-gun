@@ -40,11 +40,11 @@ func _process(delta):
 			spawn_tile.rpc(position.x, position.y)
 
 
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func remove_tile():
 	queue_free()
 
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func spawn_tile(pos_x, pos_y):
 	# Send a signal to tilemap of level
 	SignalBus.tilespawn.emit(pos_x, pos_y)

@@ -19,16 +19,17 @@ func _ready():
 	goalpos = global_position
 
 func _physics_process(delta):
-	velocity = SPEED * direction # Gravity so that the bullet falls.
-	collision = move_and_collide(delta * velocity)
-	if collision:
-		if collision.get_collider().has_method("hit"):
-			collision.get_collider().hit(collision.get_position() - collision.get_normal())
-		var e = explosion.instantiate()
-		e.global_position = collision.get_position()
-		get_tree().root.add_child(e)
-		#delete the projectile if it hits something
-		queue_free()
+	if multiplayer.get_unique_id() == 1:
+		velocity = SPEED * direction # Gravity so that the bullet falls.
+		collision = move_and_collide(delta * velocity)
+		if collision:
+			if collision.get_collider().has_method("hit"):
+				collision.get_collider().hit(collision.get_position() - collision.get_normal())
+			var e = explosion.instantiate()
+			e.global_position = collision.get_position()
+			get_tree().root.add_child(e)
+			#delete the projectile if it hits something
+			remove_rocket.rpc()
 		move_and_slide()
 		goalpos = global_position
 	else:
@@ -39,3 +40,7 @@ func _physics_process(delta):
 func _process(_delta): 
 	# play the animation for a rocket, unsure what happens if you spawn a bullet
 	_animated_sprite.play("default")
+
+@rpc("any_peer","call_local","reliable")
+func remove_rocket():
+	queue_free()
