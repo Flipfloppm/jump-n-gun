@@ -24,7 +24,8 @@ func _ready():
 	set_max_contacts_reported(1)
 	set_freeze_mode(FREEZE_MODE_KINEMATIC)
 	freeze = false
-	linear_velocity = Vector2(1,0).rotated(rotation) * SPEED
+	if multiplayer.get_unique_id() == 1:
+		linear_velocity = Vector2(1,0).rotated(rotation) * SPEED
 	goalpos = global_position
 	time_left = 3
 
@@ -83,36 +84,6 @@ func c4_detonate():
 	get_tree().root.add_child(e)
 	queue_free()
 	SignalBus.c4detonated.emit()
-
-
-
-func _on_body_entered(body):
-	print("entered")
-	#if multiplayer.get_unique_id() == 1:
-		#if body == self:
-			#return
-		#if body.get_class() == "TileMap":
-			#var body_pos = body.position
-			## Move the c4 a little closer to the body's position.
-			#if body_pos.x < position.x:
-				#position.x -= 1
-			#else:
-				#position.x += 1
-			#if body_pos.y < position.y:
-				#position.y -= 1
-			#else:
-				#position.y += 1
-			#
-			#print("freeze")
-			## Stop moving upon collision with tilemap.
-			##freeze = true
-			#set_sleeping(true)
-			##linear_velocity = Vector2.ZERO
-			#collided = true
-		#elif !is_freeze_enabled():
-			## Bounce
-			#print("bounce")
-			#linear_velocity = linear_velocity.bounce(collision.get_normal().normalized())
 
 
 func _on_body_exited(body):
