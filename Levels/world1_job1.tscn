@@ -46,10 +46,6 @@ visible = false
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource("5_ln53l")]
 visible = false
-offset_left = 1512.71
-offset_top = -417.116
-offset_right = 1512.71
-offset_bottom = -417.116
 
 [node name="Rocket Launcher" parent="." instance=ExtResource("5_a00bg")]
 position = Vector2(141, -37)
