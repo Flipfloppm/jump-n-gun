@@ -12,8 +12,11 @@ var explosion = preload("res://Weaponry/explosion.tscn")
 
 @onready var _animated_sprite = $Rocket
 
+@export var goalpos : Vector2
+
 func _ready():
 	direction = Vector2(1,0).rotated(rotation)
+	goalpos = global_position
 
 func _physics_process(delta):
 	velocity = SPEED * direction # Gravity so that the bullet falls.
@@ -26,8 +29,13 @@ func _physics_process(delta):
 		get_tree().root.add_child(e)
 		#delete the projectile if it hits something
 		queue_free()
-	move_and_slide()
-	
+		move_and_slide()
+		goalpos = global_position
+	else:
+		global_position = lerp(global_position, goalpos, 1 - pow(0.001, 8*delta))
+
+
+
 func _process(_delta): 
 	# play the animation for a rocket, unsure what happens if you spawn a bullet
 	_animated_sprite.play("default")
