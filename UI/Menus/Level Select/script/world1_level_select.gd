@@ -57,7 +57,7 @@ func start_game():
 	elif selected_level == 2:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
 	elif selected_level == 3:
-		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
+		get_tree().change_scene_to_file("res://Levels/world1_job2.tscn")
 	elif selected_level == 4:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
 	elif selected_level == 5:

@@ -298,6 +298,7 @@ func hurt():
 
 # Change physics to ice physics
 func change_physics(type: String):
+	print("In Physics")
 	match type:
 		"regular":
 			speed = 200
@@ -308,3 +309,11 @@ func change_physics(type: String):
 			knockback_lerp_const = 0.01
 			regular_lerp_const = 0.07
 			
+
+#func teleport(teleporter):
+	#current_teleporter = teleporter
+	## Start a timer or wait for a specific duration
+	#yield(get_tree().create_timer(1.0), "timeout")
+	## Teleport the player
+	#current_teleporter.teleport_player(self)
+	#current_teleporter = null
