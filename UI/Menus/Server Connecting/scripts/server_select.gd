@@ -36,7 +36,6 @@ func _on_host_game_pressed():
 	hostBtn.visible = false
 	register_player_info(GameManager.username, multiplayer.get_unique_id())
 	print(GameManager.PLAYERS)
-	#serverBrowser.setup_server_broadcast(playerName.text + "'s server")
 	server_browser.setup_server_broadcast(GameManager.username)
 	#get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/waiting_room.tscn")
 	
@@ -137,6 +136,7 @@ func _on_ip_btn_pressed():
 func _on_disconnect_from_server():
 	print("Disconnected from server.")
 	GameManager.PLAYERS.clear()
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	get_tree().reload_current_scene()
 
 func _on_go_to_game_btn_pressed():
