@@ -70,7 +70,6 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8l1t"]
 radius = 7.0
-height = 36.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2n3a"]
 properties/0/path = NodePath(".:position")

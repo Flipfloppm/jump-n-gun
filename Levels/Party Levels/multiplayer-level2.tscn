@@ -363,6 +363,7 @@ position = Vector2(1287, -648.5)
 shape = SubResource("RectangleShape2D_b3684")
 
 [connection signal="body_entered" from="Ice Area 1" to="Ice Area 1" method="_on_body_entered"]
+[connection signal="body_exited" from="Ice Area 1" to="Ice Area 1" method="_on_body_exited"]
 [connection signal="body_entered" from="SpikeZone" to="SpikeZone" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeZone2" to="SpikeZone2" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeZone3" to="SpikeZone3" method="_on_body_entered"]

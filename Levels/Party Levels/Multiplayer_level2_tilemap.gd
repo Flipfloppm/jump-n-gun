@@ -80,7 +80,7 @@ func spawn_tile_from_gun(pos_x, pos_y):
 	var cell = local_to_map(Vector2i(pos_x, pos_y))
 	# Check that there is no other tile in the cell.
 	if (get_cell_source_id(0, cell) != -1 ):
-		if (get_cell_source_id(0, cell) == 3 && get_cell_atlas_coords(0, cell).x > 9):
+		if (get_cell_source_id(0, cell) == 6 && get_cell_atlas_coords(0, cell).x > 4):
 			pass
 		else: 
 			return
