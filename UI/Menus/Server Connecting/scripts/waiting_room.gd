@@ -4,7 +4,6 @@ signal client_disconnect_request(player_id)
 
 #@onready var player_list_container = $Panel/VBoxContainer/player_list
 @onready var char_select_container = $Panel/HBoxContainer
-@onready var select_world_btn = $VBoxContainer/SelectWorldBtn
 @onready var exit_room_btn = $VBoxContainer/ExitRoomBtn
 @onready var cancel_host_btn = $VBoxContainer/CancelHostBtn
 
@@ -52,17 +51,21 @@ func refresh_players(players):
 			lobbySet.erase(character.controllerId)
 	# Add any potential player
 	for player_id in players:
-		#print(GameManager.PLAYERS[player_id])
-		if lobbySet.has(player_id):
-			continue
-		var charSelect = charSelectScene.instantiate()
-		charSelect.setup(players[player_id]["name"], player_id, multiplayer.get_unique_id())
-		char_select_container.add_child(charSelect)
-		if players[player_id].has("Character"):
-			print("has character")
-			charSelect.setChar(players[player_id]["Character"])
+		dup_charSelect_on_all_players.rpc(players, player_id)
+		
+		
+@rpc("any_peer","call_local","reliable")
+func dup_charSelect_on_all_players(players, player_id):
+	if lobbySet.has(player_id):
+		return
+	var charSelect = charSelectScene.instantiate()
+	charSelect.setup(players[player_id]["name"], player_id)
+	charSelect.set_name("CharSelect" + str(player_id))
+	char_select_container.add_child(charSelect)
+	if players[player_id].has("Character"):
+		charSelect.setChar(players[player_id]["Character"])
 		lobbySet[player_id] = 1
-
+		print(multiplayer.get_unique_id(),"has character", lobbySet)
 
 func _on_exit_room_btn_pressed():
 	client_disconnect_request.emit(multiplayer.get_unique_id())

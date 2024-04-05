@@ -27,7 +27,6 @@ func start_server():
 	multiplayer.set_multiplayer_peer(server_peer)
 	var interfaces = IP.get_local_interfaces()
 	print("Started server: ")
-	print(interfaces)
 	for interface in interfaces:
 		if interface.has("name"):
 			if interface["name"] == "en0":
@@ -36,6 +35,7 @@ func start_server():
 	return [SELECTED_PORT, SELECTED_IP]
 
 func close_server():
+	print("server: closing server")
 	for peerID in multiplayer.get_peers():
 		print("disconnecting peer:", peerID)
 		server_peer.disconnect_peer(peerID)
@@ -43,13 +43,13 @@ func close_server():
 
 # this gets called on both the server and client when someone connects
 func peer_connected(id):
-	print("Player connected: " + str(id))
+	print("Player connected: " + str(id) + "Self:" + str(multiplayer.get_unique_id()))
 
 # this gets called on both the server and client when someone connects
 func peer_disconnected(id):
 	print("Player disconnected: " + str(id))
 
-func _on_cancel_host():
+func _on_cancel_host(): 
 	if server_peer:
 		close_server()
 		print("Received Cancel host signal, Closed server")

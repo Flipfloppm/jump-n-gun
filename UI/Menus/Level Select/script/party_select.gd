@@ -14,7 +14,7 @@ func _process(delta):
 		$CanvasLayer/TooltipLabel.visible = true
 		$CanvasLayer/TooltipLabel.text= "Waiting for host to continue"
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func start_game():
 	#get_tree().change_scene_to_file("res://Levels/Party Levels/multiplayer_level.tscn")
 	get_tree().change_scene_to_file("res://Levels/Party Levels/multiplayer-level2.tscn")

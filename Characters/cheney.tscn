@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dt7l4ecn6iwft"]
+[gd_scene load_steps=31 format=3 uid="uid://dt7l4ecn6iwft"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_nyab2"]
 [ext_resource type="Texture2D" uid="uid://b2ifmuhekgej2" path="res://Art/Characters/Cheney/cheney-walking.png" id="2_ntisv"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://b5mpln2ksu0la" path="res://Weaponry/tile.tscn" id="4_cspp8"]
 [ext_resource type="Texture2D" uid="uid://cdm56opp86mhq" path="res://Art/Characters/Cheney/cheney-anim.png" id="4_gtqi5"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="4_prp2e"]
+[ext_resource type="PackedScene" uid="uid://b8812in8pfmoq" path="res://Weaponry/c4.tscn" id="4_qe053"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="5_a6rky"]
 [ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="9_7e2ta"]
+[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="11_rreo1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxnt"]
 atlas = ExtResource("4_gtqi5")
@@ -142,6 +144,7 @@ floor_max_angle = 0.802851
 script = ExtResource("1_nyab2")
 rocket = ExtResource("2_xssd5")
 grenade = ExtResource("3_6jf66")
+c4 = ExtResource("4_qe053")
 tile = ExtResource("4_cspp8")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -172,6 +175,11 @@ texture = ExtResource("3_gb1js")
 position = Vector2(21, 1)
 scale = Vector2(0.8125, 0.666667)
 texture = ExtResource("9_7e2ta")
+
+[node name="C4Launcher" type="Sprite2D" parent="GunRotation"]
+position = Vector2(20, 0.5)
+scale = Vector2(1.75, 0.9375)
+texture = ExtResource("11_rreo1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -60)

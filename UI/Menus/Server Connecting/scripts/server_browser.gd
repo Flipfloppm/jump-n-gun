@@ -63,7 +63,7 @@ func _process(delta):
 		var receivedBytes = listener.get_packet()
 		var data = receivedBytes.get_string_from_ascii()
 		var roomInfo = JSON.parse_string(data)
-		print("serverIP: " + str(serverIP) + " serverPort: " + str(serverPort) + " roominfo: " + str(roomInfo))
+		#print("serverIP: " + str(serverIP) + " serverPort: " + str(serverPort) + " roominfo: " + str(roomInfo))
 		# Verify the input, if roomInfo's name is "", change it to the default case: New Server
 		if roomInfo.name == "":
 			roomInfo.name = "New Server"
@@ -97,7 +97,7 @@ func _process(delta):
 
 
 func _on_broadcast_timer_timeout():
-	print("Broadcasting game")
+	#print("Broadcasting game")
 	RoomInfo.playerCount = GameManager.PLAYERS.size()
 	var data = JSON.stringify(RoomInfo)
 	var packet = data.to_ascii_buffer() # doesn't work with japanese/chinese room info but this is small and efficient :)
