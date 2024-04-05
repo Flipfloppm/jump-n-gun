@@ -19,11 +19,12 @@ var shot_by : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(get_collision_mask())
 	set_lock_rotation_enabled(true)
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
-	set_freeze_mode(FREEZE_MODE_KINEMATIC)
-	freeze = false
+	#set_freeze_mode(FREEZE_MODE_KINEMATIC)
+	#freeze = false
 	if multiplayer.get_unique_id() == 1:
 		linear_velocity = Vector2(1,0).rotated(rotation) * SPEED
 	goalpos = global_position
@@ -63,6 +64,7 @@ func _process(delta):
 				linear_velocity = linear_velocity.bounce(collision.get_normal().normalized())
 		if is_sleeping():
 			position = collision_position
+			#set_collision_mask_value(2,0)
 			#set_sleeping(false)
 			#collided = false
 		if collided:
@@ -93,6 +95,7 @@ func c4_detonate():
 func _on_body_exited(body):
 	print("exited")
 	set_sleeping(false)
+	#set_collision_mask_value(2,1)
 	collided = false
 	collision = null
 
