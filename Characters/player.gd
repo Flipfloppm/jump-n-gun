@@ -76,8 +76,6 @@ func _physics_process(delta):
 			grenadeReloadTime -= delta
 		if tileGunReloadTime >= 0:
 			tileGunReloadTime -= delta
-		elif tileChargeCount == tileGunLoad:
-			SignalBus.tilegun_reset.emit()
 			
 		# Add the gravity.	
 		if not is_on_floor():
