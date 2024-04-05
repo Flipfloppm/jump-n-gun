@@ -39,7 +39,7 @@ func _on_menu_btn_pressed():
 func _on_restart_btn_pressed():
 	restart_game.rpc()
 	
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func restart_game():
 	set_paused(false)
 	get_tree().reload_current_scene()

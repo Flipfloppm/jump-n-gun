@@ -189,8 +189,8 @@ func select_weapon(weaponName: String, body):
 	match weaponName:
 		"Rocket":
 			currWeapon = "Rocket"
-			knockback_min_force = 200
-			knockback_max_force = 600
+			knockback_min_force = 250
+			knockback_max_force = 650
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
@@ -248,10 +248,13 @@ func on_explosion(pos):
 		# Calculate force of explosion based on radius
 		var knockback_force = -1 * radius * (knockback_min_force - knockback_max_force) / knockback_radius + knockback_min_force
 		
-		# Knockback player from exposion
+	 	# Knockback player from exposion
+		#print(knockback_force)
 		var knockback_vector = Vector2.ZERO
 		knockback_vector.y = sin(deg) 
 		knockback_vector.x = cos(deg)
+		if (velocity.y > 0):
+			velocity.y *= -0.8
 		velocity += knockback_vector * knockback_force
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	
@@ -280,7 +283,7 @@ func fire():
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
 	projectile.rotation_degrees = $GunRotation.rotation_degrees
-	print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projectile position: ", $GunRotation/ProjectileSpawn.global_position)
+	#print(multiplayer.get_unique_id(), ", projectile rotation: ", $GunRotation.rotation_degrees, ";   projectile position: ", $GunRotation/ProjectileSpawn.global_position)
 	get_tree().root.add_child(projectile)
 
 @rpc("any_peer", "call_local")

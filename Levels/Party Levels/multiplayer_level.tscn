@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="10_enair"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="10_uc10p"]
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_xmy72"]
-[ext_resource type="PackedScene" path="res://UI/game_over.tscn" id="12_1oeqp"]
+[ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="12_1oeqp"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_pvsjs"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_mvjpt"]
 [ext_resource type="Texture2D" uid="uid://sfs7w5wprx5u" path="res://Art/Parallax/Bkg-Sunsetbkg.png" id="14_puuq4"]

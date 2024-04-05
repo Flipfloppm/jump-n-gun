@@ -7,7 +7,6 @@ extends VBoxContainer
 # username of the person controlling it
 var user: String
 var controllerId
-var localId
 var currChar: String
 
 var charDict = {
@@ -33,7 +32,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if controllerId != localId:
+	if controllerId != multiplayer.get_unique_id():
 		leftCharSelect.visible = false
 		rightCharSelect.visible = false
 	var charDetails = charDict.get(idx)
@@ -45,11 +44,10 @@ func _process(delta):
 	
 
 #localhostId is a stupid name for the player's instance we are running
-func setup(username, id, localhostId):
+func setup(username, id):
 	$UserId.text = username
 	user = username
 	controllerId = id
-	localId = localhostId
 
 func setChar(character):
 	idx = charToIdx[character]
@@ -67,14 +65,14 @@ func _on_right_char_select_pressed():
 	right_idx.rpc()
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable",1)
 func left_idx():
 	idx -= 1
 	if idx == -1:
 		idx = 3
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer","call_local","reliable",1)
 func right_idx():
 	idx += 1
 	if idx == 4:
@@ -82,7 +80,7 @@ func right_idx():
 	
 	
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func updateChars():
 	if GameManager.PLAYERS.has(controllerId):
 		GameManager.PLAYERS[controllerId]["Character"] = currChar

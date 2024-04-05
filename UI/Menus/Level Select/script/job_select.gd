@@ -26,6 +26,6 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://UI/Menus/Server Connecting/server_select.tscn")
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func start_game():
 	get_tree().change_scene_to_file("res://Levels/Tutorial/tutorial.tscn")
