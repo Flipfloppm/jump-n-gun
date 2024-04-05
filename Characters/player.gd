@@ -283,7 +283,9 @@ func playJumpAudio():
 func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
-	position = Vector2(41, 212)
+	#position = Vector2(41, 212)
+	#position = Vector2(-125, 500)
+	position = Vector2(500, -125)
 
 #func _on_c4_detonation():
 	#c4_avail = true
@@ -294,7 +296,6 @@ func hurt():
 	if health == 0:
 		die()
 	
-
 
 # Change physics to ice physics
 func change_physics(type: String):

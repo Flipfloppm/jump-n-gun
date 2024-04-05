@@ -16,7 +16,9 @@ func _process(delta):
 
 @rpc("any_peer", "call_local")
 func start_game():
-	get_tree().change_scene_to_file("res://Levels/Party Levels/multiplayer_level.tscn")
+	#get_tree().change_scene_to_file("res://Levels/Party Levels/multiplayer_level.tscn")
+	get_tree().change_scene_to_file("res://Levels/Party Levels/multiplayer-level2.tscn")
+	
 
 func _on_start_game_btn_pressed():
 	print("start party")
