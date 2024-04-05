@@ -76,8 +76,6 @@ func _physics_process(delta):
 			grenadeReloadTime -= delta
 		if tileGunReloadTime >= 0:
 			tileGunReloadTime -= delta
-		elif tileChargeCount == tileGunLoad:
-			SignalBus.tilegun_reset.emit()
 			
 		# Add the gravity.	
 		if not is_on_floor():
@@ -142,6 +140,15 @@ func _physics_process(delta):
 						if tileChargeCount == 0:
 							tileGunReloadTime = 6
 							tileChargeCount = tileGunLoad
+		if Input.is_action_just_pressed("reload"):
+			match currWeapon:
+				"Grenade":
+					grenadeReloadTime = 2
+					grenadeLauncherAmmo = 6
+				"TileGun":
+					tileGunReloadTime = 6
+					tileChargeCount = tileGunLoad
+			SignalBus.reload.emit()
 		
 		# Handle different guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:
@@ -180,8 +187,8 @@ func select_weapon(weaponName: String, body):
 	match weaponName:
 		"Rocket":
 			currWeapon = "Rocket"
-			knockback_min_force = 200
-			knockback_max_force = 600
+			knockback_min_force = 250
+			knockback_max_force = 650
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
@@ -240,10 +247,13 @@ func on_explosion(pos):
 		# Calculate force of explosion based on radius
 		var knockback_force = -1 * (knockback_min_force - knockback_max_force) * (1 - radius / knockback_radius) + knockback_min_force
 		
-		# Knockback player from exposion
+	 	# Knockback player from exposion
+		#print(knockback_force)
 		var knockback_vector = Vector2.ZERO
 		knockback_vector.y = sin(deg) 
 		knockback_vector.x = cos(deg)
+		if (velocity.y > 0):
+			velocity.y *= -0.8
 		
 		velocity += knockback_vector * knockback_force
 		## If velocity and knockback force are in opposite directions, apply minimum force

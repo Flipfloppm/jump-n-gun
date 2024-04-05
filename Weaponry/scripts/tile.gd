@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var direction : Vector2
 var explosion = preload("res://Weaponry/explosion.tscn")
-const SPEED = 600.0
+const SPEED = 400.0
 var collision_info
 var shot_by : int
 

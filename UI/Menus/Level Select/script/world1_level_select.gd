@@ -50,7 +50,7 @@ func _on_computer_btn_mouse_exited():
 func _on_start_game_btn_pressed():
 	start_game.rpc()
 	
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local","reliable")
 func start_game():
 	if selected_level == 1:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
