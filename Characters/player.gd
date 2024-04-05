@@ -31,21 +31,21 @@ var lastDir = 0
 @onready var animatedSprite = $Sprite
 @export var rocket :PackedScene
 @export var grenade :PackedScene
-#@export var c4 : PackedScene
+@export var c4 : PackedScene
 @export var tile :PackedScene
 
 
 func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
-	#SignalBus.c4detonated.connect(_on_c4_detonation)
+	SignalBus.c4detonated.connect(_on_c4_detonation)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
-	#$GunRotation/C4Launcher.visible = false
+	$GunRotation/C4Launcher.visible = false
 	$GunRotation/TileGun.visible = false
 	hasWeaponsDict["Rocket"] = false
 	hasWeaponsDict["Grenade"] = false
-	#hasWeaponsDict["C4"] = false
+	hasWeaponsDict["C4"] = false
 	hasWeaponsDict["Tile"] = false
 	add_to_group("players")
 	#set_wall_min_slide_angle(0.785398)
@@ -116,25 +116,25 @@ func _physics_process(delta):
 			match currWeapon:
 				"Rocket":
 					if rocketReloadTime < 0:
-						fire.rpc()
+						fire.rpc(multiplayer.get_unique_id())
 						rocketReloadTime = 0.8
 						SignalBus.fired.emit()
 				"Grenade":
 					if grenadeReloadTime < 0:
-						fire.rpc()
+						fire.rpc(multiplayer.get_unique_id())
 						SignalBus.fired.emit()
 						grenadeLauncherAmmo -= 1
 						if grenadeLauncherAmmo == 0:
 							grenadeReloadTime = 2
 							grenadeLauncherAmmo = 6
-				#"C4":
-					#if c4_avail:
-						#fire.rpc()
-						#SignalBus.fired.emit()
-						#c4_avail = false
+				"C4":
+					if c4_avail:
+						fire.rpc(multiplayer.get_unique_id())
+						SignalBus.fired.emit()
+						c4_avail = false
 				"TileGun":
 					if tileChargeCount > 0 && tileGunReloadTime < 0:
-						fire.rpc()
+						fire.rpc(multiplayer.get_unique_id())
 						tileChargeCount -= 1
 						SignalBus.fired.emit()
 						if tileChargeCount == 0:
@@ -155,8 +155,8 @@ func _physics_process(delta):
 			select_weapon.rpc("Rocket", self)
 		elif Input.is_action_just_pressed("selectGrenadeLauncher") && hasWeaponsDict["Grenade"]:
 			select_weapon.rpc("Grenade", self)
-		#elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
-			#select_weapon("C4", self)
+		elif Input.is_action_just_pressed("selectC4") && hasWeaponsDict["C4"]:
+			select_weapon.rpc("C4", self)
 		elif Input.is_action_just_pressed("selectTileGun") && hasWeaponsDict["Tile"]:
 			select_weapon.rpc("Tile", self)
 
@@ -192,7 +192,7 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/GrenadeLauncher.visible = false
 			$GunRotation/RocketLauncher.visible = true
-			#$GunRotation/C4Launcher.visible = false
+			$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Rocket")
@@ -203,20 +203,21 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = true
+			$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = false
 			if body == self:
 				SignalBus.weapon_swap.emit("Grenade")
-		#"C4":
-			#currWeapon = "C4"
-			#knockback_min_force = 200
-			#knockback_max_force = 600
-			#knockback_radius = 100
-			#$GunRotation/RocketLauncher.visible = false
-			#$GunRotation/GrenadeLauncher.visible = false
-			#$GunRotation/C4Launcher.visible = true
-			#$GunRotation/TileGun.visible = false
-			#if body == self:
-				#SignalBus.weapon_swap.emit("C4")
+		"C4":
+			currWeapon = "C4"
+			knockback_min_force = 200
+			knockback_max_force = 600
+			knockback_radius = 100
+			$GunRotation/RocketLauncher.visible = false
+			$GunRotation/GrenadeLauncher.visible = false
+			$GunRotation/C4Launcher.visible = true
+			$GunRotation/TileGun.visible = false
+			if body == self:
+				SignalBus.weapon_swap.emit("C4")
 		"Tile":
 			currWeapon = "TileGun"
 			knockback_min_force = 200
@@ -224,7 +225,7 @@ func select_weapon(weaponName: String, body):
 			knockback_radius = 100
 			$GunRotation/RocketLauncher.visible = false
 			$GunRotation/GrenadeLauncher.visible = false
-			#$GunRotation/C4Launcher.visible = false
+			$GunRotation/C4Launcher.visible = false
 			$GunRotation/TileGun.visible = true
 			if body == self:
 				SignalBus.weapon_swap.emit("Tile")
@@ -244,7 +245,7 @@ func on_explosion(pos):
 			deg *= -1
 		
 		# Calculate force of explosion based on radius
-		var knockback_force = -1 * radius * (knockback_min_force - knockback_max_force) / knockback_radius + knockback_min_force
+		var knockback_force = -1 * (knockback_min_force - knockback_max_force) * (1 - radius / knockback_radius) + knockback_min_force
 		
 	 	# Knockback player from exposion
 		#print(knockback_force)
@@ -253,7 +254,17 @@ func on_explosion(pos):
 		knockback_vector.x = cos(deg)
 		if (velocity.y > 0):
 			velocity.y *= -0.8
+		
 		velocity += knockback_vector * knockback_force
+		## If velocity and knockback force are in opposite directions, apply minimum force
+		#if velocity.y * knockback_vector.y <= 0:
+			#print("opposite")
+			#velocity += knockback_vector * knockback_force
+		#else:
+			#print("same")
+			#velocity = knockback_vector * knockback_min_force
+			
+		print("knockback force: ", knockback_force, "   knockback_vector", knockback_vector)
 		knockback_vector = lerp(knockback_vector, Vector2.ZERO, 0.1)
 	
 	# After knockback, reset physics
@@ -262,7 +273,7 @@ func on_explosion(pos):
 
 
 @rpc("any_peer","call_local")
-func fire():
+func fire(fired_by):
 	var projectile
 	match currWeapon:
 		"Rocket":
@@ -271,11 +282,13 @@ func fire():
 		"Grenade":
 			projectile = grenade.instantiate()
 			shootAudio.play()
-		#"C4":
-			#projectile = c4.instantiate()
-			#shootAudio.play()
+		"C4":
+			projectile = c4.instantiate()
+			projectile.shot_by = fired_by
+			shootAudio.play()
 		"TileGun":
 			projectile = tile.instantiate()
+			projectile.shot_by = fired_by
 			shootAudio.play()
 		_:
 			return
@@ -295,8 +308,8 @@ func die():
 	# TODO: Set player respawn point + make animation for player respawn?
 	position = Vector2(41, 212)
 
-#func _on_c4_detonation():
-	#c4_avail = true
+func _on_c4_detonation():
+	c4_avail = true
 	
 func hurt():
 	health -= 1

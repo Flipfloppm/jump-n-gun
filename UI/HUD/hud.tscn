@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d0dkocaq2x4ii"]
+[gd_scene load_steps=50 format=3 uid="uid://d0dkocaq2x4ii"]
 
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_uqtc4"]
 [ext_resource type="Texture2D" uid="uid://c17wgknmqwq3j" path="res://Art/UI/HUD/Character Heads/GuyHead.png" id="2_ce6hl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
 [ext_resource type="Texture2D" uid="uid://c5qty38af53r2" path="res://Art/UI/HUD/Weapons/tilegun-reload.png" id="7_bhujc"]
+[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="8_8qe7l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
 atlas = ExtResource("3_4qsvx")
@@ -385,3 +386,32 @@ offset_top = -11.3241
 offset_right = 39.3785
 offset_bottom = 26.6759
 text = "/5"
+
+[node name="C4" type="Sprite2D" parent="."]
+position = Vector2(162, 28.0954)
+scale = Vector2(1.875, 1.23808)
+texture = ExtResource("8_8qe7l")
+
+[node name="Panel" type="Panel" parent="C4"]
+offset_left = 17.0
+offset_top = -13.0
+offset_right = 53.0
+offset_bottom = 12.0
+theme = SubResource("Theme_e8qlu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jllrx")
+
+[node name="Charges" type="Label" parent="C4/Panel"]
+layout_mode = 0
+offset_left = 2.31932
+offset_top = -10.6058
+offset_right = 28.3193
+offset_bottom = 27.3942
+text = "1"
+
+[node name="Charges2" type="Label" parent="C4/Panel"]
+layout_mode = 0
+offset_left = 13.3785
+offset_top = -11.3241
+offset_right = 39.3785
+offset_bottom = 26.6759
+text = "/1"

@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8812in8pfmoq"]
+[gd_scene load_steps=5 format=3 uid="uid://b8812in8pfmoq"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/c4.gd" id="1_txtvq"]
-[ext_resource type="Texture2D" uid="uid://dt6qfy82iu27e" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
+[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nsva"]
-size = Vector2(7, 3)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tspb1"]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0llc7"]
+properties/0/path = NodePath(".:goalpos")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:linear_velocity")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:sleeping")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="C4" type="RigidBody2D"]
 collision_mask = 7
@@ -14,5 +26,11 @@ script = ExtResource("1_txtvq")
 texture = ExtResource("2_85xji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
-shape = SubResource("RectangleShape2D_0nsva")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tspb1")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0llc7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
