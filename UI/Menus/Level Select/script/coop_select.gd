@@ -47,7 +47,7 @@ func _on_world_3_btn_pressed():
 	selected_world = 3
 	pass # Replace with function body.
 
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func go_to_level_select(selected_world):
 	print("going to world")
 	if selected_world == 1:
