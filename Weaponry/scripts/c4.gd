@@ -81,7 +81,7 @@ func _process(delta):
 			c4_detonate.rpc()
 
 
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func c4_detonate():
 	var e = explosion.instantiate()
 	e.global_position = get_position()
