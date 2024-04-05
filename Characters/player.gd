@@ -116,7 +116,8 @@ func _physics_process(delta):
 			match currWeapon:
 				"Rocket":
 					if rocketReloadTime < 0:
-						fire.rpc(multiplayer.get_unique_id())
+						#fire.rpc(multiplayer.get_unique_id())
+						fire.rpc()
 						rocketReloadTime = 0.8
 						SignalBus.fired.emit()
 				"Grenade":
@@ -273,7 +274,7 @@ func on_explosion(pos):
 
 
 @rpc("any_peer","call_local")
-func fire(fired_by):
+func fire():
 	var projectile
 	match currWeapon:
 		"Rocket":
@@ -284,11 +285,11 @@ func fire(fired_by):
 			shootAudio.play()
 		"C4":
 			projectile = c4.instantiate()
-			projectile.shot_by = fired_by
+			#projectile.shot_by = fired_by
 			shootAudio.play()
 		"TileGun":
 			projectile = tile.instantiate()
-			projectile.shot_by = fired_by
+			#projectile.shot_by = fired_by
 			shootAudio.play()
 		_:
 			return
