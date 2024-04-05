@@ -135,7 +135,7 @@ func _physics_process(delta):
 						c4_avail = false
 				"TileGun":
 					if tileChargeCount > 0 && tileGunReloadTime < 0:
-						fire.rpc(multiplayer.get_unique_id())
+						fire.rpc()
 						tileChargeCount -= 1
 						SignalBus.fired.emit()
 						if tileChargeCount == 0:
@@ -288,9 +288,12 @@ func fire():
 			#projectile.shot_by = fired_by
 			shootAudio.play()
 		"TileGun":
+			#fire.rpc()
 			projectile = tile.instantiate()
-			#projectile.shot_by = fired_by
 			shootAudio.play()
+			#projectile = tile.instantiate()
+			#projectile.shot_by = fired_by
+			#shootAudio.play()
 		_:
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
