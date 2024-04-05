@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_ukyl6"]
 [ext_resource type="PackedScene" uid="uid://m1c2usmffa8l" path="res://Weaponry/grenade.tscn" id="3_uv6e3"]
 [ext_resource type="Texture2D" uid="uid://1pq6sxek1wnl" path="res://Art/Characters/HWBush/georgehwb-walk.png" id="4_q35ls"]
-[ext_resource type="PackedScene" uid="uid://c4cb0leednrwu" path="res://Weaponry/tile.tscn" id="4_tvcio"]
+[ext_resource type="PackedScene" uid="uid://b5mpln2ksu0la" path="res://Weaponry/tile.tscn" id="4_tvcio"]
 [ext_resource type="Texture2D" uid="uid://c8wudxarhecte" path="res://Art/Weapons/rocket-launcher.png" id="6_rsye1"]
 [ext_resource type="Texture2D" uid="uid://b1l3uuvsitdli" path="res://Art/Weapons/grenade-launcher.png" id="7_7idre"]
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="8_p0usm"]
-[ext_resource type="Texture2D" uid="uid://dsfjtpfsnbivb" path="res://Art/Weapons/tilegun.png" id="8_rdecy"]
+[ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="8_rdecy"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="9_c17oe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iketu"]
@@ -67,7 +67,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8l1t"]
-radius = 8.0
+radius = 7.0
 height = 36.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2n3a"]
