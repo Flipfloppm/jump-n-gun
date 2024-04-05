@@ -142,6 +142,15 @@ func _physics_process(delta):
 						if tileChargeCount == 0:
 							tileGunReloadTime = 6
 							tileChargeCount = tileGunLoad
+		if Input.is_action_just_pressed("reload"):
+			match currWeapon:
+				"Grenade":
+					grenadeReloadTime = 2
+					grenadeLauncherAmmo = 6
+				"TileGun":
+					tileGunReloadTime = 6
+					tileChargeCount = tileGunLoad
+			SignalBus.reload.emit()
 		
 		# Handle different guns
 		if Input.is_action_just_pressed("selectRocketLauncher") && hasWeaponsDict["Rocket"]:

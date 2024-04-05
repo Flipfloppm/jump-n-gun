@@ -21,6 +21,7 @@ func _ready():
 	SignalBus.weapon_swap.connect(_on_weapon_swap)
 	SignalBus.hurt.connect(_on_hurt)
 	SignalBus.tilegun_reset.connect(reset_tilegun)
+	SignalBus.reload.connect(_on_reload)
 	_rocketLauncherAnimation.visible = false
 	_grenadeLauncherAnimation.visible = false
 	_tileGunSprite.visible = false
@@ -61,6 +62,15 @@ func _on_fired():
 				if tileChargeCount == 0:
 					_grenadeLauncherAnimation.play("default")
 					tileGunAvail = false
+
+func _on_reload():
+	match currWeapon:
+		"Grenade":
+			_grenadeLauncherAnimation.play("default")
+			grenadeReloading = true
+		"Tile":
+			_grenadeLauncherAnimation.play("default")
+			tileGunAvail = false
 
 	
 func _on_weapon_swap(weaponName):
