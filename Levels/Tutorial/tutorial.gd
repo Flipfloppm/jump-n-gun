@@ -12,7 +12,23 @@ var cur_player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.game_over.connect(_on_game_over)
+	if multiplayer.get_unique_id() == 1:
+		await get_tree().create_timer(2).timeout
+		spawn_players.rpc()
+	else:
+		await get_tree().create_timer(1).timeout
 	print("level ready")
+	
+
+func _on_game_over(name):
+	if name == "":
+		$"CanvasLayer/Game Over".visible = true
+	else:
+		$"CanvasLayer/Game Over".winner(name)
+		$"CanvasLayer/Game Over".visible = true
+
+@rpc("any_peer", "call_local", "reliable")
+func spawn_players():
 	var index = 0
 	print("players:" + str(GameManager.PLAYERS))
 	for i in GameManager.PLAYERS:
@@ -36,10 +52,3 @@ func _ready():
 		index += 1
 	HUD.setup(GameManager.PLAYERS[multiplayer.get_unique_id()]["Character"])
 	
-
-func _on_game_over(name):
-	if name == "":
-		$"CanvasLayer/Game Over".visible = true
-	else:
-		$"CanvasLayer/Game Over".winner(name)
-		$"CanvasLayer/Game Over".visible = true
