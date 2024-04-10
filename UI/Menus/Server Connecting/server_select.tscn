@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dsduhwe8hqs8a"]
 
-[ext_resource type="Theme" path="res://Art/UI/MainMenuButtonTheme.tres" id="1_4adf5"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="1_4adf5"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_select.gd" id="3_8ntu5"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="4_vfclq"]
 [ext_resource type="Script" path="res://UI/Menus/Server Connecting/scripts/server_browser.gd" id="5_sbtl2"]
@@ -180,27 +180,52 @@ offset_left = -2.0
 offset_right = -2.0
 
 [node name="IPAddress" parent="CanvasLayer/WaitingRoom" index="0"]
-offset_left = 210.0
-offset_top = -1.0
-offset_right = 354.0
+offset_top = 9.0
+offset_right = 538.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 64
+text = "Session IP Address:"
 
 [node name="UserIDLabel" parent="CanvasLayer/WaitingRoom" index="1"]
 offset_left = 12.0
-offset_top = -1.0
-offset_right = 156.0
-offset_bottom = 25.0
+offset_top = 9.0
+offset_right = 175.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 64
 
 [node name="Panel" parent="CanvasLayer/WaitingRoom" index="2"]
 offset_left = 3.0
-offset_top = 11.0
+offset_top = 48.0
 offset_right = 718.0
-offset_bottom = 379.0
+offset_bottom = 340.0
 
 [node name="VBoxContainer" parent="CanvasLayer/WaitingRoom" index="3"]
 offset_left = 7.0
 offset_top = 185.0
 offset_right = 727.0
 offset_bottom = 424.0
+
+[node name="PartyBtn" parent="CanvasLayer/WaitingRoom/VBoxContainer/HBoxContainer" index="1"]
+alignment = 1
+
+[node name="CoopBtn" parent="CanvasLayer/WaitingRoom/VBoxContainer/HBoxContainer" index="2"]
+alignment = 1
+
+[node name="GoToGameBtn" parent="CanvasLayer/WaitingRoom/VBoxContainer" index="2"]
+text = "Start Game"
+
+[node name="CancelHostBtn" parent="CanvasLayer/WaitingRoom/VBoxContainer" index="4"]
+text = "End Host Session"
+
+[node name="ColorRect" parent="CanvasLayer/WaitingRoom/PopupPanel" index="1"]
+offset_right = -4.0
+offset_bottom = -4.0
+
+[node name="ErrorMsgLabel" parent="CanvasLayer/WaitingRoom/PopupPanel" index="2"]
+offset_left = -126.0
+offset_top = -26.0
+offset_right = 126.0
+offset_bottom = 26.0
 
 [node name="DirectIPJoin" parent="CanvasLayer" instance=ExtResource("9_ssqht")]
 

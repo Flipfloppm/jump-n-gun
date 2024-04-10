@@ -76,7 +76,7 @@ theme_override_constants/separation = 15
 
 [node name="MultiplayerBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Multiplayer"
+text = "Play"
 
 [node name="SettingsBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -84,7 +84,7 @@ text = "Settings"
 
 [node name="ExitBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = "Quit"
 
 [node name="Settings" parent="." instance=ExtResource("4_de5ko")]
 visible = false
