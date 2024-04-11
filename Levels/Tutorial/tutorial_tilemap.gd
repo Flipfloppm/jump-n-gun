@@ -13,6 +13,7 @@ const RADIUS = 2
 var cellSourceId
 var cellAtlasCoords
 var newCellAtlasCoords
+var spawned_tiles = {}
 
 
 
@@ -76,8 +77,11 @@ func hit(collision_position):
 
 
 
-func spawn_tile_from_gun(pos_x, pos_y):
+func spawn_tile_from_gun(pos_x, pos_y, id):
 	print("tilespawn: " , pos_x, ", ", pos_y)
+	if id in spawned_tiles:
+		return
+	spawned_tiles[id] = 1
 	var cell = local_to_map(Vector2i(pos_x, pos_y))
 	# Check that there is no other tile in the cell.
 	if (get_cell_source_id(0, cell) != -1 ):

@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsduhwe8hqs8a"]
+
+[ext_resource type="PackedScene" uid="uid://t43uc074fdn3" path="res://Server/server.tscn" id="1_73qnq"]
+[ext_resource type="Script" path="res://ClientLobby/lobby.gd" id="1_ksb3b"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksb3b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.372549, 0.309804, 0.0313726, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -29.0
+offset_right = 89.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="LobbyLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lobby"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Player Name: "
+
+[node name="NameEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Enter Name"
+alignment = 1
+
+[node name="IPLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "IP Address:"
+
+[node name="IPEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "Enter IP Address"
+alignment = 1
+
+[node name="PortLabel" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Port: "
+
+[node name="PortEdit" type="LineEdit" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "3296"
+placeholder_text = "Enter Port Number"
+alignment = 1
+
+[node name="JoinBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Game"
+
+[node name="StartGameBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Server" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_73qnq")]
+layout_mode = 2
+
+[node name="HostGame" parent="CenterContainer/VBoxContainer/Server" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = 5.0
+offset_right = 77.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/JoinBtn" to="." method="_on_join_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Server/HostGame" to="." method="_on_host_game_pressed"]
+
+[editable path="CenterContainer/VBoxContainer/Server"]
