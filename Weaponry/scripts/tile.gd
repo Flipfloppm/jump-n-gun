@@ -47,5 +47,6 @@ func remove_tile():
 @rpc("any_peer","call_local","reliable")
 func spawn_tile(pos_x, pos_y):
 	# Send a signal to tilemap of level
-	SignalBus.tilespawn.emit(pos_x, pos_y)
 	queue_free()
+	SignalBus.tilespawn.emit(pos_x, pos_y)
+	
