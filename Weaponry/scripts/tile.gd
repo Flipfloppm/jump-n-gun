@@ -28,7 +28,7 @@ func _process(delta):
 			print("collided with a " , collision_info.get_collider().get_class())
 			# If collided with tilemap, treat it as recast
 			if collision_info.get_collider().get_class() == "TileMap":
-				spawn_tile.rpc(position.x, position.y, self.get_instance_id())
+				spawn_tile.rpc(position.x, position.y)
 			# If collided with not tilemap, make disappear
 			else:
 				remove_tile.rpc()
@@ -37,7 +37,7 @@ func _process(delta):
 		global_position = lerp(global_position, goalpos, 1 - pow(0.001, 8*delta))
 		# If recast, spawn tile
 		if Input.is_action_just_pressed("recastTileGun") && multiplayer.get_unique_id() == shot_by:
-			spawn_tile.rpc(position.x, position.y, self.get_instance_id())
+			spawn_tile.rpc(position.x, position.y)
 
 
 @rpc("any_peer","call_local","reliable")
@@ -45,8 +45,8 @@ func remove_tile():
 	queue_free()
 
 @rpc("any_peer","call_local","reliable")
-func spawn_tile(pos_x, pos_y, id):
+func spawn_tile(pos_x, pos_y):
 	# Send a signal to tilemap of level
 	queue_free()
-	SignalBus.tilespawn.emit(pos_x, pos_y, id)
+	SignalBus.tilespawn.emit(pos_x, pos_y)
 	
