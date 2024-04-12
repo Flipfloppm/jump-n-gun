@@ -15,7 +15,7 @@ func _process(delta):
 func _on_body_entered(body):
 	print("entered.", body)
 	if body.is_in_group("players"):
-		print("True.")
+		#print("True.")
 		body.change_physics("ice")
 
 # Return players to regular physics
