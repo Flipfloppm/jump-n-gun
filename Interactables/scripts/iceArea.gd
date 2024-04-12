@@ -14,7 +14,7 @@ func _process(delta):
 # Make players slippery
 func _on_body_entered(body):
 	print("entered.", body)
-	if body.is_in_group("players"):
+	if body.has_method("change_physics"):
 		#print("True.")
 		body.change_physics("ice")
 
