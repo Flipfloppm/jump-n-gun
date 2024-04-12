@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dv537blmbif1u"]
+[gd_scene load_steps=26 format=3 uid="uid://dv537blmbif1u"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_ttmla"]
 [ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="2_ojmj5"]
@@ -14,12 +14,13 @@
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="12_syt7j"]
 [ext_resource type="Script" path="res://Interactables/scripts/iceArea.gd" id="13_ed3ff"]
 [ext_resource type="Script" path="res://Levels/SpikeZoneCOOP.gd" id="15_bgm2m"]
+[ext_resource type="Script" path="res://Levels/RampSlide.gd" id="15_xgipk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qrdi"]
 size = Vector2(224.987, 73.4297)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mlg7"]
-size = Vector2(20.2718, 207.79)
+size = Vector2(20.7718, 47.7326)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5xr0"]
 size = Vector2(40.5476, 47.2271)
@@ -42,14 +43,17 @@ size = Vector2(110.406, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptju8"]
 size = Vector2(107, 22)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f46v7"]
+size = Vector2(13.7483, 45.9523)
+
 [node name="World1Job2" type="Node2D"]
 script = ExtResource("1_ttmla")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1014.0
-offset_top = -1408.0
-offset_right = 2041.0
-offset_bottom = 2103.0
+offset_left = -893.0
+offset_top = -1446.0
+offset_right = 2162.0
+offset_bottom = 2065.0
 color = Color(0.294118, 0.352941, 0.815686, 1)
 
 [node name="Label7" type="Label" parent="."]
@@ -145,7 +149,7 @@ rotation = -0.00391578
 script = ExtResource("13_ed3ff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ice Area 5"]
-position = Vector2(-166.787, -60.5312)
+position = Vector2(-164.419, -242.975)
 scale = Vector2(9.47161, 2.27973)
 shape = SubResource("RectangleShape2D_8mlg7")
 
@@ -242,6 +246,18 @@ script = ExtResource("15_bgm2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeZoneTopB"]
 position = Vector2(75.5, 191)
 shape = SubResource("RectangleShape2D_ptju8")
+
+[node name="RampSlide" type="Area2D" parent="."]
+visible = false
+position = Vector2(-14.3693, 539.67)
+rotation = -0.00391578
+scale = Vector2(9.47161, 2.27973)
+script = ExtResource("15_xgipk")
+
+[node name="Ramp" type="CollisionShape2D" parent="RampSlide"]
+position = Vector2(-7.60559, 157.497)
+scale = Vector2(1.48667, 1)
+shape = SubResource("RectangleShape2D_f46v7")
 
 [connection signal="body_entered" from="Ice Area 1" to="Ice Area 1" method="_on_body_entered"]
 [connection signal="body_entered" from="Ice Area 5" to="Ice Area 5" method="_on_body_entered"]
