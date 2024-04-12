@@ -16,4 +16,4 @@ func _on_body_entered(body):
 	#print("ENTERED SPIKES")
 	if body.has_method("die"):
 		#print("DIE TRUE")
-		body.die()
+		get_tree().reload_current_scene();
