@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 200.0
 const JUMP_VELOCITY = -300.0
+const FLOOR_NORMAL = Vector2.UP
 var knockback_lerp_const = 0.1
 var regular_lerp_const = 0.9
 var knockback_min_force = 200
@@ -339,7 +340,6 @@ func change_physics(type: String):
 			speed = 200
 			knockback_lerp_const = 0.01
 			regular_lerp_const = 0.07
-			
 
 #func teleport(teleporter):
 	#current_teleporter = teleporter

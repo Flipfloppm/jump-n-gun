@@ -17,10 +17,6 @@ func _on_body_entered(body):
 	if body.is_in_group("players"):
 		print("True.")
 		body.change_physics("ice")
-	#if body.has_method("change_physics"):
-		#print("Has Method")
-		#body.change_physics("ice")
-
 
 # Return players to regular physics
 func _on_body_exited(body):
