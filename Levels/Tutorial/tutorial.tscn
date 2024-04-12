@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=18 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
 [ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="2_y77ny"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Interactables/scripts/coop_briefcase.gd" id="12_y3nl2"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
+[ext_resource type="Texture2D" uid="uid://dhex5i3vh1t5r" path="res://Art/Fonts/lmb.png" id="14_hgao4"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="17_2wjh4"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="17_28g4f"]
 [ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="17_c5b0f"]
@@ -79,12 +80,12 @@ label_settings = SubResource("LabelSettings_0vovr")
 autowrap_mode = 3
 
 [node name="Shoot" type="Label" parent="."]
-offset_left = 1018.0
+offset_left = 1062.0
 offset_top = -146.0
-offset_right = 1146.0
+offset_right = 1130.0
 offset_bottom = -133.0
 theme = SubResource("Theme_cqlqb")
-text = "Use lmb to shoot"
+text = "to shoot"
 label_settings = SubResource("LabelSettings_0vovr")
 
 [node name="Jump" type="Label" parent="."]
@@ -115,6 +116,16 @@ theme = SubResource("Theme_cqlqb")
 text = "don't fall!
 Create your own path forward
 press f after shooting to place tiles"
+label_settings = SubResource("LabelSettings_0vovr")
+autowrap_mode = 2
+
+[node name="Fall" type="Label" parent="Fall"]
+offset_left = -144.0
+offset_top = 5.0
+offset_right = -21.0
+offset_bottom = 46.0
+theme = SubResource("Theme_cqlqb")
+text = "press 3 to switch to the tilegun"
 label_settings = SubResource("LabelSettings_0vovr")
 autowrap_mode = 2
 
@@ -182,3 +193,7 @@ position = Vector2(1426, -496)
 stream = ExtResource("17_28g4f")
 volume_db = 3.0
 autoplay = true
+
+[node name="Lmb" type="Sprite2D" parent="."]
+position = Vector2(1034, -142)
+texture = ExtResource("14_hgao4")

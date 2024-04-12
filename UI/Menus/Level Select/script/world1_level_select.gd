@@ -14,21 +14,21 @@ func _process(delta):
 		$CanvasLayer/StartGameBtn.visible = false
 		$CanvasLayer/TipLabel.text = "Wait for host to choose a level"
 	
-func _on_trash_btn_mouse_entered():
-	$CanvasLayer/Background.frame = 1
-	pass # Replace with function body.
-func _on_computer_btn_mouse_entered():
-	$CanvasLayer/Background.frame = 2
-	pass # Replace with function body.
+#func _on_trash_btn_mouse_entered():
+	#$CanvasLayer/Background.frame = 1
+	#pass # Replace with function body.
+#func _on_computer_btn_mouse_entered():
+	#$CanvasLayer/Background.frame = 2
+	#pass # Replace with function body.
 func _on_water_btn_mouse_entered():
 	$CanvasLayer/Background.frame = 3
 	pass # Replace with function body.
 func _on_hustle_btn_mouse_entered():
 	$CanvasLayer/Background.frame = 4
 	pass # Replace with function body.
-func _on_clock_btn_mouse_entered():
-	$CanvasLayer/Background.frame = 5
-	pass # Replace with function body.
+#func _on_clock_btn_mouse_entered():
+	#$CanvasLayer/Background.frame = 5
+	#pass # Replace with function body.
 
 func _on_hustle_btn_mouse_exited():
 	$CanvasLayer/Background.frame = 0 if selected_level == -1 else selected_level

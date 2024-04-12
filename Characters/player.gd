@@ -22,7 +22,10 @@ var grenadeLauncherAmmo = 6
 var grenadeReloadTime = 0
 var tileGunLoad = 5
 var tileChargeCount = tileGunLoad
-var tileGunReloadTime = 0
+var tileGunReload = 0
+const TILEGUNCOOLDOWNTIME = 0.8
+const TILEGUNRELOADTIME = 3.0
+var tileGunCooldown = 0.8
 var health = 3
 var lastDir = 0
 @onready var camera = $Camera2D
@@ -74,8 +77,10 @@ func _physics_process(delta):
 			rocketReloadTime -= delta
 		if grenadeReloadTime >= 0:
 			grenadeReloadTime -= delta
-		if tileGunReloadTime >= 0:
-			tileGunReloadTime -= delta
+		if tileGunReload >= 0:
+			tileGunReload -= delta
+		if tileGunCooldown >= 0:
+			tileGunCooldown -= delta
 			
 		# Add the gravity.	
 		if not is_on_floor():
@@ -133,12 +138,13 @@ func _physics_process(delta):
 						SignalBus.fired.emit()
 						c4_avail = false
 				"TileGun":
-					if tileChargeCount > 0 && tileGunReloadTime < 0:
+					if tileChargeCount > 0 && tileGunReload < 0 && tileGunCooldown < 0:
 						fire.rpc(multiplayer.get_unique_id())
+						tileGunCooldown = TILEGUNCOOLDOWNTIME
 						tileChargeCount -= 1
 						SignalBus.fired.emit()
 						if tileChargeCount == 0:
-							tileGunReloadTime = 6
+							tileGunReload = TILEGUNRELOADTIME
 							tileChargeCount = tileGunLoad
 		if Input.is_action_just_pressed("reload"):
 			match currWeapon:
@@ -146,7 +152,7 @@ func _physics_process(delta):
 					grenadeReloadTime = 2
 					grenadeLauncherAmmo = 6
 				"TileGun":
-					tileGunReloadTime = 6
+					tileGunReload = TILEGUNRELOADTIME
 					tileChargeCount = tileGunLoad
 			SignalBus.reload.emit()
 		
@@ -290,6 +296,7 @@ func fire(fired_by):
 			projectile = tile.instantiate()
 			projectile.shot_by = fired_by
 			shootAudio.play()
+			
 		_:
 			return
 	projectile.global_position = $GunRotation/ProjectileSpawn.global_position
