@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0k3dwb0nooo"]
+[gd_scene load_steps=10 format=3 uid="uid://d0k3dwb0nooo"]
 
-[ext_resource type="Texture2D" uid="uid://clcamgi7kwt7o" path="res://Art/UI/PartyModeSelect/party-select-bkg.png" id="1_0fktq"]
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/party_select.gd" id="1_frnyt"]
+[ext_resource type="Texture2D" uid="uid://b6jk6wekcvjes" path="res://Art/UI/PartyModeSelect/GREY-party-select.png" id="2_g3gf5"]
 [ext_resource type="Texture2D" uid="uid://cckbjf1faij4a" path="res://Art/UI/PartyModeSelect/party-select-dice.png" id="2_i2hml"]
 [ext_resource type="Texture2D" uid="uid://cogw3rf70bhdi" path="res://Art/UI/PartyModeSelect/party-select-dice-press-hover.png" id="4_p6nrs"]
 [ext_resource type="Texture2D" uid="uid://c3xpfsidbjvlo" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-selector.png" id="5_u3des"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_5l3ej"]
+[ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="7_rogvv"]
 [ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="7_wa7dt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ip62k"]
@@ -27,13 +28,11 @@ script = ExtResource("1_frnyt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_0fktq")
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_g3gf5")
+centered = false
+hframes = 2
 
 [node name="UserIDLabel" type="Label" parent="CanvasLayer"]
 offset_left = 8.0
@@ -44,6 +43,7 @@ theme_override_font_sizes/font_size = 20
 text = "User ID:"
 
 [node name="StartGameBtn" type="TextureButton" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -116,6 +116,41 @@ text = "No valid world selected!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+offset_left = 225.0
+offset_top = 296.0
+offset_right = 425.0
+offset_bottom = 355.0
+theme = ExtResource("7_rogvv")
+text = "Choose Level"
+
+[node name="LeftArrow" type="Button" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -29.5
+offset_right = 39.0
+offset_bottom = 29.5
+grow_vertical = 2
+theme = ExtResource("7_rogvv")
+text = "<"
+
+[node name="RightArrow" type="Button" parent="CanvasLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -29.5
+offset_right = -15.0
+offset_bottom = 29.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("7_rogvv")
+text = ">"
+
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ip62k")
 
@@ -126,3 +161,6 @@ autoplay = true
 [connection signal="mouse_entered" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/LeftArrow" to="." method="_on_right_arrow_pressed"]
+[connection signal="pressed" from="CanvasLayer/RightArrow" to="." method="_on_left_arrow_pressed"]

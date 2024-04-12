@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4vyddnlotqb0"]
 
-[ext_resource type="Texture2D" uid="uid://bnx6x34j7v4lt" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-bkg.png" id="1_cgdo6"]
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/coop_select.gd" id="1_ts5lg"]
 [ext_resource type="Texture2D" uid="uid://b32pgxi0dc05s" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world1.png" id="2_hffsq"]
+[ext_resource type="Texture2D" uid="uid://ccsthcldex4nd" path="res://Art/UI/CoopModeSelect/GREY-WORLD-SELECT.png" id="2_rebi8"]
 [ext_resource type="Texture2D" uid="uid://dsywjcs4x1tjv" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world2.png" id="3_elp2d"]
 [ext_resource type="Texture2D" uid="uid://c3xpfsidbjvlo" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-selector.png" id="3_xn8cf"]
 [ext_resource type="Texture2D" uid="uid://bflg1lwjqa16m" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world3.png" id="4_i3tad"]
@@ -32,9 +32,12 @@ script = ExtResource("1_ts5lg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_cgdo6")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_rebi8")
 
 [node name="UserIDLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
@@ -44,23 +47,23 @@ theme_override_font_sizes/font_size = 24
 text = "User ID:"
 
 [node name="World1Btn" type="TextureButton" parent="CanvasLayer"]
-offset_left = 43.0
-offset_top = 118.0
-offset_right = 123.0
-offset_bottom = 204.0
-scale = Vector2(1.8, 1.794)
+offset_left = 39.0
+offset_top = 136.0
+offset_right = 119.0
+offset_bottom = 222.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_hffsq")
 texture_hover = ExtResource("4_itxrt")
 
 [node name="World1Selector" type="TextureRect" parent="CanvasLayer"]
-visible = false
-offset_left = 87.0
-offset_top = 250.0
-offset_right = 140.0
-offset_bottom = 298.0
+offset_left = 91.0
+offset_top = 273.0
+offset_right = 144.0
+offset_bottom = 321.0
 texture = ExtResource("3_xn8cf")
 
 [node name="World2Btn" type="TextureButton" parent="CanvasLayer"]
+visible = false
 offset_left = 242.0
 offset_top = 116.0
 offset_right = 325.0
@@ -78,6 +81,7 @@ offset_bottom = 298.0
 texture = ExtResource("3_xn8cf")
 
 [node name="World3Btn" type="TextureButton" parent="CanvasLayer"]
+visible = false
 offset_left = 445.0
 offset_top = 108.0
 offset_right = 529.0
@@ -133,10 +137,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 256.0
-offset_bottom = 56.0
+offset_left = -126.0
+offset_top = -26.0
+offset_right = 126.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_yix8d")

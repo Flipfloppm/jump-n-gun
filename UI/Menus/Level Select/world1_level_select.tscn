@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bx6ii0nltmndb"]
 
-[ext_resource type="Texture2D" uid="uid://tg8xholnwjv3" path="res://Art/UI/CoopModeSelect/world1-level-select.png" id="1_crua5"]
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/world1_level_select.gd" id="1_e2hin"]
+[ext_resource type="Texture2D" uid="uid://cjfr23vk87b5v" path="res://Art/UI/CoopModeSelect/GREY-world1-redo.png" id="2_cpedy"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="3_wjgl2"]
 [ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="4_ofl7u"]
 
@@ -27,7 +27,7 @@ script = ExtResource("1_e2hin")
 [node name="Background" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(320, 180)
 scale = Vector2(4, 4)
-texture = ExtResource("1_crua5")
+texture = ExtResource("2_cpedy")
 hframes = 6
 
 [node name="HustleBtn" type="TextureButton" parent="CanvasLayer"]
@@ -41,6 +41,7 @@ offset_left = 395.0
 offset_top = 25.0
 offset_right = 485.0
 offset_bottom = 109.0
+disabled = true
 
 [node name="WaterBtn" type="TextureButton" parent="CanvasLayer"]
 offset_left = 553.0
@@ -53,12 +54,14 @@ offset_left = 383.0
 offset_top = 275.0
 offset_right = 517.0
 offset_bottom = 347.0
+disabled = true
 
 [node name="ComputerBtn" type="TextureButton" parent="CanvasLayer"]
 offset_left = 270.0
 offset_top = 110.0
 offset_right = 324.0
 offset_bottom = 173.0
+disabled = true
 
 [node name="StartGameBtn" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
@@ -87,10 +90,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 256.0
-offset_bottom = 56.0
+offset_left = -126.0
+offset_top = -26.0
+offset_right = 126.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_wjgl2")
