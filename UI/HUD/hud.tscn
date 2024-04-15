@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dryfunn51twox" path="res://Art/UI/HUD/Weapons/GrenadeLauncherReload.png" id="5_3wl77"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_wussn"]
 [ext_resource type="Texture2D" uid="uid://c5qty38af53r2" path="res://Art/UI/HUD/Weapons/tilegun-reload.png" id="7_bhujc"]
-[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="8_8qe7l"]
+[ext_resource type="Texture2D" uid="uid://xequlbt2sr86" path="res://Art/Weapons/outline-wire-c4sprite.png" id="8_s3jew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repi2"]
 atlas = ExtResource("3_4qsvx")
@@ -388,9 +388,9 @@ offset_bottom = 26.6759
 text = "/5"
 
 [node name="C4" type="Sprite2D" parent="."]
-position = Vector2(162, 28.0954)
-scale = Vector2(1.875, 1.23808)
-texture = ExtResource("8_8qe7l")
+position = Vector2(161, 26)
+scale = Vector2(0.128258, 0.115077)
+texture = ExtResource("8_s3jew")
 
 [node name="Panel" type="Panel" parent="C4"]
 offset_left = 17.0
