@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dv537blmbif1u"]
+[gd_scene load_steps=25 format=3 uid="uid://dv537blmbif1u"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_ttmla"]
 [ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="2_ojmj5"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="11_xdwhb"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="12_syt7j"]
 [ext_resource type="Script" path="res://Interactables/scripts/iceArea.gd" id="13_ed3ff"]
+[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Weaponry/c4_launcher.tscn" id="15_37m4k"]
 [ext_resource type="Script" path="res://Levels/SpikeZoneCOOP.gd" id="15_bgm2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qrdi"]
@@ -242,6 +243,12 @@ script = ExtResource("15_bgm2m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeZoneTopB"]
 position = Vector2(75.5, 191)
 shape = SubResource("RectangleShape2D_ptju8")
+
+[node name="C4Launcher" parent="." instance=ExtResource("15_37m4k")]
+position = Vector2(-96, 1391)
+
+[node name="C4Launcher2" parent="." instance=ExtResource("15_37m4k")]
+position = Vector2(97, 1391)
 
 [connection signal="body_entered" from="Ice Area 1" to="Ice Area 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Ice Area 1" to="Ice Area 1" method="_on_body_exited"]
