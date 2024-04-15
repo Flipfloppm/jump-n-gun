@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://by4w82rkbmk43"]
+[gd_scene load_steps=23 format=3 uid="uid://by4w82rkbmk43"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_4ffa4"]
 [ext_resource type="PackedScene" uid="uid://dyv0b1uvboutx" path="res://Weaponry/rocket.tscn" id="2_0nub0"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="8_7mrpj"]
 [ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="8_brcw2"]
 [ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="10_jt6vj"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="13_i4whs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6dhm6"]
 atlas = ExtResource("4_4cte1")
@@ -136,3 +137,13 @@ volume_db = 5.0
 [node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_7mrpj")
 volume_db = 5.0
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -7.0
+theme = ExtResource("13_i4whs")
+theme_override_font_sizes/font_size = 16
+text = "name"
+horizontal_alignment = 1
