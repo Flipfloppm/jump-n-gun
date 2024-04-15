@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bdwhgv7s4u0va" path="res://Sounds/SFX/jump.wav" id="7_5w1fy"]
 [ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="8_04qlf"]
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="8_ieeyw"]
-[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="10_bcchc"]
+[ext_resource type="Texture2D" uid="uid://xequlbt2sr86" path="res://Art/Weapons/outline-wire-c4sprite.png" id="10_3xuv0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1g12a"]
 atlas = ExtResource("4_45k1d")
@@ -119,9 +119,9 @@ scale = Vector2(0.8125, 0.666667)
 texture = ExtResource("8_04qlf")
 
 [node name="C4Launcher" type="Sprite2D" parent="GunRotation"]
-position = Vector2(20, 0.5)
-scale = Vector2(1.75, 0.9375)
-texture = ExtResource("10_bcchc")
+position = Vector2(15, 0)
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("10_3xuv0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -60)

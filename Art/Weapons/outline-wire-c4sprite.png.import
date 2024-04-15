@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://56qjsqe1qaji"
-path="res://.godot/imported/tile-gun-temp.png-a7b54804eb076019db27495ac4b850a1.ctex"
+uid="uid://xequlbt2sr86"
+path="res://.godot/imported/outline-wire-c4sprite.png-f319941645982e39dc4638e7fd9b2b8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Weapons/tile-gun-temp.png"
-dest_files=["res://.godot/imported/tile-gun-temp.png-a7b54804eb076019db27495ac4b850a1.ctex"]
+source_file="res://Art/Weapons/outline-wire-c4sprite.png"
+dest_files=["res://.godot/imported/outline-wire-c4sprite.png-f319941645982e39dc4638e7fd9b2b8b.ctex"]
 
 [params]
 
