@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 200.0
 const JUMP_VELOCITY = -300.0
+const FLOOR_NORMAL = Vector2.UP
 var knockback_lerp_const = 0.1
 var regular_lerp_const = 0.9
 var knockback_min_force = 200
@@ -313,7 +314,9 @@ func playJumpAudio():
 func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
-	position = Vector2(41, 212)
+	#position = Vector2(41, 212)
+	#position = Vector2(-125, 500)
+	position = Vector2(500, -125)
 
 func _on_c4_detonation():
 	c4_avail = true
@@ -325,9 +328,9 @@ func hurt():
 		die()
 	
 
-
 # Change physics to ice physics
 func change_physics(type: String):
+	print("In Physics")
 	match type:
 		"regular":
 			speed = 200
@@ -337,4 +340,11 @@ func change_physics(type: String):
 			speed = 200
 			knockback_lerp_const = 0.01
 			regular_lerp_const = 0.07
-			
+
+#func teleport(teleporter):
+	#current_teleporter = teleporter
+	## Start a timer or wait for a specific duration
+	#yield(get_tree().create_timer(1.0), "timeout")
+	## Teleport the player
+	#current_teleporter.teleport_player(self)
+	#current_teleporter = null

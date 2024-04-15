@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial_tilemap.gd" id="8_ruo01"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="9_go0eh"]
-[ext_resource type="PackedScene" uid="uid://c6m4mecvof1is" path="res://Weaponry/grenade_launcher.tscn" id="10_ctfsw"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
 [ext_resource type="Script" path="res://Interactables/scripts/coop_briefcase.gd" id="12_y3nl2"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="13_qss5e"]
+[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Weaponry/c4_launcher.tscn" id="14_ddrfd"]
 [ext_resource type="Texture2D" uid="uid://dhex5i3vh1t5r" path="res://Art/Fonts/lmb.png" id="14_hgao4"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="17_2wjh4"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="17_28g4f"]
@@ -107,6 +107,16 @@ text = "Use the knockback from the explosion to blast yourself upwards"
 label_settings = SubResource("LabelSettings_0vovr")
 autowrap_mode = 2
 
+[node name="Blast2" type="Label" parent="."]
+offset_left = 969.0
+offset_top = -121.0
+offset_right = 1177.0
+offset_bottom = -105.0
+theme = SubResource("Theme_cqlqb")
+text = "Use C to detonate the C4"
+label_settings = SubResource("LabelSettings_0vovr")
+autowrap_mode = 2
+
 [node name="Fall" type="Label" parent="."]
 offset_left = 1452.0
 offset_top = -554.0
@@ -120,6 +130,7 @@ label_settings = SubResource("LabelSettings_0vovr")
 autowrap_mode = 2
 
 [node name="Fall" type="Label" parent="Fall"]
+layout_mode = 0
 offset_left = -144.0
 offset_top = 5.0
 offset_right = -21.0
@@ -160,17 +171,17 @@ position = Vector2(782, -30)
 [node name="Rocket Launcher 4" parent="." instance=ExtResource("9_go0eh")]
 position = Vector2(839, -30)
 
-[node name="Grenade Launcher" parent="." instance=ExtResource("10_ctfsw")]
-position = Vector2(678, -52)
+[node name="C4 Launcher" parent="." instance=ExtResource("14_ddrfd")]
+position = Vector2(678, -53)
 
-[node name="Grenade Launcher 2" parent="." instance=ExtResource("10_ctfsw")]
-position = Vector2(731, -52)
+[node name="C4 Launcher 2" parent="." instance=ExtResource("14_ddrfd")]
+position = Vector2(731, -53)
 
-[node name="Grenade Launcher 3" parent="." instance=ExtResource("10_ctfsw")]
-position = Vector2(782, -52)
+[node name="C4 Launcher 3" parent="." instance=ExtResource("14_ddrfd")]
+position = Vector2(782, -53)
 
-[node name="Grenade Launcher 4" parent="." instance=ExtResource("10_ctfsw")]
-position = Vector2(839, -52)
+[node name="C4 Launcher 4" parent="." instance=ExtResource("14_ddrfd")]
+position = Vector2(839, -53)
 
 [node name="Briefcase" parent="." instance=ExtResource("12_jx4vh")]
 position = Vector2(2027, -525)
