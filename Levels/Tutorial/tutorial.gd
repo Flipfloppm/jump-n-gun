@@ -15,8 +15,7 @@ func _ready():
 	if multiplayer.get_unique_id() == 1:
 		await get_tree().create_timer(2).timeout
 		spawn_players.rpc()
-		$CanvasLayer/LoadCover.visible = false
-		$CanvasLayer/LevelName.visible = false
+		
 	else:
 		await get_tree().create_timer(1).timeout
 	print("level ready")
@@ -54,4 +53,5 @@ func spawn_players():
 				print("spawned 1 player: " + str(multiplayer.get_unique_id()) + "at: " + str(index))
 		index += 1
 	HUD.setup(GameManager.PLAYERS[multiplayer.get_unique_id()]["Character"])
-	
+	$CanvasLayer/LoadCover.visible = false
+	$CanvasLayer/LevelName.visible = false
