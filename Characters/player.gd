@@ -56,6 +56,8 @@ func _ready():
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
 
+func setPlayerName(name):
+	$PlayerName.text = name
 
 # Set the player variables
 func set_var(var_name: String, var_val: float):
