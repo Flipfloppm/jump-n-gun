@@ -1,11 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://ii85yrtdrc3m"]
+[gd_scene load_steps=45 format=3 uid="uid://ii85yrtdrc3m"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_22et8"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="2_i5w7v"]
 [ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-16.png" id="3_xmhj8"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="4_1fj5p"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="5_n4xvf"]
-[ext_resource type="Texture2D" uid="uid://c3tcossbm4qdc" path="res://Art/LevelTiles/ice-block-16.png" id="6_jajgg"]
+[ext_resource type="Texture2D" uid="uid://b7begfaqdbq80" path="res://Art/LevelTiles/ice-block-16.png" id="6_jajgg"]
 [ext_resource type="Texture2D" uid="uid://bombqmjsc82d2" path="res://Art/Interactables/spikes.png" id="7_utxgm"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="7_yrm32"]
 [ext_resource type="PackedScene" uid="uid://cumtd3d8ausl2" path="res://Interactables/spikes.tscn" id="8_8j0k7"]
@@ -13,7 +13,10 @@
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_mbegl"]
 [ext_resource type="Script" path="res://Levels/Party Levels/Multiplayer_level2_tilemap.gd" id="9_35ada"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="9_r1h16"]
+[ext_resource type="Texture2D" uid="uid://ivx1h4vex1as" path="res://Art/Interactables/flagpolesitta1.png" id="10_6qura"]
+[ext_resource type="Script" path="res://Levels/Party Levels/Checkpoint.gd" id="10_38dxe"]
 [ext_resource type="Script" path="res://Interactables/scripts/versusBriefcase.gd" id="10_ivkpa"]
+[ext_resource type="Texture2D" uid="uid://n0mhh0t8mnx3" path="res://Art/Interactables/flagpolesitta2.png" id="11_4f125"]
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="11_507yv"]
 [ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="12_5k3fd"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_pcwmd"]
@@ -150,6 +153,9 @@ sources/4 = SubResource("TileSetAtlasSource_c126b")
 sources/5 = SubResource("TileSetAtlasSource_bc26o")
 sources/6 = SubResource("TileSetAtlasSource_7wb4h")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_478hk"]
+size = Vector2(20, 45)
+
 [sub_resource type="LabelSettings" id="LabelSettings_v7f2i"]
 font = ExtResource("8_mbegl")
 font_size = 8
@@ -185,10 +191,10 @@ size = Vector2(18, 463)
 script = ExtResource("1_22et8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1057.0
-offset_top = -2792.0
-offset_right = 3757.0
-offset_bottom = 853.0
+offset_left = -1024.0
+offset_top = -2708.0
+offset_right = 3790.0
+offset_bottom = 937.0
 color = Color(0.294118, 0.352941, 0.815686, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -211,6 +217,28 @@ position = Vector2(622, -114)
 
 [node name="3" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawnPosition"]]
 position = Vector2(627, -33)
+
+[node name="Checkpoint" type="Node2D" parent="."]
+position = Vector2(500, -585)
+script = ExtResource("10_38dxe")
+
+[node name="Pre-checkpoint flag" type="Sprite2D" parent="Checkpoint"]
+position = Vector2(-34, 9)
+scale = Vector2(0.094, 0.1)
+texture = ExtResource("10_6qura")
+
+[node name="Post-checkpoint flag" type="Sprite2D" parent="Checkpoint"]
+visible = false
+position = Vector2(-34, 9)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_4f125")
+
+[node name="CheckpointArea" type="Area2D" parent="Checkpoint"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/CheckpointArea"]
+position = Vector2(-34, 1.5)
+shape = SubResource("RectangleShape2D_478hk")
 
 [node name="Rocket Launcher" parent="." instance=ExtResource("7_yrm32")]
 position = Vector2(257, -44)
@@ -243,6 +271,14 @@ script = null
 position = Vector2(242, -649)
 rotation = 3.14159
 script = null
+
+[node name="Description2" type="Label" parent="."]
+offset_left = 458.0
+offset_top = -602.0
+offset_right = 674.0
+offset_bottom = -585.0
+text = "Checkpoint..."
+label_settings = SubResource("LabelSettings_v7f2i")
 
 [node name="Description" type="Label" parent="."]
 offset_left = 218.0
@@ -381,6 +417,7 @@ script = ExtResource("20_colun")
 position = Vector2(1287, -648.5)
 shape = SubResource("RectangleShape2D_b3684")
 
+[connection signal="body_entered" from="Checkpoint/CheckpointArea" to="." method="_on_checkpoint_area_body_entered"]
 [connection signal="body_entered" from="Ice Area 1" to="Ice Area 1" method="_on_body_entered"]
 [connection signal="body_exited" from="Ice Area 1" to="Ice Area 1" method="_on_body_exited"]
 [connection signal="body_entered" from="SpikeZone" to="SpikeZone" method="_on_body_entered"]
