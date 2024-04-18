@@ -53,16 +53,6 @@ offset_right = 2146.0
 offset_bottom = 2077.0
 color = Color(0.294118, 0.352941, 0.815686, 1)
 
-[node name="Label7" type="Label" parent="."]
-offset_left = 498.0
-offset_top = -200.0
-offset_right = 914.0
-offset_bottom = -98.0
-scale = Vector2(0.574726, 0.574726)
-theme = ExtResource("2_sshgm")
-theme_override_font_sizes/font_size = 128
-text = "Leap Of Faith"
-
 [node name="Label" type="Label" parent="."]
 offset_left = -178.0
 offset_top = 430.0
@@ -101,6 +91,24 @@ position = Vector2(82, -584)
 [node name="HUD" parent="." instance=ExtResource("4_l84p7")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LoadCover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.364706, 0.788235, 1)
+
+[node name="LevelName" type="Label" parent="CanvasLayer"]
+offset_left = 223.0
+offset_top = 144.0
+offset_right = 639.0
+offset_bottom = 246.0
+scale = Vector2(0.574726, 0.574726)
+theme = ExtResource("2_sshgm")
+theme_override_font_sizes/font_size = 128
+text = "Leap Of Faith"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_q5cgc")]
 visible = false

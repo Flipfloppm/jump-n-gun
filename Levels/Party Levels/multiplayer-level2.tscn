@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ii85yrtdrc3m"]
+[gd_scene load_steps=41 format=3 uid="uid://ii85yrtdrc3m"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_22et8"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="2_i5w7v"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_pcwmd"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="16_y72ba"]
 [ext_resource type="Script" path="res://Interactables/scripts/iceArea.gd" id="17_gpupk"]
+[ext_resource type="Theme" uid="uid://de0keyov6d84i" path="res://Art/UI/settings.tres" id="18_k07j2"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="18_skbb4"]
 [ext_resource type="Script" path="res://Levels/Party Levels/SpikeZone.gd" id="20_colun"]
 
@@ -270,6 +271,24 @@ visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_pcwmd")]
 visible = false
+
+[node name="LoadCover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.364706, 0.788235, 1)
+
+[node name="LevelName" type="Label" parent="CanvasLayer"]
+offset_left = 209.0
+offset_top = 146.0
+offset_right = 633.0
+offset_bottom = 248.0
+scale = Vector2(0.574726, 0.574726)
+theme = ExtResource("18_k07j2")
+theme_override_font_sizes/font_size = 128
+text = "Party Level 2"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_y72ba")

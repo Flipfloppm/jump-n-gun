@@ -15,6 +15,8 @@ func _ready():
 	if multiplayer.get_unique_id() == 1:
 		await get_tree().create_timer(2).timeout
 		spawn_players.rpc()
+		$CanvasLayer/LoadCover.visible = false
+		$CanvasLayer/LevelName.visible = false
 	else:
 		await get_tree().create_timer(1).timeout
 	print("level ready")

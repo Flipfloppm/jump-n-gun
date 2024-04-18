@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdythvwjj51ua"]
+[gd_scene load_steps=19 format=3 uid="uid://bdythvwjj51ua"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_tr133"]
 [ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="2_y77ny"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial_tilemap.gd" id="8_ruo01"]
 [ext_resource type="FontFile" uid="uid://cnyiuob14qqh7" path="res://Art/Fonts/castlevania-dracula-x-small-snes.ttf" id="8_y180i"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="9_go0eh"]
+[ext_resource type="Theme" uid="uid://de0keyov6d84i" path="res://Art/UI/settings.tres" id="12_ct8th"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="12_jx4vh"]
 [ext_resource type="Script" path="res://Interactables/scripts/coop_briefcase.gd" id="12_y3nl2"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_174ns"]
@@ -196,6 +197,25 @@ visible = false
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource("17_c5b0f")]
 visible = false
+
+[node name="LoadCover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.364706, 0.788235, 1)
+
+[node name="LevelName" type="Label" parent="CanvasLayer"]
+offset_left = 258.0
+offset_top = 151.0
+offset_right = 490.0
+offset_bottom = 253.0
+scale = Vector2(0.574726, 0.574726)
+size_flags_horizontal = 4
+theme = ExtResource("12_ct8th")
+theme_override_font_sizes/font_size = 128
+text = "Tutorial"
 
 [node name="Tile Gun" parent="." instance=ExtResource("17_2wjh4")]
 position = Vector2(1426, -496)
