@@ -101,7 +101,6 @@ position = Vector2(122, -582)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LoadCover" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,10 +123,7 @@ visible = false
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource("6_thdn4")]
 visible = false
-offset_left = 1512.71
-offset_top = -417.116
-offset_right = 1512.71
-offset_bottom = -417.116
+size_flags_horizontal = 4
 
 [node name="Rocket Launcher" parent="." instance=ExtResource("7_str8k")]
 position = Vector2(-51, -562)
