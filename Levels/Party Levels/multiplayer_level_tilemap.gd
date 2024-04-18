@@ -26,20 +26,20 @@ var newCellAtlasCoords
 # Add all breakable wood indices into the set.
 func _ready():
 	SignalBus.tilespawn.connect(spawn_tile_from_gun)
-	## Add cells to breakable wood set. 
-	#add_to_breakable_wood(6, 11, -30, -30)
-	#add_to_breakable_wood(17, 23, -30, -30)
-	#add_to_breakable_wood(13, 15, -37, -37)
-	#add_to_breakable_wood(19, 21, -90, -90)
-	#add_to_breakable_wood(28, 30, -103, -103)
-	#add_to_breakable_wood(1, 5, -111, -111)
-	## Add cells to disappearing moss set.
-	#add_to_disappearing_moss(5, 11, -55, -55, 0)
-	#add_to_disappearing_moss(19, 26, -60, -60, 1)
-	#add_to_disappearing_moss(1, 7, -74, -74, 1)
-	#add_to_disappearing_moss(16, 21, -77, -77, 0)
-	#add_to_disappearing_moss(3, 7, -132, -132, 0)
-	#add_to_disappearing_moss(22, 27, -131, -131, 1)
+	# Add cells to breakable wood set. 
+	add_to_breakable_wood(6, 11, -30, -30)
+	add_to_breakable_wood(17, 23, -30, -30)
+	add_to_breakable_wood(13, 15, -37, -37)
+	add_to_breakable_wood(19, 21, -90, -90)
+	add_to_breakable_wood(28, 30, -103, -103)
+	add_to_breakable_wood(1, 5, -111, -111)
+	# Add cells to disappearing moss set.
+	add_to_disappearing_moss(5, 11, -55, -55, 0)
+	add_to_disappearing_moss(19, 26, -60, -60, 1)
+	add_to_disappearing_moss(1, 7, -74, -74, 1)
+	add_to_disappearing_moss(16, 21, -77, -77, 0)
+	add_to_disappearing_moss(3, 7, -132, -132, 0)
+	add_to_disappearing_moss(22, 27, -131, -131, 1)
 
 
 # Helper function to add cells to disappearing moss set.
@@ -81,26 +81,26 @@ func _process(_delta):
 			if newCellAtlasCoords[0] > 10:
 				tile_spawn_set.erase(cell)
 	pass
-	## Deal with breakable and respawning wood.
-	#for cell in wood_time_left_set:
-		#wood_time_left_set[cell] -= _delta
-		#if wood_time_left_set[cell] < 0 && get_cell_atlas_coords(0, cell).x > 9.0:
-			#cellSourceId = get_cell_source_id(0, cell)
-			#set_cell(0, cell, cellSourceId, Vector2(randi_range(2,3), randi_range(5,6)))
-	## Deal with disappearing moss.
-	#disappearing_moss_set0_timer -= _delta
-	#disappearing_moss_set1_timer -= _delta
-	#if disappearing_moss_set0_timer <= 0:
-		#for cell in disappearing_moss_set0:
-			#cellSourceId = get_cell_source_id(0, cell)
-			#set_cell(0, cell, cellSourceId, Vector2(abs(get_cell_atlas_coords(0, cell).x - 1),0))
-			#disappearing_moss_set0_timer = MOSS_TIME
-	#if disappearing_moss_set1_timer <= 0:
-		#for cell in disappearing_moss_set1:
-			#cellSourceId = get_cell_source_id(0, cell)
-			#set_cell(0, cell, cellSourceId, Vector2(abs(get_cell_atlas_coords(0, cell).x - 1),0))
-			#disappearing_moss_set1_timer = MOSS_TIME
-		#
+	# Deal with breakable and respawning wood.
+	for cell in wood_time_left_set:
+		wood_time_left_set[cell] -= _delta
+		if wood_time_left_set[cell] < 0 && get_cell_atlas_coords(0, cell).x > 9.0:
+			cellSourceId = get_cell_source_id(0, cell)
+			set_cell(0, cell, cellSourceId, Vector2(randi_range(2,3), randi_range(5,6)))
+	# Deal with disappearing moss.
+	disappearing_moss_set0_timer -= _delta
+	disappearing_moss_set1_timer -= _delta
+	if disappearing_moss_set0_timer <= 0:
+		for cell in disappearing_moss_set0:
+			cellSourceId = get_cell_source_id(0, cell)
+			set_cell(0, cell, cellSourceId, Vector2(abs(get_cell_atlas_coords(0, cell).x - 1),0))
+			disappearing_moss_set0_timer = MOSS_TIME
+	if disappearing_moss_set1_timer <= 0:
+		for cell in disappearing_moss_set1:
+			cellSourceId = get_cell_source_id(0, cell)
+			set_cell(0, cell, cellSourceId, Vector2(abs(get_cell_atlas_coords(0, cell).x - 1),0))
+			disappearing_moss_set1_timer = MOSS_TIME
+		
 
 
 # Script for breaking wood.
