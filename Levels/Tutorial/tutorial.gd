@@ -49,6 +49,7 @@ func spawn_players():
 				cur_player = CheneyScene.instantiate()
 		print(cur_player)
 		cur_player.name = str(GameManager.PLAYERS[i].id)
+		cur_player.setPlayerName(str(GameManager.PLAYERS[i].name))
 		GameManager.PLAYERS[i]["body"] = cur_player
 		add_child(cur_player)
 		for spawn_position in get_tree().get_nodes_in_group("PlayerSpawnPosition"):

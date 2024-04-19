@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dt7l4ecn6iwft"]
+[gd_scene load_steps=32 format=3 uid="uid://dt7l4ecn6iwft"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_nyab2"]
 [ext_resource type="Texture2D" uid="uid://b2ifmuhekgej2" path="res://Art/Characters/Cheney/cheney-walking.png" id="2_ntisv"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://crbto25phessp" path="res://Sounds/SFX/shoot.wav" id="5_a6rky"]
 [ext_resource type="Texture2D" uid="uid://k3ayd8frvdpm" path="res://Art/Weapons/tilegun.png" id="9_7e2ta"]
 [ext_resource type="Texture2D" uid="uid://xequlbt2sr86" path="res://Art/Weapons/outline-wire-c4sprite.png" id="10_wuw5b"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="14_jksk5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlxnt"]
 atlas = ExtResource("4_gtqi5")
@@ -193,3 +194,12 @@ volume_db = 5.0
 [node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_a6rky")
 volume_db = 5.0
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -28.0
+offset_right = 19.0
+offset_bottom = -5.0
+theme = ExtResource("14_jksk5")
+text = "text"
+horizontal_alignment = 1
