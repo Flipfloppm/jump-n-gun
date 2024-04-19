@@ -48,19 +48,19 @@ func _on_computer_btn_mouse_exited():
 
 
 func _on_start_game_btn_pressed():
-	start_game.rpc()
+	start_game.rpc(selected_level)
 	
 @rpc("any_peer", "call_local","reliable")
-func start_game():
-	if selected_level == 1:
+func start_game(level):
+	if level == 1:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
-	elif selected_level == 2:
+	elif level == 2:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
-	elif selected_level == 3:
+	elif level == 3:
 		get_tree().change_scene_to_file("res://Levels/world1_job2.tscn")
-	elif selected_level == 4:
+	elif level == 4:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
-	elif selected_level == 5:
+	elif level == 5:
 		get_tree().change_scene_to_file("res://Levels/world1_job1.tscn")
 	else:
 		show_popup("No valid level selected!")
