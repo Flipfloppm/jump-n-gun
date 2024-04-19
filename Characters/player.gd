@@ -25,10 +25,14 @@ var tileGunLoad = 5
 var tileChargeCount = tileGunLoad
 var tileGunReload = 0
 const TILEGUNCOOLDOWNTIME = 0.8
+
 const TILEGUNRELOADTIME = 3.0
 var tileGunCooldown = 0.8
 var health = 3
 var lastDir = 0
+
+var checkpoint = Vector2(500, -125)
+
 @onready var camera = $Camera2D
 @onready var jumpAudio = $JumpAudio
 @onready var shootAudio = $ShootAudio
@@ -43,6 +47,7 @@ func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	SignalBus.c4detonated.connect(_on_c4_detonation)
+	SignalBus.checkpoint.connect(change_checkpoint)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
 	$GunRotation/C4Launcher.visible = false
@@ -314,9 +319,12 @@ func playJumpAudio():
 func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
-	#position = Vector2(41, 212)
-	#position = Vector2(-125, 500)
-	position = Vector2(500, -125)
+	position = checkpoint
+
+func change_checkpoint(pos, body):
+	if body == self && $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		checkpoint = pos
+		SignalBus.checkpoint_passed.emit()
 
 func _on_c4_detonation():
 	c4_avail = true
