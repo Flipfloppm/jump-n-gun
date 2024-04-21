@@ -1,11 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://ii85yrtdrc3m"]
+[gd_scene load_steps=46 format=3 uid="uid://ii85yrtdrc3m"]
 
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_22et8"]
 [ext_resource type="Texture2D" uid="uid://g5jnsixddu4q" path="res://Art/LevelTiles/metal-block-16.png" id="2_i5w7v"]
 [ext_resource type="Texture2D" uid="uid://cohmhnlopncrk" path="res://Art/LevelTiles/stone-block-16.png" id="3_xmhj8"]
 [ext_resource type="Texture2D" uid="uid://bldq34tyeu0y7" path="res://Art/LevelTiles/wood-block-16.png" id="4_1fj5p"]
 [ext_resource type="Texture2D" uid="uid://b4hxgmpreyrfk" path="res://Art/LevelTiles/wood.png" id="5_n4xvf"]
-[ext_resource type="Texture2D" uid="uid://b7begfaqdbq80" path="res://Art/LevelTiles/ice-block-16.png" id="6_jajgg"]
+[ext_resource type="Texture2D" uid="uid://c3tcossbm4qdc" path="res://Art/LevelTiles/ice-block-16.png" id="6_jajgg"]
 [ext_resource type="Texture2D" uid="uid://bombqmjsc82d2" path="res://Art/Interactables/spikes.png" id="7_utxgm"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="7_yrm32"]
 [ext_resource type="PackedScene" uid="uid://cumtd3d8ausl2" path="res://Interactables/spikes.tscn" id="8_8j0k7"]
@@ -25,6 +25,7 @@
 [ext_resource type="Theme" uid="uid://de0keyov6d84i" path="res://Art/UI/settings.tres" id="18_k07j2"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="18_skbb4"]
 [ext_resource type="Script" path="res://Levels/Party Levels/SpikeZone.gd" id="20_colun"]
+[ext_resource type="Texture2D" uid="uid://c36yg55se6h6p" path="res://Art/UI/3706757-200.png" id="26_2kapy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
 texture = ExtResource("2_i5w7v")
@@ -192,9 +193,9 @@ script = ExtResource("1_22et8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1024.0
-offset_top = -2708.0
+offset_top = -2694.0
 offset_right = 3790.0
-offset_bottom = 937.0
+offset_bottom = 951.0
 color = Color(0.294118, 0.352941, 0.815686, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -416,6 +417,11 @@ script = ExtResource("20_colun")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeZone8"]
 position = Vector2(1287, -648.5)
 shape = SubResource("RectangleShape2D_b3684")
+
+[node name="3706757-200" type="Sprite2D" parent="."]
+position = Vector2(710, -493)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("26_2kapy")
 
 [connection signal="body_entered" from="Checkpoint/CheckpointArea" to="." method="_on_checkpoint_area_body_entered"]
 [connection signal="body_entered" from="Ice Area 1" to="Ice Area 1" method="_on_body_entered"]
