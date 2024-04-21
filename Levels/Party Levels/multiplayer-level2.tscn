@@ -20,11 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="11_507yv"]
 [ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="12_5k3fd"]
 [ext_resource type="PackedScene" uid="uid://b1nsfaxqnw3sn" path="res://UI/Menus/pause_menu.tscn" id="13_pcwmd"]
-[ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="16_y72ba"]
 [ext_resource type="Script" path="res://Interactables/scripts/iceArea.gd" id="17_gpupk"]
 [ext_resource type="Theme" uid="uid://de0keyov6d84i" path="res://Art/UI/settings.tres" id="18_k07j2"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="18_skbb4"]
 [ext_resource type="Script" path="res://Levels/Party Levels/SpikeZone.gd" id="20_colun"]
+[ext_resource type="AudioStream" uid="uid://j167md84ffj" path="res://Sounds/Music/Red_White__Blue_Skies.mp3" id="22_jsedp"]
 [ext_resource type="Texture2D" uid="uid://c36yg55se6h6p" path="res://Art/UI/3706757-200.png" id="26_2kapy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdupy"]
@@ -328,7 +328,7 @@ theme_override_font_sizes/font_size = 128
 text = "Party Level 2"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_y72ba")
+stream = ExtResource("22_jsedp")
 volume_db = 3.0
 autoplay = true
 
