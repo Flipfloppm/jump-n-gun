@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3xpfsidbjvlo" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-selector.png" id="5_u3des"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_5l3ej"]
 [ext_resource type="Theme" uid="uid://jrlselt3bfqh" path="res://Art/UI/StandardButton.tres" id="7_rogvv"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="7_wa7dt"]
+[ext_resource type="AudioStream" uid="uid://rygtgwwvgrxd" path="res://Sounds/Music/Red_White__Blue_Skies_-_2.mp3" id="8_xhxha"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ip62k"]
 properties/0/path = NodePath("CanvasLayer/BtnSelectIndicator:visible")
@@ -155,7 +155,7 @@ text = ">"
 replication_config = SubResource("SceneReplicationConfig_ip62k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_wa7dt")
+stream = ExtResource("8_xhxha")
 autoplay = true
 
 [connection signal="mouse_entered" from="CanvasLayer/StartGameBtn" to="." method="_on_start_game_btn_mouse_entered"]

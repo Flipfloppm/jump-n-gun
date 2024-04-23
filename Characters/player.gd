@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var speed = 200.0
 const JUMP_VELOCITY = -300.0
+const FLOOR_NORMAL = Vector2.UP
 var knockback_lerp_const = 0.1
 var regular_lerp_const = 0.9
 var knockback_min_force = 200
@@ -24,10 +25,14 @@ var tileGunLoad = 5
 var tileChargeCount = tileGunLoad
 var tileGunReload = 0
 const TILEGUNCOOLDOWNTIME = 0.8
+
 const TILEGUNRELOADTIME = 3.0
 var tileGunCooldown = 0.8
 var health = 3
 var lastDir = 0
+
+var checkpoint = Vector2(500, -125)
+
 @onready var camera = $Camera2D
 @onready var jumpAudio = $JumpAudio
 @onready var shootAudio = $ShootAudio
@@ -42,6 +47,7 @@ func _ready():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	SignalBus.weapon_entered.connect(_on_rocket_body_entered)
 	SignalBus.c4detonated.connect(_on_c4_detonation)
+	SignalBus.checkpoint.connect(change_checkpoint)
 	$GunRotation/RocketLauncher.visible = false
 	$GunRotation/GrenadeLauncher.visible = false
 	$GunRotation/C4Launcher.visible = false
@@ -55,6 +61,8 @@ func _ready():
 	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
 		camera.make_current()
 
+func setPlayerName(name):
+	$PlayerName.text = name
 
 # Set the player variables
 func set_var(var_name: String, var_val: float):
@@ -313,7 +321,12 @@ func playJumpAudio():
 func die():
 	print("player die")
 	# TODO: Set player respawn point + make animation for player respawn?
-	position = Vector2(41, 212)
+	position = checkpoint
+
+func change_checkpoint(pos, body):
+	if body == self && $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+		checkpoint = pos
+		SignalBus.checkpoint_passed.emit()
 
 func _on_c4_detonation():
 	c4_avail = true
@@ -325,9 +338,9 @@ func hurt():
 		die()
 	
 
-
 # Change physics to ice physics
 func change_physics(type: String):
+	print("In Physics")
 	match type:
 		"regular":
 			speed = 200
@@ -337,4 +350,11 @@ func change_physics(type: String):
 			speed = 200
 			knockback_lerp_const = 0.01
 			regular_lerp_const = 0.07
-			
+
+#func teleport(teleporter):
+	#current_teleporter = teleporter
+	## Start a timer or wait for a specific duration
+	#yield(get_tree().create_timer(1.0), "timeout")
+	## Teleport the player
+	#current_teleporter.teleport_player(self)
+	#current_teleporter = null

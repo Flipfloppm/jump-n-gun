@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1nsfaxqnw3sn"]
 
 [ext_resource type="Script" path="res://UI/Menus/scripts/pause_menu.gd" id="1_cmbrj"]
-[ext_resource type="Theme" path="res://Art/UI/MainMenuButtonTheme.tres" id="2_br6ky"]
+[ext_resource type="Theme" uid="uid://xqntkjm8a05f" path="res://Art/UI/MainMenuButtonTheme.tres" id="2_br6ky"]
 [ext_resource type="PackedScene" uid="uid://c1bhra2if2aap" path="res://UI/Menus/Settings/settings.tscn" id="3_6j7dg"]
 
 [node name="PauseMenu" type="Control"]
