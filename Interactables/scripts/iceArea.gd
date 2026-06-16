@@ -13,9 +13,10 @@ func _process(delta):
 
 # Make players slippery
 func _on_body_entered(body):
+	print("entered.", body)
 	if body.has_method("change_physics"):
+		#print("True.")
 		body.change_physics("ice")
-
 
 # Return players to regular physics
 func _on_body_exited(body):

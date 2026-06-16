@@ -18,6 +18,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Tile" type="RigidBody2D"]
+collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_vpkjg")
 

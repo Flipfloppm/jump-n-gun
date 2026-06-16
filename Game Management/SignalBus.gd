@@ -11,6 +11,8 @@ signal tilegun_reset()
 signal fired
 signal weapon_swap(weaponName)
 signal hurt
+signal checkpoint(position, body) # Sent by checkpoint when a player passes through
+signal checkpoint_passed() # Sent by player in verification, changes flag
 signal reload()
 
 signal serverBrowserJoin(ip) # indicates a user trying to join a server at IP

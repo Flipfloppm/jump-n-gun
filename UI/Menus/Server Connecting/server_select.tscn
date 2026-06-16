@@ -7,8 +7,8 @@
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="5_tu8p8"]
 [ext_resource type="PackedScene" uid="uid://1mvptt5tr4c4" path="res://UI/Menus/Server Connecting/server_info.tscn" id="6_vl0g5"]
 [ext_resource type="PackedScene" uid="uid://c63wng7gvpv7e" path="res://UI/Menus/Server Connecting/waiting_room.tscn" id="8_lcksl"]
+[ext_resource type="AudioStream" uid="uid://rygtgwwvgrxd" path="res://Sounds/Music/Red_White__Blue_Skies_-_2.mp3" id="9_ld82a"]
 [ext_resource type="PackedScene" uid="uid://r4itwr37og2b" path="res://UI/Menus/Server Connecting/direct_ip_join.tscn" id="9_ssqht"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="10_2tkvh"]
 
 [sub_resource type="Theme" id="Theme_vh3fo"]
 default_font = ExtResource("5_tu8p8")
@@ -233,7 +233,7 @@ offset_bottom = 26.0
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_2tkvh")
+stream = ExtResource("9_ld82a")
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/HostGame" to="." method="_on_host_game_pressed"]

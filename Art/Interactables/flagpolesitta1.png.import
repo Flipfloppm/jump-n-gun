@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://56qjsqe1qaji"
-path="res://.godot/imported/tile-gun-temp.png-a7b54804eb076019db27495ac4b850a1.ctex"
+uid="uid://ivx1h4vex1as"
+path="res://.godot/imported/flagpolesitta1.png-1d2494f3ef4f7df7ed0dcf282a14af18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Weapons/tile-gun-temp.png"
-dest_files=["res://.godot/imported/tile-gun-temp.png-a7b54804eb076019db27495ac4b850a1.ctex"]
+source_file="res://Art/Interactables/flagpolesitta1.png"
+dest_files=["res://.godot/imported/flagpolesitta1.png-1d2494f3ef4f7df7ed0dcf282a14af18.ctex"]
 
 [params]
 

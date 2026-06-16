@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="6_yix8d"]
 [ext_resource type="Texture2D" uid="uid://cketqb2hrcywx" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world2-hover.png" id="7_14xmt"]
 [ext_resource type="Texture2D" uid="uid://k6kb2x7o1j2h" path="res://Art/UI/CoopModeSelect/WORLD-SELECT-world3-hover.png" id="9_woy82"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="11_rbj2h"]
+[ext_resource type="AudioStream" uid="uid://rygtgwwvgrxd" path="res://Sounds/Music/Red_White__Blue_Skies_-_2.mp3" id="11_d2gue"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u4pxo"]
 properties/0/path = NodePath(".:selected_world")
@@ -137,10 +137,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -26.0
-offset_right = 126.0
-offset_bottom = 26.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_yix8d")
@@ -153,7 +153,7 @@ vertical_alignment = 1
 replication_config = SubResource("SceneReplicationConfig_u4pxo")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_rbj2h")
+stream = ExtResource("11_d2gue")
 autoplay = true
 
 [connection signal="mouse_entered" from="CanvasLayer/World1Btn" to="." method="_on_world_1_btn_mouse_entered"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/Menus/Level Select/script/world1_level_select.gd" id="1_e2hin"]
 [ext_resource type="Texture2D" uid="uid://cjfr23vk87b5v" path="res://Art/UI/CoopModeSelect/GREY-world1-redo.png" id="2_cpedy"]
 [ext_resource type="FontFile" uid="uid://hisxnsk1olxb" path="res://Art/Fonts/m3x6.ttf" id="3_wjgl2"]
-[ext_resource type="AudioStream" uid="uid://cnrl5pjsjlyno" path="res://Sounds/Music/menu-music-1.wav" id="4_ofl7u"]
+[ext_resource type="AudioStream" uid="uid://rygtgwwvgrxd" path="res://Sounds/Music/Red_White__Blue_Skies_-_2.mp3" id="4_hjesr"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cnsbn"]
 properties/0/path = NodePath(".:selected_level")
@@ -90,10 +90,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -26.0
-offset_right = 126.0
-offset_bottom = 26.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 256.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_wjgl2")
@@ -123,7 +123,7 @@ theme_override_font_sizes/font_size = 24
 text = "User ID:"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ofl7u")
+stream = ExtResource("4_hjesr")
 autoplay = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
