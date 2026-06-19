@@ -8,6 +8,9 @@ var disappearing_moss_set0_timer = MOSS_TIME
 var disappearing_moss_set1 = {}
 var disappearing_moss_set1_timer = 0.0
 
+var tile_spawn_set = {}
+const TILE_SPAWN_TIME = 4.0 # This is the amount of time between image changesad
+
 # Boundary of playing space
 const XMIN = 0
 const XMAX = 31
@@ -22,6 +25,7 @@ var newCellAtlasCoords
 # Called when the node enters the scene tree for the first time.
 # Add all breakable wood indices into the set.
 func _ready():
+	SignalBus.tilespawn.connect(spawn_tile_from_gun)
 	# Add cells to breakable wood set. 
 	add_to_breakable_wood(6, 11, -30, -30)
 	add_to_breakable_wood(17, 23, -30, -30)
@@ -63,6 +67,20 @@ func add_to_breakable_wood(xmin, xmax, ymin, ymax):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+		# For each element of the tile_spawn_set, decrement the time.
+	for cell in tile_spawn_set:
+		tile_spawn_set[cell] -= _delta
+		cellSourceId = get_cell_source_id(0, cell)
+		cellAtlasCoords = get_cell_atlas_coords(0, cell)
+		# If time < x secs, change skin the first time.
+		if tile_spawn_set[cell] < 0:
+			tile_spawn_set[cell] = 2
+			newCellAtlasCoords = Vector2i(cellAtlasCoords[0] + 1, cellAtlasCoords[1])
+			set_cell(0, cell, cellSourceId, newCellAtlasCoords)
+			# Remove block from tile_spawn_set
+			if newCellAtlasCoords[0] > 10:
+				tile_spawn_set.erase(cell)
+	pass
 	# Deal with breakable and respawning wood.
 	for cell in wood_time_left_set:
 		wood_time_left_set[cell] -= _delta
@@ -114,4 +132,19 @@ func hit(collision_position):
 		# If broken, change timer.
 		if get_cell_atlas_coords(0, block).x > 9.0:
 			wood_time_left_set[block] = 3.0
+
+func spawn_tile_from_gun(pos_x, pos_y):
+	print("tilespawn: " , pos_x, ", ", pos_y)
+	var cell = local_to_map(Vector2i(pos_x, pos_y))
+	# Check that there is no other tile in the cell.
+	if (get_cell_source_id(0, cell) != -1 ):
+		if (get_cell_source_id(0, cell) == 3 && get_cell_atlas_coords(0, cell).x > 9):
+			pass
+		else: 
+			return
+	set_cell(0, cell, 5, Vector2(0,0))
+	# Add cell to breakable set
+	add_to_breakable_wood(cell.x, cell.x, cell.y, cell.y)
+	# Add cell to tile_spawn_set
+	tile_spawn_set[cell] = TILE_SPAWN_TIME
 

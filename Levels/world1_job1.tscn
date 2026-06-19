@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds6rysof62n3a"]
+[gd_scene load_steps=14 format=3 uid="uid://ds6rysof62n3a"]
 
 [ext_resource type="TileSet" uid="uid://dmq6tqmmity7t" path="res://Levels/tileset.tres" id="1_2a7s1"]
 [ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_24gdk"]
@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d0dkocaq2x4ii" path="res://UI/HUD/hud.tscn" id="3_wrurq"]
 [ext_resource type="PackedScene" uid="uid://ddn8snpvj86p" path="res://Weaponry/rocket_launcher.tscn" id="5_a00bg"]
 [ext_resource type="PackedScene" uid="uid://dsmur1pretn6j" path="res://UI/game_over.tscn" id="5_ln53l"]
-[ext_resource type="PackedScene" uid="uid://c6m4mecvof1is" path="res://Weaponry/grenade_launcher.tscn" id="6_dvx3q"]
 [ext_resource type="PackedScene" uid="uid://csdku4ede7qnu" path="res://Interactables/briefcase.tscn" id="7_0mvti"]
+[ext_resource type="Theme" uid="uid://de0keyov6d84i" path="res://Art/UI/settings.tres" id="7_3xn8i"]
 [ext_resource type="Script" path="res://Interactables/scripts/coop_briefcase.gd" id="8_2n5e3"]
 [ext_resource type="PackedScene" uid="uid://qmclp65wfafu" path="res://Weaponry/tile_gun.tscn" id="10_q2kgk"]
 [ext_resource type="AudioStream" uid="uid://dx40h6a3hb20x" path="res://Sounds/Music/tutorial_background_soundtrack.mp3" id="11_s6oho"]
+[ext_resource type="PackedScene" uid="uid://8jxu6lju5oit" path="res://Weaponry/c4_launcher.tscn" id="12_6odd3"]
 
 [node name="World1Job1" type="Node2D"]
 script = ExtResource("1_24gdk")
@@ -47,17 +48,29 @@ visible = false
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource("5_ln53l")]
 visible = false
 
+[node name="LoadCover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.278431, 0.662745, 1)
+
+[node name="LevelName" type="Label" parent="CanvasLayer"]
+offset_left = 143.0
+offset_top = 154.0
+offset_right = 799.0
+offset_bottom = 256.0
+scale = Vector2(0.574726, 0.574726)
+theme = ExtResource("7_3xn8i")
+theme_override_font_sizes/font_size = 128
+text = "First Day on the Job"
+
 [node name="Rocket Launcher" parent="." instance=ExtResource("5_a00bg")]
 position = Vector2(141, -37)
 
 [node name="Rocket Launcher2" parent="." instance=ExtResource("5_a00bg")]
 position = Vector2(429, -35)
-
-[node name="Grenade Launcher" parent="." instance=ExtResource("6_dvx3q")]
-position = Vector2(779, -30)
-
-[node name="Grenade Launcher2" parent="." instance=ExtResource("6_dvx3q")]
-position = Vector2(835, -30)
 
 [node name="Briefcase" parent="." instance=ExtResource("7_0mvti")]
 position = Vector2(113, -334)
@@ -70,3 +83,9 @@ position = Vector2(509, -309)
 stream = ExtResource("11_s6oho")
 volume_db = 3.0
 autoplay = true
+
+[node name="C4 Launcher" parent="." instance=ExtResource("12_6odd3")]
+position = Vector2(784, -28)
+
+[node name="C4 Launcher2" parent="." instance=ExtResource("12_6odd3")]
+position = Vector2(832, -28)

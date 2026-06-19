@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8812in8pfmoq"]
 
 [ext_resource type="Script" path="res://Weaponry/scripts/c4.gd" id="1_txtvq"]
-[ext_resource type="Texture2D" uid="uid://c6pfvhmoibwwu" path="res://Art/Weapons/temp_c4.png" id="2_85xji"]
+[ext_resource type="Texture2D" uid="uid://xequlbt2sr86" path="res://Art/Weapons/outline-wire-c4sprite.png" id="2_w3pgx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tspb1"]
-radius = 2.0
-height = 10.0
+radius = 7.0
+height = 16.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0llc7"]
 properties/0/path = NodePath(".:goalpos")
@@ -19,14 +19,16 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="C4" type="RigidBody2D"]
-collision_mask = 7
+collision_layer = 8
 script = ExtResource("1_txtvq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_85xji")
+[node name="Outline-wire-c4Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.0645833, 0.0645833)
+texture = ExtResource("2_w3pgx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
+position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_tspb1")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
